@@ -1,0 +1,10 @@
+[package]
+name = "aer-core"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+mock = []
+
+# The domain core depends only on its own types and the standard library.
+[dependencies]

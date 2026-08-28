@@ -1,0 +1,36 @@
+[package]
+name = "aiengineroom"
+version = "0.1.0"
+description = "A pre-release desktop utility for inspecting Ollama and LM Studio runtime and resource context"
+authors = ["Greg Weir"]
+license = "Apache-2.0"
+homepage = "https://tartanleaf.com"
+edition = "2021"
+rust-version = "1.77.2"
+
+[lib]
+name = "aiengineroom_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+aer-core = { path = "../crates/aer-core" }
+reqwest = { version = "0.12", default-features = false }
+tauri-plugin-clipboard-manager = "2"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61.2", default-features = false, features = ["Win32_System_SystemInformation"] }
+
+[features]
+default = []
+# Development-only: enables the aer-core mock/null provider implementations so the
+# 1A architecture can be exercised with fixture data. It forwards to the
+# `aer-core/mock` feature. Never in `default` and never enabled by ordinary
+# production/native builds; tests and explicit development use enable it on
+# purpose, so mock provider code is not compiled into the production binary.
+dev-fixtures = ["aer-core/mock"]

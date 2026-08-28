@@ -1,0 +1,9 @@
+# Ignore hidden sandbox/editor projection artifacts at the repo root.
+# Prettier still loads .prettierrc before applying ignores.
+.*
+
+# Generated build artifacts
+node_modules/
+dist/
+build/
+target/
