@@ -581,8 +581,8 @@ fn resource_concepts(
     has_configured_context: bool,
     has_reported_vram: bool,
 ) -> Vec<ResourceConceptView> {
-    let observed = |concept: &str, available: bool, present: &str, absent: &str| {
-        ResourceConceptView {
+    let observed =
+        |concept: &str, available: bool, present: &str, absent: &str| ResourceConceptView {
             concept: concept.to_string(),
             state_label: if available {
                 "Reported evidence available"
@@ -591,8 +591,7 @@ fn resource_concepts(
             }
             .to_string(),
             interpretation: if available { present } else { absent }.to_string(),
-        }
-    };
+        };
 
     vec![
         observed(
@@ -1351,7 +1350,9 @@ mod tests {
         assert!(!v.why_it_matters.is_empty());
         assert!(v.resource_interpretation.contains("reported by Ollama"));
         assert!(v.resource_qualification.contains("KV-cache bytes"));
-        assert!(v.resource_qualification.contains("compute placement remains unknown"));
+        assert!(v
+            .resource_qualification
+            .contains("compute placement remains unknown"));
     }
 
     #[test]
@@ -1544,13 +1545,7 @@ mod tests {
     fn loaded_available_populated() -> LoadedModelSetView {
         loaded_view(
             LoadedModelState::Available,
-            vec![loaded_summary(
-                "example-runner:8b",
-                None,
-                None,
-                None,
-                None,
-            )],
+            vec![loaded_summary("example-runner:8b", None, None, None, None)],
         )
     }
 
@@ -1800,11 +1795,8 @@ mod tests {
                 None,
             )],
         ));
-        let text = format!(
-            "{} {}",
-            v.resource_interpretation, v.resource_qualification
-        )
-        .to_lowercase();
+        let text =
+            format!("{} {}", v.resource_interpretation, v.resource_qualification).to_lowercase();
         for forbidden in [
             " fit ",
             "headroom",

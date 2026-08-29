@@ -482,6 +482,9 @@ describe("Milestone 1I dashboard", () => {
     await activate(user, "Models");
     expect(view.getByText(lm.resource_interpretation)).toBeVisible();
     expect(view.getByText(lm.resource_qualification)).toBeVisible();
+    await user.click(
+      view.getByText(/Artificial Matrix Model/, { selector: "summary" }),
+    );
     expect(
       view.getByText("Catalogue size reported by LM Studio"),
     ).toBeVisible();

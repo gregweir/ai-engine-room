@@ -681,11 +681,8 @@ mod tests {
             },
         ] {
             let s = interpret_models(outcome);
-            let text = format!(
-                "{} {}",
-                s.resource_interpretation, s.resource_qualification
-            )
-            .to_lowercase();
+            let text = format!("{} {}", s.resource_interpretation, s.resource_qualification)
+                .to_lowercase();
             for forbidden in [
                 " fit ",
                 "headroom",
