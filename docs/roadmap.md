@@ -16,11 +16,11 @@ hardware benchmark.
 
 ## Current sequence
 
-1. Close Milestone 1U: total memory and native CPU architecture, including the Windows Clippy correction and the owner decision on 225% Text size evidence.
-2. Owner roadmap decision before Milestone 1V.
+1. Close Milestone 1U: total memory and native CPU architecture, including the Windows Clippy correction and the developer decision on 225% Text size evidence.
+2. Developer roadmap decision before Milestone 1V.
 3. Add memory-use and KV-cache capacity/context presentation only under a separately approved contract that distinguishes model weights, context/KV cache, runtime overhead, system memory, VRAM, and unknown placement without making unsupported fit claims.
 4. Reassess current-source Linux and Windows packaging and release readiness.
-5. Make separate owner decisions for signing, publication, distribution, broader provider/platform coverage, and macOS.
+5. Make separate developer decisions for signing, publication, distribution, broader provider/platform coverage, and macOS.
 
 No roadmap entry authorizes implementation by itself. The current milestone
-state and owner gate control execution.
+state and developer gate control execution.

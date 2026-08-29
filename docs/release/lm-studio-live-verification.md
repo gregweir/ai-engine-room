@@ -1,10 +1,10 @@
 # LM Studio live verification evidence
 
-This records one owner-authorized live verification of the LM Studio native REST v1 integration on the Ubuntu 24.04 LTS x86_64 development environment. It is bounded integration evidence, not broad LM Studio compatibility certification, a benchmark, or proof of compute placement.
+This records one developer-authorized live verification of the LM Studio native REST v1 integration on the Ubuntu 24.04 LTS x86_64 development environment. It is bounded integration evidence, not broad LM Studio compatibility certification, a benchmark, or proof of compute placement.
 
 ## Selected model and catalogue evidence
 
-The owner deliberately selected the inference-eligible LLM `liquid/lfm2.5-1.2b`. LM Studio CLI identified it as a 1.2B-parameter `lfm2` model of approximately 1.25 GB and displayed its device/status as `Local`.
+The developer deliberately selected the inference-eligible LLM `liquid/lfm2.5-1.2b`. LM Studio CLI identified it as a 1.2B-parameter `lfm2` model of approximately 1.25 GB and displayed its device/status as `Local`.
 
 `GET http://127.0.0.1:1234/api/v1/models` exposed the selected model with:
 
@@ -25,14 +25,14 @@ The same catalogue contained both LLM and embedding model types. The observation
 
 ## Authorization and result
 
-The owner explicitly supplied all four test gates for the single run:
+The developer explicitly supplied all four test gates for the single run:
 
 - `AER_1L_LM_STUDIO_MODEL` selected `liquid/lfm2.5-1.2b`;
 - `AER_1L_ALLOW_LM_STUDIO_INFERENCE=1` authorized inference;
 - `AER_1L_ACKNOWLEDGE_LM_STUDIO_JIT_SIDE_EFFECT=1` acknowledged possible JIT loading and later auto-unloading;
 - `AER_1L_ALLOW_UNVERIFIED_COMPUTE_PLACEMENT=1` acknowledged that compute placement is not independently verified.
 
-From `src-tauri`, the owner ran the ignored `lm_studio_live` integration test. The single test `live_lm_studio_native_v1_observation_is_bounded` passed: 1 passed, 0 failed, 0 ignored, 0 measured, 0 filtered out, in 2.61 seconds. The owner then explicitly unset all four variables.
+From `src-tauri`, the developer ran the ignored `lm_studio_live` integration test. The single test `live_lm_studio_native_v1_observation_is_bounded` passed: 1 passed, 0 failed, 0 ignored, 0 measured, 0 filtered out, in 2.61 seconds. The developer then explicitly unset all four variables.
 
 ## Evidence boundary
 

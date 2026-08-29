@@ -1,8 +1,8 @@
 # Windows pre-release packaging verification
 
-This checklist covers a local, unsigned, unpublished NSIS pre-release for Windows 11 x86-64. It does not establish broad Windows support, signing, publication, or owner package acceptance.
+This checklist covers a local, unsigned, unpublished NSIS pre-release for Windows 11 x86-64. It does not establish broad Windows support, signing, publication, or developer package acceptance.
 
-Windows available-memory support has passed native compilation, current-source unsigned NSIS packaging, and owner package verification on the tested Windows baseline. That bounded result is recorded in [Windows available-memory verification](windows-available-memory-verification.md). The historical accepted installer identified below predates the implementation and remains separate evidence.
+Windows available-memory support has passed native compilation, current-source unsigned NSIS packaging, and developer package verification on the tested Windows baseline. That bounded result is recorded in [Windows available-memory verification](windows-available-memory-verification.md). The historical accepted installer identified below predates the implementation and remains separate evidence.
 
 ## Baseline and preparation
 
@@ -25,11 +25,11 @@ The Windows-specific Tauri configuration selects NSIS only; the base configurati
 
 Normal Tauri NSIS bundling may download its bundler helper/tooling; that is not a project dependency.
 
-## Owner-only package acceptance
+## Developer-only package acceptance
 
 The historical Milestone 1M acceptance applies only to `AI Engine Room_0.1.0_x64-setup.exe`, size 2,468,432 bytes, SHA-256 `49f1a34eb5ca9a3ca9a59cdaf78af9c5478893e312d96888931dcfa0c5396de4`, with Authenticode status `NotSigned`. A later artifact must have separately recorded evidence; the distinct current-source Milestone 1Q artifact is recorded in [Windows available-memory verification](windows-available-memory-verification.md). Do not treat either artifact identity as evidence for the other.
 
-An unsigned installer may show **Unknown publisher**, SmartScreen, or organization/security-policy warnings. Do not disable SmartScreen, bypass policy, lower security settings, or use undocumented bypasses. If Windows or organizational policy blocks execution and there is no normal owner-approved path to continue, stop and record the policy block; do not characterize a warning as harmless or a false positive.
+An unsigned installer may show **Unknown publisher**, SmartScreen, or organization/security-policy warnings. Do not disable SmartScreen, bypass policy, lower security settings, or use undocumented bypasses. If Windows or organizational policy blocks execution and there is no normal developer-approved path to continue, stop and record the policy block; do not characterize a warning as harmless or a false positive.
 
 Record pass/fail for every required observation against the exact installer hash:
 
@@ -42,9 +42,9 @@ Record pass/fail for every required observation against the exact installer hash
 7. Check keyboard navigation through all four workspaces, visible focus, disclosure controls, narrow-window layout, and enlarged text/zoom. Record any clipping, overlap, unreadable presentation, or unreachable control. These checks are not a WCAG conformance claim.
 8. Close the application, uninstall it through normal Windows application removal, confirm the application/package entry is absent afterward, and record removal pass/fail. Do not invent filesystem-cleanup requirements.
 
-Provider checks are optional. If the owner later chooses to run Ollama or LM Studio for passive detection, keep the check read-only/passive unless a separate explicit inference authorization is given. Provider availability is not an installer-acceptance prerequisite.
+Provider checks are optional. If the developer later chooses to run Ollama or LM Studio for passive detection, keep the check read-only/passive unless a separate explicit inference authorization is given. Provider availability is not an installer-acceptance prerequisite.
 
-**Copy report** is optional. If tested, perform one explicit manual Copy action and compare the resulting plain text with the visible report-safe preview. No clipboard read permission is added, no automatic copy is permitted, and Copy is not required for package acceptance if the owner chooses not to use the clipboard.
+**Copy report** is optional. If tested, perform one explicit manual Copy action and compare the resulting plain text with the visible report-safe preview. No clipboard read permission is added, no automatic copy is permitted, and Copy is not required for package acceptance if the developer chooses not to use the clipboard.
 
 Inference is **not required** for Milestone 1M package acceptance. Do not run Ollama or LM Studio inference for this procedure.
 

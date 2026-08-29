@@ -38,9 +38,9 @@ cargo build --workspace
 
 Results: repository-readiness assertions passed; Svelte/TypeScript checks reported zero errors and warnings; ESLint passed; 13 frontend test files and 191 tests passed; the frontend production build passed; Rust formatting and clippy passed; all 254 deterministic application tests and doc tests passed. Six environment-dependent live tests remained ignored. No inference ran.
 
-The owner also ran `cargo fmt --all --check` on the current tree after rebuilding the accepted package; it passed.
+The developer also ran `cargo fmt --all --check` on the current tree after rebuilding the accepted package; it passed.
 
-The owner rebuilt the package from the committed source above with:
+The developer rebuilt the package from the committed source above with:
 
 ```sh
 npm run tauri build -- --bundles deb
@@ -74,17 +74,17 @@ The archived production icon hashes matched the committed C2R1 Tauri inputs exac
 | `hicolor/128x128/apps/aiengineroom.png`   | `src-tauri/icons/128x128.png`    | `52665f7621197093fb8f809999e87cf0437fcf912ae78f509df47ed377fb5448` |
 | `hicolor/256x256@2/apps/aiengineroom.png` | `src-tauri/icons/128x128@2x.png` | `7e1e8269877c41bc67446aa863c7a88bd681cda82f4cacd3f3ac1ecca89bb76a` |
 
-Owner verification of this exact artifact on the approved Ubuntu 24.04 LTS x86_64 baseline is complete:
+Developer verification of this exact artifact on the approved Ubuntu 24.04 LTS x86_64 baseline is complete:
 
 - Install: passed using `sudo apt install "./target/release/bundle/deb/AI Engine Room_0.1.0_amd64.deb"`.
 - Native launch: passed.
-- Graphical/native behavior: the owner reports that it looks and runs properly.
+- Graphical/native behavior: the developer reports that it looks and runs properly.
 - Removal: passed using `sudo apt remove ai-engine-room`.
 - Post-removal state: `dpkg -s ai-engine-room` reported that package `ai-engine-room` is not installed and no information is available.
 
 This is acceptance of the current local unsigned pre-release `.deb` on the narrow verified baseline. It is not evidence of production readiness, broad Linux compatibility, WCAG conformance, performance validation, or inference validation.
 
-## Prior owner-tested Debian package
+## Prior developer-tested Debian package
 
 The preceding package was built from source commit `cba20e8448b8d7f6b8536f63bccee3ba1a1501ae`:
 
@@ -95,7 +95,7 @@ The preceding package was built from source commit `cba20e8448b8d7f6b8536f63bcce
 - Maintainer: `Greg Weir`
 - Dependencies: `libwebkit2gtk-4.1-0, libgtk-3-0`
 
-Owner verification results:
+Developer verification results:
 
 - Install: passed.
 - Native launch and graphical behavior: passed; the application rendered the expected dashboard without a mock banner, presented the approved C2R1 branding acceptably, and otherwise looked and worked as expected.
@@ -111,14 +111,14 @@ The preceding source commit also produced this historical diagnostic artifact:
 - Size: 79,641,080 bytes
 - SHA-256: `4b3002ccb0eb3308950321fe05834a6916a1162aeedd0889d885ce5bdc0d1efd`
 
-The owner launched it and WebKitGTK reported `GStreamer element appsink not found. Please install it.` Host GStreamer 1.24.2 nevertheless successfully discovered the installed `appsink` element from `/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstapp.so`. Read-only diagnosis established that the AppImage bundled WebKitGTK and GStreamer core/link libraries but no GStreamer plugin directory, `libgstapp.so`, or plugin scanner.
+The developer launched it and WebKitGTK reported `GStreamer element appsink not found. Please install it.` Host GStreamer 1.24.2 nevertheless successfully discovered the installed `appsink` element from `/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstapp.so`. Read-only diagnosis established that the AppImage bundled WebKitGTK and GStreamer core/link libraries but no GStreamer plugin directory, `libgstapp.so`, or plugin scanner.
 
-The supported Tauri `bundleMediaFramework` path would broadly bundle GStreamer plugins and helpers and materially expand the binary and licence/NOTICE review surface. The owner deferred AppImage rather than broadening Milestone 1K. Its filename and hash are retained only as historical diagnostic evidence; it is not a current accepted package artifact. No claim is made that AppImage is permanently unsupported or generally broken.
+The supported Tauri `bundleMediaFramework` path would broadly bundle GStreamer plugins and helpers and materially expand the binary and licence/NOTICE review surface. The developer deferred AppImage rather than broadening Milestone 1K. Its filename and hash are retained only as historical diagnostic evidence; it is not a current accepted package artifact. No claim is made that AppImage is permanently unsupported or generally broken.
 
 ## Exclusions and pending gates
 
-The current `.deb` and historical AppImage remain ignored/untracked under `target/release/bundle/`. The owner installed, launched, and removed the current `.deb` as recorded above. It was not signed, uploaded, published, or externally shared. This evidence-only update did not change package-manager or application state. No GitHub Release, hosted CI workflow, updater, Windows package, LM Studio integration, inference, clipboard operation, Save, or Share action was performed.
+The current `.deb` and historical AppImage remain ignored/untracked under `target/release/bundle/`. The developer installed, launched, and removed the current `.deb` as recorded above. It was not signed, uploaded, published, or externally shared. This evidence-only update did not change package-manager or application state. No GitHub Release, hosted CI workflow, updater, Windows package, LM Studio integration, inference, clipboard operation, Save, or Share action was performed.
 
 Milestone 1K performed only a proportionate dependency/NOTICE review and identified no required NOTICE content. AppImage media-framework bundling was not adopted, so no hypothetical GStreamer bundle review was added. Before any future public binary distribution or public release, bundled dependency licences and notices require a fuller publication review. This is not a comprehensive licence audit or legal-compliance certification.
 
-The current `.deb` owner install, native launch, graphical/native behavior, removal, and post-removal absence gates are complete. The package remains local, unsigned, and unpublished. The owner retains the final push decision.
+The current `.deb` developer install, native launch, graphical/native behavior, removal, and post-removal absence gates are complete. The package remains local, unsigned, and unpublished. The developer retains the final push decision.

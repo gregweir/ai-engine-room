@@ -1,4 +1,4 @@
-//! Owner-authorized LM Studio native-v1 verification. Never runs by default.
+//! Developer-authorized LM Studio native-v1 verification. Never runs by default.
 
 use aiengineroom_lib::runtime::lm_studio::{LmStudioAdapter, LmStudioState};
 
@@ -26,7 +26,7 @@ fn live_lm_studio_native_v1_observation_is_bounded() {
             .models
             .iter()
             .any(|candidate| { candidate.model_id == model && candidate.inference_eligible }),
-        "the owner-supplied model must be an LLM in the native-v1 catalogue"
+        "the developer-supplied model must be an LLM in the native-v1 catalogue"
     );
 
     // Production orchestration revalidates catalogue identity, then sends at

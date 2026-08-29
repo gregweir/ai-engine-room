@@ -49,7 +49,7 @@ for (const path of excludedPrivatePaths) {
   );
 }
 
-// Opaque hashes represent owner-controlled internal machine identifiers. The
+// Opaque hashes represent developer-controlled internal machine identifiers. The
 // plaintext values are intentionally absent from the public readiness policy.
 const forbiddenMachineIdentifierHashes = new Set([
   "1855b3b0b6b3bd0be712f822f3e19fed372c06007b298efa3af86594ed6540fa",
@@ -407,7 +407,7 @@ assert.equal(
 );
 assert.equal(
   read(".gitattributes"),
-  "LICENSE text eol=lf\n",
+  ".gitattributes text eol=lf\nLICENSE text eol=lf\n",
   "LICENSE must be checked out with canonical LF line endings",
 );
 const icon = readFileSync("src-tauri/icons/icon.ico");
@@ -438,11 +438,11 @@ assert.match(readme, /Developed by Greg Weir/);
 assert.match(readme, /Released by Tartanleaf\.com Inc\./);
 assert.match(
   readme,
-  /Verified development and `\.deb` packaging baseline: Ubuntu 24\.04 LTS x86_64\. Owner install, launch, graphical, and removal verification has passed for the tested package\./,
+  /Verified development and `\.deb` packaging baseline: Ubuntu 24\.04 LTS x86_64\. Developer install, launch, graphical, and removal verification has passed for the tested package\./,
 );
 assert.match(
   support,
-  /\| Ubuntu 24\.04 LTS x86_64\s+\| Verified development and `\.deb` packaging baseline; owner install, launch, and removal acceptance passed\s+\|/,
+  /\| Ubuntu 24\.04 LTS x86_64\s+\| Verified development and `\.deb` packaging baseline; developer install, launch, and removal acceptance passed\s+\|/,
 );
 assert.match(
   support,
@@ -457,11 +457,11 @@ assert.match(checklist, /AppImage is not part of the current Milestone 1K/);
 assert.doesNotMatch(checklist, /--bundles deb,appimage/);
 assert.match(
   readme,
-  /Verified Windows packaging baseline: Windows 11 25H2 build 26200\.7462 x64\. Owner install, native launch, graphical\/accessibility, passive-behavior, and removal verification passed for the tested local unsigned NSIS pre-release package\./,
+  /Verified Windows packaging baseline: Windows 11 25H2 build 26200\.7462 x64\. Developer install, native launch, graphical\/accessibility, passive-behavior, and removal verification passed for the tested local unsigned NSIS pre-release package\./,
 );
 assert.match(
   support,
-  /\| Windows 11 25H2 build 26200\.7462 x64\s+\| Verified packaging baseline for tested local unsigned NSIS pre-release packages; owner install, native launch, graphical\/accessibility, passive-behavior, and removal acceptance passed\s+\|/,
+  /\| Windows 11 25H2 build 26200\.7462 x64\s+\| Verified packaging baseline for tested local unsigned NSIS pre-release packages; developer install, native launch, graphical\/accessibility, passive-behavior, and removal acceptance passed\s+\|/,
 );
 assert.match(
   support,
@@ -477,7 +477,7 @@ assert.match(
   /Windows available-memory support has current-source verification for the exact artifact and tested baseline recorded in/,
 );
 const windowsAvailableMemoryStatus =
-  "AI Engine Room's Windows available-memory observation has passed native compilation, current-source unsigned NSIS packaging, and owner package verification on Windows 11 25H2 build 26200.7462 x64.";
+  "AI Engine Room's Windows available-memory observation has passed native compilation, current-source unsigned NSIS packaging, and developer package verification on Windows 11 25H2 build 26200.7462 x64.";
 const windowsLinuxMemoryQualification =
   "The value is the operating system's reported available physical memory and is not claimed to be numerically equivalent to Linux `MemAvailable`.";
 assert.ok(readme.includes(windowsAvailableMemoryStatus));
@@ -883,7 +883,11 @@ assert.doesNotMatch(
   deterministicWorkflow,
   /upload-artifact|release|publish|sign/i,
 );
-assert.ok(!existsSync("NOTICE"), "NOTICE is intentionally omitted");
+assert.equal(
+  read("NOTICE"),
+  "AI Engine Room\nCopyright 2026 Tartanleaf.com Inc.\n\nThis product is licensed under the Apache License, Version 2.0.\n",
+  "NOTICE must contain the approved product copyright attribution",
+);
 assert.ok(
   !("plugins" in tauri && "updater" in tauri.plugins),
   "updater is deferred",

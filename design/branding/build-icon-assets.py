@@ -1,4 +1,4 @@
-"""Deterministically install the owner-approved C2R1 production icon assets.
+"""Deterministically install the developer-approved C2R1 production icon assets.
 
 Run from any directory with Python and Pillow already available. PNG production
 inputs are copied byte-for-byte from approved size-specific sources. ICO and ICNS

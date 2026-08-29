@@ -554,7 +554,7 @@ pub fn ollama_loaded_models_text(set: &LoadedModelSet) -> LoadedModelsText {
 /// loaded sizes, no sum of VRAM sizes, no `size - size_vram`, no
 /// `available - loaded`, no ratio, no percentage, no "fit", no headroom, and no
 /// health/threshold/good/bad/safe claim is ever produced. Variant 1 alone carries
-/// the owner-approved qualitative context-length line
+/// the developer-approved qualitative context-length line
 /// ("A larger configured context can require more memory."); variants 2–4 do not,
 /// because the line would be misleading or disconnected where the full picture is
 /// absent.
@@ -1588,7 +1588,7 @@ mod tests {
     // --- Resource context text (`resource_context_text`, Milestone 1F) --------
     //
     // Pure mapping from `(ram_has_value, loaded_is_available)` to the four
-    // controlled variants. The variant-1 strings (including the owner-approved
+    // controlled variants. The variant-1 strings (including the developer-approved
     // context-length line) are asserted verbatim, the line is qualitative only,
     // and no variant makes a forbidden arithmetic/health/fit claim or leaks raw
     // transport detail. Whole-word forbidden checks avoid false positives on

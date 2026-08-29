@@ -154,7 +154,7 @@ fn controlled_text(state: &LlamaCppState) -> (&'static str, &'static str, &'stat
         LlamaCppState::Loading => (
             "Loading",
             "llama-server reports that its model is loading.",
-            "AI Engine Room is observing the owner-operated server and does not manage the model.",
+            "AI Engine Room is observing the developer-operated server and does not manage the model.",
         ),
         LlamaCppState::Ready => (
             "Ready",

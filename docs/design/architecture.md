@@ -84,7 +84,7 @@ application runtime modules without changing the dependency-neutral core.
 Initial development target: Linux (Ubuntu), with Ollama and LM Studio runtime
 adapters added after the architectural skeleton. LM Studio uses native REST v1
 only at fixed numeric loopback and coexists with Ollama. The passive llama.cpp
-adapter observes one owner-operated traditional single-model server at fixed
+adapter observes one developer-operated traditional single-model server at fixed
 numeric loopback and requires a validated provider-reported served-model ID;
 it has no inference or management surface. Linux and Windows implement the
 platform-native available-memory observation as `os.ram.available` and bounded
@@ -97,7 +97,7 @@ verification passed for Windows available memory on the tested Windows 11 25H2
 build 26200.7462 x64 baseline. Separate bounded evidence on that tested Windows
 environment established native compilation, strict Clippy, exact total-memory agreement,
 controlled native-architecture presentation, normal and narrow layouts,
-keyboard focus, Report exclusion, and owner-established 225% Windows Text-size
+keyboard focus, Report exclusion, and developer-established 225% Windows Text-size
 presentation for the new fields. It does not establish broad Windows
 compatibility, packaging or release readiness, WCAG conformance, or a general
 Windows support claim. Broader Windows OS telemetry remains deferred.
@@ -659,7 +659,7 @@ reads), the HTTP client for runtime adapters, and any GPU/driver library.
 
 Deferred decisions/features:
 
-- licence selection (owner decision);
+- licence selection (developer decision);
 - report export formats (Markdown/HTML/JSON) — later, based on user need;
 - GPU metrics and any driver/NVML integration — beyond 1A/1B;
 - broader Windows OS metrics beyond available physical memory — deferred;
@@ -695,7 +695,7 @@ Assumptions (to be confirmed at the relevant milestone, not assumed proven):
 - the system's integrated graphics/NPU, if present, is out of scope for initial
   metrics; GPU metrics target a discrete GPU when GPU work begins.
 
-Unresolved items requiring owner decisions:
+Unresolved items requiring developer decisions:
 
 - licence selection;
 - authorization to scaffold Milestone 1A.

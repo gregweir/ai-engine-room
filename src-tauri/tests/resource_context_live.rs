@@ -22,7 +22,7 @@
 //! deterministic across machines. Run it explicitly with
 //! `cargo test --test resource_context_live -- --ignored --nocapture`.
 //!
-//! ## Ignore vs. explicit-fail (owner-confirmed 1D/1E pattern)
+//! ## Ignore vs. explicit-fail (developer-confirmed 1D/1E pattern)
 //!
 //! Ordinary `cargo test` ignores this test (`#[ignore]`), so the deterministic
 //! suite never depends on `/proc/meminfo` holding any value or on a local

@@ -1,6 +1,6 @@
 # Windows available-memory verification
 
-This document records bounded owner-supplied evidence for Milestone 1Q. It is
+This document records bounded developer-supplied evidence for Milestone 1Q. It is
 evidence for one accepted source revision, one current-source unsigned NSIS
 artifact, and one tested Windows baseline—not a broad Windows, provider, or
 release-readiness claim.
@@ -12,7 +12,7 @@ release-readiness claim.
 - Operating system: Windows 11 25H2, build 26200.7462.
 - Architecture: x86-64 / AMD64.
 - Scope: native deterministic verification, current-source NSIS packaging,
-  real `os.ram.available` observation, and bounded owner package acceptance.
+  real `os.ram.available` observation, and bounded developer package acceptance.
 
 No username, hostname, private path, private address, environment dump, raw
 Win32 error, provider inventory, generated output, or clipboard content is
@@ -68,7 +68,7 @@ observations:
 | Observation point | Observed value |
 | --- | ---: |
 | Native build verification | 13,175,230,464 bytes (13.18 GB) |
-| Owner package acceptance | 12,962,058,240 bytes (12.96 GB) |
+| Developer package acceptance | 12,962,058,240 bytes (12.96 GB) |
 | Report-safe projection | `Available memory: available (12961325056 bytes)` |
 
 The differing values are expected for a volatile operating-system observation
@@ -76,7 +76,7 @@ and are not a discrepancy. A successful zero remains a legitimate observation;
 an API failure remains controlled and must not fabricate zero.
 
 AI Engine Room's Windows available-memory observation has passed native
-compilation, current-source unsigned NSIS packaging, and owner package
+compilation, current-source unsigned NSIS packaging, and developer package
 verification on Windows 11 25H2 build 26200.7462 x64. The value is the
 operating system's reported available physical memory and is not claimed to be
 numerically equivalent to Linux `MemAvailable`.
@@ -94,9 +94,9 @@ platform metadata, provider/model state, raw API error, or private-machine data
 was added. No explicit clipboard Copy acceptance is claimed; absence of an
 automatic clipboard write was observed.
 
-## Owner package acceptance
+## Developer package acceptance
 
-Against the exact artifact identity above, the owner reported that:
+Against the exact artifact identity above, the developer reported that:
 
 - normal per-user installation and native launch passed;
 - visible identity/version and the approved icon passed on the surfaces
@@ -114,7 +114,7 @@ Against the exact artifact identity above, the owner reported that:
 - normal uninstall passed, and the application/package entry was absent after
   removal.
 
-These are bounded owner acceptance observations, not a WCAG conformance claim.
+These are bounded developer acceptance observations, not a WCAG conformance claim.
 
 ## Optional checks not performed
 

@@ -2,7 +2,7 @@
 
 ## Tartanleaf source artwork
 
-Owner: Greg Weir
+Developer: Greg Weir
 
 Greg Weir created the source artwork approximately 25 years ago using the Weir
 clan Ancient Tartan over a maple leaf. Greg approved it as the source Tartanleaf
@@ -12,7 +12,7 @@ Repository source: `TartanleafLogo.jpg`
 
 ## AI Engine Room application icon
 
-The production icon is the owner-approved C2R1 derivative/application-icon design
+The production icon is the developer-approved C2R1 derivative/application-icon design
 based on the Greg Weir Tartanleaf source artwork.
 
 Approved source family:
@@ -32,7 +32,7 @@ or aesthetically reinterpreted by an image model.
 
 Design lineage: Option C → C2 → C2R1.
 
-Owner lifecycle decision: C2R1 design approved for production asset integration.
+Developer lifecycle decision: C2R1 design approved for production asset integration.
 
 This record does not claim trademark registration, exclusive tartan rights, or
 corporate copyright ownership.

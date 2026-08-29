@@ -1,6 +1,6 @@
 # Windows provider verification
 
-This document records bounded owner verification of AI Engine Room's existing Ollama and LM Studio integrations on Windows. It is evidence for the tested configuration, not a broad Windows or provider compatibility claim.
+This document records bounded developer verification of AI Engine Room's existing Ollama and LM Studio integrations on Windows. It is evidence for the tested configuration, not a broad Windows or provider compatibility claim.
 
 ## Verification baseline
 
@@ -26,7 +26,7 @@ Ollama's existing execution-location qualification remains unchanged. Loopback r
 ## LM Studio evidence
 
 - The LM Studio CLI was present.
-- The LM Studio server was initially stopped. The owner manually started it through the normal LM Studio CLI; AI Engine Room did not start it.
+- The LM Studio server was initially stopped. The developer manually started it through the normal LM Studio CLI; AI Engine Room did not start it.
 - Fixed loopback native REST v1 API: `127.0.0.1:1234`
 - After the manual start, passive `GET /api/v1/models` verification passed.
 - The planned bounded catalogue, model-type eligibility, and loaded/unloaded-state checks passed. Exact model identifiers and private inventory details were not retained.

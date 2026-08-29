@@ -19,7 +19,7 @@
 //! live Ollama.
 //!
 //! Only the documented local `http://127.0.0.1:11434/api/ps` endpoint is
-//! requested. Only the owner-verified documented `/api/ps` fields are parsed
+//! requested. Only the developer-verified documented `/api/ps` fields are parsed
 //! (`name`, `model` as a parsing fallback, `size`, `size_vram`,
 //! `context_length`, `expires_at`); any extra field a live runtime returns
 //! beyond that contract is ignored by the parser and never copied into fixtures.
@@ -253,7 +253,7 @@ pub fn interpret_loaded_models(
 /// Parse one `/api/ps` entry (`serde_json::Value`) into a
 /// [`LoadedModelSummary`], or `None` if the entry has no usable identity.
 ///
-/// Only the owner-verified documented fields are read; anything else a live
+/// Only the developer-verified documented fields are read; anything else a live
 /// runtime returns is ignored (including `digest`, `details.*`, processor/
 /// offload, `capabilities`, and remote/cloud fields). `size`, `size_vram`, and
 /// `context_length` are read as non-negative integers (i64 to detect negatives,

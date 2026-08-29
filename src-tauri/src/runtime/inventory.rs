@@ -62,7 +62,7 @@ pub enum ModelLocality {
     /// default and only classification 1D assigns.
     Undetermined,
     // Remote/Cloud deliberately absent: add only with a documented field and
-    // an approved owner decision.
+    // an approved developer decision.
 }
 
 /// One model in a runtime's inventory. Runtime-neutral; no Ollama JSON shape
