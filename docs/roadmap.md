@@ -17,8 +17,12 @@ hardware benchmark.
 ## Current sequence
 
 1. Close Milestone 1U: total memory and native CPU architecture, including the Windows Clippy correction and the developer decision on 225% Text size evidence.
-2. Developer roadmap decision before Milestone 1V.
-3. Add memory-use and KV-cache capacity/context presentation only under a separately approved contract that distinguishes model weights, context/KV cache, runtime overhead, system memory, VRAM, and unknown placement without making unsupported fit claims.
+2. Obtain explicit developer approval of the proposed Milestone 1V contract in
+   [`design/milestone-1v-contract.md`](design/milestone-1v-contract.md).
+3. After that approval, implement provider-reported model-size and configured-context
+   presentation under the approved contract. KV-cache bytes, runtime overhead,
+   physical VRAM capacity, and compute placement remain unavailable or unknown;
+   do not calculate them or make fit/headroom claims.
 4. Reassess current-source Linux and Windows packaging and release readiness.
 5. Make separate developer decisions for signing, publication, distribution, broader provider/platform coverage, and macOS.
 
