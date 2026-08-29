@@ -884,7 +884,7 @@ assert.doesNotMatch(
   /upload-artifact|release|publish|sign/i,
 );
 assert.equal(
-  read("NOTICE"),
+  read("NOTICE").replace(/\r\n/g, "\n"),
   "AI Engine Room\nCopyright 2026 Tartanleaf.com Inc.\n\nThis product is licensed under the Apache License, Version 2.0.\n",
   "NOTICE must contain the approved product copyright attribution",
 );
