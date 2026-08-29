@@ -1,7 +1,7 @@
 # Milestone 1V proposed contract
 
-Status: proposed for developer approval. This document does not authorize
-implementation.
+Status: approved by the developer on 2026-08-29. Implementation remains bounded
+by this contract.
 
 ## Purpose
 

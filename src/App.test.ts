@@ -81,6 +81,10 @@ function lmStudioFixture(
       ? "Artificial LM Studio matrix fixture is available."
       : "Artificial LM Studio matrix fixture is not detected.",
     why_it_matters: "Controlled artificial provider state.",
+    resource_interpretation:
+      "Controlled provider resource interpretation.",
+    resource_qualification:
+      "Controlled provider resource qualification.",
   };
 }
 
@@ -459,6 +463,36 @@ describe("Milestone 1I dashboard", () => {
       expect(ds.runInferenceObservation).not.toHaveBeenCalled();
     },
   );
+
+  it("presents LM Studio resource metadata with controlled qualifications and explicit missing states", async () => {
+    const lm = lmStudioFixture();
+    lm.models[0]!.loaded_instances = [
+      { instance_id: "artificial-instance", context_length: null },
+    ];
+    const { view, user } = await loadedView(
+      makeDataSource(
+        fixtureSnapshot(),
+        fixtureRuntimeStatus(),
+        fixtureModelInventory(),
+        fixtureLoadedModels(),
+        llamaCppFixture(),
+        lm,
+      ),
+    );
+    await activate(user, "Models");
+    expect(view.getByText(lm.resource_interpretation)).toBeVisible();
+    expect(view.getByText(lm.resource_qualification)).toBeVisible();
+    expect(
+      view.getByText("Catalogue size reported by LM Studio"),
+    ).toBeVisible();
+    expect(
+      view.getByText("Maximum context metadata reported by LM Studio"),
+    ).toBeVisible();
+    expect(view.getAllByText("Not reported by LM Studio")).toHaveLength(2);
+    expect(
+      view.getByText(/configured context not reported by LM Studio/),
+    ).toBeVisible();
+  });
 
   it("keeps Ollama and LM Studio usable when llama.cpp is incompatible", async () => {
     const unsafeMarker = "/private/artificial-model.gguf";

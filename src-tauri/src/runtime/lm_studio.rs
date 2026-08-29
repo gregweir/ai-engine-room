@@ -63,6 +63,8 @@ pub struct LmStudioSnapshot {
     pub state_label: &'static str,
     pub interpretation: &'static str,
     pub why_it_matters: &'static str,
+    pub resource_interpretation: &'static str,
+    pub resource_qualification: &'static str,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -196,6 +198,8 @@ pub fn interpret_models(outcome: HttpOutcome) -> LmStudioSnapshot {
         state_label,
         interpretation,
         why_it_matters,
+        resource_interpretation: "LM Studio catalogue size is provider metadata, not loaded memory use. Provider-reported maximum context metadata is distinct from a loaded instance's configured context.",
+        resource_qualification: "KV-cache bytes and runtime overhead are not separately reported. Physical VRAM capacity and compute placement are not established by this evidence.",
     }
 }
 
@@ -637,6 +641,64 @@ mod tests {
         assert_eq!(s.models[0].loaded_instances.len(), 2);
         assert!(!s.models[1].inference_eligible);
         assert!(!serde_json::to_string(&s).unwrap().contains("/home/"));
+    }
+    #[test]
+    fn resource_text_distinguishes_catalogue_context_and_unavailable_memory_evidence() {
+        let s = interpret_models(HttpOutcome::Responded {
+            status: 200,
+            body: models_body(),
+        });
+        assert!(s.resource_interpretation.contains("catalogue size"));
+        assert!(s
+            .resource_interpretation
+            .contains("loaded instance's configured context"));
+        assert!(s.resource_qualification.contains("KV-cache bytes"));
+        assert!(s.resource_qualification.contains("runtime overhead"));
+        assert!(s.resource_qualification.contains("Physical VRAM capacity"));
+        assert!(s.resource_qualification.contains("compute placement"));
+    }
+    #[test]
+    fn invalid_resource_numbers_remain_unavailable_in_the_view() {
+        let body = r#"{"models":[{"type":"llm","key":"example/invalid","size_bytes":-1,"max_context_length":"large","loaded_instances":[{"id":"instance-a","config":{"context_length":-2}}]}]}"#;
+        let s = interpret_models(HttpOutcome::Responded {
+            status: 200,
+            body: body.to_string(),
+        });
+        assert_eq!(s.state, LmStudioState::Available);
+        assert_eq!(s.models.len(), 1);
+        assert_eq!(s.models[0].size_bytes, None);
+        assert_eq!(s.models[0].max_context_length, None);
+        assert_eq!(s.models[0].loaded_instances[0].context_length, None);
+    }
+    #[test]
+    fn resource_text_makes_no_calculated_or_capacity_claim() {
+        for outcome in [
+            HttpOutcome::ConnectionRefused,
+            HttpOutcome::Timeout,
+            HttpOutcome::Responded {
+                status: 200,
+                body: models_body(),
+            },
+        ] {
+            let s = interpret_models(outcome);
+            let text = format!(
+                "{} {}",
+                s.resource_interpretation, s.resource_qualification
+            )
+            .to_lowercase();
+            for forbidden in [
+                " fit ",
+                "headroom",
+                "remaining memory",
+                "free memory",
+                "available - loaded",
+                "size - size_vram",
+                "recommend",
+                "%",
+            ] {
+                assert!(!text.contains(forbidden), "forbidden claim {forbidden:?}");
+            }
+        }
     }
     #[test]
     fn states_are_controlled() {

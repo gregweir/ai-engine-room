@@ -469,6 +469,17 @@ smoothing, interpolation, threshold, trend, pressure, health, fit, or headroom
 interpretation. Resource Context remains non-graphical and does not put OS
 Available memory and provider-reported model memory on a common scale.
 
+Milestone 1V adds a controlled, nonnumeric resource-evidence distinction list
+to that existing Resource Context. It separately identifies system memory,
+model weights, provider-reported loaded size, configured context, KV cache,
+runtime overhead, VRAM, and compute placement. The provider surfaces retain the
+individual Ollama and LM Studio values and show explicit not-reported states.
+Catalogue size is not treated as loaded memory; configured context is not
+converted to bytes; and KV-cache bytes, runtime-overhead bytes, physical VRAM
+capacity, and compute placement remain unavailable or unknown. The composition
+uses only the views already acquired by manual Refresh, adds no provider or OS
+call, and does not enter Diagnose or Report.
+
 Small text-first evidence labels distinguish OS observations,
 provider-reported state, directly observed inference, and qualifications.
 Existing controlled unavailable states and the artificial browser-fixture

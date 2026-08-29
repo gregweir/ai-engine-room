@@ -116,8 +116,9 @@ pub async fn current_llama_cpp_snapshot() -> crate::runtime::llama_cpp::LlamaCpp
 /// `current_snapshot` (the single platform-provider acquisition) and the loaded-model
 /// side comes from `current_loaded_models` (the single `/api/ps` acquisition); the
 /// frontend passes those already-resolved views in, and this command only composes
-/// the controlled explanation so technical interpretation stays in Rust, not
-/// Svelte. Synchronous (no I/O), so it does not need to be `async`. It calls
+/// the controlled explanation and nonnumeric resource-evidence distinctions so
+/// technical interpretation stays in Rust, not Svelte. Synchronous (no I/O),
+/// so it does not need to be `async`. It calls
 /// neither `build_snapshot()` nor `OllamaAdapter` and adds zero acquisition of
 /// either source.
 #[tauri::command]

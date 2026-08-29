@@ -184,13 +184,16 @@ export interface LoadedModelSetView {
   state_label: string;
   interpretation: string;
   why_it_matters: string;
+  resource_interpretation: string;
+  resource_qualification: string;
 }
 
-/** Controlled IPC projection of a resource-context composition (Milestone 1F).
- * Carries ONLY the controlled explanation. The frontend passes the
+/** Controlled IPC projection of a resource-context composition (Milestones 1F
+ * and 1V). Carries controlled explanation and nonnumeric concept states. The
+ * frontend passes the
  * already-acquired `SnapshotView` and `LoadedModelSetView` to
  * `composeResourceContext` and renders the returned `interpretation`/
- * `why_it_matters` verbatim. It does not combine values, compute ratios, or pick
+ * `why_it_matters` and concept text verbatim. It does not combine values, compute ratios, or pick
  * the variant. No aggregate, ratio, fit, or health claim. No raw endpoint/host/
  * digest. The command performs no I/O — it composes from the two views the
  * frontend already holds, so it reads no `/proc/meminfo` and calls no `/api/ps`.
@@ -200,6 +203,13 @@ export interface LoadedModelSetView {
 export interface ResourceContextView {
   interpretation: string;
   why_it_matters: string;
+  concepts: ResourceConceptView[];
+}
+
+export interface ResourceConceptView {
+  concept: string;
+  state_label: string;
+  interpretation: string;
 }
 
 /** The per-run authorization request for one observed inference (Milestone 1G).
@@ -338,6 +348,8 @@ export interface LmStudioSnapshotView {
   state_label: string;
   interpretation: string;
   why_it_matters: string;
+  resource_interpretation: string;
+  resource_qualification: string;
 }
 
 export type LlamaCppState =

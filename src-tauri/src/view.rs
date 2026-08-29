@@ -451,6 +451,11 @@ pub struct LoadedModelSetView {
     pub state_label: String,
     pub interpretation: String,
     pub why_it_matters: String,
+    /// Controlled Milestone 1V interpretation of the provider-reported size
+    /// and configured-context fields. The frontend renders these strings
+    /// verbatim and performs no memory accounting.
+    pub resource_interpretation: String,
+    pub resource_qualification: String,
 }
 
 /// Map a loaded-model set to its controlled IPC projection. Controlled text is
@@ -467,6 +472,8 @@ pub fn loaded_models_view(set: &LoadedModelSet) -> LoadedModelSetView {
         state_label: text.state_label,
         interpretation: text.interpretation,
         why_it_matters: text.why_it_matters,
+        resource_interpretation: "Loaded size is metadata reported by Ollama, not an exact model-weight, RAM, or disk allocation. VRAM size is also reported by Ollama and is not an independent measurement of physical VRAM use or capacity.".to_string(),
+        resource_qualification: "Configured context is a provider-reported count. A larger configured context can require more memory, but AI Engine Room does not convert it to bytes. KV-cache bytes and runtime overhead are not separately reported, and compute placement remains unknown.".to_string(),
     }
 }
 
@@ -508,6 +515,17 @@ pub(crate) const AVAILABLE_MEMORY_DISPLAY_NAME: &str = "Available memory";
 pub struct ResourceContextView {
     pub interpretation: String,
     pub why_it_matters: String,
+    pub concepts: Vec<ResourceConceptView>,
+}
+
+/// One controlled resource distinction for Milestone 1V. `state_label` is a
+/// textual evidence state, not a score or health assessment. No numeric values
+/// or calculated relationships cross this boundary.
+#[derive(Clone, Debug, PartialEq, Serialize)]
+pub struct ResourceConceptView {
+    pub concept: String,
+    pub state_label: String,
+    pub interpretation: String,
 }
 
 /// Compose the resource-context explanation from the views the frontend already
@@ -529,11 +547,99 @@ pub fn compose_resource_context(
             && matches!(e.outcome, OutcomeView::Ok { .. })
     });
     let loaded_is_available = matches!(loaded.state, LoadedModelStateView::Available);
+    let has_loaded_size = loaded_is_available
+        && loaded
+            .models
+            .iter()
+            .any(|model| model.reported_size_bytes.is_some());
+    let has_configured_context = loaded_is_available
+        && loaded
+            .models
+            .iter()
+            .any(|model| model.reported_context_length.is_some());
+    let has_reported_vram = loaded_is_available
+        && loaded
+            .models
+            .iter()
+            .any(|model| model.reported_vram_bytes.is_some());
     let text = resource_context_text(ram_has_value, loaded_is_available);
     ResourceContextView {
         interpretation: text.interpretation,
         why_it_matters: text.why_it_matters,
+        concepts: resource_concepts(
+            ram_has_value,
+            has_loaded_size,
+            has_configured_context,
+            has_reported_vram,
+        ),
     }
+}
+
+fn resource_concepts(
+    ram_has_value: bool,
+    has_loaded_size: bool,
+    has_configured_context: bool,
+    has_reported_vram: bool,
+) -> Vec<ResourceConceptView> {
+    let observed = |concept: &str, available: bool, present: &str, absent: &str| {
+        ResourceConceptView {
+            concept: concept.to_string(),
+            state_label: if available {
+                "Reported evidence available"
+            } else {
+                "Not reported"
+            }
+            .to_string(),
+            interpretation: if available { present } else { absent }.to_string(),
+        }
+    };
+
+    vec![
+        observed(
+            "System memory",
+            ram_has_value,
+            "The operating system supplied a whole-system available-memory observation.",
+            "A usable whole-system available-memory observation is not available.",
+        ),
+        ResourceConceptView {
+            concept: "Model weights".to_string(),
+            state_label: "Not separately reported".to_string(),
+            interpretation: "The current evidence does not isolate model-weight allocation from other provider or runtime memory.".to_string(),
+        },
+        observed(
+            "Loaded size",
+            has_loaded_size,
+            "Ollama supplied a loaded-size value for at least one running model. It is provider metadata, not exact RAM use, disk use, or model-weight allocation.",
+            "Ollama did not supply a loaded-size value for a running model in this observation.",
+        ),
+        observed(
+            "Configured context",
+            has_configured_context,
+            "Ollama supplied a configured-context count for at least one running model. AI Engine Room does not convert context length to bytes.",
+            "Ollama did not supply a configured-context count for a running model in this observation.",
+        ),
+        ResourceConceptView {
+            concept: "KV cache".to_string(),
+            state_label: "Not separately reported".to_string(),
+            interpretation: "The current provider evidence does not expose KV-cache bytes, so AI Engine Room does not calculate or estimate them.".to_string(),
+        },
+        ResourceConceptView {
+            concept: "Runtime overhead".to_string(),
+            state_label: "Not separately reported".to_string(),
+            interpretation: "The current provider evidence does not isolate runtime-overhead bytes.".to_string(),
+        },
+        observed(
+            "VRAM",
+            has_reported_vram,
+            "Ollama supplied a VRAM-size value for at least one running model. It is not an independent measurement of physical VRAM use or capacity.",
+            "Ollama did not supply a VRAM-size value for a running model in this observation; physical VRAM capacity is not acquired here.",
+        ),
+        ResourceConceptView {
+            concept: "Compute placement".to_string(),
+            state_label: "Unknown".to_string(),
+            interpretation: "The current evidence does not establish CPU, GPU, split, or offloaded execution placement.".to_string(),
+        },
+    ]
 }
 
 // --- Observed inference view (Milestone 1G) -----------------------------------
@@ -1243,6 +1349,9 @@ mod tests {
         assert_eq!(v.state_label, "Currently loaded in Ollama");
         assert!(!v.interpretation.is_empty());
         assert!(!v.why_it_matters.is_empty());
+        assert!(v.resource_interpretation.contains("reported by Ollama"));
+        assert!(v.resource_qualification.contains("KV-cache bytes"));
+        assert!(v.resource_qualification.contains("compute placement remains unknown"));
     }
 
     #[test]
@@ -1343,6 +1452,8 @@ mod tests {
                 v.state_label.as_str(),
                 v.interpretation.as_str(),
                 v.why_it_matters.as_str(),
+                v.resource_interpretation.as_str(),
+                v.resource_qualification.as_str(),
             ] {
                 let lower = field.to_lowercase();
                 assert!(
@@ -1405,6 +1516,7 @@ mod tests {
         ResourceContextView {
             interpretation: t.interpretation,
             why_it_matters: t.why_it_matters,
+            concepts: resource_concepts(ram_has_value, false, false, false),
         }
     }
 
@@ -1434,7 +1546,7 @@ mod tests {
             LoadedModelState::Available,
             vec![loaded_summary(
                 "example-runner:8b",
-                Some(5_000_000_000),
+                None,
                 None,
                 None,
                 None,
@@ -1579,14 +1691,15 @@ mod tests {
 
     #[test]
     fn resource_context_view_has_no_aggregate_field_and_no_model_names() {
-        // The DTO carries ONLY interpretation/why_it_matters. No aggregate, no
-        // model name, no reported size leaks into the composed explanation.
+        // The DTO carries controlled text and nonnumeric concept states. No
+        // aggregate, model name, or reported size leaks into the composition.
         let rc = compose_resource_context(&ram_ok(), &loaded_available_populated());
         let json = serde_json::to_value(&rc).expect("serialisable");
         let obj = json.as_object().expect("object");
-        assert_eq!(obj.len(), 2, "exactly two fields");
+        assert_eq!(obj.len(), 3, "exactly three fields");
         assert!(obj.contains_key("interpretation"));
         assert!(obj.contains_key("why_it_matters"));
+        assert!(obj.contains_key("concepts"));
         let flat = json.to_string();
         assert!(!flat.contains("example-runner"), "no model name");
         assert!(!flat.contains("reported_size_bytes"), "no size field");
@@ -1619,7 +1732,21 @@ mod tests {
                 ram_snapshot(MetricResult::failed(aer_core::AcquisitionError::Timeout))
             };
             let rc = compose_resource_context(&snap, &loaded_view(loaded_state, Vec::new()));
-            let combined = format!("{} {}", rc.interpretation, rc.why_it_matters);
+            let concept_text = rc
+                .concepts
+                .iter()
+                .map(|item| {
+                    format!(
+                        "{} {} {}",
+                        item.concept, item.state_label, item.interpretation
+                    )
+                })
+                .collect::<Vec<_>>()
+                .join(" ");
+            let combined = format!(
+                "{} {} {}",
+                rc.interpretation, rc.why_it_matters, concept_text
+            );
             let lower = combined.to_lowercase();
             let tokens = words(&combined);
             for forbidden in [
@@ -1659,6 +1786,84 @@ mod tests {
                 );
             }
         }
+    }
+
+    #[test]
+    fn ollama_resource_text_makes_no_calculated_or_capacity_claim() {
+        let v = loaded_models_view(&loaded_set(
+            LoadedModelState::Available,
+            vec![loaded_summary(
+                "example:1b",
+                Some(1),
+                Some(1),
+                Some(1),
+                None,
+            )],
+        ));
+        let text = format!(
+            "{} {}",
+            v.resource_interpretation, v.resource_qualification
+        )
+        .to_lowercase();
+        for forbidden in [
+            " fit ",
+            "headroom",
+            "remaining memory",
+            "free memory",
+            "available - loaded",
+            "size - size_vram",
+            "recommend",
+            "%",
+        ] {
+            assert!(!text.contains(forbidden), "forbidden claim {forbidden:?}");
+        }
+    }
+
+    #[test]
+    fn resource_concepts_distinguish_reported_and_unavailable_evidence() {
+        let loaded = loaded_view(
+            LoadedModelState::Available,
+            vec![loaded_summary(
+                "example-runner:8b",
+                Some(5_000_000_000),
+                Some(4_000_000_000),
+                Some(8192),
+                None,
+            )],
+        );
+        let rc = compose_resource_context(&ram_ok(), &loaded);
+        let state = |concept: &str| {
+            rc.concepts
+                .iter()
+                .find(|item| item.concept == concept)
+                .map(|item| item.state_label.as_str())
+                .expect("concept exists")
+        };
+        assert_eq!(rc.concepts.len(), 8);
+        assert_eq!(state("System memory"), "Reported evidence available");
+        assert_eq!(state("Loaded size"), "Reported evidence available");
+        assert_eq!(state("Configured context"), "Reported evidence available");
+        assert_eq!(state("VRAM"), "Reported evidence available");
+        assert_eq!(state("Model weights"), "Not separately reported");
+        assert_eq!(state("KV cache"), "Not separately reported");
+        assert_eq!(state("Runtime overhead"), "Not separately reported");
+        assert_eq!(state("Compute placement"), "Unknown");
+    }
+
+    #[test]
+    fn resource_concept_optional_evidence_is_independent() {
+        let concepts = resource_concepts(false, true, false, true);
+        let state = |concept: &str| {
+            concepts
+                .iter()
+                .find(|item| item.concept == concept)
+                .map(|item| item.state_label.as_str())
+                .expect("concept exists")
+        };
+        assert_eq!(state("System memory"), "Not reported");
+        assert_eq!(state("Loaded size"), "Reported evidence available");
+        assert_eq!(state("Configured context"), "Not reported");
+        assert_eq!(state("VRAM"), "Reported evidence available");
     }
 
     #[test]

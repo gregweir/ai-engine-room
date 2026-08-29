@@ -280,7 +280,26 @@ fn live_resource_context_matches_observed_state() {
     );
 
     // --- Honesty ----------------------------------------------------------
-    let combined = format!("{} {}", rc.interpretation, rc.why_it_matters);
+    assert_eq!(
+        rc.concepts.len(),
+        8,
+        "resource composition carries every approved Milestone 1V distinction"
+    );
+    let concept_text = rc
+        .concepts
+        .iter()
+        .map(|item| {
+            format!(
+                "{} {} {}",
+                item.concept, item.state_label, item.interpretation
+            )
+        })
+        .collect::<Vec<_>>()
+        .join(" ");
+    let combined = format!(
+        "{} {} {}",
+        rc.interpretation, rc.why_it_matters, concept_text
+    );
     assert_no_forbidden_claim(&combined);
     assert_no_raw_leakage(&combined);
 

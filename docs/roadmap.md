@@ -16,13 +16,14 @@ hardware benchmark.
 
 ## Current sequence
 
-1. Close Milestone 1U: total memory and native CPU architecture, including the Windows Clippy correction and the developer decision on 225% Text size evidence.
-2. Obtain explicit developer approval of the proposed Milestone 1V contract in
+1. Milestone 1U is closed: total memory and native CPU architecture include the
+   Windows Clippy correction and the developer decision on 225% Text size evidence.
+2. The developer approved the bounded Milestone 1V contract in
    [`design/milestone-1v-contract.md`](design/milestone-1v-contract.md).
-3. After that approval, implement provider-reported model-size and configured-context
-   presentation under the approved contract. KV-cache bytes, runtime overhead,
-   physical VRAM capacity, and compute placement remain unavailable or unknown;
-   do not calculate them or make fit/headroom claims.
+3. Complete and verify provider-reported model-size and configured-context
+   presentation under that contract. KV-cache bytes, runtime overhead, physical
+   VRAM capacity, and compute placement remain unavailable or unknown; do not
+   calculate them or make fit/headroom claims.
 4. Reassess current-source Linux and Windows packaging and release readiness.
 5. Make separate developer decisions for signing, publication, distribution, broader provider/platform coverage, and macOS.
 

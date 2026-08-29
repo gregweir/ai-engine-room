@@ -109,6 +109,10 @@ export class MockDataSource implements DataSource {
         "Artificial LM Studio native REST v1 fixture is available.",
       why_it_matters:
         "This browser data is artificial and makes no provider request.",
+      resource_interpretation:
+        "LM Studio catalogue size is provider metadata, not loaded memory use. Provider-reported maximum context metadata is distinct from a loaded instance's configured context.",
+      resource_qualification:
+        "KV-cache bytes and runtime overhead are not separately reported. Physical VRAM capacity and compute placement are not established by this evidence.",
     };
   }
 

@@ -194,6 +194,8 @@ describe("createDataSourceFor — LM Studio native command", () => {
       state_label: "Not detected",
       interpretation: "Controlled",
       why_it_matters: "Controlled",
+      resource_interpretation: "Controlled",
+      resource_qualification: "Controlled",
     });
     const ds = await createDataSourceFor(true, false);
     await ds.lmStudioSnapshot!();
@@ -563,6 +565,10 @@ describe("createDataSourceFor — loaded models", () => {
       interpretation: "Ollama reports these models as currently loaded.",
       why_it_matters:
         "Each entry shows the model name and the loaded size Ollama reports for it.",
+      resource_interpretation:
+        "Controlled provider resource interpretation.",
+      resource_qualification:
+        "Controlled provider resource qualification.",
     };
     vi.mocked(invoke).mockImplementation((cmd: string) => {
       if (cmd === "current_loaded_models") return Promise.resolve(loaded);

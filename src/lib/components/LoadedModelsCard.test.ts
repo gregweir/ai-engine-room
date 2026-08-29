@@ -34,6 +34,10 @@ function loaded(overrides: Partial<LoadedModelSetView>): LoadedModelSetView {
     interpretation: "Ollama reports these models as currently loaded.",
     why_it_matters:
       "Each entry shows the model name and the loaded size Ollama reports for it.",
+    resource_interpretation:
+      "Loaded size is metadata reported by Ollama, not an exact model-weight, RAM, or disk allocation. VRAM size is also reported by Ollama and is not an independent measurement of physical VRAM use or capacity.",
+    resource_qualification:
+      "Configured context is a provider-reported count. A larger configured context can require more memory, but AI Engine Room does not convert it to bytes. KV-cache bytes and runtime overhead are not separately reported, and compute placement remains unknown.",
     ...overrides,
   };
 }
@@ -76,8 +80,7 @@ describe("LoadedModelsCard", () => {
     expect(getByText("example-assistant:3b")).toBeVisible();
     // The reported loaded size is formatted via formatBytes (base-1000 units).
     expect(getByText("5.00 GB")).toBeVisible();
-    // "Loaded size" is the controlled label, not "RAM" or "memory footprint".
-    expect(getAllByText("Loaded size").length).toBeGreaterThan(0);
+    expect(getAllByText("Loaded size reported by Ollama").length).toBeGreaterThan(0);
   });
 
   it("renders the reported VRAM size and context length when present", () => {
@@ -93,13 +96,13 @@ describe("LoadedModelsCard", () => {
     const { getByText } = render(LoadedModelsCard, {
       props: { loaded: set },
     });
-    expect(getByText("VRAM size")).toBeVisible();
+    expect(getByText("VRAM size reported by Ollama")).toBeVisible();
     expect(getByText("4.00 GB")).toBeVisible();
-    expect(getByText("Context length")).toBeVisible();
+    expect(getByText("Configured context reported by Ollama")).toBeVisible();
     expect(getByText("8,192")).toBeVisible();
   });
 
-  it("omits fields the runtime did not report (null, not zero)", () => {
+  it("renders explicit unavailable states for fields Ollama did not report", () => {
     const set = loaded({
       models: [
         entry({
@@ -110,15 +113,21 @@ describe("LoadedModelsCard", () => {
         }),
       ],
     });
-    const { getByText, queryByText } = render(LoadedModelsCard, {
+    const { getByText, getAllByText, queryByText } = render(LoadedModelsCard, {
       props: { loaded: set },
     });
     expect(getByText("bare:1b")).toBeVisible();
-    // No labels and no "0 B" placeholder for missing reported fields.
-    expect(queryByText("Loaded size")).toBeNull();
-    expect(queryByText("VRAM size")).toBeNull();
-    expect(queryByText("Context length")).toBeNull();
+    expect(getAllByText("Not reported by Ollama")).toHaveLength(3);
     expect(queryByText(/0 B/)).toBeNull();
+  });
+
+  it("renders the Rust-controlled resource interpretation and qualification", () => {
+    const set = loaded({});
+    const { getByText } = render(LoadedModelsCard, {
+      props: { loaded: set },
+    });
+    expect(getByText(set.resource_interpretation)).toBeVisible();
+    expect(getByText(set.resource_qualification)).toBeVisible();
   });
 
   it("renders the empty-state message for a valid empty loaded list (not an error)", () => {

@@ -12,7 +12,7 @@
   // no date/time dependency). No `digest`, endpoint, host, port, `remote_host`,
   // or locality badge is shown. No aggregate total is computed. Distinct from
   // the 1D catalogue card: this answers "what is running now?".
-  import type { LoadedModelSetView, LoadedModelSummaryView } from "../types";
+  import type { LoadedModelSetView } from "../types";
   import { formatBytes } from "../formatBytes";
   import EvidenceLabel from "./EvidenceLabel.svelte";
 
@@ -32,17 +32,6 @@
     loaded.state === "available" && loaded.models.length > 0,
   );
 
-  // Whether a loaded entry has any detail to show (size, VRAM, or context
-  // length). Avoids rendering an empty `<dl>` for an entry that reported only a
-  // name.
-  function hasDetails(model: LoadedModelSummaryView): boolean {
-    return (
-      model.reported_size_bytes !== null ||
-      model.reported_vram_bytes !== null ||
-      model.reported_context_length !== null
-    );
-  }
-
   // `expires_at` is carried in the DTO but is intentionally never referenced
   // here — it is not displayed (no countdown, no date/time dependency).
 </script>
@@ -55,28 +44,30 @@
     <p class="interpretation">{loaded.interpretation}</p>
     <p class="why-it-matters">{loaded.why_it_matters}</p>
   </div>
+  <div class="explanation resource-qualification">
+    <p>{loaded.resource_interpretation}</p>
+    <p>{loaded.resource_qualification}</p>
+  </div>
 
   {#if hasModels}
     <ul class="model-list">
       {#each loaded.models as model (model.display_name)}
         <li class="model-entry">
           <span class="model-name">{model.display_name}</span>
-          {#if hasDetails(model)}
-            <dl class="model-details">
-              {#if model.reported_size_bytes !== null}
-                <dt>Loaded size</dt>
-                <dd>{formatBytes(model.reported_size_bytes)}</dd>
-              {/if}
-              {#if model.reported_vram_bytes !== null}
-                <dt>VRAM size</dt>
-                <dd>{formatBytes(model.reported_vram_bytes)}</dd>
-              {/if}
-              {#if model.reported_context_length !== null}
-                <dt>Context length</dt>
-                <dd>{model.reported_context_length.toLocaleString()}</dd>
-              {/if}
-            </dl>
-          {/if}
+          <dl class="model-details">
+            <dt>Loaded size reported by Ollama</dt>
+            <dd>{model.reported_size_bytes === null
+                ? "Not reported by Ollama"
+                : formatBytes(model.reported_size_bytes)}</dd>
+            <dt>VRAM size reported by Ollama</dt>
+            <dd>{model.reported_vram_bytes === null
+                ? "Not reported by Ollama"
+                : formatBytes(model.reported_vram_bytes)}</dd>
+            <dt>Configured context reported by Ollama</dt>
+            <dd>{model.reported_context_length === null
+                ? "Not reported by Ollama"
+                : model.reported_context_length.toLocaleString()}</dd>
+          </dl>
         </li>
       {/each}
     </ul>

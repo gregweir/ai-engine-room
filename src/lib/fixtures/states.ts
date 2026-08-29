@@ -585,8 +585,8 @@ const LOADED_AVAILABLE_ENTRIES: LoadedModelSummaryView[] = [
     expires_at: "2024-01-01T00:00:00.000Z",
   },
   {
-    // A loaded entry with no reported size/VRAM/context exercises the null path
-    // (a field is shown only when the runtime reports one).
+    // A loaded entry with no reported size/VRAM/context exercises the explicit
+    // not-reported presentation path.
     display_name: "example-tiny:text",
     reported_size_bytes: null,
     reported_vram_bytes: null,
@@ -595,7 +595,15 @@ const LOADED_AVAILABLE_ENTRIES: LoadedModelSummaryView[] = [
   },
 ];
 
+const LOADED_RESOURCE_TEXT = {
+  resource_interpretation:
+    "Loaded size is metadata reported by Ollama, not an exact model-weight, RAM, or disk allocation. VRAM size is also reported by Ollama and is not an independent measurement of physical VRAM use or capacity.",
+  resource_qualification:
+    "Configured context is a provider-reported count. A larger configured context can require more memory, but AI Engine Room does not convert it to bytes. KV-cache bytes and runtime overhead are not separately reported, and compute placement remains unknown.",
+} as const;
+
 const LOADED_AVAILABLE: LoadedModelSetView = {
+  ...LOADED_RESOURCE_TEXT,
   runtime_type: "ollama",
   state: "available",
   source_availability: "ready",
@@ -608,6 +616,7 @@ const LOADED_AVAILABLE: LoadedModelSetView = {
 };
 
 const LOADED_AVAILABLE_EMPTY: LoadedModelSetView = {
+  ...LOADED_RESOURCE_TEXT,
   runtime_type: "ollama",
   state: "available",
   source_availability: "ready",
@@ -620,6 +629,7 @@ const LOADED_AVAILABLE_EMPTY: LoadedModelSetView = {
 };
 
 const LOADED_RESPONDED_UNEXPECTEDLY: LoadedModelSetView = {
+  ...LOADED_RESOURCE_TEXT,
   runtime_type: "ollama",
   state: "responded_unexpectedly",
   source_availability: "ready",
@@ -633,6 +643,7 @@ const LOADED_RESPONDED_UNEXPECTEDLY: LoadedModelSetView = {
 };
 
 const LOADED_NOT_DETECTED: LoadedModelSetView = {
+  ...LOADED_RESOURCE_TEXT,
   runtime_type: "ollama",
   state: "not_detected",
   source_availability: "not_detected",
@@ -645,6 +656,7 @@ const LOADED_NOT_DETECTED: LoadedModelSetView = {
 };
 
 const LOADED_UNREACHABLE: LoadedModelSetView = {
+  ...LOADED_RESOURCE_TEXT,
   runtime_type: "ollama",
   state: "unreachable",
   source_availability: "unreachable",
@@ -711,9 +723,59 @@ export function fixtureEmptyLoadedModels(): LoadedModelSetView {
 
 const RESOURCE_CONTEXT_AVAILABLE: ResourceContextView = {
   interpretation:
-    "These values come from different sources. Available memory is Linux's estimate of memory available to the whole system. Loaded size and VRAM size are values Ollama reports for each running model. Engine Room does not treat them as an exact account of RAM or VRAM use.",
+    "These values come from different sources. Available memory is the operating system's platform-native observation of memory available to the whole system; operating systems can define it differently. Loaded size and VRAM size are values Ollama reports for each running model. Engine Room does not treat them as an exact account of RAM or VRAM use.",
   why_it_matters:
     "They should not be added to or subtracted from available memory to estimate how much memory a model is using. Available memory already reflects current system state, and the model sizes are runtime-reported values, not independently measured consumption. A larger configured context can require more memory.",
+  concepts: [
+    {
+      concept: "System memory",
+      state_label: "Reported evidence available",
+      interpretation:
+        "The operating system supplied a whole-system available-memory observation.",
+    },
+    {
+      concept: "Model weights",
+      state_label: "Not separately reported",
+      interpretation:
+        "The current evidence does not isolate model-weight allocation from other provider or runtime memory.",
+    },
+    {
+      concept: "Loaded size",
+      state_label: "Reported evidence available",
+      interpretation:
+        "Ollama supplied a loaded-size value for at least one running model. It is provider metadata, not exact RAM use, disk use, or model-weight allocation.",
+    },
+    {
+      concept: "Configured context",
+      state_label: "Reported evidence available",
+      interpretation:
+        "Ollama supplied a configured-context count for at least one running model. AI Engine Room does not convert context length to bytes.",
+    },
+    {
+      concept: "KV cache",
+      state_label: "Not separately reported",
+      interpretation:
+        "The current provider evidence does not expose KV-cache bytes, so AI Engine Room does not calculate or estimate them.",
+    },
+    {
+      concept: "Runtime overhead",
+      state_label: "Not separately reported",
+      interpretation:
+        "The current provider evidence does not isolate runtime-overhead bytes.",
+    },
+    {
+      concept: "VRAM",
+      state_label: "Reported evidence available",
+      interpretation:
+        "Ollama supplied a VRAM-size value for at least one running model. It is not an independent measurement of physical VRAM use or capacity.",
+    },
+    {
+      concept: "Compute placement",
+      state_label: "Unknown",
+      interpretation:
+        "The current evidence does not establish CPU, GPU, split, or offloaded execution placement.",
+    },
+  ],
 };
 
 const RESOURCE_CONTEXT_BOTH_UNAVAILABLE: ResourceContextView = {
@@ -721,6 +783,56 @@ const RESOURCE_CONTEXT_BOTH_UNAVAILABLE: ResourceContextView = {
     "Neither the available-memory reading nor the running-model information is available right now.",
   why_it_matters:
     "There is nothing to place alongside until at least one of them is available.",
+  concepts: [
+    {
+      concept: "System memory",
+      state_label: "Not reported",
+      interpretation:
+        "A usable whole-system available-memory observation is not available.",
+    },
+    {
+      concept: "Model weights",
+      state_label: "Not separately reported",
+      interpretation:
+        "The current evidence does not isolate model-weight allocation from other provider or runtime memory.",
+    },
+    {
+      concept: "Loaded size",
+      state_label: "Not reported",
+      interpretation:
+        "Ollama did not supply a loaded-size value for a running model in this observation.",
+    },
+    {
+      concept: "Configured context",
+      state_label: "Not reported",
+      interpretation:
+        "Ollama did not supply a configured-context count for a running model in this observation.",
+    },
+    {
+      concept: "KV cache",
+      state_label: "Not separately reported",
+      interpretation:
+        "The current provider evidence does not expose KV-cache bytes, so AI Engine Room does not calculate or estimate them.",
+    },
+    {
+      concept: "Runtime overhead",
+      state_label: "Not separately reported",
+      interpretation:
+        "The current provider evidence does not isolate runtime-overhead bytes.",
+    },
+    {
+      concept: "VRAM",
+      state_label: "Not reported",
+      interpretation:
+        "Ollama did not supply a VRAM-size value for a running model in this observation; physical VRAM capacity is not acquired here.",
+    },
+    {
+      concept: "Compute placement",
+      state_label: "Unknown",
+      interpretation:
+        "The current evidence does not establish CPU, GPU, split, or offloaded execution placement.",
+    },
+  ],
 };
 
 /** The default fixture resource-context composition for browser development:

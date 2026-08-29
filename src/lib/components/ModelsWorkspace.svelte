@@ -36,6 +36,10 @@
     <h3 id="lm-studio-models-heading">LM Studio</h3>
     {#if lmStudio}
       <p class="workspace-intro">{lmStudio.interpretation}</p>
+      <div class="explanation resource-qualification">
+        <p>{lmStudio.resource_interpretation}</p>
+        <p>{lmStudio.resource_qualification}</p>
+      </div>
       {#if lmStudio.state === "available"}
         <ul class="model-list">
           {#each lmStudio.models as model (model.model_id)}
@@ -56,18 +60,21 @@
                     <dd>{model.quantization}</dd>{/if}
                   {#if model.params_string}<dt>Parameters</dt>
                     <dd>{model.params_string}</dd>{/if}
-                  {#if model.size_bytes !== null}<dt>Reported size</dt>
-                    <dd>{formatBytes(model.size_bytes)}</dd>{/if}
-                  {#if model.max_context_length !== null}<dt>
-                      Maximum context
-                    </dt>
-                    <dd>{model.max_context_length.toLocaleString()}</dd>{/if}
+                  <dt>Catalogue size reported by LM Studio</dt>
+                  <dd>{model.size_bytes === null
+                      ? "Not reported by LM Studio"
+                      : formatBytes(model.size_bytes)}</dd>
+                  <dt>Maximum context metadata reported by LM Studio</dt>
+                  <dd>{model.max_context_length === null
+                      ? "Not reported by LM Studio"
+                      : model.max_context_length.toLocaleString()}</dd>
                   {#each model.loaded_instances as instance (instance.instance_id)}
                     <dt>Loaded instance</dt>
                     <dd>
-                      {instance.instance_id}{instance.context_length !== null
-                        ? ` — configured context ${instance.context_length.toLocaleString()}`
-                        : ""}
+                      {instance.instance_id} — configured context
+                      {instance.context_length === null
+                        ? "not reported by LM Studio"
+                        : instance.context_length.toLocaleString()}
                     </dd>
                   {/each}
                 </dl>

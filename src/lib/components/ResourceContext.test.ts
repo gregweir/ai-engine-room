@@ -144,6 +144,25 @@ describe("ResourceContext", () => {
     expect(text).not.toMatch(/\b8,?192\b/);
   });
 
+  it("renders all controlled resource distinctions with textual evidence states", () => {
+    const c = fixtureResourceContext();
+    const { getByRole, getByText, getAllByText } = render(ResourceContext, {
+      props: { context: c },
+    });
+    expect(
+      getByRole("heading", {
+        name: "What the current evidence establishes",
+        level: 3,
+      }),
+    ).toBeVisible();
+    for (const item of c.concepts) {
+      expect(getByText(item.concept)).toBeVisible();
+      expect(getByText(item.interpretation)).toBeVisible();
+    }
+    expect(getAllByText("Not separately reported")).toHaveLength(3);
+    expect(getByText("Unknown")).toBeVisible();
+  });
+
   it("renders no charts, sparklines, progress bars, fit badges, or thresholds", () => {
     const { container } = render(ResourceContext, {
       props: { context: context({}) },

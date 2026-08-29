@@ -48,6 +48,10 @@ function lmStudioModels(
     state_label: "Available",
     interpretation: "Controlled artificial state.",
     why_it_matters: "Controlled artificial context.",
+    resource_interpretation:
+      "Controlled provider resource interpretation.",
+    resource_qualification:
+      "Controlled provider resource qualification.",
   };
 }
 

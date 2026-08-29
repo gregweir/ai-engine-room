@@ -11,7 +11,11 @@ Version 0.1.0. Copyright © 2026 Tartanleaf.com Inc. Licensed under [Apache-2.0]
 - Manually refresh independent Ollama and LM Studio availability, model catalogues, loaded state, and bounded platform-native machine context: available memory, total memory, and native CPU architecture.
 - Inspect LM Studio native REST v1 model metadata and distinct loaded instances; one bounded developer-authorized live integration test has passed on the verified Ubuntu development environment.
 - Passively detect a traditional single-model llama-server at the fixed same-machine endpoint `127.0.0.1:8080` and display one validated provider-reported served-model ID. Bounded developer verification passed on the tested Ubuntu 24.04 LTS x86_64 baseline. It does not run llama.cpp inference or manage the server or model.
-- Display conservative explanations without turning model size or memory observations into unsupported fit claims.
+- Display provider-qualified model-size and configured-context evidence with
+  explicit distinctions among system memory, model weights, loaded size, KV
+  cache, runtime overhead, VRAM, and compute placement. Missing evidence stays
+  unavailable or unknown; no values are combined into unsupported memory or fit
+  claims.
 - Retain the newest 12 Available-memory startup and explicit **Refresh** observations for the current app session as an ordinal sequence with numeric values and controlled gaps. This is observation history, not continuous monitoring or regularly timed sampling.
 - After a per-run disclosure and authorization, run one fixed synthetic prompt with bounded timeout, concurrency, and no retry. Ollama execution location remains undetermined; LM Studio API scope is same-machine loopback while exact compute placement is not independently verified. Results are descriptive observations, not benchmarks.
 - Keep recent observations and comparisons in memory for the current session only.
