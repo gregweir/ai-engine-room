@@ -1,7 +1,7 @@
-# Milestone 1V proposed contract
+# Milestone 1V contract
 
-Status: approved by the developer on 2026-08-29. Implementation remains bounded
-by this contract.
+Status: closed on 2026-08-29. The developer-approved implementation and
+verification remained bounded by this contract.
 
 ## Purpose
 
@@ -106,3 +106,24 @@ No live provider or inference run is required for implementation verification.
 - After local verification, a bounded native Linux verification and an
   independent Windows review are separately authorized and recorded before any
   packaging decision.
+
+## Closure evidence
+
+- Approved contract commit: `0e5824fdfa6ab211895fa65311e9e446e410a601`.
+- Bounded implementation commit: `f8632ec47dc0613ae01ef2d70e373b80de41753b`.
+- Deterministic-check correction commit:
+  `90d853b6a6072d64379ef267516959505db50ec7`.
+- Cross-platform repository-readiness correction and accepted source revision:
+  `1f19ea0f249a3b07a55d6fb53a70d0c45cdb7e51`, tree
+  `38898fe41808e596170d2bd0e2b0bed91286b853`.
+- Deterministic GitHub checks passed for the accepted source revision on the
+  frontend contract job, Ubuntu Rust job, and Windows Rust job.
+- Bounded native verification passed on the verified Ubuntu host: repository
+  readiness, frontend checks, lint, 286 deterministic frontend tests, frontend
+  build, Rust format, workspace tests, and strict Clippy.
+- Independent read-only review on the verified Windows host passed with no
+  findings. The prior CRLF `NOTICE` readiness defect was corrected without
+  changing the approved notice content.
+
+No provider, inference, packaging, signing, upload, publication, distribution,
+release, or private-evidence operation was part of closure.
