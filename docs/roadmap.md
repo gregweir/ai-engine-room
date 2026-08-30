@@ -39,11 +39,11 @@ hardware benchmark.
    [`unsigned preview release contract`](release/unsigned-preview-release-contract.md)
    and a bounded
    [`SignPath Foundation eligibility assessment`](release/signpath-eligibility-assessment.md).
-   No signing or public release is authorized. SignPath is a plausible no-cost
-   route but is not application-ready. Greg Weir is the developer and
-   Tartanleaf.com Inc. is the product/package publisher; whether a future
-   SignPath certificate may instead authenticate SignPath Foundation remains
-   undecided.
+   The first public preview remains unsigned; no signing action was taken.
+   SignPath is a plausible no-cost route but is not application-ready. Greg
+   Weir is the developer and Tartanleaf.com Inc. is the product/package
+   publisher; whether a future SignPath certificate may instead authenticate
+   SignPath Foundation remains undecided.
 6. Exact unsigned-preview candidates were built and inspected from pushed
    `main` revision `a5482e9d51657a0cfb4471215a91750c5ba7db95` after passing
    deterministic CI. Their identities and the approved release-page text are
@@ -53,12 +53,19 @@ hardware benchmark.
    deviation and its completed correction are recorded in the candidate
    evidence. The developer approved the exact artifacts, final text, GitHub
    Releases channel, `v0.1.0-preview.1` prerelease identity, `SHA256SUMS.txt`,
-   and creation and upload of a non-public three-asset draft. The public
-   transition is not authorized.
-7. Next, create and independently verify only that non-public draft, then
-   request a separate decision on its public transition. Future signing
-   certificate identity, broader provider/platform coverage, and macOS remain
-   later decisions.
+   and creation and upload of a non-public three-asset draft. After GitHub
+   normalized spaces in the uploaded binary names, the developer approved the
+   resulting dotted hosted filenames; the binary hashes and accepted bytes are
+   unchanged.
+7. The independently verified draft received a later, separate public-transition
+   approval and is now the public
+   [`AI Engine Room 0.1.0 unsigned preview`](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.0-preview.1).
+   Fresh public downloads, checksums, unsigned status, pinned documentation
+   links, and an independent public review all passed. The exact outcome is in
+   [`the publication record`](release/unsigned-preview-publication-record.md).
+   No further promotion, additional channel, asset replacement, signing action,
+   or follow-on release is authorized. Future signing certificate identity,
+   broader provider/platform coverage, and macOS remain later decisions.
 
 No roadmap entry authorizes implementation by itself. The current milestone
 state and developer gate control execution.

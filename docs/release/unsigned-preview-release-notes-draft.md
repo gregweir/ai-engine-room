@@ -31,6 +31,11 @@ Authenticode publisher identity.
 - Ubuntu 24.04 LTS x86-64: direct-download `.deb`
 - Windows 11 25H2 build 26200.7462 x64: unsigned NSIS installer
 
+The approved hosted filenames are
+`AI.Engine.Room_0.1.0_amd64.deb` and
+`AI.Engine.Room_0.1.0_x64-setup.exe`. Their dotted form reflects GitHub
+Releases filename normalization; their bytes retain the exact accepted hashes.
+
 Other Linux distributions and architectures, other Windows environments, and
 macOS are not currently claimed. AppImage, MSI, Store distribution, automatic
 updates, and package repositories are not included.

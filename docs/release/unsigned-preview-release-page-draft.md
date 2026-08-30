@@ -31,8 +31,6 @@ an APT repository and has no repository signature or repository-trust claim.
   archive checks: passed for both exact artifacts
 - Physical exact-artifact acceptance: **passed; independent final review
   passed**
-- Non-public GitHub draft and three-asset upload: **approved**
-- Public transition: **not authorized**
 
 ## Downloads
 
@@ -41,8 +39,8 @@ installation.
 
 | Platform and verified baseline | Candidate filename | Format / architecture | Bytes | SHA-256 |
 | --- | --- | --- | ---: | --- |
-| Ubuntu 24.04 LTS x86-64 | `AI Engine Room_0.1.0_amd64.deb` | Debian package / AMD64 | 4,722,942 | `9c75d669fd3dbebc4d0f72ee3d880258206f1adc0be19a15d29fabf6b1325c9e` |
-| Windows 11 25H2 build 26200.7462 x64 | `AI Engine Room_0.1.0_x64-setup.exe` | NSIS installer / x64 | 2,651,735 | `6bfa7b6aa4998efc3275eeae12917242526fb2dca8e970630d8b4f1e23f3b399` |
+| Ubuntu 24.04 LTS x86-64 | `AI.Engine.Room_0.1.0_amd64.deb` | Debian package / AMD64 | 4,722,942 | `9c75d669fd3dbebc4d0f72ee3d880258206f1adc0be19a15d29fabf6b1325c9e` |
+| Windows 11 25H2 build 26200.7462 x64 | `AI.Engine.Room_0.1.0_x64-setup.exe` | NSIS installer / x64 | 2,651,735 | `6bfa7b6aa4998efc3275eeae12917242526fb2dca8e970630d8b4f1e23f3b399` |
 
 Exact Windows installer and exact installed application executable
 Authenticode status: `NotSigned`. A checksum detects a file change relative to
@@ -61,13 +59,13 @@ then compare the complete result with the matching SHA-256 above.
 Windows PowerShell:
 
 ```powershell
-Get-FileHash -Algorithm SHA256 ".\AI Engine Room_0.1.0_x64-setup.exe"
+Get-FileHash -Algorithm SHA256 ".\AI.Engine.Room_0.1.0_x64-setup.exe"
 ```
 
 Ubuntu:
 
 ```sh
-sha256sum "AI Engine Room_0.1.0_amd64.deb"
+sha256sum "AI.Engine.Room_0.1.0_amd64.deb"
 ```
 
 Do not install a file with a different name, size, or SHA-256.

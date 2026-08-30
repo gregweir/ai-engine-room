@@ -27,6 +27,7 @@ commit.
 - Verified baseline: Ubuntu 24.04 LTS x86-64
 - Build command: `npm run tauri build -- --bundles deb`
 - Filename: `AI Engine Room_0.1.0_amd64.deb`
+- Approved hosted filename: `AI.Engine.Room_0.1.0_amd64.deb`
 - Format and architecture: Debian package, `amd64`
 - Package: `ai-engine-room`
 - Version: `0.1.0`
@@ -44,6 +45,7 @@ staged or committed.
 - Verified baseline: Windows 11 25H2 build 26200.7462 x64
 - Build command: `npm run tauri build -- --bundles nsis`
 - Filename: `AI Engine Room_0.1.0_x64-setup.exe`
+- Approved hosted filename: `AI.Engine.Room_0.1.0_x64-setup.exe`
 - Format and architecture: NSIS installer, x64 target
 - Version: `0.1.0`
 - Byte size: `2651735`
@@ -99,5 +101,12 @@ evidence, including the disclosed Ubuntu deviation and correction.
 No candidate was uploaded, published, distributed, signed, or released during
 this evidence collection. The developer subsequently approved the exact
 artifacts, final text, GitHub Releases channel, and non-public draft identity
-recorded in the publication runbook. A later separate decision remains required
-before the reviewed draft may become public.
+recorded in the publication runbook. After the draft passed independent
+verification, the developer separately approved its public transition. The
+published identity and post-publication verification are recorded in
+[`unsigned-preview-publication-record.md`](unsigned-preview-publication-record.md).
+
+The first private upload showed that GitHub Releases normalizes spaces in asset
+names to dots. The developer approved the two resulting dotted hosted filenames
+without changing either binary. The accepted hashes continue to identify the
+same binary bytes; no rebuild or repeated physical acceptance was required.

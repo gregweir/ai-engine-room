@@ -1,9 +1,11 @@
 # Unsigned preview publication and rollback runbook
 
-Status: the developer approved the exact non-public draft identity, final text,
-checksum manifest, and three-asset upload on 2026-08-30. This approval does not
-authorize changing the reviewed draft from non-public to public, changing a
-repository setting, signing, distributing, or removing public material.
+Status: after approving and independently verifying the exact non-public draft,
+the developer separately approved its public transition on 2026-08-30. The
+exact prerelease was published and passed the post-publication checks recorded
+in [`unsigned-preview-publication-record.md`](unsigned-preview-publication-record.md).
+No approval is implied for changing the published release, adding a channel or
+asset, signing, mirroring, promoting, or removing public material.
 
 ## Fixed scope
 
@@ -20,6 +22,17 @@ The approved draft channel and identity are:
 - GitHub release setting: prerelease;
 - checksum manifest: `SHA256SUMS.txt`; and
 - initial state: non-public draft.
+
+GitHub Releases normalizes spaces in uploaded asset names. After the first
+non-public upload exposed that behavior, the developer approved these hosted
+binary filenames without changing either binary's bytes:
+
+- `AI.Engine.Room_0.1.0_amd64.deb`; and
+- `AI.Engine.Room_0.1.0_x64-setup.exe`.
+
+The original host-local candidate filenames retain spaces and remain the source
+identities for local revalidation. The dotted names are the approved hosted
+download identities.
 
 The developer is Greg Weir. The application and package publisher metadata is
 Tartanleaf.com Inc. Because this preview is unsigned, that metadata is not an
@@ -82,9 +95,12 @@ $installer = ".\AI Engine Room_0.1.0_x64-setup.exe"
 (Get-AuthenticodeSignature -LiteralPath $installer).Status
 ```
 
-The results must match the evidence record exactly. Verify that the two lines in
-the approved `SHA256SUMS.txt` match those fresh results byte for byte. Do not
-copy from, generate from, or upload the obsolete draft manifest.
+The local binary sizes, hashes, package metadata, and Authenticode result must
+match the candidate evidence exactly. Independently verify that the approved
+`SHA256SUMS.txt` contains those same two hashes paired with the exact dotted
+hosted filenames. The manifest must be `198` bytes with SHA-256
+`2b1c787237ad10d9262f552438d9093cea44aee8c3c3ae035c4b564da2caf2de`.
+Do not copy from, generate from, or upload the obsolete draft manifest.
 
 Stop if a candidate changed, disappeared, acquired a signature, or no longer
 passes read-only package inspection. Do not rebuild under the same approved
@@ -106,8 +122,8 @@ while the GitHub Release remains a non-public draft.
    Release body. Do not use the repository-relative release-notes copy as the
    release body. Do not weaken the unsigned warning or remove any qualification.
 5. Upload exactly three assets:
-   - `AI Engine Room_0.1.0_amd64.deb`;
-   - `AI Engine Room_0.1.0_x64-setup.exe`; and
+   - `AI.Engine.Room_0.1.0_amd64.deb`;
+   - `AI.Engine.Room_0.1.0_x64-setup.exe`; and
    - the approved final checksum manifest.
 6. Do not upload source archives built locally, logs, screenshots, evidence
    bundles, signatures, certificates, updater files, MSI/AppImage packages, or
