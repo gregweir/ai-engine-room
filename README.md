@@ -1,10 +1,59 @@
 # AI Engine Room
 
-AI Engine Room is a work-in-progress, pre-release desktop utility for inspecting Ollama and LM Studio runtime state, passively inspecting a bounded llama.cpp server contract, understanding resource context, comparing explicit observations through deterministic diagnosis, making one explicitly authorized synthetic inference observation through Ollama or LM Studio, and producing a narrow report-safe summary.
+**AI Engine Room helps everyday users understand what their local AI runtimes
+are doing—without managing servers, running inference unless explicitly
+authorized, or making decisions on their behalf.**
+
+It is a privacy-conscious, pre-release desktop utility organized around a
+simple workflow: **Observe → Explain → Diagnose → Report**. It turns bounded,
+explicitly requested observations from supported same-machine runtime APIs and
+the operating system into plain-language context while keeping missing or
+unverified evidence visibly unknown.
 
 Developed by Greg Weir. Released by Tartanleaf.com Inc.
 
 Version 0.1.0. Copyright © 2026 Tartanleaf.com Inc. Licensed under [Apache-2.0](LICENSE).
+
+## Why it exists
+
+Local AI tools expose useful information in different places and with different
+meanings. AI Engine Room brings a deliberately narrow set of observations
+together to help answer questions such as:
+
+- Which supported runtime endpoints are responding on this computer?
+- Which models do those providers report as available or loaded?
+- What system-memory context and provider-qualified model metadata are
+  available?
+- What factually changed between two explicit observations in this app session?
+- What does an observation mean, and what is a safe next check, without turning
+  it into a benchmark, root-cause claim, or recommendation?
+
+The application reports what its bounded sources provide. It does not claim to
+prove exact CPU/GPU placement, per-model memory use, model fit, or whether an
+Ollama request ultimately executes on this machine.
+
+## Safety is a feature
+
+AI Engine Room is intentionally conservative and host-led:
+
+- **Refresh does not run or authorize inference.** It reacquires the supported
+  runtime and machine observations only when requested.
+- **Observed inference is optional and explicit.** After a per-run disclosure
+  and authorization, the app can send one fixed synthetic prompt through
+  Ollama or LM Studio with bounded timeout and concurrency and no retry.
+  llama.cpp remains passive-only.
+- **The app does not manage providers.** It does not call model-management APIs
+  or start, stop, unload, or reconfigure a provider. An authorized LM Studio
+  observation may still cause LM Studio itself to JIT-load an unloaded model.
+- **Collection is not continuous.** There is no polling, background sampling,
+  account, telemetry, upload, or application persistence. Bounded recent
+  observations live only in the current app session.
+- **Provider access stays narrow.** The implemented integrations use fixed
+  numeric same-machine loopback endpoints; they do not scan the network or use
+  configured LAN, remote, or cloud destinations.
+- **Uncertainty stays visible.** The app does not turn missing evidence into
+  estimates, confidence scores, causal diagnosis, automated repair, or
+  unsupported safety and performance claims.
 
 ## Current capabilities
 
