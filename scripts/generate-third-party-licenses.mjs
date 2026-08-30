@@ -9,7 +9,7 @@ import {
   mkdirSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
-import { basename, join } from "node:path";
+import { join } from "node:path";
 import { gunzipSync } from "node:zlib";
 
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
