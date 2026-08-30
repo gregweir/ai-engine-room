@@ -30,6 +30,8 @@ const required = [
   "docs/release/windows-provider-verification.md",
   "docs/release/windows-available-memory-verification.md",
   "docs/release/llamacpp-passive-verification.md",
+  "docs/release/unsigned-preview-release-contract.md",
+  "docs/release/signpath-eligibility-assessment.md",
   "src-tauri/tauri.windows.conf.json",
   "packaging/debian/copyright",
   "third-party/generated-manifest.json",
@@ -294,6 +296,12 @@ const windowsAvailableMemoryVerification = read(
 );
 const llamaCppVerification = read(
   "docs/release/llamacpp-passive-verification.md",
+);
+const unsignedPreviewContract = read(
+  "docs/release/unsigned-preview-release-contract.md",
+);
+const signpathAssessment = read(
+  "docs/release/signpath-eligibility-assessment.md",
 );
 const ollamaSource = read("src-tauri/src/runtime/ollama.rs");
 const inventorySource = read("src-tauri/src/runtime/inventory.rs");
@@ -900,6 +908,27 @@ assert.match(deterministicWorkflow, /npm run test:run/);
 assert.doesNotMatch(
   deterministicWorkflow,
   /upload-artifact|release|publish|sign/i,
+);
+assert.match(
+  unsignedPreviewContract,
+  /Status: approved planning and verification contract/,
+);
+assert.match(unsignedPreviewContract, /Unsigned preview/);
+assert.match(unsignedPreviewContract, /Get-FileHash -Algorithm SHA256/);
+assert.match(
+  unsignedPreviewContract,
+  /must not tell users to accept a warning blindly/,
+);
+assert.match(
+  unsignedPreviewContract,
+  /Publication remains a distinct\s+approval/,
+);
+assert.match(signpathAssessment, /not application-ready/i);
+assert.match(signpathAssessment, /SignPath Foundation/);
+assert.match(signpathAssessment, /No application,\s+account, certificate/);
+assert.match(
+  signpathAssessment,
+  /publisher identity is a future developer decision/,
 );
 assert.equal(
   read("NOTICE").replace(/\r\n/g, "\n"),

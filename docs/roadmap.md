@@ -31,12 +31,18 @@ hardware benchmark.
    unpublished.
 4. The fuller
    [`binary-distribution licence and notice review`](release/binary-distribution-license-notice-review.md)
-   is complete and blocks public binary distribution pending implementation,
-   rebuilt-artifact verification, and independent review of the required
-   publication materials.
-5. After that blocker is cleared, make separate developer decisions for signing
-   and publisher identity; upload, hosting, publication, distribution, or public
-   release; broader provider/platform coverage; and macOS.
+   and its remediation are complete. Rebuilt `.deb` and NSIS licence payloads
+   passed deterministic CI and independent package inspection.
+5. The developer approved an
+   [`unsigned preview release contract`](release/unsigned-preview-release-contract.md)
+   and a bounded
+   [`SignPath Foundation eligibility assessment`](release/signpath-eligibility-assessment.md).
+   No exact public candidate, upload, hosting, publication, distribution, or
+   release is authorized. SignPath is a plausible no-cost route but is not
+   application-ready, and its Foundation publisher identity remains undecided.
+6. Next, prepare exact unsigned-preview candidate evidence and proposed release
+   page text for a separate publication decision. Signing/publisher identity,
+   broader provider/platform coverage, and macOS remain later decisions.
 
 No roadmap entry authorizes implementation by itself. The current milestone
 state and developer gate control execution.
