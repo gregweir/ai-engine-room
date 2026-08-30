@@ -25,14 +25,18 @@ hardware benchmark.
    [`design/milestone-1v-contract.md`](design/milestone-1v-contract.md). KV-cache
    bytes, runtime overhead, physical VRAM capacity, and compute placement remain
    unavailable or unknown; do not calculate them or make fit/headroom claims.
-3. Review and separately approve the proposed
-   [`current-source packaging-readiness contract`](design/current-source-packaging-readiness-contract.md).
-4. Only after that approval, reassess local unsigned `.deb` and NSIS packaging
-   from the accepted source revision through bounded build and read-only artifact
-   inspection. This step does not authorize package execution or release.
-5. Make separate developer decisions for install/launch/removal acceptance,
-   signing, publication, distribution, broader provider/platform coverage, and
-   macOS.
+3. The current-source packaging-readiness contract, bounded `.deb` and NSIS
+   builds, independent review, and exact-artifact install/launch/removal
+   acceptance are complete. Both artifacts remain local, unsigned, and
+   unpublished.
+4. The fuller
+   [`binary-distribution licence and notice review`](release/binary-distribution-license-notice-review.md)
+   is complete and blocks public binary distribution pending implementation,
+   rebuilt-artifact verification, and independent review of the required
+   publication materials.
+5. After that blocker is cleared, make separate developer decisions for signing
+   and publisher identity; upload, hosting, publication, distribution, or public
+   release; broader provider/platform coverage; and macOS.
 
 No roadmap entry authorizes implementation by itself. The current milestone
 state and developer gate control execution.
