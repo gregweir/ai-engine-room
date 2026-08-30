@@ -33,6 +33,21 @@
     "shortDescription": "Inspect Ollama and LM Studio runtime and resource context.",
     "longDescription": "A pre-release desktop utility for inspecting Ollama and LM Studio runtime and resource context, with explicitly authorized synthetic inference observations.",
     "createUpdaterArtifacts": false,
+    "resources": {
+      "../LICENSE": "licenses/LICENSE",
+      "../NOTICE": "licenses/NOTICE",
+      "../THIRD-PARTY-LICENSES.txt": "licenses/THIRD-PARTY-LICENSES.txt",
+      "../THIRD-PARTY-SOURCES.txt": "licenses/THIRD-PARTY-SOURCES.txt"
+    },
+    "linux": {
+      "deb": {
+        "files": {
+          "/usr/share/doc/ai-engine-room/NOTICE": "../NOTICE",
+          "/usr/share/doc/ai-engine-room/THIRD-PARTY-SOURCES.txt": "../THIRD-PARTY-SOURCES.txt",
+          "/usr/share/doc/ai-engine-room/copyright": "../packaging/debian/copyright"
+        }
+      }
+    },
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",

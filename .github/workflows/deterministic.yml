@@ -27,6 +27,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - run: npm run licenses:generate
+      - run: git diff --exit-code -- THIRD-PARTY-LICENSES.txt THIRD-PARTY-SOURCES.txt packaging/debian/copyright third-party/generated-manifest.json
       - run: npm run check
       - run: npm run lint
       - run: npm run test:run
@@ -46,9 +48,39 @@ jobs:
         with:
           fetch-depth: 0
       - run: rustup component add rustfmt clippy
+      - run: node scripts/verify-target-license-coverage.mjs
       - name: Install Linux native dependencies
         if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
       - run: cargo fmt --all -- --check
       - run: cargo test --workspace
       - run: cargo clippy --workspace --all-targets -- -D warnings
+
+  package-licences:
+    name: Package licences (${{ matrix.kind }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            kind: linux
+            bundle: deb
+          - os: windows-latest
+            kind: windows
+            bundle: nsis
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: rustup component add rustfmt clippy
+      - name: Install Linux native dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+      - run: npm ci
+      - run: npm run tauri build -- --bundles ${{ matrix.bundle }}
+      - run: node scripts/verify-package-license-payload.mjs ${{ matrix.kind }}

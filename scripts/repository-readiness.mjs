@@ -3,12 +3,16 @@ import { createHash } from "node:crypto";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { extname } from "node:path";
 import { TextDecoder } from "node:util";
+import "./license-readiness.mjs";
 
 const read = (path) => readFileSync(path, "utf8");
 const json = (path) => JSON.parse(read(path));
 const required = [
   "README.md",
   "LICENSE",
+  "NOTICE",
+  "THIRD-PARTY-LICENSES.txt",
+  "THIRD-PARTY-SOURCES.txt",
   "CONTRIBUTING.md",
   "CODE_OF_CONDUCT.md",
   "SECURITY.md",
@@ -27,6 +31,8 @@ const required = [
   "docs/release/windows-available-memory-verification.md",
   "docs/release/llamacpp-passive-verification.md",
   "src-tauri/tauri.windows.conf.json",
+  "packaging/debian/copyright",
+  "third-party/generated-manifest.json",
 ];
 for (const path of required) assert.ok(existsSync(path), `missing ${path}`);
 
@@ -874,6 +880,18 @@ assert.match(deterministicWorkflow, /windows-latest/);
 assert.match(deterministicWorkflow, /fetch-depth: 0/);
 assert.match(deterministicWorkflow, /RUST_TEST_THREADS: 1/);
 assert.match(deterministicWorkflow, /cargo test --workspace/);
+assert.match(
+  deterministicWorkflow,
+  /node scripts\/verify-target-license-coverage\.mjs/,
+);
+assert.match(deterministicWorkflow, /npm run licenses:generate/);
+assert.match(deterministicWorkflow, /git diff --exit-code/);
+assert.match(deterministicWorkflow, /Package licences/);
+assert.match(deterministicWorkflow, /npm run tauri build -- --bundles/);
+assert.match(
+  deterministicWorkflow,
+  /node scripts\/verify-package-license-payload\.mjs/,
+);
 assert.match(
   deterministicWorkflow,
   /cargo clippy --workspace --all-targets -- -D warnings/,
