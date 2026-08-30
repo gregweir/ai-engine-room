@@ -60,7 +60,8 @@ format was built.
 Read-only inspection confirmed the installer and bundled-application
 architecture, product identity and version, unsigned state, and an associated
 32-by-32 installer icon without executing the artifact. The artifact remained
-ignored under `target/` and local, unsigned, unpublished, and unexecuted.
+ignored under `target/` and local, unsigned, and unpublished. It was unexecuted
+during build inspection.
 
 The Tauri build rewrote only the worktree line-ending representation of
 `src-tauri/Cargo.toml`; its worktree, index, and `HEAD` content hashes remained
@@ -72,11 +73,46 @@ representation, a clean checkout, and `0/0` ahead/behind.
 Independent review confirmed the exact source identity, bounded command scope,
 artifact metadata and hash, unsigned state, exclusion of other formats, and
 final clean Git state with no blocking discrepancy. This result establishes
-packaging readiness only. It does not transfer the older package's install,
-launch, graphical, accessibility, passive-behavior, removal, or post-removal
-evidence to this artifact, and it does not establish signing, publication,
-distribution, release-candidate, public-release, broad-compatibility, privacy,
-security, or accessibility-conformance readiness.
+packaging readiness only and did not transfer the older package's acceptance
+evidence to this artifact.
+
+### Current-source developer package acceptance
+
+On 2026-08-30, after the packaging result and artifact identity had passed
+independent review, the developer separately authorized and performed bounded
+acceptance of the exact NSIS installer identified above on Windows 11 25H2,
+build 26200.7462, x86-64 / AMD64.
+
+- A pre-existing AI Engine Room installation was removed normally before the
+  exact current-source installer was tested.
+- The exact installer retained its reviewed filename, size, SHA-256, and
+  `NotSigned` status. Normal installation passed with no Windows warning or
+  security-policy block reported.
+- Native launch, product identity, approved icon, dashboard, and absence of a
+  mock or fixture presentation passed on the Windows surfaces exposed during
+  the check.
+- The developer reported that the current-source **Available memory** and
+  Resource Context presentation passed the reusable Windows checklist without
+  fabricated zero, total/free/headroom inference, or a numerical-equivalence
+  claim with Linux `MemAvailable`. No machine-specific value is recorded here.
+- Startup and navigation caused no automatic inference, provider/model action,
+  or clipboard write. Copy was not exercised, no provider was started or
+  probed, and no inference ran.
+- Keyboard navigation through all four workspaces, visible focus, disclosure
+  controls, narrow-window layout, and enlarged text/zoom passed without a
+  blocking clipping, overlap, readability, or reachability defect reported.
+- The application closed and normal uninstall passed. The developer confirmed
+  that its Installed apps entry was absent afterward.
+- Independent read-only final verification found no Installed apps entry,
+  install directory, application or uninstaller executable, or running
+  application/setup process. It preserved the exact installer size, SHA-256,
+  and unsigned state above and found the source checkout clean.
+
+This is acceptance only for this exact local unsigned artifact and tested
+baseline. It does not establish trusted-publisher or signing readiness, Store
+readiness, publication, distribution, release-candidate, public-release,
+broad-compatibility, privacy, security, performance, provider, inference,
+accessibility-conformance, model-fit, compute-placement, or headroom readiness.
 
 ## Source and build environment
 

@@ -60,16 +60,43 @@ format was built.
 Read-only inspection confirmed the configured pre-release description, desktop
 entry, `/usr/bin/aiengineroom`, and the expected 32, 128, and 256 pixel hicolor
 icon paths. The artifact remained ignored under `target/` and local, unsigned,
-unpublished, and unexecuted.
+and unpublished. It was unexecuted during build inspection.
 
 Independent review confirmed the exact source identity, bounded command scope,
 artifact metadata and hash, exclusion of other formats, and final clean `0/0`
 Git state with no blocking discrepancy. This result establishes packaging
-readiness only. It does not transfer the older package's install, launch,
-graphical, accessibility, passive-behavior, removal, or post-removal evidence to
-this artifact, and it does not establish signing, publication, distribution,
-release-candidate, public-release, broad-compatibility, privacy, security, or
-accessibility-conformance readiness.
+readiness only and did not transfer the older package's acceptance evidence to
+this artifact.
+
+### Current-source developer package acceptance
+
+On 2026-08-30, after the packaging result and artifact identity had passed
+independent review, the developer separately authorized and performed bounded
+acceptance of the exact `.deb` identified above on the tested Ubuntu 24.04 LTS
+x86-64 baseline.
+
+- Installation through the package manager passed. `apt` selected the local
+  `ai-engine-room` package at version `0.1.0`; its `_apt` local-file access
+  warning did not prevent unpacking or configuration.
+- Native launch passed. The installed `/usr/bin/aiengineroom` process opened one
+  native window identified as `AI Engine Room`.
+- The developer directly confirmed the approved icon and dashboard, absence of
+  a mock or fixture banner, acceptable layout, navigation, focus, and
+  accessibility presentation, and passive startup without automatic inference
+  or clipboard write.
+- Copy was not exercised. No provider was started, stopped, probed, or
+  reconfigured, and no inference ran.
+- The application closed successfully. Normal package-manager removal passed,
+  and `dpkg-query` then reported that `ai-engine-room` was not installed.
+- Independent read-only final verification found no installed package or
+  application process, preserved the exact artifact size and SHA-256 above, and
+  found the source checkout clean.
+
+This is acceptance only for this exact local unsigned artifact and tested
+baseline. It does not establish signing, publication, distribution,
+release-candidate, public-release, broad-compatibility, privacy, security,
+performance, provider, inference, accessibility-conformance, model-fit, or
+headroom readiness.
 
 ## Current accepted packaging candidate
 
