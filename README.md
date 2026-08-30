@@ -26,9 +26,15 @@ AI Engine Room performs no automatic inference. Use **Refresh** to reacquire sta
 
 ## Support and requirements
 
-**Verified development and `.deb` packaging baseline: Ubuntu 24.04 LTS x86_64. Developer install, launch, graphical, and removal verification has passed for the tested package.**
+**Verified public-preview and `.deb` packaging baseline: Ubuntu 24.04 LTS x86_64. Developer install, launch, graphical, and removal verification passed for the exact published unsigned preview package.**
 
-**Verified Windows packaging baseline: Windows 11 25H2 build 26200.7462 x64. Developer install, native launch, graphical/accessibility, passive-behavior, and removal verification passed for the tested local unsigned NSIS pre-release package.**
+**Verified public-preview and Windows packaging baseline: Windows 11 25H2 build 26200.7462 x64. Developer install, native launch, graphical/accessibility, passive-behavior, and removal verification passed for the exact published unsigned NSIS preview package.**
+
+The exact accepted `.deb` and NSIS files are available from the
+[`v0.1.0-preview.1` unsigned prerelease](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.0-preview.1).
+They are not signed, stable, production-ready, or broadly compatible. Verify a
+download's exact filename, byte size, and SHA-256 against that release page
+before installation.
 
 The implemented inference runtime integrations are Ollama and LM Studio. LM Studio 0.4.0 or newer must serve native REST v1 at the fixed same-machine endpoint `127.0.0.1:1234`; authenticated, custom-port, LAN, and remote access are not supported in 1L. One bounded developer-authorized LM Studio live integration test has passed on the verified Ubuntu development environment; broader compatibility is not claimed, and compute placement remains not independently verified.
 
@@ -64,7 +70,7 @@ npm run test:run
 npm run tauri dev
 ```
 
-Use `npm run build` for the frontend and `cargo build --workspace` for the Rust workspace. Local unsigned `.deb` verification is documented in [Linux pre-release packaging verification](docs/release/linux-pre-release-verification.md). The package is a local, unsigned, pre-release verification output: it is not published or a release candidate. AppImage packaging is deferred after the tested path failed runtime acceptance on the verified baseline.
+Use `npm run build` for the frontend and `cargo build --workspace` for the Rust workspace. Historical local unsigned `.deb` verification is documented in [Linux pre-release packaging verification](docs/release/linux-pre-release-verification.md); those evidence artifacts remain distinct from the exact files later accepted and published in the [`v0.1.0-preview.1` unsigned prerelease](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.0-preview.1). AppImage packaging is deferred after the tested path failed runtime acceptance on the verified baseline.
 
 ## Privacy and data boundaries
 

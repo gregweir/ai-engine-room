@@ -1,8 +1,9 @@
 # SignPath Foundation eligibility assessment
 
-Status: bounded read-only assessment completed on 2026-08-30. No application,
-account, certificate, signing policy, credential, workflow, GitHub setting, or
-external service was created or changed.
+Status: bounded read-only assessment completed and reconciled with the public
+unsigned-preview state on 2026-08-30. No application, account, certificate,
+signing policy, credential, workflow, GitHub setting, or external service was
+created or changed.
 
 This is an engineering readiness assessment against the public SignPath
 Foundation conditions, not an eligibility decision by SignPath and not legal
@@ -17,8 +18,8 @@ advice. SignPath Foundation's published conditions are authoritative:
 | OSI-approved licence without commercial dual licensing | Pass for the current repository | Application metadata declares only Apache-2.0; the generated distribution inventory records open-source dependency licences. SignPath retains final review authority. |
 | No proprietary project component | Pass for tracked distribution inputs, subject to external review | The public source, locked inputs, generated licence inventory, and installer-helper provenance are reviewable. Runtime interoperability with separately installed providers does not bundle those providers. |
 | Actively maintained | Pass | Current public history records active implementation, verification, and remediation work. |
-| Already released in the form to be signed | Not met | The project describes itself as pre-release and the public repository has no GitHub Release. The approved unsigned-preview contract does not itself create one. |
-| Functionality documented on a download page or store entry | Partial | README documentation exists, but no approved public binary download page exists. |
+| Already released in the form to be signed | Pass for the current unsigned preview form, subject to SignPath review | The public [`v0.1.0-preview.1` release](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.0-preview.1) provides the exact accepted `.deb` and NSIS forms that a future workflow could rebuild for signing. |
+| Functionality documented on a download page or store entry | Pass for the current preview, subject to SignPath review | The public release page documents functionality, scope, limitations, exact source, downloads, verification, privacy, support, and security links. |
 | Code signing policy linked from project and release pages | Not met | No SignPath code-signing policy or release-page link has been adopted. |
 | Required privacy statement | Partial | README documents the product privacy boundary, but it is not yet incorporated into the specific SignPath policy wording and release-page structure. |
 | MFA for repository and SignPath access | Unverified | Public read-only evidence cannot establish every participating account's MFA state. Developer attestation and service-side verification would be required. |
@@ -44,15 +45,14 @@ eligible.
 ## Readiness conclusion
 
 AI Engine Room is a plausible candidate but is **not application-ready** today.
-The minimum sequence before an application decision is:
+The previously identified public unsigned preview and download-page prerequisite
+is complete. The remaining minimum sequence before an application decision is:
 
-1. complete and separately authorize one public unsigned preview and its
-   download page;
-2. decide whether the certificate publisher may be SignPath Foundation rather
+1. decide whether the certificate publisher may be SignPath Foundation rather
    than Tartanleaf.com Inc.;
-3. define public signing roles and obtain the required MFA attestations;
-4. draft the required code-signing policy and privacy statement; and
-5. design a trusted, reviewable GitHub build-origin and signing-request workflow
+2. define public signing roles and obtain the required MFA attestations;
+3. draft the required code-signing policy and privacy statement; and
+4. design a trusted, reviewable GitHub build-origin and signing-request workflow
    without introducing reusable signing secrets into the repository.
 
 No step above authorizes an application, signing request, artifact upload,
