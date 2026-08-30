@@ -2,8 +2,8 @@
 
 > **DRAFT — DO NOT PUBLISH OR DISTRIBUTE**
 >
-> Physical exact-artifact acceptance, independent final review, and all
-> publication approvals remain pending.
+> Physical exact-artifact acceptance and independent final review have passed.
+> All publication approvals remain pending.
 
 AI Engine Room 0.1.0 is a deliberately unsigned preview for people exploring
 bounded local-AI runtime and resource context. It is pre-release software, not
@@ -69,11 +69,12 @@ its own configuration.
 - Deterministic CI: [all five jobs passed](https://github.com/gregweir/ai-engine-room/actions/runs/33309714136)
 - Exact build and inspection record:
   [unsigned-preview candidate evidence](unsigned-preview-candidate-evidence.md)
-- Exact physical acceptance: **pending**
+- Exact physical acceptance: **passed**
+- Independent final review: **passed**
 - Publication approval: **not granted**
 
-The pending operator sequence is fixed in the
-[physical-acceptance checklist](unsigned-preview-physical-acceptance-checklist.md).
+The completed operator sequence and bounded Linux process-close deviation are
+recorded in the [candidate evidence](unsigned-preview-candidate-evidence.md).
 The later, separately authorized publication sequence is described in the
 [publication and rollback runbook](unsigned-preview-publication-runbook.md).
 

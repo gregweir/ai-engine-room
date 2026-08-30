@@ -1,9 +1,9 @@
 # Unsigned preview candidate evidence
 
-Status: build and read-only inspection evidence recorded on 2026-08-30.
-Physical exact-artifact acceptance and publication authorization remain
-pending. This record does not authorize installation, upload, distribution,
-signing, hosting, or release.
+Status: build, read-only inspection, exact-artifact physical acceptance, and
+independent final review completed on 2026-08-30. Publication authorization
+remains pending. This record does not authorize upload, distribution, signing,
+hosting, or release.
 
 ## Source and deterministic gate
 
@@ -49,8 +49,8 @@ staged or committed.
 - SHA-256: `6bfa7b6aa4998efc3275eeae12917242526fb2dca8e970630d8b4f1e23f3b399`
 - Exact installer Authenticode status: `NotSigned`
 - Build-output application executable Authenticode status: `NotSigned`
-- Installed application executable Authenticode status: **pending physical
-  acceptance**
+- Installed application executable Authenticode status: `NotSigned` (verified
+  on the installed version `0.1.0` executable)
 
 The repository-readiness verifier passed on the native CRLF checkout. The
 Windows real-package licence-payload verifier passed using the already-installed
@@ -61,19 +61,39 @@ and `THIRD-PARTY-SOURCES.txt`; the extracted third-party source-location file
 was `41448` bytes. The tracked, staged, and untracked source-control state
 remained clean; ignored build output was not staged or committed.
 
-## Pending exact-artifact acceptance
+## Exact-artifact physical acceptance
 
-Neither candidate's earlier UI evidence transfers to these rebuilt files. The
-following remain publication blockers for these exact hashes. Use the bounded
+The bounded
 [`unsigned-preview physical-acceptance checklist`](unsigned-preview-physical-acceptance-checklist.md)
-when the developer is present at both machines:
+was completed for the exact candidate hashes above.
 
-1. normal installation on the accepted narrow Linux and Windows baselines;
-2. native launch and bounded graphical/keyboard/passive-behaviour review;
-3. explicit `NotSigned` verification of the exact installed Windows
-   executable;
-4. normal removal and post-removal package/application absence; and
-5. independent review of the completed physical-acceptance evidence.
+On Ubuntu, pre-install package absence was confirmed, normal installation
+passed, and the installed package reported `ai-engine-room` version `0.1.0`
+for `amd64`. Native launch, graphical and keyboard review, and passive behavior
+passed without provider action, inference, or **Copy report** use. Normal
+package removal passed; the package and installed binary were absent afterward.
+
+One bounded procedural deviation was recorded on Ubuntu: removal completed
+before the application process had closed, leaving a process temporarily
+running from the removed executable, reported by the operating system as
+`(deleted)`. The package and binary were already absent, the condition was
+disclosed, and the process was then closed normally. The final process count
+was zero. Independent review found the deviation non-blocking and did not
+require a rerun.
+
+On Windows, pre-install application absence was confirmed. The installer
+displayed no warning during the tested normal path; installation passed and the
+Installed apps entry reported AI Engine Room version `0.1.0` with publisher
+Tartanleaf.com Inc. Native launch, graphical and keyboard review, and passive
+behavior passed without provider action, inference, or **Copy report** use.
+The installed executable reported version `0.1.0` and Authenticode status
+`NotSigned`. Normal removal passed; the Installed apps entry and application
+and setup processes were absent afterward.
+
+After acceptance, both candidate files retained their recorded byte sizes and
+SHA-256 values, and both source checkouts remained clean at the recorded source
+commit and tree. Independent final review returned **PASS** for the completed
+evidence, including the disclosed Ubuntu deviation and correction.
 
 No candidate was uploaded, published, distributed, signed, or released during
 this evidence collection. A separate developer decision remains required for

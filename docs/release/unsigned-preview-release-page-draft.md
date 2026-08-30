@@ -2,11 +2,10 @@
 
 > **DRAFT — DO NOT PUBLISH OR DISTRIBUTE**
 >
-> The exact-artifact physical install, graphical/keyboard review, installed
-> executable verification, removal, and post-removal checks are still pending.
+> Exact-artifact physical acceptance and independent final review have passed.
 > Download links must not be added and this text must not be published until
-> those checks pass and the developer separately approves the exact artifacts,
-> final text, and publication channel.
+> the developer separately approves the exact artifacts, final text, and
+> publication channel.
 
 ## Unsigned preview
 
@@ -34,7 +33,8 @@ an APT repository and has no repository signature or repository-trust claim.
 - Repository, licence-material, real-package licence-payload, and read-only
   archive checks: passed for both artifacts and are recorded in the
   [candidate evidence](unsigned-preview-candidate-evidence.md)
-- Physical exact-artifact acceptance: **pending — publication blocker**
+- Physical exact-artifact acceptance: **passed; independent final review
+  passed**
 - Publication authorization: **not granted**
 
 ## Proposed downloads
@@ -47,10 +47,10 @@ they are not download links.
 | Ubuntu 24.04 LTS x86-64 | `AI Engine Room_0.1.0_amd64.deb` | Debian package / AMD64 | 4,722,942 | `9c75d669fd3dbebc4d0f72ee3d880258206f1adc0be19a15d29fabf6b1325c9e` |
 | Windows 11 25H2 build 26200.7462 x64 | `AI Engine Room_0.1.0_x64-setup.exe` | NSIS installer / x64 | 2,651,735 | `6bfa7b6aa4998efc3275eeae12917242526fb2dca8e970630d8b4f1e23f3b399` |
 
-Exact Windows installer Authenticode status: `NotSigned`. Verification of the
-installed application executable remains pending. A checksum detects a file
-change relative to this page; it does **not** identify or authenticate the
-publisher and is not a digital signature.
+Exact Windows installer and exact installed application executable
+Authenticode status: `NotSigned`. A checksum detects a file change relative to
+this page; it does **not** identify or authenticate the publisher and is not a
+digital signature.
 
 Compatibility claims are limited to the exact baselines listed above. Other
 Windows versions, Linux distributions, architectures, and macOS are not

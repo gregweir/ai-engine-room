@@ -47,11 +47,13 @@ hardware benchmark.
    deterministic CI. Their identities and the proposed release-page text are
    recorded locally on a separate documentation branch. Physical exact-artifact
    install/UI/removal acceptance, installed-Windows-executable verification,
-   final independent review, and every publication approval remain pending.
-7. Next, complete those physical checks when the developer is present at both
-   machines, then request separate decisions on the exact artifacts, final
-   release-page text, and publication channel. Signing/publisher identity,
-   broader provider/platform coverage, and macOS remain later decisions.
+   and independent final review passed. The bounded Linux process-close
+   deviation and its completed correction are recorded in the candidate
+   evidence. No publication approval has been granted.
+7. Next, request separate developer decisions on the exact artifacts, final
+   release-page text, and exact publication channel and release identity.
+   Signing/publisher identity, broader provider/platform coverage, and macOS
+   remain later decisions.
 
 No roadmap entry authorizes implementation by itself. The current milestone
 state and developer gate control execution.
