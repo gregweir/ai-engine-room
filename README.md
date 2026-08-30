@@ -55,6 +55,31 @@ AI Engine Room is intentionally conservative and host-led:
   estimates, confidence scores, causal diagnosis, automated repair, or
   unsupported safety and performance claims.
 
+## Quick start
+
+1. Review the verified platform baselines and limitations below, then use only
+   the official
+   [`v0.1.0-preview.1` release](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.0-preview.1).
+2. Download the package for your platform and `SHA256SUMS.txt`. Verify the exact
+   filename, byte size, and complete SHA-256 before installing. The preview is
+   unsigned; a matching checksum verifies bytes but does not authenticate its
+   publisher.
+3. Install only if those details match and your platform permits normal
+   continuation. Do not weaken security controls or bypass organizational
+   policy to run the preview.
+4. Start a supported local-AI runtime yourself if you want provider
+   observations, then open AI Engine Room. The app does not start or manage
+   providers.
+5. Choose **Refresh** for passive observation. Refresh does not run or authorize
+   inference.
+6. Explore **Overview**, **Models**, **Diagnose**, and **Report**. Use
+   **Observed inference** only after reading its disclosure and explicitly
+   authorizing that individual run.
+
+The [full user guide](docs/user-guide.md) provides exact verification,
+installation, first-session, and removal instructions. See the
+[glossary](docs/glossary.md) for the application's evidence and safety terms.
+
 ## Current capabilities
 
 - Manually refresh independent Ollama and LM Studio availability, model catalogues, loaded state, and bounded platform-native machine context: available memory, total memory, and native CPU architecture.
@@ -129,6 +154,8 @@ The browser/LAN preview uses artificial fixtures and must not be treated as live
 
 ## Project documents
 
+- [User guide](docs/user-guide.md)
+- [Glossary](docs/glossary.md)
 - [Roadmap](docs/roadmap.md)
 - [Contributing](CONTRIBUTING.md)
 - [Support](SUPPORT.md)
