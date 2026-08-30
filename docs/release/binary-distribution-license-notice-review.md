@@ -1,7 +1,9 @@
 # Binary-distribution licence and notice review
 
-Status: review complete on 2026-08-30; public binary distribution is blocked
-pending the remediation and rebuilt-artifact verification below.
+Status: initial review and the separately approved remediation gate completed on
+2026-08-30. The rebuilt licence payloads are accepted; signing, publisher
+identity, upload, hosting, publication, distribution, and release remain
+separate gates and are not authorized by this record.
 
 This is a bounded engineering publication review, not legal advice or a
 comprehensive legal-compliance certification. It changes no application,
@@ -136,14 +138,57 @@ Zlib, Boost, Unlicense, CC0/MIT-0, and 0BSD choices. Alternative expressions are
 not final licence selections; a reproducible process must select a permitted
 branch and preserve the corresponding texts and required notices.
 
+## Remediation acceptance evidence
+
+The separately approved implementation gate was completed on clean public
+`main` at commit `2fa639dfee75f81ea63b98d3d00086708e3e571a`, tree
+`dbe9209ef8b6791488a678c268b968892fd0cfc0`, with the sole origin
+`https://github.com/gregweir/ai-engine-room.git`. The implementation:
+
+- records a checksum-verified conservative inventory of 471 locked Rust
+  registry components, the 22-package locked production frontend dependency
+  closure, and the NSIS 3.11 plus `nsis_tauri_utils 0.5.3` installer baseline;
+- pins non-lock inputs by immutable revision and SHA-256, including SPDX licence
+  texts, both installer source archives, and the NSIS wizard bitmap provenance;
+- generates `THIRD-PARTY-LICENSES.txt`, `THIRD-PARTY-SOURCES.txt`, Debian
+  `copyright`, and a self-verifying provenance manifest;
+- declares `aer-core` as Apache-2.0 and packages application `LICENSE`, `NOTICE`,
+  third-party licence material, and source-location material in both formats;
+- provides Debian documentation under `/usr/share/doc/ai-engine-room`; and
+- makes deterministic CI regenerate and compare the materials, verify both
+  exact target dependency graphs, build real `.deb` and NSIS packages, extract
+  them, and compare their licence payloads with the accepted source files.
+
+GitHub Actions run
+<https://github.com/gregweir/ai-engine-room/actions/runs/33306199586> passed all
+five jobs: frontend and repository contracts, Rust on Ubuntu and Windows, and
+actual Linux and Windows package-licence verification.
+
+The exact rebuilt, unsigned, unpublished host artifacts accepted by this gate
+are:
+
+| Platform | Build/review host | Artifact | Size | SHA-256 |
+| --- | --- | --- | ---: | --- |
+| Ubuntu 24.04 x86-64 | Linux verification host | `AI Engine Room_0.1.0_amd64.deb` | 4,722,944 bytes | `0fe182d2680db444c936870e3a6c68e1345963a34054463610ed8749e148b256` |
+| Windows 11 x86-64 | Independent Windows review host | `AI Engine Room_0.1.0_x64-setup.exe` | 2,649,494 bytes | `99020327a743493ff460d0ad694d6d99483021d12304ea673d85ae3ab813b09e` |
+
+Linux package verification confirmed byte-identical installed licence resources
+and the three Debian documentation files. Independent Windows review confirmed
+all seven declared installer payloads, byte-identical application and
+third-party licence resources, and a wizard bitmap matching the hash derived
+from pinned NSIS source. Neither host installed, launched, signed, uploaded,
+published, or distributed the rebuilt artifact, and neither accessed a provider
+or ran inference.
+
 ## Gate decision
 
-**Public binary distribution is blocked.** The existing install, launch, UI,
-passive-behaviour, removal, and deterministic-CI acceptance remains valid for
-the exact local artifacts. It does not cure missing publication material or
-authorize signing, upload, hosting, distribution, or release.
+**The binary licence-and-notice remediation gate passes.** The earlier artifact
+hashes remain rejected for publication and cannot be substituted for the
+rebuilt artifacts above. This acceptance establishes package-content evidence;
+it does not itself authorize signing, upload, hosting, publication,
+distribution, or release.
 
-The following must be completed as a separately approved implementation gate:
+The approved implementation gate was evaluated against these criteria:
 
 1. Define a reproducible, locked, platform-specific shipped-component inventory
    covering Rust code, compiled frontend code, Tauri components, and installer
@@ -167,6 +212,6 @@ The following must be completed as a separately approved implementation gate:
    obtain independent review. The current artifact hashes cannot be carried
    forward after payload changes.
 
-Signing and publisher identity remain the next separate gate only after this
-blocked gate passes. Upload, hosting, publication, distribution, and public
-release remain separately prohibited until explicitly approved.
+Signing and publisher identity are the next separate gate. Upload, hosting,
+publication, distribution, and public release remain separately prohibited
+until explicitly approved.
