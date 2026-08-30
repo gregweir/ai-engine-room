@@ -12,9 +12,76 @@ hardware benchmark.
 - Distinguish observed facts from calculations, estimates, and unavailable evidence.
 - Keep collection passive by default and inference explicitly authorized.
 - Preserve report-safe output that excludes sensitive or unnecessary machine details.
-- Provide bounded native behavior on Linux and Windows before public release.
+- Maintain bounded native behavior on the verified Linux and Windows
+  public-preview baselines.
 
-## Current sequence
+## Available now
+
+- A manual **Observe → Explain → Diagnose → Report** workflow with no continuous
+  polling, account, telemetry, upload, or application persistence.
+- Bounded observation of supported same-machine Ollama and LM Studio APIs, plus
+  passive traditional single-model llama.cpp detection on its tested Ubuntu
+  scope.
+- Optional, per-run-authorized observed inference for eligible Ollama and LM
+  Studio models using one fixed synthetic prompt, bounded timeout and
+  concurrency, and no retry.
+- Provider-qualified model metadata, platform-native memory and CPU-architecture
+  context, bounded session observation history, deterministic findings, and an
+  allow-listed plain-text report preview.
+- The public, unsigned `.deb` and NSIS
+  [`v0.1.0-preview.1` prerelease](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.0-preview.1)
+  on the exact verified Ubuntu and Windows baselines.
+- Deterministic frontend and Rust checks on Ubuntu and Windows, including
+  ephemeral package and licence-payload verification without artifact upload,
+  provider access, inference, signing, publication, or release.
+
+## Next
+
+The current sequence is documentation-led and separately gated:
+
+- **1W-A — complete:** the public front door now states the product's purpose,
+  intended audience, and safety boundaries in plain language.
+- **1W-B — current:** add a concise quick start, user guide, glossary, and this
+  public roadmap structure under the
+  [bounded contract](design/milestone-1w-b-guides-roadmap-contract.md).
+- **1W-C — later decision:** screenshots or diagrams require separate developer
+  authorization and accepted, current visual evidence.
+- **1W-D — later decision:** non-specialist validation and any resulting
+  readiness-claim change require separate developer authorization.
+
+A code-signing study remains separate and non-blocking. No certificate
+application or purchase, publisher-identity decision, MSIX/Store work, or
+signed release is authorized.
+
+## Under consideration — not authorized
+
+- Evidence-scope and wording refinements based on actual non-specialist
+  validation.
+- A safe report export format beyond explicit clipboard copy.
+- GPU observation only after a bounded evidence and provenance contract.
+- Additional providers only after a provider-admission contract and evidence of
+  user need.
+- MSIX and Microsoft Store feasibility.
+- Future signing through a no-cost eligibility route such as SignPath
+  Foundation or through paid organizational identity, after the publisher
+  certificate identity is deliberately resolved.
+
+These are possibilities, not commitments, schedules, or implementation
+authority.
+
+## Explicitly outside the current product
+
+- Agentic or autonomous actions and decisions.
+- Starting, stopping, installing, unloading, reconfiguring, or otherwise
+  managing providers or models.
+- Continuous monitoring, background sampling, alerts, or persistent history.
+- Benchmark scores, model-fit or headroom recommendations, root-cause claims,
+  automated repair, or independently verified compute placement.
+- LAN, cloud, remote endpoint, authenticated endpoint, or custom endpoint
+  configuration.
+- Unbounded, automatic, or undisclosed inference.
+
+## Completed delivery record
 
 1. Milestone 1U is closed: total memory and native CPU architecture include the
    Windows Clippy correction and the developer decision on 225% Text size evidence.
