@@ -13,6 +13,8 @@ import { basename, join } from "node:path";
 import { gunzipSync } from "node:zlib";
 
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
+const normalizedFileSha256 = (value) =>
+  sha256(Buffer.from(value.toString("utf8").replace(/\r\n/g, "\n")));
 const read = (path) => readFileSync(path);
 const text = (path) => read(path).toString("utf8");
 const normalizeText = (value) =>
@@ -351,8 +353,8 @@ const manifest = {
   schemaVersion: 1,
   generatorSha256: sha256(read("scripts/generate-third-party-licenses.mjs")),
   spdxLicenseListRevision: spdxRevision,
-  cargoLockSha256: sha256(cargoLock),
-  packageLockSha256: sha256(packageLock),
+  cargoLockSha256: normalizedFileSha256(cargoLock),
+  packageLockSha256: normalizedFileSha256(packageLock),
   rustRegistryComponentCount: rustComponents.length,
   frontendComponentCount: frontendComponents.length,
   installerComponentCount: 2,

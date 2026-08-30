@@ -5,6 +5,8 @@ import { existsSync, readFileSync } from "node:fs";
 const read = (path) => readFileSync(path);
 const text = (path) => read(path).toString("utf8");
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
+const normalizedFileSha256 = (value) =>
+  sha256(Buffer.from(value.toString("utf8").replace(/\r\n/g, "\n")));
 const manifestPath = "third-party/generated-manifest.json";
 const generatedPaths = [
   "THIRD-PARTY-LICENSES.txt",
@@ -23,10 +25,14 @@ assert.equal(
   "generated licence material is stale for its generator",
 );
 assert.equal(manifest.spdxLicenseListRevision, "a3cbf2e897d54bccec0c35469c691521d089ef53");
-assert.equal(manifest.cargoLockSha256, sha256(read("Cargo.lock")), "third-party material is stale for Cargo.lock");
+assert.equal(
+  manifest.cargoLockSha256,
+  normalizedFileSha256(read("Cargo.lock")),
+  "third-party material is stale for Cargo.lock",
+);
 assert.equal(
   manifest.packageLockSha256,
-  sha256(read("package-lock.json")),
+  normalizedFileSha256(read("package-lock.json")),
   "third-party material is stale for package-lock.json",
 );
 assert.ok(manifest.rustRegistryComponentCount > 200);
