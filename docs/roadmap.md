@@ -25,10 +25,12 @@ hardware benchmark.
    [`design/milestone-1v-contract.md`](design/milestone-1v-contract.md). KV-cache
    bytes, runtime overhead, physical VRAM capacity, and compute placement remain
    unavailable or unknown; do not calculate them or make fit/headroom claims.
-3. The current-source packaging-readiness contract, bounded `.deb` and NSIS
-   builds, independent review, and exact-artifact install/launch/removal
-   acceptance are complete. Both artifacts remain local, unsigned, and
-   unpublished.
+3. The separately approved current-source packaging-readiness contract was
+   completed at source revision `2293b336eaa314f4fd285737a8470a5b9abd151a`.
+   Its bounded `.deb` and NSIS builds, independent review, and exact-artifact
+   install/launch/removal acceptance are complete historical evidence. Those
+   artifacts remain local, unsigned, and unpublished; their acceptance does
+   not transfer to a rebuilt preview candidate.
 4. The fuller
    [`binary-distribution licence and notice review`](release/binary-distribution-license-notice-review.md)
    and its remediation are complete. Rebuilt `.deb` and NSIS licence payloads
@@ -37,11 +39,32 @@ hardware benchmark.
    [`unsigned preview release contract`](release/unsigned-preview-release-contract.md)
    and a bounded
    [`SignPath Foundation eligibility assessment`](release/signpath-eligibility-assessment.md).
-   No exact public candidate, upload, hosting, publication, distribution, or
-   release is authorized. SignPath is a plausible no-cost route but is not
-   application-ready, and its Foundation publisher identity remains undecided.
-6. Next, prepare exact unsigned-preview candidate evidence and proposed release
-   page text for a separate publication decision. Signing/publisher identity,
+   The first public preview remains unsigned; no signing action was taken.
+   SignPath is a plausible no-cost route but is not application-ready. Greg
+   Weir is the developer and Tartanleaf.com Inc. is the product/package
+   publisher; whether a future SignPath certificate may instead authenticate
+   SignPath Foundation remains undecided.
+6. Exact unsigned-preview candidates were built and inspected from pushed
+   `main` revision `a5482e9d51657a0cfb4471215a91750c5ba7db95` after passing
+   deterministic CI. Their identities and the approved release-page text are
+   recorded locally on a separate documentation branch. Physical exact-artifact
+   install/UI/removal acceptance, installed-Windows-executable verification,
+   and independent final review passed. The bounded Linux process-close
+   deviation and its completed correction are recorded in the candidate
+   evidence. The developer approved the exact artifacts, final text, GitHub
+   Releases channel, `v0.1.0-preview.1` prerelease identity, `SHA256SUMS.txt`,
+   and creation and upload of a non-public three-asset draft. After GitHub
+   normalized spaces in the uploaded binary names, the developer approved the
+   resulting dotted hosted filenames; the binary hashes and accepted bytes are
+   unchanged.
+7. The independently verified draft received a later, separate public-transition
+   approval and is now the public
+   [`AI Engine Room 0.1.0 unsigned preview`](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.0-preview.1).
+   Fresh public downloads, checksums, unsigned status, pinned documentation
+   links, and an independent public review all passed. The exact outcome is in
+   [`the publication record`](release/unsigned-preview-publication-record.md).
+   No further promotion, additional channel, asset replacement, signing action,
+   or follow-on release is authorized. Future signing certificate identity,
    broader provider/platform coverage, and macOS remain later decisions.
 
 No roadmap entry authorizes implementation by itself. The current milestone

@@ -47,10 +47,12 @@ See [SUPPORT.md](SUPPORT.md) for the precise matrix and limitations.
 Source development requires Node.js/npm compatible with the committed lockfile; Rust and Cargo compatible with `rust-version` in `src-tauri/Cargo.toml`; and the Tauri 2 Linux system prerequisites for Ubuntu. Ollama or LM Studio is needed only for optional, explicitly authorized live runtime work. Deterministic tests require neither runtime and perform no inference.
 
 Bounded GitHub Actions run deterministic frontend and Rust checks on Ubuntu and
-Windows for pull requests and the main branch. The workflow performs no live provider access,
-inference, packaging, signing, artifact upload, publication, or release. Native
-UI, accessibility, provider, and package evidence remains developer-controlled on
-the designated physical machine.
+Windows for pull requests and the main branch. The workflow also builds
+ephemeral `.deb` and NSIS packages to verify their licence payloads, but uploads
+no artifact and performs no live provider access, inference, signing,
+publication, or release. Native UI, accessibility, provider, installation, and
+removal evidence remains developer-controlled on the designated physical
+machine.
 
 ## Build and run from source
 

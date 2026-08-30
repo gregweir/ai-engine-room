@@ -30,9 +30,11 @@ advice. SignPath Foundation's published conditions are authoritative:
 SignPath states that its service is free for accepted open-source projects:
 <https://signpath.org/>. Under the Foundation route, the code-signing
 certificate is issued to **SignPath Foundation**. It would therefore not display
-`Tartanleaf.com Inc.` as the Authenticode certificate publisher. Accepting that
-publisher identity is a future developer decision, not an outcome of this
-assessment.
+`Tartanleaf.com Inc.` as the Authenticode certificate publisher. The developer
+has confirmed Greg Weir as the developer and Tartanleaf.com Inc. as the product
+and package publisher. Whether a future signed build may instead display
+SignPath Foundation as its authenticated certificate publisher remains a
+separate future decision.
 
 The Foundation also requires controlled build origin, signing roles, approvals,
 MFA, a code-signing policy, and continuing compliance. Free monetary cost does

@@ -928,7 +928,11 @@ assert.match(signpathAssessment, /SignPath Foundation/);
 assert.match(signpathAssessment, /No application,\s+account, certificate/);
 assert.match(
   signpathAssessment,
-  /publisher identity is a future developer decision/,
+  /Greg Weir as the developer and Tartanleaf\.com Inc\. as the product\s+and package publisher/,
+);
+assert.match(
+  signpathAssessment,
+  /SignPath Foundation as its authenticated certificate publisher remains a\s+separate future decision/,
 );
 assert.equal(
   read("NOTICE").replace(/\r\n/g, "\n"),
