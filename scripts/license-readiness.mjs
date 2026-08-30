@@ -21,7 +21,7 @@ const manifest = JSON.parse(text(manifestPath));
 assert.equal(manifest.schemaVersion, 1);
 assert.equal(
   manifest.generatorSha256,
-  sha256(read("scripts/generate-third-party-licenses.mjs")),
+  normalizedFileSha256(read("scripts/generate-third-party-licenses.mjs")),
   "generated licence material is stale for its generator",
 );
 assert.equal(manifest.spdxLicenseListRevision, "a3cbf2e897d54bccec0c35469c691521d089ef53");
@@ -60,7 +60,11 @@ assert.deepEqual(manifest.installerSourceArchives, {
 });
 assert.ok(manifest.uniqueLicenseDocumentCount > 100);
 for (const path of generatedPaths) {
-  assert.equal(manifest.outputs[path], sha256(read(path)), `generated licence material has changed: ${path}`);
+  assert.equal(
+    manifest.outputs[path],
+    normalizedFileSha256(read(path)),
+    `generated licence material has changed: ${path}`,
+  );
 }
 
 const components = new Map(

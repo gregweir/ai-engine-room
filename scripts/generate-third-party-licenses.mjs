@@ -351,7 +351,7 @@ writeFileSync("THIRD-PARTY-SOURCES.txt", sources);
 writeFileSync("packaging/debian/copyright", debianCopyright);
 const manifest = {
   schemaVersion: 1,
-  generatorSha256: sha256(read("scripts/generate-third-party-licenses.mjs")),
+  generatorSha256: normalizedFileSha256(read("scripts/generate-third-party-licenses.mjs")),
   spdxLicenseListRevision: spdxRevision,
   cargoLockSha256: normalizedFileSha256(cargoLock),
   packageLockSha256: normalizedFileSha256(packageLock),
