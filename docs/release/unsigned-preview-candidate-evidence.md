@@ -64,7 +64,9 @@ remained clean; ignored build output was not staged or committed.
 ## Pending exact-artifact acceptance
 
 Neither candidate's earlier UI evidence transfers to these rebuilt files. The
-following remain publication blockers for these exact hashes:
+following remain publication blockers for these exact hashes. Use the bounded
+[`unsigned-preview physical-acceptance checklist`](unsigned-preview-physical-acceptance-checklist.md)
+when the developer is present at both machines:
 
 1. normal installation on the accepted narrow Linux and Windows baselines;
 2. native launch and bounded graphical/keyboard/passive-behaviour review;
@@ -76,4 +78,3 @@ following remain publication blockers for these exact hashes:
 No candidate was uploaded, published, distributed, signed, or released during
 this evidence collection. A separate developer decision remains required for
 the exact artifacts, final release-page text, and publication channel.
-

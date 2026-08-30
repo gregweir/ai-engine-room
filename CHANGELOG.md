@@ -18,7 +18,7 @@ Notable project changes will be recorded here. AI Engine Room is currently work-
 - Windows available-memory observation through the existing `os.ram.available` metric path; native compilation, current-source unsigned NSIS packaging, and bounded developer package verification passed on the tested Windows 11 25H2 build 26200.7462 x64 baseline.
 - Session-only explicit change history and a fifth Diagnose workspace with deterministic Observation → Meaning → Safe next check findings over already-acquired controlled state.
 - Bounded total-memory and native-CPU-architecture machine context for Ubuntu and Windows; both remain outside the copied Report, and bounded native compile, value, and presentation verification passed on the tested Windows 11 25H2 x64 environment, including developer-established 225% Text size.
-- Deterministic Ubuntu and Windows CI without live provider access, inference, packaging, release, or artifact publication.
+- Deterministic Ubuntu and Windows CI with ephemeral `.deb` and NSIS licence-payload builds, but without live provider access, inference, signing, release, or artifact publication.
 
 ### Changed
 

@@ -1,7 +1,11 @@
-# Current-source packaging-readiness proposed contract
+# Current-source packaging-readiness contract
 
-Status: proposed on 2026-08-29. This document does not authorize execution.
-Developer approval is required before any package build or artifact creation.
+Status: approved for one bounded execution on 2026-08-29 and completed at
+source revision `2293b336eaa314f4fd285737a8470a5b9abd151a`. The resulting
+Linux and Windows build, inspection, acceptance, and independent-review records
+are preserved in the corresponding pre-release build evidence. This historical
+contract grants no continuing authority for another build, installation,
+upload, publication, or release.
 
 ## Purpose
 

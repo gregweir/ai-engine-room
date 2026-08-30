@@ -25,10 +25,12 @@ hardware benchmark.
    [`design/milestone-1v-contract.md`](design/milestone-1v-contract.md). KV-cache
    bytes, runtime overhead, physical VRAM capacity, and compute placement remain
    unavailable or unknown; do not calculate them or make fit/headroom claims.
-3. The current-source packaging-readiness contract, bounded `.deb` and NSIS
-   builds, independent review, and exact-artifact install/launch/removal
-   acceptance are complete. Both artifacts remain local, unsigned, and
-   unpublished.
+3. The separately approved current-source packaging-readiness contract was
+   completed at source revision `2293b336eaa314f4fd285737a8470a5b9abd151a`.
+   Its bounded `.deb` and NSIS builds, independent review, and exact-artifact
+   install/launch/removal acceptance are complete historical evidence. Those
+   artifacts remain local, unsigned, and unpublished; their acceptance does
+   not transfer to a rebuilt preview candidate.
 4. The fuller
    [`binary-distribution licence and notice review`](release/binary-distribution-license-notice-review.md)
    and its remediation are complete. Rebuilt `.deb` and NSIS licence payloads
@@ -37,11 +39,18 @@ hardware benchmark.
    [`unsigned preview release contract`](release/unsigned-preview-release-contract.md)
    and a bounded
    [`SignPath Foundation eligibility assessment`](release/signpath-eligibility-assessment.md).
-   No exact public candidate, upload, hosting, publication, distribution, or
-   release is authorized. SignPath is a plausible no-cost route but is not
-   application-ready, and its Foundation publisher identity remains undecided.
-6. Next, prepare exact unsigned-preview candidate evidence and proposed release
-   page text for a separate publication decision. Signing/publisher identity,
+   No upload, hosting, publication, distribution, or release is authorized.
+   SignPath is a plausible no-cost route but is not application-ready, and its
+   Foundation publisher identity remains undecided.
+6. Exact unsigned-preview candidates were built and inspected from pushed
+   `main` revision `a5482e9d51657a0cfb4471215a91750c5ba7db95` after passing
+   deterministic CI. Their identities and the proposed release-page text are
+   recorded locally on a separate documentation branch. Physical exact-artifact
+   install/UI/removal acceptance, installed-Windows-executable verification,
+   final independent review, and every publication approval remain pending.
+7. Next, complete those physical checks when the developer is present at both
+   machines, then request separate decisions on the exact artifacts, final
+   release-page text, and publication channel. Signing/publisher identity,
    broader provider/platform coverage, and macOS remain later decisions.
 
 No roadmap entry authorizes implementation by itself. The current milestone

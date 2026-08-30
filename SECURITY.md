@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-AI Engine Room is work-in-progress pre-release software. No version is currently designated stable or supported for security maintenance as a generally released product. Reports affecting the current default branch and the local `.deb` verification build are relevant. AppImage packaging is deferred and is not part of the current verification contract.
+AI Engine Room is work-in-progress pre-release software. No version is currently designated stable or supported for security maintenance as a generally released product. Reports affecting the current default branch and the documented local `.deb` or NSIS verification builds are relevant. AppImage packaging is deferred and is not part of the current verification contract.
 
 ## Reporting a vulnerability
 
