@@ -1,6 +1,7 @@
 # AI Engine Room — Architecture and Design
 
-Status: Draft
+Status: Maintained architecture baseline; the Milestone 1A/1B sections preserve
+their original planning context.
 Scope: Current pre-release product (Observe → Explain → Diagnose → Report).
 
 This document is the primary design reference for AI Engine Room. It defines
@@ -668,27 +669,32 @@ Likely implementation options (to be chosen at the relevant milestone, not
 fixed now): the OS metric library (for example `sysinfo` or direct filesystem
 reads), the HTTP client for runtime adapters, and any GPU/driver library.
 
-Deferred decisions/features:
+Deferred decisions/features and later outcomes:
 
-- licence selection (developer decision);
+- licence selection — decided as Apache-2.0;
 - report export formats (Markdown/HTML/JSON) — later, based on user need;
 - GPU metrics and any driver/NVML integration — beyond 1A/1B;
-- broader Windows OS metrics beyond available physical memory — deferred;
+- total memory and native CPU architecture were later implemented for the
+  bounded Windows baseline; other broader Windows OS metrics remain deferred;
 - session persistence — only if an approved feature requires it;
 - a live-metrics LAN development bridge — separate security review;
-- broader diagnosis rules, richer lifecycle presentation, and persisted change
-  history — later and subject to separate approval;
+- bounded Diagnose rules and session-only history were later implemented;
+  broader diagnosis rules, richer lifecycle presentation, and persisted change
+  history remain subject to separate approval;
 - broader visual redesign beyond the restrained observation presentation — later;
 - macOS support — future;
-- CI, releases, and packaging formats — later.
+- deterministic Ubuntu/Windows CI, unsigned `.deb` and NSIS packaging, and the
+  `v0.1.0-preview.1` public unsigned prerelease were later completed; other
+  packaging formats, signing, and release identities remain separately gated.
 
-## 15. Assumptions and unresolved items
+## 15. Assumptions, outcomes, and continuing boundaries
 
-Assumptions (to be confirmed at the relevant milestone, not assumed proven):
+The original assumptions are retained with their later implemented boundaries:
 
-- the Ollama local HTTP API exposes the runtime metrics needed for Observe
-  (to be confirmed by inspection only, not by benchmarking, when the adapter is
-  implemented);
+- the implemented Ollama adapter uses its fixed same-machine HTTP API for
+  availability, catalogue, loaded-state, and explicitly authorized bounded
+  observations. It does not benchmark, manage the runtime or models, or infer
+  compute placement;
 - LM Studio native REST v1 supplies downloaded models, distinct loaded
   instances, stateless chat and provider-reported statistics without leaking
   provider JSON types into core. The fixed `127.0.0.1:1234` endpoint follows no
@@ -706,21 +712,18 @@ Assumptions (to be confirmed at the relevant milestone, not assumed proven):
 - the system's integrated graphics/NPU, if present, is out of scope for initial
   metrics; GPU metrics target a discrete GPU when GPU work begins.
 
-Unresolved items requiring developer decisions:
+The original draft's unresolved developer decisions are now closed: the project
+uses Apache-2.0, and Milestone 1A was authorized and completed. Current milestone
+state and future developer gates are tracked in [`../roadmap.md`](../roadmap.md).
 
-- licence selection;
-- authorization to scaffold Milestone 1A.
-
-Decided since the draft: the package manager is npm; source availability and
-metric availability are separate concepts; `MetricSample` carries no runtime
+Also decided since the draft: the package manager is npm; source availability
+and metric availability are separate concepts; `MetricSample` carries no runtime
 validation/evidence field.
 
-To verify during implementation:
+Continuing verification:
 
-- runtime behaviour of the selected toolchain on the current Node.js release
-  line (declared engine constraints are satisfied; a representative build of
-  the selected frontend stack has been observed to succeed; runtime edge cases
-  are confirmed as work proceeds);
+- runtime behaviour of the selected toolchain on the supported Node.js release
+  line remains covered by deterministic checks and representative builds;
 - GPU/driver library compatibility when GPU metrics are implemented.
 
 Final Rust type names are not fixed by this document; the semantic distinctions

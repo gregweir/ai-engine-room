@@ -1,8 +1,12 @@
 # Changelog
 
-Notable project changes will be recorded here. AI Engine Room is currently work-in-progress pre-release software; no 0.1.0 general release has been created.
+Notable project changes will be recorded here. AI Engine Room is currently work-in-progress pre-release software. The first public unsigned prerelease is `v0.1.0-preview.1`; no stable or general 0.1.0 release has been created.
 
 ## Unreleased
+
+No changes have been recorded after `v0.1.0-preview.1`.
+
+## 0.1.0-preview.1 - 2026-08-30
 
 ### Added
 
