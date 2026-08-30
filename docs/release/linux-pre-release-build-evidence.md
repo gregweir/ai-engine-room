@@ -2,6 +2,75 @@
 
 This records local, unsigned, unpublished verification artifacts. It is evidence for the Ubuntu `.deb` packaging build baseline only, not proof of broad Linux compatibility, a signature, or a release candidate. AppImage is a rejected/deferred 1K experiment, not a current accepted package artifact.
 
+## Current-source packaging-readiness result
+
+The separately approved current-source packaging-readiness builds ran on
+2026-08-29, and the final cleanup and independent review passed on 2026-08-30
+for the following exact source identity:
+
+- Source commit: `2293b336eaa314f4fd285737a8470a5b9abd151a`
+- Source tree: `6f5df75b612f8b159f172a05766ab5bd2bec491f`
+- Origin: `https://github.com/gregweir/ai-engine-room.git`
+- Build baseline: Ubuntu 24.04 LTS, x86-64
+- Node: v22.22.2
+- npm: 10.9.7
+- Rust: rustc 1.98.0
+- Cargo: cargo 1.98.0
+- Tauri CLI: 2.11.4
+
+The entry gate passed on `main`: `HEAD`, local `main`, cached `origin/main`, and
+live origin `main` matched the exact source commit; the checkout used the exact
+sole origin above, was `0/0` ahead/behind, and had no tracked, staged, or
+untracked changes. Hostname, username, private checkout path, address,
+credential, token, and environment dumps are intentionally not recorded here.
+
+The following current-source commands passed natively using the locked project
+dependencies and existing toolchain:
+
+```sh
+npm ci
+npm run check
+npm run lint
+npm run test:run
+npm run build
+cargo fmt --all -- --check
+cargo test --workspace
+cargo clippy --workspace --all-targets -- -D warnings
+npm run tauri build -- --bundles deb
+```
+
+Svelte/TypeScript checking, ESLint, the frontend production build, Rust
+formatting, workspace tests, and strict Clippy passed. All 17 frontend test
+files and 286 tests passed. Environment-dependent live tests remained ignored.
+No provider was started, stopped, probed, or reconfigured, and no inference ran.
+Tauri produced exactly one authorized `.deb`; no AppImage or other package
+format was built.
+
+### Current-source Debian artifact
+
+- Filename: `AI Engine Room_0.1.0_amd64.deb`
+- Format: Debian binary package, format 2.0
+- Size: 4,276,214 bytes
+- SHA-256: `f32531f9f22ea6dfff2fdc8a8b2631544fdfc5c9d0017bc0f012c0c5e3083d17`
+- Package/version/architecture: `ai-engine-room` / `0.1.0` / `amd64`
+- Maintainer: `Greg Weir`
+- Dependencies: `libwebkit2gtk-4.1-0, libgtk-3-0`
+- Homepage: `https://tartanleaf.com`
+
+Read-only inspection confirmed the configured pre-release description, desktop
+entry, `/usr/bin/aiengineroom`, and the expected 32, 128, and 256 pixel hicolor
+icon paths. The artifact remained ignored under `target/` and local, unsigned,
+unpublished, and unexecuted.
+
+Independent review confirmed the exact source identity, bounded command scope,
+artifact metadata and hash, exclusion of other formats, and final clean `0/0`
+Git state with no blocking discrepancy. This result establishes packaging
+readiness only. It does not transfer the older package's install, launch,
+graphical, accessibility, passive-behavior, removal, or post-removal evidence to
+this artifact, and it does not establish signing, publication, distribution,
+release-candidate, public-release, broad-compatibility, privacy, security, or
+accessibility-conformance readiness.
+
 ## Current accepted packaging candidate
 
 The sole current Milestone 1K packaging-verification format is `.deb`.

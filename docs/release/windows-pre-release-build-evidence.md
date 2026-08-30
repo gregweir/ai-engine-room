@@ -2,6 +2,82 @@
 
 This records a local, unsigned, unpublished NSIS pre-release build and its bounded developer package acceptance. It does not establish broad Windows support.
 
+## Current-source packaging-readiness result
+
+The separately approved current-source packaging-readiness builds ran on
+2026-08-29, and the final cleanup and independent review passed on 2026-08-30
+for the following exact source identity:
+
+- Source commit: `2293b336eaa314f4fd285737a8470a5b9abd151a`
+- Source tree: `6f5df75b612f8b159f172a05766ab5bd2bec491f`
+- Origin: `https://github.com/gregweir/ai-engine-room.git`
+- Build baseline: Windows 11, x86-64 / AMD64
+- Node: v24.19.0
+- npm: 11.17.0
+- Rust: rustc 1.97.1
+- Cargo: cargo 1.97.1
+- Tauri CLI: 2.11.4
+
+The entry gate passed on `main`: `HEAD`, local `main`, cached `origin/main`, and
+live origin `main` matched the exact source commit; the checkout used the exact
+sole origin above, was `0/0` ahead/behind, and had no tracked, staged, or
+untracked changes. Hostname, username, private checkout path, address,
+credential, token, and environment dumps are intentionally not recorded here.
+
+The following current-source commands passed natively using the locked project
+dependencies and existing toolchain:
+
+```powershell
+npm ci
+npm run check
+npm run lint
+npm run test:run
+npm run build
+cargo fmt --all -- --check
+cargo test --workspace
+cargo clippy --workspace --all-targets -- -D warnings
+npm run tauri build -- --bundles nsis
+```
+
+Svelte/TypeScript checking, ESLint, the frontend production build, Rust
+formatting, workspace tests, and strict Clippy passed. All 17 frontend test
+files and 286 tests passed. Environment-dependent live tests remained ignored.
+No provider was started, stopped, probed, or reconfigured, and no inference ran.
+Tauri produced exactly one authorized NSIS installer; no MSI or other package
+format was built.
+
+### Current-source NSIS artifact
+
+- Filename: `AI Engine Room_0.1.0_x64-setup.exe`
+- Format/target: Windows PE NSIS installer with an x86-64 bundled application
+- Size: 2,535,913 bytes
+- SHA-256: `2811b704a6ac23f3069b476b9afc4eba58cf82952d8b166f750b11167d676581`
+- Product/file description: `AI Engine Room`
+- Product/file version: `0.1.0`
+- Authenticode status: `NotSigned`; signer: none
+- Source icon SHA-256: `9edc4eefd796a55d08f945c5a911461f0c5fcf61ded9ab7665bd4f51f9be3a7f`
+
+Read-only inspection confirmed the installer and bundled-application
+architecture, product identity and version, unsigned state, and an associated
+32-by-32 installer icon without executing the artifact. The artifact remained
+ignored under `target/` and local, unsigned, unpublished, and unexecuted.
+
+The Tauri build rewrote only the worktree line-ending representation of
+`src-tauri/Cargo.toml`; its worktree, index, and `HEAD` content hashes remained
+identical. After the build-and-inspection operation stopped, the developer
+separately authorized restoring exactly that file from `HEAD`. No artifact was
+rebuilt or changed. Final review confirmed the expected Windows worktree
+representation, a clean checkout, and `0/0` ahead/behind.
+
+Independent review confirmed the exact source identity, bounded command scope,
+artifact metadata and hash, unsigned state, exclusion of other formats, and
+final clean Git state with no blocking discrepancy. This result establishes
+packaging readiness only. It does not transfer the older package's install,
+launch, graphical, accessibility, passive-behavior, removal, or post-removal
+evidence to this artifact, and it does not establish signing, publication,
+distribution, release-candidate, public-release, broad-compatibility, privacy,
+security, or accessibility-conformance readiness.
+
 ## Source and build environment
 
 - Source commit: `a539fd49c618685d1183b78b6ccac2a816c0487f`
