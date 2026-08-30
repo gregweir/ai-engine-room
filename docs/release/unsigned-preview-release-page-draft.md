@@ -1,17 +1,14 @@
-# AI Engine Room 0.1.0 unsigned preview — publication draft
-
-> **DRAFT — DO NOT PUBLISH OR DISTRIBUTE**
->
-> Exact-artifact physical acceptance and independent final review have passed.
-> Download links must not be added and this text must not be published until
-> the developer separately approves the exact artifacts, final text, and
-> publication channel.
+# AI Engine Room 0.1.0 unsigned preview
 
 ## Unsigned preview
 
 AI Engine Room 0.1.0 is pre-release software for inspecting bounded local-AI
 runtime and machine context. This preview is not signed, stable,
 production-ready, security-certified, or broadly compatible.
+
+Developer: Greg Weir. Application and package publisher metadata:
+Tartanleaf.com Inc. This unsigned preview does not have an authenticated
+Authenticode publisher identity.
 
 The Windows publisher will appear as unknown. Microsoft Defender SmartScreen,
 Smart App Control, antivirus software, or organizational policy may warn about
@@ -31,16 +28,16 @@ an APT repository and has no repository signature or repository-trust claim.
 - Source tree: `c1e8092cb5caa75a77f7e53fdc712eae6f72b318`
 - Deterministic checks: [passed on Ubuntu and Windows](https://github.com/gregweir/ai-engine-room/actions/runs/33309714136)
 - Repository, licence-material, real-package licence-payload, and read-only
-  archive checks: passed for both artifacts and are recorded in the
-  [candidate evidence](unsigned-preview-candidate-evidence.md)
+  archive checks: passed for both exact artifacts
 - Physical exact-artifact acceptance: **passed; independent final review
   passed**
-- Publication authorization: **not granted**
+- Non-public GitHub draft and three-asset upload: **approved**
+- Public transition: **not authorized**
 
-## Proposed downloads
+## Downloads
 
-The files remain local and unpublished. These rows record candidate identity;
-they are not download links.
+Verify each downloaded file against the exact identity below before
+installation.
 
 | Platform and verified baseline | Candidate filename | Format / architecture | Bytes | SHA-256 |
 | --- | --- | --- | ---: | --- |

@@ -1,9 +1,10 @@
 # Unsigned preview candidate evidence
 
 Status: build, read-only inspection, exact-artifact physical acceptance, and
-independent final review completed on 2026-08-30. Publication authorization
-remains pending. This record does not authorize upload, distribution, signing,
-hosting, or release.
+independent final review completed on 2026-08-30. The developer later approved
+the exact non-public GitHub draft identity, final text, and three-asset upload.
+The public transition remains unauthorized. This record does not authorize
+signing or broader distribution.
 
 ## Source and deterministic gate
 
@@ -96,5 +97,7 @@ commit and tree. Independent final review returned **PASS** for the completed
 evidence, including the disclosed Ubuntu deviation and correction.
 
 No candidate was uploaded, published, distributed, signed, or released during
-this evidence collection. A separate developer decision remains required for
-the exact artifacts, final release-page text, and publication channel.
+this evidence collection. The developer subsequently approved the exact
+artifacts, final text, GitHub Releases channel, and non-public draft identity
+recorded in the publication runbook. A later separate decision remains required
+before the reviewed draft may become public.

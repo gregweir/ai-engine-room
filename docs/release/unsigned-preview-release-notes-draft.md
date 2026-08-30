@@ -1,13 +1,12 @@
-# AI Engine Room 0.1.0 unsigned preview — release-notes draft
-
-> **DRAFT — DO NOT PUBLISH OR DISTRIBUTE**
->
-> Physical exact-artifact acceptance and independent final review have passed.
-> All publication approvals remain pending.
+# AI Engine Room 0.1.0 unsigned preview — release notes
 
 AI Engine Room 0.1.0 is a deliberately unsigned preview for people exploring
 bounded local-AI runtime and resource context. It is pre-release software, not
 a stable, production-ready, security-certified, or broadly compatible release.
+
+Developer: Greg Weir. Application and package publisher metadata:
+Tartanleaf.com Inc. This unsigned preview does not have an authenticated
+Authenticode publisher identity.
 
 ## Highlights
 
@@ -71,17 +70,18 @@ its own configuration.
   [unsigned-preview candidate evidence](unsigned-preview-candidate-evidence.md)
 - Exact physical acceptance: **passed**
 - Independent final review: **passed**
-- Publication approval: **not granted**
+- Non-public GitHub draft and three-asset upload: **approved**
+- Public transition: **not authorized**
 
 The completed operator sequence and bounded Linux process-close deviation are
 recorded in the [candidate evidence](unsigned-preview-candidate-evidence.md).
 The later, separately authorized publication sequence is described in the
 [publication and rollback runbook](unsigned-preview-publication-runbook.md).
 
-The proposed filenames, sizes, hashes, verification commands, trust warning,
+The approved filenames, sizes, hashes, verification commands, trust warning,
 licence links, and known limitations are in the
-[release-page draft](unsigned-preview-release-page-draft.md). The draft checksum
-manifest is [`unsigned-preview-SHA256SUMS.draft.txt`](unsigned-preview-SHA256SUMS.draft.txt).
+[release-page copy](unsigned-preview-release-page-draft.md). The approved
+checksum manifest is [`SHA256SUMS.txt`](SHA256SUMS.txt).
 
 ## Documentation
 

@@ -1,8 +1,9 @@
 # Unsigned preview publication and rollback runbook
 
-Status: unexecuted planning document. It grants no authority to create or move
-a tag, upload an artifact, create a GitHub Release (including a draft), change a
-repository setting, publish, distribute, or remove public material.
+Status: the developer approved the exact non-public draft identity, final text,
+checksum manifest, and three-asset upload on 2026-08-30. This approval does not
+authorize changing the reviewed draft from non-public to public, changing a
+repository setting, signing, distributing, or removing public material.
 
 ## Fixed scope
 
@@ -10,10 +11,21 @@ This runbook applies only to the two candidate hashes recorded in
 [`unsigned-preview-candidate-evidence.md`](unsigned-preview-candidate-evidence.md)
 and source commit `a5482e9d51657a0cfb4471215a91750c5ba7db95`.
 
-The proposed channel is a GitHub Release in
-`gregweir/ai-engine-room`. The developer has not approved that channel, a tag,
-a release title, a prerelease identifier, or publication. Choosing any of them
-is a major decision. A different channel or any changed artifact requires a new
+The approved draft channel and identity are:
+
+- repository and channel: GitHub Release in `gregweir/ai-engine-room`;
+- target source commit: `a5482e9d51657a0cfb4471215a91750c5ba7db95`;
+- tag: `v0.1.0-preview.1`;
+- release title: `AI Engine Room 0.1.0 unsigned preview`;
+- GitHub release setting: prerelease;
+- checksum manifest: `SHA256SUMS.txt`; and
+- initial state: non-public draft.
+
+The developer is Greg Weir. The application and package publisher metadata is
+Tartanleaf.com Inc. Because this preview is unsigned, that metadata is not an
+authenticated Authenticode publisher identity.
+
+A different channel, identity, setting, or changed artifact requires a new
 review and explicit authorization rather than adapting this runbook silently.
 
 No updater, APT repository, Microsoft Store submission, package manager,
@@ -71,18 +83,17 @@ $installer = ".\AI Engine Room_0.1.0_x64-setup.exe"
 ```
 
 The results must match the evidence record exactly. Verify that the two lines in
-`unsigned-preview-SHA256SUMS.draft.txt` match those fresh results byte for byte.
-Copy them into the developer-approved final checksum-manifest filename without
-adding machine paths, timestamps, or comments.
+the approved `SHA256SUMS.txt` match those fresh results byte for byte. Do not
+copy from, generate from, or upload the obsolete draft manifest.
 
 Stop if a candidate changed, disappeared, acquired a signature, or no longer
-passes read-only package inspection. Do not rebuild under the same proposed
+passes read-only package inspection. Do not rebuild under the same approved
 release identity.
 
 ## Draft creation and upload
 
-This section remains prohibited until the entry-gate approval explicitly names
-the final values.
+This section is authorized only for the exact approved values above and only
+while the GitHub Release remains a non-public draft.
 
 1. Confirm the authenticated GitHub account and repository target read-only.
 2. Confirm that the approved tag and release title do not already exist. Do not
@@ -90,8 +101,10 @@ the final values.
 3. Create a non-public draft release targeting exact source commit
    `a5482e9d51657a0cfb4471215a91750c5ba7db95` and using the approved prerelease
    setting.
-4. Insert the reviewed final page/release-note text without weakening the
-   unsigned warning or removing any qualification.
+4. Use
+   `unsigned-preview-release-page-draft.md` as the exact reviewed GitHub
+   Release body. Do not use the repository-relative release-notes copy as the
+   release body. Do not weaken the unsigned warning or remove any qualification.
 5. Upload exactly three assets:
    - `AI Engine Room_0.1.0_amd64.deb`;
    - `AI Engine Room_0.1.0_x64-setup.exe`; and
