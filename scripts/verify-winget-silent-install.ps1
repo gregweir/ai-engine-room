@@ -6,7 +6,7 @@ param()
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
-$ExpectedBranch = 'codex/winget-executable-discovery-verification'
+$ExpectedBranch = 'codex/winget-network-attribution-verification'
 $ExpectedFileName = 'AI.Engine.Room_0.1.0_x64-setup.exe'
 $ExpectedBytes = 2651735
 $ExpectedSha256 = '6bfa7b6aa4998efc3275eeae12917242526fb2dca8e970630d8b4f1e23f3b399'
