@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=AI Engine Room
+GenericName=Local AI Observation
+Comment=Understand what supported local AI tools report
+Exec=ai-engine-room
+Icon=${SNAP}/meta/gui/ai-engine-room.png
+Terminal=false
+Type=Application
+Categories=Utility;System;
