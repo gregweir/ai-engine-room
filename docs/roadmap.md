@@ -78,6 +78,14 @@ The current sequence is documentation-led and separately gated:
   content contract, candidate evidence requirements, and maintenance
   responsibility. It does not approve a website change, manifest, release,
   submission, or installer run.
+- **1X-D — publisher-page copy drafted; publication not authorized:** a
+  [repository-local copy draft](distribution/winget-publisher-page-copy-draft.md)
+  records the exact current preview identity, unsigned warning, bounded product
+  and privacy claims, direct immutable downloads, project routes, and an
+  explicit package-manager status statement. A point-in-time catalog check
+  found no current `Tartanleaf.AIEngineRoom` entry, but the tentative identifier
+  is not reserved or approved. The draft has not been added to the Tartanleaf
+  website and does not establish WinGet readiness.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
