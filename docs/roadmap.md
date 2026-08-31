@@ -44,11 +44,14 @@ The current sequence is documentation-led and separately gated:
 - **1W-B — complete:** a concise quick start, user guide, glossary, and this
   public roadmap structure were added under the
   [bounded contract](design/milestone-1w-b-guides-roadmap-contract.md).
-- **1W-C — current:** add one accessible, source-derived workflow diagram under
-  the [bounded visual contract](design/milestone-1w-c-workflow-visual-contract.md).
+- **1W-C — complete:** one accessible, source-derived workflow diagram was added
+  under the [bounded visual contract](design/milestone-1w-c-workflow-visual-contract.md).
   It is explicitly not a native screenshot or readiness claim.
-- **1W-D — next decision:** non-specialist validation and any resulting
-  readiness-claim change require separate developer authorization.
+- **1W-D — current preparation:** create a privacy-conscious, moderated
+  non-specialist validation kit under the
+  [bounded preparation contract](design/milestone-1w-d-validation-preparation-contract.md).
+  No participant session or resulting readiness-claim change is asserted by
+  preparation alone.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
