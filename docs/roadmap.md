@@ -162,7 +162,7 @@ The current sequence is documentation-led and separately gated:
   The recommended next slice is a separately approved static Snapcraft
   packaging proposal; no account, name, build, install, upload, store contact,
   or release is authorized.
-- **1Y-B — static Snapcraft proposal prepared; merge decision required:** the
+- **1Y-B — static Snapcraft proposal complete:** the
   [bounded contract](design/milestone-1y-b-snapcraft-static-proposal-contract.md),
   [strict/devel definition](../snap/snapcraft.yaml), desktop launcher, static
   safeguards, and [proposal record](distribution/snapcraft-static-proposal.md)
@@ -171,6 +171,15 @@ The current sequence is documentation-led and separately gated:
   generated permissions and the complete build remain unproved. The next
   recommended step is a separately approved one-build gate that stops before
   installation or any store action.
+- **1Y-C — one-build gate prepared; merge decision required:** the
+  [preparation contract](design/milestone-1y-c-snapcraft-one-build-preparation-contract.md)
+  fixes the `54d58e2` source baseline and proposes exactly one disposable
+  Ubuntu 24.04 amd64 extension-expansion and conditional build run. The run
+  must stop before compilation if the GNOME extension generates unjustified
+  access, including `mount-observe` or `calendar-service`, and must always stop
+  before installation or store activity. No workflow, Snapcraft invocation,
+  expansion, download, build, account action, or run is authorized by this
+  preparation.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -191,8 +200,8 @@ signed release is authorized.
 - A bounded WinGet silent-install feasibility run only after a supported
   disposable Windows environment and exact candidate receive a renewed gate,
   followed by a separate submission decision only if that candidate passes.
-- A separately gated Snapcraft extension-expansion and one-build gate after
-  approval of the static proposal, followed only later by bounded
+- A separately gated Snapcraft extension-expansion and one-build execution
+  change after approval of the 1Y-C preparation, followed only later by bounded
   strict-confinement installation and acceptance evidence. PPA and official
   Debian/Ubuntu source-package work remain later, higher-effort possibilities.
 - A documentation-led

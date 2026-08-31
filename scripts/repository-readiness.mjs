@@ -23,6 +23,7 @@ const required = [
   ".github/PULL_REQUEST_TEMPLATE.md",
   ".github/workflows/deterministic.yml",
   "docs/roadmap.md",
+  "docs/design/milestone-1y-c-snapcraft-one-build-preparation-contract.md",
   "docs/release/linux-pre-release-verification.md",
   "docs/release/linux-pre-release-build-evidence.md",
   "docs/release/lm-studio-live-verification.md",
@@ -336,6 +337,9 @@ const diagnosisSource = read("src-tauri/src/diagnosis.rs");
 const tauriLibSource = read("src-tauri/src/lib.rs");
 const snapcraftProposal = read("snap/snapcraft.yaml");
 const snapDesktop = read("snap/gui/ai-engine-room.desktop");
+const snapcraftBuildPreparation = read(
+  "docs/design/milestone-1y-c-snapcraft-one-build-preparation-contract.md",
+);
 
 const sourceSection = (source, start, end) => {
   const startIndex = source.indexOf(start);
@@ -448,6 +452,34 @@ assert.match(
 );
 assert.match(snapDesktop, /^Terminal=false$/m);
 assert.doesNotMatch(snapDesktop, /(?:sh|bash|powershell|cmd)(?:\s|$)/im);
+assert.match(
+  snapcraftBuildPreparation,
+  /Source and baseline commit \| `54d58e209399b830e929e4793e06dc778960689f`/,
+);
+assert.match(
+  snapcraftBuildPreparation,
+  /Definition Git blob \| `ff6d085085ae7dd693e2834541c5b1cb2c3c965c`/,
+);
+assert.match(snapcraftBuildPreparation, /exactly one fresh GitHub-hosted/);
+assert.match(snapcraftBuildPreparation, /`ubuntu-24\.04` amd64/);
+assert.match(snapcraftBuildPreparation, /`contents: read`/);
+assert.match(snapcraftBuildPreparation, /45-minute job timeout/);
+assert.match(snapcraftBuildPreparation, /`snapcraft expand-extensions`/);
+assert.match(snapcraftBuildPreparation, /`mount-observe` and `calendar-service`/);
+assert.match(snapcraftBuildPreparation, /`--destructive-mode`/);
+assert.match(snapcraftBuildPreparation, /Exactly one `\.snap` must exist/);
+assert.match(
+  snapcraftBuildPreparation,
+  /must not be uploaded as a workflow\s+artifact, installed, launched, refreshed, published, or retained/,
+);
+assert.match(
+  snapcraftBuildPreparation,
+  /must\s+separately approve:[\s\S]*execution change[\s\S]*exactly one run/,
+);
+assert.match(
+  snapcraftBuildPreparation,
+  /does not authorize installing or invoking\s+Snapcraft/,
+);
 assert.ok(!("remote" in capability), "capability must remain local");
 assert.match(cargo, /^version = "0\.1\.0"$/m);
 assert.match(
