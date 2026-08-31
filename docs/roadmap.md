@@ -116,13 +116,16 @@ The current sequence is documentation-led and separately gated:
   and preserves cleanup after any stopped installer execution. This milestone
   creates no installer workflow and authorizes no run. A second disposable
   execution still requires a new explicit developer gate.
-- **1X-H — exact rerun contract proposed; execution not authorized:** the
-  [proposed contract](design/milestone-1x-h-disposable-windows-rerun-contract.md)
-  identifies the reviewed procedure blob, unchanged public candidate, explicit
-  Windows Server 2025 runner family, single-run workflow lifecycle, required
-  evidence, cleanup, and no-retry boundary. This preparation creates no
-  workflow and performs no installer action. After it is reviewed and merged,
-  one new run may occur only through a separate explicit developer approval.
+- **1X-H — one-run gate consumed; stopped on external connection:** the
+  [contract](design/milestone-1x-h-disposable-windows-rerun-contract.md) and
+  exact workflow commit received separate developer approval. Installation,
+  registered identity, DisplayIcon resolution, and executable metadata passed
+  on the one disposable Windows job. The bounded launch then observed one
+  established non-loopback connection and stopped; registered cleanup passed.
+  The workflow was removed and no retry is authorized. The
+  [verification record](distribution/winget-disposable-runner-verification-record.md)
+  makes no claim about transmitted content or destination purpose and grants no
+  complete silent-install/removal conclusion, manifest, or submission authority.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
