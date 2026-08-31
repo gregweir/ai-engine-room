@@ -77,7 +77,14 @@ unindexed or unrelated page can exist.
 The public release identity remains `v0.1.0-preview.1`, while the installer and
 existing Installed apps evidence use `0.1.0`. The existing preview was not
 designed as a WinGet version contract and must not be repurposed automatically.
-Version alignment remains unresolved.
+At this preflight, the relationship had not yet been resolved.
+
+A subsequent documentation review clarified that current WinGet guidance
+recommends matching `PackageVersion` to the installed Apps & Features version.
+The existing candidate would therefore use `0.1.0`; its prerelease tag is a
+separate channel label that requires consistent explanation rather than an
+automatic schema failure. See the
+[identity and publisher-page plan](winget-identity-and-publisher-page-plan.md).
 
 ## Evidence sources
 
@@ -103,5 +110,6 @@ available. A renewed developer gate should approve:
 5. the observation and stop procedure for dialogs, warnings, processes, and
    network activity.
 
-The publisher-page and version-alignment gaps can be addressed separately, but
-neither should trigger release or website changes without its own approval.
+The publisher-page and release-identity clarity work can be addressed
+separately, but neither should trigger release or website changes without its
+own approval.
