@@ -1,0 +1,128 @@
+name: One-time WinGet network-attribution verification
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Exact disposable-Windows attribution run
+    if: >-
+      github.repository == 'gregweir/ai-engine-room' &&
+      github.head_ref == 'codex/winget-network-attribution-verification' &&
+      github.event.pull_request.head.repo.full_name == 'gregweir/ai-engine-room'
+    runs-on: windows-2025
+    timeout-minutes: 10
+    env:
+      AER_WINGET_FEASIBILITY_APPROVED: 'true'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Verify runner and exact execution history
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Set-StrictMode -Version Latest
+
+          $os = Get-CimInstance Win32_OperatingSystem
+          [ordered]@{
+            runner_environment = $env:RUNNER_ENVIRONMENT
+            runner_os = $env:RUNNER_OS
+            runner_arch = $env:RUNNER_ARCH
+            image_os = $env:ImageOS
+            image_version = $env:ImageVersion
+            windows_caption = $os.Caption
+            windows_version = $os.Version
+            windows_build = $os.BuildNumber
+          } | ConvertTo-Json | Write-Host
+
+          if ($env:RUNNER_ENVIRONMENT -ne 'github-hosted') {
+            throw 'The runner is not GitHub-hosted.'
+          }
+          if ($env:RUNNER_OS -ne 'Windows' -or $env:RUNNER_ARCH -ne 'X64') {
+            throw 'The runner is not Windows x64.'
+          }
+          if ($os.Caption -notmatch 'Windows Server 2025' -or $os.Version -ne '10.0.26100') {
+            throw "Unexpected Windows runner identity: $($os.Caption) $($os.Version)."
+          }
+
+          $event = Get-Content -Raw -LiteralPath $env:GITHUB_EVENT_PATH | ConvertFrom-Json
+          $actualHead = (git rev-parse HEAD).Trim()
+          if ($LASTEXITCODE -ne 0 -or $actualHead -ne $event.pull_request.head.sha) {
+            throw "Checked-out head mismatch: $actualHead."
+          }
+
+          $expectedBase = 'c9b40951cd37823f777ab07922bd062383d060d5'
+          if ($event.pull_request.base.sha -ne $expectedBase) {
+            throw "Pull-request base mismatch: $($event.pull_request.base.sha)."
+          }
+          $expectedProcedureCommit = 'c34644adf8b5e2d0be0f25b189d627b03e98881d'
+          $actualParent = (git rev-parse 'HEAD^').Trim()
+          if ($LASTEXITCODE -ne 0 -or $actualParent -ne $expectedProcedureCommit) {
+            throw "Workflow commit parent mismatch: $actualParent."
+          }
+          $actualGrandparent = (git rev-parse 'HEAD^^').Trim()
+          if ($LASTEXITCODE -ne 0 -or $actualGrandparent -ne $expectedBase) {
+            throw "Procedure commit parent mismatch: $actualGrandparent."
+          }
+
+          $procedurePaths = @(git diff --name-only $expectedBase $expectedProcedureCommit)
+          if ($LASTEXITCODE -ne 0 -or
+              $procedurePaths.Count -ne 1 -or
+              $procedurePaths[0] -ne 'scripts/verify-winget-silent-install.ps1') {
+            throw "Unexpected procedure-commit changes: $($procedurePaths -join ', ')."
+          }
+          $workflowPaths = @(git diff --name-only $expectedProcedureCommit HEAD)
+          if ($LASTEXITCODE -ne 0 -or
+              $workflowPaths.Count -ne 1 -or
+              $workflowPaths[0] -ne '.github/workflows/winget-network-attribution-verification.yml') {
+            throw "Unexpected workflow-commit changes: $($workflowPaths -join ', ')."
+          }
+          $allPaths = @(git diff --name-only $expectedBase HEAD | Sort-Object)
+          $expectedPaths = @(
+            '.github/workflows/winget-network-attribution-verification.yml',
+            'scripts/verify-winget-silent-install.ps1'
+          ) | Sort-Object
+          if ($LASTEXITCODE -ne 0 -or
+              $allPaths.Count -ne $expectedPaths.Count -or
+              (Compare-Object -ReferenceObject $expectedPaths -DifferenceObject $allPaths)) {
+            throw "Unexpected execution-branch changes: $($allPaths -join ', ')."
+          }
+
+          $actualBlob = (git hash-object -- 'scripts/verify-winget-silent-install.ps1').Trim()
+          if ($LASTEXITCODE -ne 0) {
+            throw 'Unable to calculate the reviewed procedure blob.'
+          }
+          $expectedBlob = '80071fab2377cbafa6276f16e8fb402f8bb01e14'
+          if ($actualBlob -ne $expectedBlob) {
+            throw "Procedure blob mismatch: $actualBlob."
+          }
+
+          $scriptText = Get-Content -Raw -LiteralPath 'scripts/verify-winget-silent-install.ps1'
+          $requiredCandidateLiterals = @(
+            '$ExpectedBranch = ''codex/winget-network-attribution-verification''',
+            '$ExpectedFileName = ''AI.Engine.Room_0.1.0_x64-setup.exe''',
+            '$ExpectedBytes = 2651735',
+            '$ExpectedSha256 = ''6bfa7b6aa4998efc3275eeae12917242526fb2dca8e970630d8b4f1e23f3b399''',
+            '$ExpectedVersion = ''0.1.0''',
+            '$ExpectedPublisher = ''Tartanleaf.com Inc.''',
+            'Assert-Equal -Actual $SignatureStatus -Expected ''NotSigned'' -Label ''Authenticode status'''
+          )
+          foreach ($literal in $requiredCandidateLiterals) {
+            if (-not $scriptText.Contains($literal)) {
+              throw "Candidate constant is absent: $literal"
+            }
+          }
+
+      - name: Run the separately approved procedure once
+        shell: pwsh
+        run: ./scripts/verify-winget-silent-install.ps1
