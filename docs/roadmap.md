@@ -144,14 +144,24 @@ The current sequence is documentation-led and separately gated:
   makes no claim about destination purpose or transmitted content and grants no
   retry, complete silent-install/removal conclusion, manifest, submission, or
   product network-observability authority.
-- **1X-K — WinGet disposition prepared; merge decision required:** the
-  [proposed closure contract](design/milestone-1x-k-winget-disposition-contract.md)
+- **1X-K — WinGet disposition complete:** the
+  [closure contract](design/milestone-1x-k-winget-disposition-contract.md)
   and [disposition record](distribution/winget-disposition.md) recommend
   deferring the exact `v0.1.0-preview.1` candidate from WinGet. The result is
   not a prediction of Microsoft acceptance or rejection. It preserves the
   final attributed stop, authorizes no fourth run or manifest, and identifies a
   documentation-only Snap Store feasibility study as the next separately gated
   distribution-planning candidate.
+- **1Y-A — Snap Store feasibility prepared; merge decision required:** the
+  [documentation-only contract](design/milestone-1y-a-snap-store-feasibility-contract.md)
+  and [feasibility assessment](distribution/snap-store-feasibility-assessment.md)
+  find the route feasible in principle but not packaging-ready. Current
+  official documentation identifies a free developer account and store-signed
+  assertions, with no conventional certificate purchase or submission fee
+  identified in the normal flow. Strict-confinement behavior remains unproved.
+  The recommended next slice is a separately approved static Snapcraft
+  packaging proposal; no account, name, build, install, upload, store contact,
+  or release is authorized.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -172,9 +182,10 @@ signed release is authorized.
 - A bounded WinGet silent-install feasibility run only after a supported
   disposable Windows environment and exact candidate receive a renewed gate,
   followed by a separate submission decision only if that candidate passes.
-- A separately gated Snap Store feasibility study after approval of the WinGet
-  disposition. PPA and official Debian/Ubuntu source-package work remain later,
-  higher-effort possibilities.
+- A separately gated static Snapcraft packaging proposal after approval of the
+  feasibility assessment, followed only later by bounded strict-confinement
+  build and acceptance evidence. PPA and official Debian/Ubuntu source-package
+  work remain later, higher-effort possibilities.
 - A documentation-led
   [bounded network-observability feasibility study](design/bounded-network-observability-planning-note.md)
   to determine whether the verified Windows and Linux platforms can provide
