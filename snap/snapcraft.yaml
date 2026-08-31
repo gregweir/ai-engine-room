@@ -1,0 +1,65 @@
+name: ai-engine-room
+title: AI Engine Room
+version: "0.1.0"
+summary: Understand what supported local AI tools report
+description: |
+  AI Engine Room helps people observe and understand supported local AI
+  runtimes. It presents bounded runtime, model, and machine evidence in plain
+  language without starting, stopping, or reconfiguring providers.
+
+  This strict, development-grade package definition is an unbuilt technical
+  proposal. It is not a published or accepted Snap Store package.
+
+website: https://www.tartanleaf.com/ai-engine-room/
+source-code: https://github.com/gregweir/ai-engine-room
+issues: https://github.com/gregweir/ai-engine-room/issues
+contact: mailto:gweir@tartanleaf.com
+license: Apache-2.0
+icon: src-tauri/icons/icon.png
+
+base: core24
+grade: devel
+confinement: strict
+
+platforms:
+  amd64:
+
+apps:
+  ai-engine-room:
+    command: bin/aiengineroom
+    common-id: com.tartanleaf.aiengineroom
+    extensions:
+      - gnome
+    plugs:
+      - network
+
+parts:
+  ai-engine-room:
+    plugin: rust
+    source: .
+    rust-path:
+      - src-tauri
+    rust-channel: "1.77.2"
+    build-snaps:
+      - node/24/stable
+    build-packages:
+      - desktop-file-utils
+      - libappindicator3-dev
+      - librsvg2-dev
+      - libwebkit2gtk-4.1-dev
+      - patchelf
+    override-build: |
+      npm ci
+      npm run build
+      craftctl default
+
+      install -Dm644 "$CRAFT_PART_SRC/LICENSE" \
+        "$CRAFT_PART_INSTALL/licenses/LICENSE"
+      install -Dm644 "$CRAFT_PART_SRC/NOTICE" \
+        "$CRAFT_PART_INSTALL/licenses/NOTICE"
+      install -Dm644 "$CRAFT_PART_SRC/THIRD-PARTY-LICENSES.txt" \
+        "$CRAFT_PART_INSTALL/licenses/THIRD-PARTY-LICENSES.txt"
+      install -Dm644 "$CRAFT_PART_SRC/THIRD-PARTY-SOURCES.txt" \
+        "$CRAFT_PART_INSTALL/licenses/THIRD-PARTY-SOURCES.txt"
+      install -Dm644 "$CRAFT_PART_SRC/src-tauri/icons/icon.png" \
+        "$CRAFT_PART_INSTALL/meta/gui/ai-engine-room.png"

@@ -34,6 +34,8 @@ const required = [
   "docs/release/signpath-eligibility-assessment.md",
   "src-tauri/tauri.windows.conf.json",
   "packaging/debian/copyright",
+  "snap/snapcraft.yaml",
+  "snap/gui/ai-engine-room.desktop",
   "third-party/generated-manifest.json",
 ];
 for (const path of required) assert.ok(existsSync(path), `missing ${path}`);
@@ -332,6 +334,8 @@ const diagnoseWorkspaceSource = read(
 );
 const diagnosisSource = read("src-tauri/src/diagnosis.rs");
 const tauriLibSource = read("src-tauri/src/lib.rs");
+const snapcraftProposal = read("snap/snapcraft.yaml");
+const snapDesktop = read("snap/gui/ai-engine-room.desktop");
 
 const sourceSection = (source, start, end) => {
   const startIndex = source.indexOf(start);
@@ -393,6 +397,57 @@ assert.deepEqual(capability.permissions, [
   "core:default",
   "clipboard-manager:allow-write-text",
 ]);
+assert.match(snapcraftProposal, /^name: ai-engine-room$/m);
+assert.match(snapcraftProposal, /^version: "0\.1\.0"$/m);
+assert.match(snapcraftProposal, /^license: Apache-2\.0$/m);
+assert.match(snapcraftProposal, /^base: core24$/m);
+assert.match(snapcraftProposal, /^grade: devel$/m);
+assert.match(snapcraftProposal, /^confinement: strict$/m);
+assert.match(snapcraftProposal, /^  amd64:$/m);
+assert.doesNotMatch(
+  snapcraftProposal,
+  /^  (arm64|armhf|i386|riscv64|s390x):$/m,
+);
+assert.match(snapcraftProposal, /^    command: bin\/aiengineroom$/m);
+assert.match(
+  snapcraftProposal,
+  /^    common-id: com\.tartanleaf\.aiengineroom$/m,
+);
+assert.match(snapcraftProposal, /^      - gnome$/m);
+assert.match(snapcraftProposal, /^      - network$/m);
+assert.doesNotMatch(snapcraftProposal, /confinement: (classic|devmode)/);
+for (const forbiddenPlug of [
+  "home",
+  "network-bind",
+  "network-control",
+  "process-control",
+  "system-observe",
+]) {
+  assert.doesNotMatch(
+    snapcraftProposal,
+    new RegExp(`^\\s+- ${forbiddenPlug}$`, "m"),
+    `static Snap proposal must not add ${forbiddenPlug}`,
+  );
+}
+for (const payload of [
+  "LICENSE",
+  "NOTICE",
+  "THIRD-PARTY-LICENSES.txt",
+  "THIRD-PARTY-SOURCES.txt",
+]) {
+  assert.match(
+    snapcraftProposal,
+    new RegExp(`CRAFT_PART_INSTALL/licenses/${payload.replaceAll(".", "\\.")}`),
+    `static Snap proposal must retain ${payload}`,
+  );
+}
+assert.match(snapDesktop, /^Exec=ai-engine-room$/m);
+assert.match(
+  snapDesktop,
+  /^Icon=\$\{SNAP\}\/meta\/gui\/ai-engine-room\.png$/m,
+);
+assert.match(snapDesktop, /^Terminal=false$/m);
+assert.doesNotMatch(snapDesktop, /(?:sh|bash|powershell|cmd)(?:\s|$)/im);
 assert.ok(!("remote" in capability), "capability must remain local");
 assert.match(cargo, /^version = "0\.1\.0"$/m);
 assert.match(

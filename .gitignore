@@ -19,6 +19,13 @@ dist/
 # Rust / Tauri build artifacts
 target/
 
+# Snapcraft build artifacts
+/.snapcraft/
+/parts/
+/prime/
+/stage/
+/*.snap
+
 # Logs and temporary files
 *.log
 logs/

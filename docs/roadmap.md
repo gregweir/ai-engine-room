@@ -152,7 +152,7 @@ The current sequence is documentation-led and separately gated:
   final attributed stop, authorizes no fourth run or manifest, and identifies a
   documentation-only Snap Store feasibility study as the next separately gated
   distribution-planning candidate.
-- **1Y-A — Snap Store feasibility prepared; merge decision required:** the
+- **1Y-A — Snap Store feasibility complete:** the
   [documentation-only contract](design/milestone-1y-a-snap-store-feasibility-contract.md)
   and [feasibility assessment](distribution/snap-store-feasibility-assessment.md)
   find the route feasible in principle but not packaging-ready. Current
@@ -162,6 +162,15 @@ The current sequence is documentation-led and separately gated:
   The recommended next slice is a separately approved static Snapcraft
   packaging proposal; no account, name, build, install, upload, store contact,
   or release is authorized.
+- **1Y-B — static Snapcraft proposal prepared; merge decision required:** the
+  [bounded contract](design/milestone-1y-b-snapcraft-static-proposal-contract.md),
+  [strict/devel definition](../snap/snapcraft.yaml), desktop launcher, static
+  safeguards, and [proposal record](distribution/snapcraft-static-proposal.md)
+  provide an inspectable amd64 source-build hypothesis. Nothing was expanded,
+  downloaded, built, installed, registered, or uploaded. The GNOME extension's
+  generated permissions and the complete build remain unproved. The next
+  recommended step is a separately approved one-build gate that stops before
+  installation or any store action.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -182,10 +191,10 @@ signed release is authorized.
 - A bounded WinGet silent-install feasibility run only after a supported
   disposable Windows environment and exact candidate receive a renewed gate,
   followed by a separate submission decision only if that candidate passes.
-- A separately gated static Snapcraft packaging proposal after approval of the
-  feasibility assessment, followed only later by bounded strict-confinement
-  build and acceptance evidence. PPA and official Debian/Ubuntu source-package
-  work remain later, higher-effort possibilities.
+- A separately gated Snapcraft extension-expansion and one-build gate after
+  approval of the static proposal, followed only later by bounded
+  strict-confinement installation and acceptance evidence. PPA and official
+  Debian/Ubuntu source-package work remain later, higher-effort possibilities.
 - A documentation-led
   [bounded network-observability feasibility study](design/bounded-network-observability-planning-note.md)
   to determine whether the verified Windows and Linux platforms can provide
