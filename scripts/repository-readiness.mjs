@@ -403,18 +403,18 @@ assert.match(snapcraftProposal, /^license: Apache-2\.0$/m);
 assert.match(snapcraftProposal, /^base: core24$/m);
 assert.match(snapcraftProposal, /^grade: devel$/m);
 assert.match(snapcraftProposal, /^confinement: strict$/m);
-assert.match(snapcraftProposal, /^  amd64:$/m);
+assert.match(snapcraftProposal, /^ {2}amd64:$/m);
 assert.doesNotMatch(
   snapcraftProposal,
-  /^  (arm64|armhf|i386|riscv64|s390x):$/m,
+  /^ {2}(arm64|armhf|i386|riscv64|s390x):$/m,
 );
-assert.match(snapcraftProposal, /^    command: bin\/aiengineroom$/m);
+assert.match(snapcraftProposal, /^ {4}command: bin\/aiengineroom$/m);
 assert.match(
   snapcraftProposal,
-  /^    common-id: com\.tartanleaf\.aiengineroom$/m,
+  /^ {4}common-id: com\.tartanleaf\.aiengineroom$/m,
 );
-assert.match(snapcraftProposal, /^      - gnome$/m);
-assert.match(snapcraftProposal, /^      - network$/m);
+assert.match(snapcraftProposal, /^ {6}- gnome$/m);
+assert.match(snapcraftProposal, /^ {6}- network$/m);
 assert.doesNotMatch(snapcraftProposal, /confinement: (classic|devmode)/);
 for (const forbiddenPlug of [
   "home",
