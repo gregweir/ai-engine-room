@@ -134,13 +134,16 @@ The current sequence is documentation-led and separately gated:
   It does not allow-list the observed address, infer destination purpose,
   create a workflow, authorize another run, or begin product network
   observability. Any one-run 1X-J proposal requires a new exact developer gate.
-- **1X-J — one-run attribution contract prepared; execution not authorized:**
-  the [proposed gate](design/milestone-1x-j-network-attribution-run-contract.md)
-  defines the unchanged candidate, disposable runner, bounded process
-  attribution, result interpretation, cleanup, one-time trigger, and
-  no-bypass conditions for a possible final evidence run. Contract approval
-  would not authorize execution: the exact later execution change and exactly
-  one run each require separate developer approval.
+- **1X-J — final one-run attribution gate consumed; attributed stop:** the
+  [contract](design/milestone-1x-j-network-attribution-run-contract.md), exact
+  execution change, and exactly one run received separate developer approval.
+  During bounded launch, the disposable Windows job attributed the established
+  connection to a WebView2 descendant and then completed registered cleanup.
+  The one-time workflow was removed. The
+  [verification record](distribution/winget-disposable-runner-verification-record.md)
+  makes no claim about destination purpose or transmitted content and grants no
+  retry, complete silent-install/removal conclusion, manifest, submission, or
+  product network-observability authority.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or

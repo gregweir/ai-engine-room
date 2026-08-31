@@ -1,6 +1,6 @@
 # WinGet disposable-runner verification record
 
-Status: **STOPPED AFTER TWO SEPARATELY AUTHORIZED RUNS — no complete
+Status: **STOPPED AFTER THREE SEPARATELY AUTHORIZED RUNS — no complete
 silent-install or silent-removal feasibility conclusion** on 2026-08-31.
 
 ## First authorization and exact run
@@ -178,3 +178,72 @@ provides that static interpretation. It preserves the connection stop and adds
 bounded owner-PID process and parent attribution to the inactive procedure. It
 creates no workflow and grants no execution, retry, manifest, or submission
 authority.
+
+## Milestone 1X-J authorized attribution run
+
+The developer separately approved the
+[Milestone 1X-J contract](../design/milestone-1x-j-network-attribution-run-contract.md),
+the exact execution change, and exactly one run using workflow commit
+`48ddf00beee4d6cfd9ecdb61b026eb1382b20682`. The workflow ran once:
+
+| Field | Recorded value |
+| --- | --- |
+| Workflow run | [`33425808598`](https://github.com/gregweir/ai-engine-room/actions/runs/33425808598) |
+| Job | [`99598959867`](https://github.com/gregweir/ai-engine-room/actions/runs/33425808598/job/99598959867) |
+| Workflow commit | `48ddf00beee4d6cfd9ecdb61b026eb1382b20682` |
+| Procedure commit | `c34644adf8b5e2d0be0f25b189d627b03e98881d` |
+| Procedure Git blob | `80071fab2377cbafa6276f16e8fb402f8bb01e14` |
+| Runner environment | `github-hosted` |
+| Runner image OS | `win25-vs2026` |
+| Runner image version | `20260824.214.3` |
+| Windows caption | `Microsoft Windows Server 2025 Datacenter` |
+| Windows version and build | `10.0.26100` / `26100` |
+| Architecture | `X64` |
+
+The repository, branch, pull-request base, execution history, changed paths,
+runner identity, procedure blob, and candidate constants all passed before
+execution. The job concluded once with a failed result after 31 seconds. The
+one-time workflow was removed in commit
+`fe023f0799ccd7865263833de1b39241be51211e` before this evidence update was
+pushed. That branch update did not schedule another disposable job; no retry is
+authorized.
+
+### Candidate, installation, and attributed stop
+
+The unchanged candidate filename, byte size, SHA-256, and `NotSigned`
+Authenticode state matched the earlier runs. The silent installer returned
+exit code `0`. The registered application and resolved executable evidence
+again reported `AI Engine Room`, version `0.1.0`, publisher
+`Tartanleaf.com Inc.`, current-user scope, and `aiengineroom.exe` resolved from
+the registered DisplayIcon inside the install directory.
+
+During bounded application launch, the monitored process tree opened one
+established non-loopback TCP connection:
+
+| Field | Observed value |
+| --- | --- |
+| Phase | `bounded application launch` |
+| Owner process | `msedgewebview2.exe` |
+| Owner PID | `7188` |
+| Attribution method | `owner_pid_lookup` |
+| Process-tree role | `descendant` |
+| Immediate parent | `msedgewebview2.exe` (PID `2852`) |
+| Remote endpoint | `150.171.22.17:443` |
+| State | `Established` |
+
+The procedure stopped immediately and recorded `registered silent uninstall
+completed`. That is successful cleanup after the attributed stop, not the
+planned primary silent-removal pass. The snapshot associates the connection
+with a WebView2 descendant during this run; it does not establish destination
+ownership or purpose, inspect packet content, or show that prompts, responses,
+model data, telemetry, or any other particular content was transmitted.
+
+### Final run conclusion
+
+Milestone 1X-J produced the bounded owner and immediate-parent attribution it
+was designed to collect, so its result class is **attributed stop**. It did not
+complete bounded launch or the primary silent-removal assertions and therefore
+establishes no complete silent-install or silent-removal feasibility claim.
+The final one-run gate is consumed. It grants no retry, address or process
+allow-list, weaker network boundary, WinGet manifest or submission authority,
+release change, or product network-observability implementation.
