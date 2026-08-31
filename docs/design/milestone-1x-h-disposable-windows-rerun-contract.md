@@ -2,10 +2,14 @@
 
 ## Status
 
-Proposed on 2026-08-31 for review and a later developer decision. This
-contract preparation authorizes documentation and deterministic review only.
-It does not authorize creating an executable workflow, downloading the
-candidate, or starting a second disposable-Windows run.
+Completed and consumed on 2026-08-31. The developer separately approved this
+contract, workflow commit `6ab843aaff84f97668acec9d61135f0603bf5c36`,
+and exactly one run. Run `33409278455`, job `99544500003`, stopped on a bounded
+non-loopback connection after installation and executable discovery passed;
+registered cleanup completed. The workflow was removed in
+`9a6b879936f78a064d657e958ad18ef91292fa57`. No retry or execution authority
+remains. See the
+[verification record](../distribution/winget-disposable-runner-verification-record.md).
 
 ## Decision requested after preparation
 
