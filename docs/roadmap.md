@@ -126,6 +126,14 @@ The current sequence is documentation-led and separately gated:
   [verification record](distribution/winget-disposable-runner-verification-record.md)
   makes no claim about transmitted content or destination purpose and grants no
   complete silent-install/removal conclusion, manifest, or submission authority.
+- **1X-I — network-attribution preparation complete; no run authorized:** the
+  [static contract](design/milestone-1x-i-network-attribution-preparation-contract.md)
+  keeps application launch in the readiness question, preserves the first
+  non-loopback-connection stop, and corrects the inactive procedure to record
+  the owner process and immediate parent when the owner PID can be resolved.
+  It does not allow-list the observed address, infer destination purpose,
+  create a workflow, authorize another run, or begin product network
+  observability. Any one-run 1X-J proposal requires a new exact developer gate.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
