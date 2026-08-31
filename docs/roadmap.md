@@ -108,6 +108,14 @@ The current sequence is documentation-led and separately gated:
   establishes no silent-install or silent-removal feasibility conclusion. A
   revised procedure and another run require a new developer gate; no manifest,
   submission, signing action, or WinGet availability claim is authorized.
+- **1X-G — executable-discovery correction in static preparation:** the
+  [preparation contract](design/milestone-1x-g-executable-discovery-preparation-contract.md)
+  replaces the failed hard-coded executable-path assumption with bounded
+  registry and installed-file evidence. It records relative executable
+  inventory, excludes the registered uninstaller, requires a unique candidate,
+  and preserves cleanup after any stopped installer execution. This milestone
+  creates no installer workflow and authorizes no run. A second disposable
+  execution still requires a new explicit developer gate.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or

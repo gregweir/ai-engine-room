@@ -78,3 +78,8 @@ identity from evidence such as the registered `DisplayIcon`, installed-file
 inventory, and installer metadata. The developer must then explicitly approve
 one new exact run and its candidate, environment, stop conditions, and cleanup
 boundary.
+
+The later
+[Milestone 1X-G preparation contract](../design/milestone-1x-g-executable-discovery-preparation-contract.md)
+defines that static procedure correction. It creates no workflow and grants no
+execution authority; the stopped result above remains unchanged.
