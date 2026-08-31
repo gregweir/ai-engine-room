@@ -171,15 +171,16 @@ The current sequence is documentation-led and separately gated:
   generated permissions and the complete build remain unproved. The next
   recommended step is a separately approved one-build gate that stops before
   installation or any store action.
-- **1Y-C — one-build gate prepared; merge decision required:** the
+- **1Y-C — one-run gate consumed; expansion stop:** the
   [preparation contract](design/milestone-1y-c-snapcraft-one-build-preparation-contract.md)
-  fixes the `54d58e2` source baseline and proposes exactly one disposable
-  Ubuntu 24.04 amd64 extension-expansion and conditional build run. The run
-  must stop before compilation if the GNOME extension generates unjustified
-  access, including `mount-observe` or `calendar-service`, and must always stop
-  before installation or store activity. No workflow, Snapcraft invocation,
-  expansion, download, build, account action, or run is authorized by this
-  preparation.
+  and [verification record](distribution/snapcraft-expansion-verification-record.md)
+  document exactly one disposable Ubuntu 24.04 amd64 expansion. Snapcraft
+  `9.0.1` did not generate the anticipated `mount-observe` or
+  `calendar-service` app plugs, but it omitted the reviewed platform mapping
+  and added extension-managed local sources plus an unpinned
+  `canonical/gpu-snap.git` source. The procedure stopped before compilation;
+  no artifact, installation, account, upload, or store action occurred. The
+  workflow and procedure were removed, and no retry is authorized.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -200,10 +201,11 @@ signed release is authorized.
 - A bounded WinGet silent-install feasibility run only after a supported
   disposable Windows environment and exact candidate receive a renewed gate,
   followed by a separate submission decision only if that candidate passes.
-- A separately gated Snapcraft extension-expansion and one-build execution
-  change after approval of the 1Y-C preparation, followed only later by bounded
-  strict-confinement installation and acceptance evidence. PPA and official
-  Debian/Ubuntu source-package work remain later, higher-effort possibilities.
+- A separately gated static Snapcraft source-boundary revision deciding whether
+  to pin and justify all GNOME-extension generated inputs, replace the
+  extension with explicit least-privilege packaging, or defer the channel. No
+  additional expansion or build is authorized. PPA and official Debian/Ubuntu
+  source-package work remain later, higher-effort possibilities.
 - A documentation-led
   [bounded network-observability feasibility study](design/bounded-network-observability-planning-note.md)
   to determine whether the verified Windows and Linux platforms can provide

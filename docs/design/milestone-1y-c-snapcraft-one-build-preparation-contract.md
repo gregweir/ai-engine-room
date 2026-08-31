@@ -2,11 +2,28 @@
 
 ## Status
 
-Developer-authorized on 2026-08-31 for documentation and deterministic
-guardrails only. This preparation does not authorize installing or invoking
-Snapcraft, creating an execution workflow, opening its trigger pull request,
-expanding the GNOME extension, building or installing a Snap, or taking any
-account or store action.
+Gate consumed on 2026-08-31. After the separately approved execution change
+and exactly one separately authorized run, the procedure recorded an
+**expansion stop** before compilation. The one-time workflow and procedure were
+removed, no retry is authorized, and no Snap artifact exists. This consumed
+gate does not authorize installing or invoking Snapcraft again, building or
+installing a Snap, or taking any account or store action.
+
+## Consumed execution record
+
+| Field | Recorded value |
+| --- | --- |
+| Baseline | `ac78d2613c5a5df5e3a9204345273c391c7890e5` |
+| Procedure commit | `b0f1d8bb5260abf961454ec1f82ec50cc97726d9` |
+| Procedure blob | `42d4085daab51730d1837b9d1ca18ea6638c58e9` |
+| Execution commit | `e9ef30a6f21772cfc7e21607bb9ca9caf2107590` |
+| Workflow run | [`33450652377`](https://github.com/gregweir/ai-engine-room/actions/runs/33450652377) |
+| Job | [`99679548099`](https://github.com/gregweir/ai-engine-room/actions/runs/33450652377/job/99679548099) |
+| Result class | `expansion_stop` |
+| Workflow removal | `437243e44a24cfe6eb3e77a48dfdc015179f0b6d` |
+
+The complete evidence and bounded interpretation are in the
+[Snapcraft expansion verification record](../distribution/snapcraft-expansion-verification-record.md).
 
 ## Purpose
 
