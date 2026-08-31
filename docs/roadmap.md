@@ -47,11 +47,19 @@ The current sequence is documentation-led and separately gated:
 - **1W-C — complete:** one accessible, source-derived workflow diagram was added
   under the [bounded visual contract](design/milestone-1w-c-workflow-visual-contract.md).
   It is explicitly not a native screenshot or readiness claim.
-- **1W-D — current preparation:** create a privacy-conscious, moderated
-  non-specialist validation kit under the
-  [bounded preparation contract](design/milestone-1w-d-validation-preparation-contract.md).
-  No participant session or resulting readiness-claim change is asserted by
-  preparation alone.
+- **1W-D — preparation complete; participant round deferred:** a
+  privacy-conscious, moderated non-specialist validation kit is available under
+  the [bounded preparation contract](design/milestone-1w-d-validation-preparation-contract.md).
+  The developer does not currently have three to five willing non-specialist
+  participants or a suitable recruitment path. No session evidence or
+  resulting readiness claim exists, and this deferred round does not block
+  separately gated work.
+- **1X-A — feasibility documented; verification not authorized:** the evidence
+  and stop conditions for evaluating WinGet as the first package-manager
+  channel are recorded under the
+  [bounded feasibility contract](design/milestone-1x-a-winget-feasibility-contract.md)
+  and [WinGet assessment](distribution/winget-feasibility-assessment.md). This
+  preparation does not execute or publish a package.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -69,6 +77,10 @@ signed release is authorized.
 - Future signing through a no-cost eligibility route such as SignPath
   Foundation or through paid organizational identity, after the publisher
   certificate identity is deliberately resolved.
+- A bounded WinGet silent-install feasibility run, followed by a separate
+  submission decision only if the exact candidate passes.
+- A Snap Store feasibility study after the WinGet decision. PPA and official
+  Debian/Ubuntu source-package work remain later, higher-effort possibilities.
 
 These are possibilities, not commitments, schedules, or implementation
 authority.
