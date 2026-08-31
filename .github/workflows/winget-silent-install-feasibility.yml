@@ -1,0 +1,23 @@
+name: One-time WinGet silent-install feasibility
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-exact-public-preview:
+    name: Exact preview on disposable Windows
+    if: >-
+      github.head_ref == 'codex/winget-silent-install-verification' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: windows-latest
+    timeout-minutes: 10
+    env:
+      AER_WINGET_FEASIBILITY_APPROVED: 'true'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Run bounded silent-install and removal verification
+        shell: pwsh
+        run: ./scripts/verify-winget-silent-install.ps1

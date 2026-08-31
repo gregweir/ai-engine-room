@@ -96,6 +96,15 @@ The current sequence is documentation-led and separately gated:
   `Tartanleaf.AIEngineRoom` identifier is still not reserved or approved, and
   no silent-install evidence, manifest, submission, signing, or WinGet
   availability claim follows from publication.
+- **1X-F — disposable-Windows verification authorized; run pending:** the
+  physical Windows Home host still has no supported Windows Sandbox or other
+  local disposable Windows desktop. A
+  [bounded contract](design/milestone-1x-f-disposable-windows-silent-install-contract.md)
+  instead authorizes one branch-scoped run in a fresh GitHub-hosted Windows VM
+  against the exact public preview. The run must stop on any identity, warning,
+  interaction, network, metadata, launch, removal, or no-bypass discrepancy.
+  It does not authorize a manifest, submission, signing action, or WinGet
+  availability claim.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or

@@ -1,6 +1,7 @@
 # WinGet silent-install feasibility preflight record
 
-Status: **stopped before download or execution** on 2026-08-31.
+Status: **physical-host run stopped before download or execution; separately
+approved disposable-runner verification pending** on 2026-08-31.
 
 ## Authorization and boundary
 
@@ -113,3 +114,23 @@ available. A renewed developer gate should approve:
 The publisher-page and release-identity clarity work can be addressed
 separately, but neither should trigger release or website changes without its
 own approval.
+
+## Renewed 1X-F gate
+
+The later publisher-page work closed the official-source discoverability gap
+and is recorded in
+[`tartanleaf-publisher-page-publication-record.md`](tartanleaf-publisher-page-publication-record.md).
+The physical Windows host was rechecked on 2026-08-31 and still reported Home
+edition (`Core`), version 25H2, build `26200.9278`; `WindowsSandbox.exe` and
+Hyper-V Manager were absent, and no VirtualBox, VMware, QEMU, or Hyper-V
+management command was available. The physical-host stop therefore remains in
+force.
+
+The developer separately approved
+[Milestone 1X-F](../design/milestone-1x-f-disposable-windows-silent-install-contract.md),
+which uses one branch-scoped GitHub-hosted `windows-latest` job as the
+equivalent disposable environment. GitHub documents that it provisions a new
+VM for the job and automatically decommissions it afterward. The job is limited
+to the exact candidate above and must preserve every identity, warning,
+interaction, network, metadata, removal, and no-bypass stop condition. This
+record remains pending until that one run and its evidence review complete.
