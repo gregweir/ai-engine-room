@@ -1,10 +1,12 @@
 [CmdletBinding()]
 param()
 
+# Static Milestone 1X-G procedure. No tracked workflow invokes this script.
+# A future execution requires a separate developer-approved exact run gate.
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
-$ExpectedBranch = 'codex/winget-silent-install-verification'
+$ExpectedBranch = 'codex/winget-executable-discovery-verification'
 $ExpectedFileName = 'AI.Engine.Room_0.1.0_x64-setup.exe'
 $ExpectedBytes = 2651735
 $ExpectedSha256 = '6bfa7b6aa4998efc3275eeae12917242526fb2dca8e970630d8b4f1e23f3b399'
@@ -14,6 +16,7 @@ $ExpectedVersion = '0.1.0'
 $DownloadUrl = "https://github.com/gregweir/ai-engine-room/releases/download/v0.1.0-preview.1/$ExpectedFileName"
 $InstallerPath = Join-Path $env:RUNNER_TEMP $ExpectedFileName
 $InstalledDuringRun = $false
+$CandidateExecuted = $false
 $ObservedProcessNames = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
 $ObservedConnections = [System.Collections.Generic.List[object]]::new()
 $Evidence = [ordered]@{
@@ -84,6 +87,132 @@ function Get-EntryValue {
     return $null
   }
   $Property.Value
+}
+
+function ConvertFrom-RegisteredDisplayIcon {
+  param([AllowNull()][string]$DisplayIcon)
+
+  if ([string]::IsNullOrWhiteSpace($DisplayIcon)) {
+    return $null
+  }
+
+  if ($DisplayIcon -match '^\s*"([^"]+\.exe)"(?:\s*,\s*-?\d+)?\s*$') {
+    return $Matches[1]
+  }
+  if ($DisplayIcon -match '^\s*(.+?\.exe)(?:\s*,\s*-?\d+)?\s*$') {
+    return $Matches[1].Trim()
+  }
+
+  return $null
+}
+
+function Test-PathWithinDirectory {
+  param(
+    [Parameter(Mandatory)][string]$Path,
+    [Parameter(Mandatory)][string]$Directory
+  )
+
+  $FullPath = [System.IO.Path]::GetFullPath($Path)
+  $FullDirectory = [System.IO.Path]::GetFullPath($Directory).TrimEnd([char[]]@('\', '/'))
+  $Prefix = "$FullDirectory$([System.IO.Path]::DirectorySeparatorChar)"
+  $FullPath.StartsWith($Prefix, [System.StringComparison]::OrdinalIgnoreCase)
+}
+
+function Resolve-InstalledApplication {
+  param(
+    [Parameter(Mandatory)]$Entry,
+    [Parameter(Mandatory)][string]$InstallLocation
+  )
+
+  $UninstallerPaths = [System.Collections.Generic.HashSet[string]]::new(
+    [System.StringComparer]::OrdinalIgnoreCase
+  )
+  foreach ($Name in @('QuietUninstallString', 'UninstallString')) {
+    $RegisteredCommand = Get-EntryValue -Entry $Entry -Name $Name
+    if ($RegisteredCommand) {
+      try {
+        $ParsedCommand = Split-RegisteredCommand -CommandLine ([string]$RegisteredCommand)
+        [void]$UninstallerPaths.Add([System.IO.Path]::GetFullPath($ParsedCommand.FilePath))
+      } catch {
+        # The existing uninstall validation reports malformed commands separately.
+      }
+    }
+  }
+
+  $DisplayIcon = Get-EntryValue -Entry $Entry -Name 'DisplayIcon'
+  $DisplayIconPath = ConvertFrom-RegisteredDisplayIcon -DisplayIcon ([string]$DisplayIcon)
+  $DisplayIconPathUsable = $false
+  $DisplayIconWithinInstall = $false
+  if ($DisplayIconPath -and (Test-Path -LiteralPath $DisplayIconPath -PathType Leaf)) {
+    $DisplayIconPathUsable = $true
+    $DisplayIconWithinInstall = Test-PathWithinDirectory -Path $DisplayIconPath -Directory $InstallLocation
+  }
+
+  $Records = @(
+    foreach ($Executable in @(Get-ChildItem -LiteralPath $InstallLocation -Filter '*.exe' -File -Recurse)) {
+      $FullPath = [System.IO.Path]::GetFullPath($Executable.FullName)
+      if (-not (Test-PathWithinDirectory -Path $FullPath -Directory $InstallLocation)) {
+        continue
+      }
+      $VersionInfo = $Executable.VersionInfo
+      $IsUninstaller = $UninstallerPaths.Contains($FullPath) -or $Executable.Name -match '^(?i:unins|uninstall)'
+      [pscustomobject]@{
+        Path = $FullPath
+        RelativePath = [System.IO.Path]::GetRelativePath($InstallLocation, $FullPath)
+        Bytes = $Executable.Length
+        ProductName = $VersionInfo.ProductName
+        CompanyName = $VersionInfo.CompanyName
+        FileDescription = $VersionInfo.FileDescription
+        FileVersion = $VersionInfo.FileVersion
+        IsUninstaller = $IsUninstaller
+      }
+    }
+  )
+
+  $ApplicationRecords = @($Records | Where-Object { -not $_.IsUninstaller })
+  $ResolutionMethod = 'none'
+  $Candidates = @()
+  if ($DisplayIconWithinInstall) {
+    $Candidates = @(
+      $ApplicationRecords |
+        Where-Object { $_.Path -eq [System.IO.Path]::GetFullPath($DisplayIconPath) }
+    )
+    if ($Candidates.Count -eq 1) {
+      $ResolutionMethod = 'registered_display_icon'
+    }
+  }
+  if ($Candidates.Count -ne 1) {
+    $Candidates = @($ApplicationRecords | Where-Object { $_.ProductName -eq $ExpectedDisplayName })
+    if ($Candidates.Count -eq 1) {
+      $ResolutionMethod = 'unique_product_name'
+    }
+  }
+  if ($Candidates.Count -ne 1 -and $ApplicationRecords.Count -eq 1) {
+    $Candidates = @($ApplicationRecords)
+    $ResolutionMethod = 'unique_non_uninstaller_executable'
+  }
+
+  [pscustomobject]@{
+    Candidates = $Candidates
+    ResolutionMethod = $ResolutionMethod
+    DisplayIconRegistered = -not [string]::IsNullOrWhiteSpace([string]$DisplayIcon)
+    DisplayIconPathUsable = $DisplayIconPathUsable
+    DisplayIconResolvedWithinInstall = $DisplayIconWithinInstall
+    DisplayIconResolvedOutsideInstall = $DisplayIconPathUsable -and -not $DisplayIconWithinInstall
+    Inventory = @(
+      $Records | ForEach-Object {
+        [ordered]@{
+          relative_path = $_.RelativePath
+          bytes = $_.Bytes
+          product_name = $_.ProductName
+          company_name = $_.CompanyName
+          file_description = $_.FileDescription
+          file_version = $_.FileVersion
+          registered_uninstaller = $_.IsUninstaller
+        }
+      }
+    )
+  }
 }
 
 function Get-ProcessTreeIds {
@@ -252,7 +381,7 @@ try {
 
   $InitialEntries = @(Get-AiEngineRoomEntries)
   Assert-Equal -Actual $InitialEntries.Count -Expected 0 -Label 'Initial Installed Apps entry count'
-  if (Get-Process -Name 'AI Engine Room' -ErrorAction SilentlyContinue) {
+  if (Get-Process -Name 'aiengineroom' -ErrorAction SilentlyContinue) {
     throw 'AI Engine Room was already running in the fresh runner.'
   }
 
@@ -265,6 +394,7 @@ try {
   $SignatureStatus = [string](Get-AuthenticodeSignature -LiteralPath $InstallerPath).Status
   Assert-Equal -Actual $SignatureStatus -Expected 'NotSigned' -Label 'Authenticode status'
 
+  $CandidateExecuted = $true
   $InstallProcess = Start-Process -FilePath $InstallerPath -ArgumentList '/S' -PassThru -WindowStyle Hidden
   $InstallExitCode = Wait-BoundedProcess -Process $InstallProcess -Phase 'silent installation' -TimeoutSeconds 60 -RejectWindows
   Assert-Equal -Actual $InstallExitCode -Expected 0 -Label 'Silent-install exit code'
@@ -297,15 +427,7 @@ try {
   if (-not (Test-Path -LiteralPath $InstallLocation -PathType Container)) {
     throw 'The registered install location does not exist.'
   }
-  $ApplicationPath = Join-Path $InstallLocation 'AI Engine Room.exe'
-  if (-not (Test-Path -LiteralPath $ApplicationPath -PathType Leaf)) {
-    throw 'The installed application executable does not exist.'
-  }
-
-  $VersionInfo = (Get-Item -LiteralPath $ApplicationPath).VersionInfo
-  Assert-Equal -Actual $VersionInfo.ProductName -Expected $ExpectedDisplayName -Label 'Installed executable product name'
-  Assert-Equal -Actual $VersionInfo.CompanyName -Expected $ExpectedPublisher -Label 'Installed executable company'
-
+  $Resolution = Resolve-InstalledApplication -Entry $Entry -InstallLocation $InstallLocation
   $Evidence.install = [ordered]@{
     exit_code = $InstallExitCode
     display_name = $Entry.DisplayName
@@ -313,9 +435,27 @@ try {
     display_version = $Entry.DisplayVersion
     install_scope = if ($Entry.PSPath -like '*HKEY_CURRENT_USER*') { 'user' } else { 'machine' }
     quiet_uninstall_registered = [bool]$QuietUninstallString
-    executable_product_name = $VersionInfo.ProductName
-    executable_company = $VersionInfo.CompanyName
+    display_icon_registered = $Resolution.DisplayIconRegistered
+    display_icon_path_usable = $Resolution.DisplayIconPathUsable
+    display_icon_resolved_within_install = $Resolution.DisplayIconResolvedWithinInstall
+    display_icon_resolved_outside_install = $Resolution.DisplayIconResolvedOutsideInstall
+    executable_resolution_method = $Resolution.ResolutionMethod
+    executable_candidate_count = $Resolution.Candidates.Count
+    executable_inventory = $Resolution.Inventory
+    executable_relative_path = $null
+    executable_product_name = $null
+    executable_company = $null
   }
+  Assert-Equal -Actual $Resolution.DisplayIconResolvedOutsideInstall -Expected $false -Label 'Registered DisplayIcon outside install directory'
+  Assert-Equal -Actual $Resolution.Candidates.Count -Expected 1 -Label 'Installed application executable candidate count'
+  $ApplicationRecord = $Resolution.Candidates[0]
+  $ApplicationPath = $ApplicationRecord.Path
+  $Evidence.install['executable_relative_path'] = $ApplicationRecord.RelativePath
+  $VersionInfo = (Get-Item -LiteralPath $ApplicationPath).VersionInfo
+  Assert-Equal -Actual $VersionInfo.ProductName -Expected $ExpectedDisplayName -Label 'Installed executable product name'
+  Assert-Equal -Actual $VersionInfo.CompanyName -Expected $ExpectedPublisher -Label 'Installed executable company'
+  $Evidence.install['executable_product_name'] = $VersionInfo.ProductName
+  $Evidence.install['executable_company'] = $VersionInfo.CompanyName
 
   $AppProcess = Start-Process -FilePath $ApplicationPath -PassThru -WindowStyle Hidden
   $LaunchStopwatch = [System.Diagnostics.Stopwatch]::StartNew()
@@ -348,7 +488,8 @@ try {
       throw 'The install directory retained files after silent removal.'
     }
   }
-  if (Get-Process -Name 'AI Engine Room' -ErrorAction SilentlyContinue) {
+  $ApplicationProcessName = [System.IO.Path]::GetFileNameWithoutExtension($ApplicationPath)
+  if (Get-Process -Name $ApplicationProcessName -ErrorAction SilentlyContinue) {
     throw 'The application process remained after silent removal.'
   }
 
@@ -365,7 +506,7 @@ try {
   $Evidence.stop_reason = $_.Exception.Message
   throw
 } finally {
-  if ($InstalledDuringRun) {
+  if ($InstalledDuringRun -or ($CandidateExecuted -and $Evidence.result -eq 'stop')) {
     try {
       $CleanupEntries = @(Get-AiEngineRoomEntries)
       if ($CleanupEntries.Count -eq 1) {
