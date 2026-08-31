@@ -2,10 +2,11 @@
 
 ## Status
 
-Developer-directed static preparation on 2026-08-31. This contract authorizes
-procedure correction, documentation, deterministic checks, and review only. It
-does not authorize an installer download or execution, a disposable-runner
-workflow, or a second feasibility run.
+Completed and merged as `4ce1449fce60301256385680f471e89c6dfd9ea8` on
+2026-08-31. This contract authorized procedure correction, documentation,
+deterministic checks, and review only. It did not authorize an installer
+download or execution, a disposable-runner workflow, or a second feasibility
+run.
 
 ## Purpose
 
@@ -86,11 +87,15 @@ Preparation passes only if:
 
 ## Subsequent gate
 
-After this preparation is merged, a separate developer decision may approve or
-defer one new exact run. Approval would need to identify the reviewed procedure
+A separate developer decision may approve or defer one new exact run. Approval
+would need to identify the reviewed procedure
 commit, exact immutable candidate, runner image policy, one-time workflow,
 evidence requirements, and automatic workflow removal. It would authorize one
 run only, not a retry loop or WinGet submission.
+
+The later
+[Milestone 1X-H contract](milestone-1x-h-disposable-windows-rerun-contract.md)
+prepares those exact terms but still grants no execution authority.
 
 ## Related evidence
 
