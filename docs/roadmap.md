@@ -108,7 +108,7 @@ The current sequence is documentation-led and separately gated:
   establishes no silent-install or silent-removal feasibility conclusion. A
   revised procedure and another run require a new developer gate; no manifest,
   submission, signing action, or WinGet availability claim is authorized.
-- **1X-G — executable-discovery correction in static preparation:** the
+- **1X-G — executable-discovery correction complete; no run authorized:** the
   [preparation contract](design/milestone-1x-g-executable-discovery-preparation-contract.md)
   replaces the failed hard-coded executable-path assumption with bounded
   registry and installed-file evidence. It records relative executable
@@ -116,6 +116,13 @@ The current sequence is documentation-led and separately gated:
   and preserves cleanup after any stopped installer execution. This milestone
   creates no installer workflow and authorizes no run. A second disposable
   execution still requires a new explicit developer gate.
+- **1X-H — exact rerun contract proposed; execution not authorized:** the
+  [proposed contract](design/milestone-1x-h-disposable-windows-rerun-contract.md)
+  identifies the reviewed procedure blob, unchanged public candidate, explicit
+  Windows Server 2025 runner family, single-run workflow lifecycle, required
+  evidence, cleanup, and no-retry boundary. This preparation creates no
+  workflow and performs no installer action. After it is reviewed and merged,
+  one new run may occur only through a separate explicit developer approval.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
