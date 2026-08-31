@@ -41,12 +41,13 @@ The current sequence is documentation-led and separately gated:
 
 - **1W-A — complete:** the public front door now states the product's purpose,
   intended audience, and safety boundaries in plain language.
-- **1W-B — current:** add a concise quick start, user guide, glossary, and this
-  public roadmap structure under the
+- **1W-B — complete:** a concise quick start, user guide, glossary, and this
+  public roadmap structure were added under the
   [bounded contract](design/milestone-1w-b-guides-roadmap-contract.md).
-- **1W-C — later decision:** screenshots or diagrams require separate developer
-  authorization and accepted, current visual evidence.
-- **1W-D — later decision:** non-specialist validation and any resulting
+- **1W-C — current:** add one accessible, source-derived workflow diagram under
+  the [bounded visual contract](design/milestone-1w-c-workflow-visual-contract.md).
+  It is explicitly not a native screenshot or readiness claim.
+- **1W-D — next decision:** non-specialist validation and any resulting
   readiness-claim change require separate developer authorization.
 
 A code-signing study remains separate and non-blocking. No certificate

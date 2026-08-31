@@ -80,6 +80,11 @@ The [full user guide](docs/user-guide.md) provides exact verification,
 installation, first-session, and removal instructions. See the
 [glossary](docs/glossary.md) for the application's evidence and safety terms.
 
+![Conceptual AI Engine Room workflow showing the passive Refresh path and the separately authorized observed-inference path](docs/assets/ai-engine-room-workflow.svg)
+
+*Conceptual workflow derived from implemented behavior; this is not a native
+application screenshot.*
+
 ## Current capabilities
 
 - Manually refresh independent Ollama and LM Studio availability, model catalogues, loaded state, and bounded platform-native machine context: available memory, total memory, and native CPU architecture.

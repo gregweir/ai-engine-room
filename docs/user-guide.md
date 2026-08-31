@@ -99,6 +99,11 @@ Installed apps.
 
 ## Your first session
 
+![Conceptual AI Engine Room workflow showing passive observation and the separate per-run observed-inference gate](assets/ai-engine-room-workflow.svg)
+
+*This source-derived workflow explains actions and boundaries; it is not a
+native application screenshot or an exact control layout.*
+
 1. If you want provider observations, start a supported runtime yourself before
    opening AI Engine Room. The app does not start Ollama, LM Studio, or
    llama.cpp.
