@@ -2,8 +2,11 @@
 
 ## Status
 
-Developer-approved on 2026-08-31 for one bounded feasibility run against the
-exact public Windows preview in a fresh GitHub-hosted Windows virtual machine.
+Developer-approved and executed once on 2026-08-31 against the exact public
+Windows preview in a fresh GitHub-hosted Windows virtual machine. The run
+stopped before launch because the expected installed executable path did not
+exist. It established no silent-install or silent-removal feasibility
+conclusion, and this contract does not authorize a retry.
 
 ## Purpose
 
@@ -99,6 +102,11 @@ The milestone passes only if the one-run job completes every authorized step,
 the recorded evidence is internally consistent, a repository record preserves
 the result and limits, deterministic CI passes, and independent review finds no
 scope or evidence discrepancy.
+
+Those criteria were not met. The exact result and containment evidence are
+preserved in the
+[disposable-runner verification record](../distribution/winget-disposable-runner-verification-record.md).
+Any revised procedure and second run require a separate developer gate.
 
 ## Sources
 

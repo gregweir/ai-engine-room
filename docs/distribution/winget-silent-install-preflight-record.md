@@ -1,7 +1,8 @@
 # WinGet silent-install feasibility preflight record
 
-Status: **physical-host run stopped before download or execution; separately
-approved disposable-runner verification pending** on 2026-08-31.
+Status: **physical-host run stopped before download or execution; the later
+one-run disposable verification also stopped without a feasibility
+conclusion** on 2026-08-31.
 
 ## Authorization and boundary
 
@@ -133,4 +134,9 @@ equivalent disposable environment. GitHub documents that it provisions a new
 VM for the job and automatically decommissions it afterward. The job is limited
 to the exact candidate above and must preserve every identity, warning,
 interaction, network, metadata, removal, and no-bypass stop condition. This
-record remains pending until that one run and its evidence review complete.
+one permitted run occurred and stopped after registered installation but before
+application launch because the expected executable path did not exist. Cleanup
+through the registered uninstaller completed. No feasibility conclusion was
+established, and no retry is authorized. The exact evidence and limits are in
+the
+[disposable-runner verification record](winget-disposable-runner-verification-record.md).
