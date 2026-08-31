@@ -1,8 +1,11 @@
 # WinGet identity and publisher-page readiness plan
 
-Status: **documentation only** on 2026-08-31. This plan does not approve a
-package identifier, release candidate, publisher-page change, WinGet manifest,
-external contribution, or installer execution.
+Status: **planning baseline with publisher-page publication recorded** on
+2026-08-31. This plan did not approve a package identifier, release candidate,
+publisher-page change, WinGet manifest, external contribution, or installer
+execution. The later website publication received separate approval and is
+recorded in
+[`tartanleaf-publisher-page-publication-record.md`](tartanleaf-publisher-page-publication-record.md).
 
 ## Decision summary
 
@@ -15,10 +18,11 @@ label, not the installed-version correlation field.
 
 The difference is therefore not automatically a manifest-schema failure. It
 is a provenance and communication issue that must be explained consistently.
-The existing preview still must not be submitted automatically because its
-silent install and removal behavior has not been verified in a disposable
-Windows environment, and the exact installer is not discoverable from an
-official publisher-controlled page.
+The official Tartanleaf publisher page now makes the exact current preview
+discoverable. The existing preview still must not be submitted automatically
+because its silent install and removal behavior has not been verified in a
+supported disposable Windows environment, and the remaining candidate,
+manifest, validation, maintenance, and submission gates are not complete.
 
 ## Current authoritative basis
 
@@ -82,9 +86,12 @@ meaning is explicit and consistent.
 
 ## Publisher-page content contract
 
-Before a WinGet submission, one official Tartanleaf-controlled HTTPS page
-should provide a stable public path to the exact candidate. The smallest useful
-page should state:
+The official
+[AI Engine Room publisher page](https://www.tartanleaf.com/ai-engine-room/) now
+provides a stable public path to the current preview, with the
+[Tartanleaf Tools page](https://www.tartanleaf.com/tools/) as its publisher
+navigation route. Before any later WinGet submission, that page must be updated
+and reverified for the exact candidate. The smallest useful page should state:
 
 1. **Identity:** AI Engine Room; developer Greg Weir; publisher Tartanleaf.com
    Inc.
@@ -138,8 +145,9 @@ directory, validation pass, and reviewed contribution.
 
 ## Explicit stop boundary
 
-This plan does not authorize editing the Tartanleaf website, changing version
-metadata, rebuilding or downloading an installer, creating a release or
-manifest, installing WinGet tooling, forking or contributing to
+This plan did not authorize editing the Tartanleaf website; that later work was
+separately approved and is now recorded. The plan still does not authorize
+changing version metadata, rebuilding or downloading an installer, creating a
+release or manifest, installing WinGet tooling, forking or contributing to
 `microsoft/winget-pkgs`, accepting contributor terms, purchasing a certificate,
 signing code, or claiming WinGet availability.

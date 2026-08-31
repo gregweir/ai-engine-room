@@ -76,16 +76,26 @@ The current sequence is documentation-led and separately gated:
   [readiness plan](distribution/winget-identity-and-publisher-page-plan.md)
   records a tentative durable package identity, an official publisher-page
   content contract, candidate evidence requirements, and maintenance
-  responsibility. It does not approve a website change, manifest, release,
-  submission, or installer run.
-- **1X-D — publisher-page copy drafted; publication not authorized:** a
+  responsibility. That plan did not approve a website change, manifest,
+  release, submission, or installer run; the later website work received its
+  own separate approval.
+- **1X-D — publisher page published and verified:** a
   [repository-local copy draft](distribution/winget-publisher-page-copy-draft.md)
-  records the exact current preview identity, unsigned warning, bounded product
-  and privacy claims, direct immutable downloads, project routes, and an
-  explicit package-manager status statement. A point-in-time catalog check
-  found no current `Tartanleaf.AIEngineRoom` entry, but the tentative identifier
-  is not reserved or approved. The draft has not been added to the Tartanleaf
-  website and does not establish WinGet readiness.
+  was separately reviewed and used to prepare the public
+  [AI Engine Room publisher page](https://www.tartanleaf.com/ai-engine-room/).
+  The public [Tools page](https://www.tartanleaf.com/tools/) now provides a
+  stable route to it. The live copy was later simplified for Tartanleaf's
+  non-technical audience while retaining exact downloads, hashes, warnings,
+  product limits, and the explicit package-manager status.
+- **1X-E — publication record complete:** the
+  [bounded reconciliation contract](design/milestone-1x-e-publisher-page-publication-record-contract.md)
+  and [publication record](distribution/tartanleaf-publisher-page-publication-record.md)
+  distinguish the authoritative live CMS page from its historical source
+  draft and record normal and narrow public verification. The publisher page
+  closes the official-source discoverability gap only. The tentative
+  `Tartanleaf.AIEngineRoom` identifier is still not reserved or approved, and
+  no silent-install evidence, manifest, submission, signing, or WinGet
+  availability claim follows from publication.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
