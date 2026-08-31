@@ -66,9 +66,18 @@ The current sequence is documentation-led and separately gated:
   environment was established. The run stopped before installer download or
   execution. The
   [preflight record](distribution/winget-silent-install-preflight-record.md)
-  also records the still-open publisher-page discoverability and
-  release/version-alignment gaps. A suitable disposable environment and renewed
+  also records the still-open publisher-page discoverability and release-
+  identity clarity work. A suitable disposable environment and renewed
   developer gate are required before another run.
+- **1X-C — identity and publisher-page planning documented:** current WinGet
+  guidance supports using the installed Apps & Features version as
+  `PackageVersion`; the existing preview tag is a separate channel label, not
+  automatically a manifest-version failure. The
+  [readiness plan](distribution/winget-identity-and-publisher-page-plan.md)
+  records a tentative durable package identity, an official publisher-page
+  content contract, candidate evidence requirements, and maintenance
+  responsibility. It does not approve a website change, manifest, release,
+  submission, or installer run.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or

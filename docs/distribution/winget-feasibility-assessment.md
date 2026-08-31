@@ -75,19 +75,21 @@ one machine does not predict that result.
 
 | Gap | Why it matters | Required later evidence |
 | --- | --- | --- |
-| Release/version alignment | WinGet correlates package version with installed Add/Remove Programs metadata. The tag says `preview.1`, while tracked installer metadata says `0.1.0`. | Choose one future immutable candidate whose release, manifest, installer, and installed display version are deliberately aligned. |
+| Release/version clarity | WinGet recommends that `PackageVersion` match installed Apps & Features metadata. The existing artifact reports `0.1.0`; its `v0.1.0-preview.1` tag is a separate channel label, not automatically a schema failure. | For one future immutable candidate, use the installed version consistently in build metadata, filename, Apps & Features, and manifest; explain any separate preview label consistently in the release and publisher page. |
 | Official-source discoverability | Installer URLs must come from and be discoverable through an official publisher source. | Verify that a publisher-controlled HTTPS page identifies the app and links the exact version-specific release asset. |
 | Silent install | Community packages must install without required interaction. | In Windows Sandbox or an equivalent disposable environment, verify the exact NSIS silent switch, exit code, installed files, launch identity, and absence of prompts or warnings. |
 | Silent removal | Validation checks correct uninstall behavior. | Verify the registered uninstaller silently removes the exact installation without residue outside documented platform artifacts. |
 | Installed metadata | Name, publisher, display version, scope, architecture, and product identity must correlate with the manifest. | Capture only the required Add/Remove Programs fields from the isolated test and compare them with the proposed manifest. |
 | Unsigned validation | A schema-compatible unsigned NSIS file can still fail reputation, warning, antivirus, or potentially-unwanted-application checks. | Stop on any warning or scan failure; do not bypass policy. Decide separately whether to remediate, seek no-cost signing, or abandon the channel. |
 | Manifest identity | A durable package identifier and accurate URLs must be stable across updates. | Deliberately approve the identifier—tentatively `Tartanleaf.AIEngineRoom`—and complete version, installer, default-locale, licence, support, release-notes, and Apps-and-Features fields. |
-| Update ownership | Every published version needs a new immutable installer and reviewed manifest update. | Approve a maintenance owner, update checklist, supported-version policy, and withdrawal response before the first submission. |
+| Update responsibility | Every published version needs a new immutable installer and reviewed manifest update. | Approve a responsible developer, update checklist, supported-version policy, and withdrawal response before the first submission. |
 
 The existing public preview must not be repurposed automatically. Its
 publication record explicitly requires a new gate before adding a distribution
 channel, and its prerelease/version relationship was not designed as a WinGet
-contract.
+contract. The
+[identity and publisher-page plan](winget-identity-and-publisher-page-plan.md)
+records the recommended interpretation and the remaining evidence gates.
 
 ## Bounded next verification
 
