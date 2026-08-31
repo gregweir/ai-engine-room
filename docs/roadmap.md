@@ -81,6 +81,13 @@ signed release is authorized.
   submission decision only if the exact candidate passes.
 - A Snap Store feasibility study after the WinGet decision. PPA and official
   Debian/Ubuntu source-package work remain later, higher-effort possibilities.
+- A documentation-led
+  [bounded network-observability feasibility study](design/bounded-network-observability-planning-note.md)
+  to determine whether the verified Windows and Linux platforms can provide
+  useful process-associated connection evidence without packet-content
+  inspection, persistent monitoring, or elevated privileges in the main
+  application. It remains behind the active distribution sequence and requires
+  a separate developer gate.
 
 These are possibilities, not commitments, schedules, or implementation
 authority.
