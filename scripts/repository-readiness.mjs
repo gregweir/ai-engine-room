@@ -24,6 +24,7 @@ const required = [
   ".github/workflows/deterministic.yml",
   "docs/roadmap.md",
   "docs/design/milestone-1y-c-snapcraft-one-build-preparation-contract.md",
+  "docs/distribution/snapcraft-expansion-verification-record.md",
   "docs/release/linux-pre-release-verification.md",
   "docs/release/linux-pre-release-build-evidence.md",
   "docs/release/lm-studio-live-verification.md",
@@ -340,6 +341,9 @@ const snapDesktop = read("snap/gui/ai-engine-room.desktop");
 const snapcraftBuildPreparation = read(
   "docs/design/milestone-1y-c-snapcraft-one-build-preparation-contract.md",
 );
+const snapcraftExpansionVerification = read(
+  "docs/distribution/snapcraft-expansion-verification-record.md",
+);
 
 const sourceSection = (source, start, end) => {
   const startIndex = source.indexOf(start);
@@ -480,6 +484,34 @@ assert.match(
   snapcraftBuildPreparation,
   /does not authorize installing or invoking\s+Snapcraft/,
 );
+assert.match(snapcraftBuildPreparation, /Gate consumed on 2026-08-31/);
+assert.match(snapcraftBuildPreparation, /Result class \| `expansion_stop`/);
+assert.match(
+  snapcraftExpansionVerification,
+  /ONE-RUN GATE CONSUMED; EXPANSION STOP; NO BUILD/,
+);
+assert.match(
+  snapcraftExpansionVerification,
+  /Execution commit \| `e9ef30a6f21772cfc7e21607bb9ca9caf2107590`/,
+);
+assert.match(
+  snapcraftExpansionVerification,
+  /Workflow run \| \[`33450652377`\]/,
+);
+assert.match(
+  snapcraftExpansionVerification,
+  /e20a2da87d3d4d0368235f34611febe54f8067499407926a2b4899a4f7c3c649/,
+);
+assert.match(
+  snapcraftExpansionVerification,
+  /did \*\*not\*\* add `mount-observe` or `calendar-service`/,
+);
+assert.match(snapcraftExpansionVerification, /canonical\/gpu-snap\.git/);
+assert.match(
+  snapcraftExpansionVerification,
+  /No build command ran\. No `\.snap` was produced/,
+);
+assert.match(snapcraftExpansionVerification, /no retry is authorized/i);
 assert.ok(!("remote" in capability), "capability must remain local");
 assert.match(cargo, /^version = "0\.1\.0"$/m);
 assert.match(
