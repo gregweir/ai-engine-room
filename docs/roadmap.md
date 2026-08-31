@@ -134,6 +134,13 @@ The current sequence is documentation-led and separately gated:
   It does not allow-list the observed address, infer destination purpose,
   create a workflow, authorize another run, or begin product network
   observability. Any one-run 1X-J proposal requires a new exact developer gate.
+- **1X-J — one-run attribution contract prepared; execution not authorized:**
+  the [proposed gate](design/milestone-1x-j-network-attribution-run-contract.md)
+  defines the unchanged candidate, disposable runner, bounded process
+  attribution, result interpretation, cleanup, one-time trigger, and
+  no-bypass conditions for a possible final evidence run. Contract approval
+  would not authorize execution: the exact later execution change and exactly
+  one run each require separate developer approval.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
