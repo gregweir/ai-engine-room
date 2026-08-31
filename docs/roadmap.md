@@ -60,6 +60,15 @@ The current sequence is documentation-led and separately gated:
   [bounded feasibility contract](design/milestone-1x-a-winget-feasibility-contract.md)
   and [WinGet assessment](distribution/winget-feasibility-assessment.md). This
   preparation does not execute or publish a package.
+- **1X-B — verification preflight stopped safely:** the developer authorized
+  one bounded silent-install feasibility run, but the available Windows Home
+  host has no supported Windows Sandbox and no equivalent disposable Windows
+  environment was established. The run stopped before installer download or
+  execution. The
+  [preflight record](distribution/winget-silent-install-preflight-record.md)
+  also records the still-open publisher-page discoverability and
+  release/version-alignment gaps. A suitable disposable environment and renewed
+  developer gate are required before another run.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -77,8 +86,9 @@ signed release is authorized.
 - Future signing through a no-cost eligibility route such as SignPath
   Foundation or through paid organizational identity, after the publisher
   certificate identity is deliberately resolved.
-- A bounded WinGet silent-install feasibility run, followed by a separate
-  submission decision only if the exact candidate passes.
+- A bounded WinGet silent-install feasibility run only after a supported
+  disposable Windows environment and exact candidate receive a renewed gate,
+  followed by a separate submission decision only if that candidate passes.
 - A Snap Store feasibility study after the WinGet decision. PPA and official
   Debian/Ubuntu source-package work remain later, higher-effort possibilities.
 - A documentation-led
