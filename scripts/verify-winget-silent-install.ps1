@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param()
 
-# Static Milestone 1X-G procedure. No tracked workflow invokes this script.
+# Static Milestone 1X-I procedure. No tracked workflow invokes this script.
 # A future execution requires a separate developer-approved exact run gate.
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
@@ -275,9 +275,19 @@ function Test-ProcessTree {
   )
 
   foreach ($Connection in $Connections) {
+    $OwnerProcess = Get-CimInstance Win32_Process -Filter "ProcessId = $($Connection.OwningProcess)" -ErrorAction SilentlyContinue
+    $ParentProcess = $null
+    if ($null -ne $OwnerProcess -and $OwnerProcess.ParentProcessId) {
+      $ParentProcess = Get-CimInstance Win32_Process -Filter "ProcessId = $($OwnerProcess.ParentProcessId)" -ErrorAction SilentlyContinue
+    }
     $ObservedConnections.Add([pscustomobject]@{
       phase = $Phase
       process_id = $Connection.OwningProcess
+      process_name = if ($null -ne $OwnerProcess) { $OwnerProcess.Name } else { $null }
+      process_attribution = if ($null -ne $OwnerProcess) { 'owner_pid_lookup' } else { 'unavailable' }
+      process_tree_role = if ($Connection.OwningProcess -in $RootIds) { 'root' } else { 'descendant' }
+      parent_process_id = if ($null -ne $OwnerProcess) { $OwnerProcess.ParentProcessId } else { $null }
+      parent_process_name = if ($null -ne $ParentProcess) { $ParentProcess.Name } else { $null }
       remote_address = $Connection.RemoteAddress
       remote_port = $Connection.RemotePort
       state = [string]$Connection.State

@@ -171,3 +171,10 @@ no complete silent-install or silent-removal feasibility claim and grants no
 WinGet manifest or submission authority. The one-run gate is consumed. Any
 future work must begin with a new static interpretation and design decision;
 this record grants no retry or weaker network boundary.
+
+The later
+[Milestone 1X-I preparation contract](../design/milestone-1x-i-network-attribution-preparation-contract.md)
+provides that static interpretation. It preserves the connection stop and adds
+bounded owner-PID process and parent attribution to the inactive procedure. It
+creates no workflow and grants no execution, retry, manifest, or submission
+authority.
