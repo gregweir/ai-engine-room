@@ -1,9 +1,12 @@
 # AI Engine Room publisher-page copy draft
 
-Status: **repository-local draft only** on 2026-08-31. This file is source
-material for a possible future Tartanleaf product page. It has not been
-published on the Tartanleaf website and does not make the installer eligible
-for WinGet submission.
+Status: **historical repository-local source copy** on 2026-08-31. This file
+was used to prepare the separately approved public
+[AI Engine Room publisher page](https://www.tartanleaf.com/ai-engine-room/).
+The live CMS page is authoritative and was later revised for a non-technical
+audience; it is not a byte-for-byte publication of this draft. Publication does
+not make the installer eligible for WinGet submission. See the
+[publication record](tartanleaf-publisher-page-publication-record.md).
 
 ## Read-only audit behind this draft
 
@@ -18,12 +21,12 @@ identifier `Tartanleaf.AIEngineRoom` and no existing `Tartanleaf` publisher
 directory. This supports further review of the identifier but does not reserve
 or approve it; uniqueness must be checked again immediately before submission.
 
-The Tartanleaf home and Tools pages did not identify AI Engine Room or link its
-installer. The copy below would close that discoverability gap only after it is
-separately reviewed, deliberately published on a publisher-controlled HTTPS
-page, and verified from the public Internet.
+At the time of this draft, the Tartanleaf home and Tools pages did not identify
+AI Engine Room or link its installer. The later, separately approved product
+page and Tools-page entry closed that publisher-source discoverability gap for
+the current preview. They do not establish the remaining WinGet evidence.
 
-## Proposed public copy
+## Historical source copy used for publication
 
 ---
 
@@ -115,9 +118,9 @@ Copyright © 2026 Tartanleaf.com Inc.
 
 ---
 
-## Publication and verification gate
+## Publication and verification outcome
 
-Before using this copy publicly:
+The separately approved website work completed the following checks:
 
 1. re-resolve the live release, asset URLs, byte sizes, hashes, signing state,
    source revision, support claims, and project links;
@@ -127,11 +130,11 @@ Before using this copy publicly:
    as publisher;
 4. verify that the website's analytics and privacy disclosure remain accurate
    for the page and direct GitHub downloads;
-5. publish only after a separate developer approval; and
-6. verify from a fresh public session that the Tools page or another stable
-   publisher navigation path reaches the page and that the exact installer is
+5. publication followed a separate developer approval; and
+6. public verification confirmed that the Tools page provides a stable
+   publisher navigation path to the product page and makes the exact installer
    discoverable from it.
 
-Publishing this page would establish official-source discoverability only. It
-would not authorize or establish silent-install feasibility, manifest validity,
+Publishing this page established official-source discoverability only. It did
+not authorize or establish silent-install feasibility, manifest validity,
 security-scan acceptance, signing, WinGet submission, or catalog availability.
