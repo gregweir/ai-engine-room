@@ -2,10 +2,31 @@
 
 ## Status
 
-Preparation only on 2026-08-31. This contract defines a possible third and
-final disposable-Windows evidence run after Milestone 1X-H stopped on an
-unattributed external connection and Milestone 1X-I added bounded owner-PID
-attribution. It adds no workflow and grants no execution authority.
+Gate consumed on 2026-08-31. After the separately approved execution change
+and exactly one separately authorized run, the procedure recorded an
+**attributed stop** during bounded application launch. The one-time workflow
+was removed, no retry is authorized, and there is no complete silent-install
+or silent-removal feasibility conclusion.
+
+## Consumed execution record
+
+| Field | Recorded value |
+| --- | --- |
+| Execution commit | `48ddf00beee4d6cfd9ecdb61b026eb1382b20682` |
+| Procedure commit | `c34644adf8b5e2d0be0f25b189d627b03e98881d` |
+| Procedure Git blob | `80071fab2377cbafa6276f16e8fb402f8bb01e14` |
+| Workflow run | [`33425808598`](https://github.com/gregweir/ai-engine-room/actions/runs/33425808598) |
+| Job | [`99598959867`](https://github.com/gregweir/ai-engine-room/actions/runs/33425808598/job/99598959867) |
+| Result class | `Attributed stop` |
+| Observed connection owner | `msedgewebview2.exe` (PID `7188`) |
+| Immediate parent | `msedgewebview2.exe` (PID `2852`) |
+| Observed endpoint | `150.171.22.17:443` (`Established`) |
+| Cleanup | `registered silent uninstall completed` |
+| Workflow removal commit | `fe023f0799ccd7865263833de1b39241be51211e` |
+
+The process snapshot does not establish destination ownership, purpose, or
+transmitted content. The full evidence and interpretation are in the
+[disposable-runner verification record](../distribution/winget-disposable-runner-verification-record.md).
 
 ## Approval boundary
 
