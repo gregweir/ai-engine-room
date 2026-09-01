@@ -438,6 +438,14 @@ Rules:
   does not read the clipboard, save files, or send/upload the report. Save and
   external Share remain deferred; no additional export format (Markdown, HTML,
   JSON, or other) is committed.
+- The Milestone 2A
+  [safe report-save feasibility study](../research/safe-report-save-feasibility.md)
+  finds one later implementation-preparation contract proportionate, but it
+  does not adopt or implement saving. Any proposal must keep the exact visible
+  UTF-8 preview authoritative, use a backend-owned dialog and write boundary,
+  expose no frontend filesystem capability, add no format or report field, and
+  replace no existing destination. The no-clobber staging and cleanup mechanism
+  remains an explicit unresolved gate.
 - The server-authored plain-text renderer presents byte values in decimal SI
   units alongside exact comma-grouped bytes when the report-safe numeric value
   is exactly representable. Values outside that presentation range are marked

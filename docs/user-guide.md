@@ -145,6 +145,10 @@ AI Engine Room does not save, upload, send, read back, persist, or clear the
 report. Other applications may read clipboard contents, so review the preview
 before copying and handle it according to your own privacy needs.
 
+Saving a report to a file is not available in the current preview. The
+[Milestone 2A feasibility study](research/safe-report-save-feasibility.md) is
+planning evidence only and does not change this behavior.
+
 ## Observation history
 
 The app retains at most the newest 12 startup and explicit-Refresh observation
