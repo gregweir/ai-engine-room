@@ -25,8 +25,11 @@ const required = [
   "docs/roadmap.md",
   "docs/design/milestone-1y-c-snapcraft-one-build-preparation-contract.md",
   "docs/design/milestone-1y-d-snap-disposition-contract.md",
+  "docs/design/bounded-network-observability-planning-note.md",
+  "docs/design/milestone-1z-a-network-observability-feasibility-contract.md",
   "docs/distribution/snapcraft-expansion-verification-record.md",
   "docs/distribution/snap-disposition.md",
+  "docs/research/network-observability-platform-feasibility.md",
   "docs/release/linux-pre-release-verification.md",
   "docs/release/linux-pre-release-build-evidence.md",
   "docs/release/lm-studio-live-verification.md",
@@ -350,6 +353,15 @@ const snapDispositionContract = read(
   "docs/design/milestone-1y-d-snap-disposition-contract.md",
 );
 const snapDisposition = read("docs/distribution/snap-disposition.md");
+const networkObservabilityPlanning = read(
+  "docs/design/bounded-network-observability-planning-note.md",
+);
+const networkObservabilityFeasibilityContract = read(
+  "docs/design/milestone-1z-a-network-observability-feasibility-contract.md",
+);
+const networkObservabilityFeasibility = read(
+  "docs/research/network-observability-platform-feasibility.md",
+);
 
 const sourceSection = (source, start, end) => {
   const startIndex = source.indexOf(start);
@@ -546,6 +558,44 @@ assert.match(
 assert.match(
   snapcraftExpansionVerification,
   /developer selected deferral in the separately reviewed/,
+);
+assert.match(
+  networkObservabilityFeasibilityContract,
+  /Documentation-only feasibility study authorized/,
+);
+assert.match(
+  networkObservabilityFeasibilityContract,
+  /does\s+not authorize a platform probe, product implementation, connection capture/,
+);
+assert.match(
+  networkObservabilityPlanning,
+  /documentation feasibility completed/,
+);
+assert.match(
+  networkObservabilityPlanning,
+  /Product adoption remains undecided/,
+);
+assert.match(
+  networkObservabilityFeasibility,
+  /DOCUMENTATION FEASIBILITY COMPLETE; NO PLATFORM PROBE/,
+);
+assert.match(networkObservabilityFeasibility, /GetExtendedTcpTable/);
+assert.match(networkObservabilityFeasibility, /NETLINK_SOCK_DIAG/);
+assert.match(
+  networkObservabilityFeasibility,
+  /Windows owner-PID\s+UDP rows describe bound local endpoints and do not include a remote address/,
+);
+assert.match(
+  networkObservabilityFeasibility,
+  /PTRACE_MODE_READ_FSCREDS/,
+);
+assert.match(
+  networkObservabilityFeasibility,
+  /Proceed only to evidence-model and synthetic-probe preparation/,
+);
+assert.match(
+  networkObservabilityFeasibility,
+  /Do not yet\s+adopt network observability as a product feature/,
 );
 assert.ok(!("remote" in capability), "capability must remain local");
 assert.match(cargo, /^version = "0\.1\.0"$/m);

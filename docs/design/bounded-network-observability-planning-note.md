@@ -2,13 +2,17 @@
 
 ## Status
 
-Under consideration on 2026-08-31. This note records a possible future product
-direction. It is not an implementation contract and authorizes no product,
-platform, privilege, packaging, release, or external action.
+Planning direction recorded on 2026-08-31; documentation feasibility completed
+under the [Milestone 1Z-A contract](milestone-1z-a-network-observability-feasibility-contract.md).
+This note remains a planning boundary, not an implementation contract. It
+authorizes no product, platform probe, privilege, packaging, release, or
+external action.
 
-The active distribution sequence remains unchanged. WinGet is still the first
-package-manager candidate, and its next possible bounded verification remains a
-separate developer gate.
+The package-manager investigation is closed for the current preview. The
+[platform assessment](../research/network-observability-platform-feasibility.md)
+finds a bounded TCP probe plausible on both verified platforms while excluding
+UDP from the first cross-platform slice and preserving conditional Linux
+process attribution. Product adoption remains undecided.
 
 ## Product question
 
@@ -122,10 +126,12 @@ evidence of cross-platform parity.
 
 ## Possible gated sequence
 
-1. **Evidence and privilege feasibility:** document platform APIs, visibility,
-   permissions, blind spots, and stop conditions.
-2. **Evidence-model review:** define fact, inference, unavailable states,
-   sanitization, retention, and non-claims before collecting live evidence.
+1. **Evidence and privilege feasibility — complete:** the 1Z-A assessment
+   documents platform APIs, visibility, permissions, blind spots, and stop
+   conditions without collecting live evidence.
+2. **Evidence-model and probe preparation — next, not authorized:** define
+   fact, inference, unavailable states, sanitization, retention, fixtures,
+   bounds, and non-claims before collecting live evidence.
 3. **Bounded platform probes:** only after separate authorization, test known
    synthetic local and external connections on the exact verified baselines.
 4. **Adopt-or-defer decision:** proceed only if the result gives a
