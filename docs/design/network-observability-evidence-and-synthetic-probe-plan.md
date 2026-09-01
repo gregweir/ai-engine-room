@@ -1,21 +1,21 @@
 # Network-observability evidence and synthetic-probe plan
 
-Status: **PREPARATION COMPLETE; ISOLATED ADAPTER SOURCE MERGED; NO REAL ADAPTER
-RUN** on 2026-09-01.
+Status: **BOUNDED LOOPBACK VALIDATION COMPLETE; PRODUCT ADOPTION UNDECIDED** on
+2026-09-01.
 
 ## Decision
 
-The evidence model and a smallest coherent cross-platform probe are defined
-well enough for a later execution proposal. No product feature is adopted.
-No socket or process table was inspected, no connection was opened, and no
-native probe or fixture was implemented or run during this preparation.
+The evidence model and smallest coherent cross-platform loopback probe were
+implemented and exercised under separately consumed one-run authorizations.
+The reviewed Ubuntu and Windows outcomes are recorded in the
+[1Z-D validation record](../validation/milestone-1z-d-loopback-adapter-validation-record.md).
+No product feature is adopted.
 
-The isolated non-product adapter library is now merged under the
-[1Z-C contract](milestone-1z-c-native-probe-implementation-contract.md). The
-next possible step is the separately approved loopback-only runner
-implementation defined by the 1Z-D contract below. It preserves or narrows
-every applicable bound and requires a separate one-run authorization for each
-platform.
+The isolated non-product adapter library is merged under the
+[1Z-C contract](milestone-1z-c-native-probe-implementation-contract.md), and
+the loopback-only runner and platform executions completed under the
+[1Z-D contract](milestone-1z-d-loopback-adapter-validation-contract.md). Both
+one-run authorizations are consumed; no rerun or broader fixture is authorized.
 
 ## Milestone 1Z-D narrowing decision
 
@@ -55,16 +55,16 @@ destination was contacted, or what happened between or outside snapshots.
 Each platform adapter may hold one raw row in current-process memory with only
 these fields:
 
-| Field | Meaning |
-| --- | --- |
-| `sample_index` | Integer from `0` through `10` |
-| `protocol` | Fixed value `tcp` |
-| `address_family` | `ipv4` or `ipv6` |
-| `tcp_state` | Platform-reported state normalized without interpretation |
-| `local_endpoint` | Numeric address and port |
-| `remote_endpoint` | Numeric address and port |
-| `platform_owner` | Windows PID, or Linux UID and socket inode |
-| `acquisition` | `observed`, `row_changed`, or `adapter_error` |
+| Field             | Meaning                                                   |
+| ----------------- | --------------------------------------------------------- |
+| `sample_index`    | Integer from `0` through `10`                             |
+| `protocol`        | Fixed value `tcp`                                         |
+| `address_family`  | `ipv4` or `ipv6`                                          |
+| `tcp_state`       | Platform-reported state normalized without interpretation |
+| `local_endpoint`  | Numeric address and port                                  |
+| `remote_endpoint` | Numeric address and port                                  |
+| `platform_owner`  | Windows PID, or Linux UID and socket inode                |
+| `acquisition`     | `observed`, `row_changed`, or `adapter_error`             |
 
 Raw rows are not report data. They must never be written to a file, log,
 standard output, workflow annotation, clipboard, crash attachment, telemetry,
@@ -123,17 +123,17 @@ association does not invalidate an otherwise observed endpoint class.
 
 After termination, the only retainable per-platform record is:
 
-| Field | Allowed value |
-| --- | --- |
-| Source identity | Reviewed commit and probe binary SHA-256 |
-| Platform class | Approved public baseline description, without machine name |
-| Bounds | Planned and actual sample count, interval, window, and outer timeout |
-| Fixture identity | Allow-listed synthetic label only |
-| Observation | Address family, derived scope, TCP state, observed sample indexes, and deduplicated count |
-| Attribution | Association outcome only |
-| Completeness | Acquisition and fixture outcome plus expected-but-missed count |
-| Termination | Fixture exit, probe exit, and no-observer-remains result |
-| Interpretation | Fixed limitations and result class |
+| Field            | Allowed value                                                                             |
+| ---------------- | ----------------------------------------------------------------------------------------- |
+| Source identity  | Reviewed commit and probe binary SHA-256                                                  |
+| Platform class   | Approved public baseline description, without machine name                                |
+| Bounds           | Planned and actual sample count, interval, window, and outer timeout                      |
+| Fixture identity | Allow-listed synthetic label only                                                         |
+| Observation      | Address family, derived scope, TCP state, observed sample indexes, and deduplicated count |
+| Attribution      | Association outcome only                                                                  |
+| Completeness     | Acquisition and fixture outcome plus expected-but-missed count                            |
+| Termination      | Fixture exit, probe exit, and no-observer-remains result                                  |
+| Interpretation   | Fixed limitations and result class                                                        |
 
 The record must exclude raw addresses and ports, PIDs, UIDs, inodes, executable
 paths, usernames, hostnames, command lines, unrelated rows, wall-clock times,
@@ -146,16 +146,16 @@ text is present.
 The first proposed probe has six long-lived fixtures and two deliberately
 short-lived fixtures:
 
-| Label | Family | Remote class | Lifetime | Purpose |
-| --- | --- | --- | --- | --- |
-| `loopback_ipv4_long` | IPv4 | same-machine loopback | Entire five-second window | Endpoint visibility and fixture attribution |
-| `loopback_ipv6_long` | IPv6 | same-machine loopback | Entire five-second window | Endpoint visibility and fixture attribution |
-| `external_ipv4_long` | IPv4 | externally addressed | Entire five-second window | External-address classification and attribution |
-| `external_ipv6_long` | IPv6 | externally addressed | Entire five-second window | External-address classification and attribution |
-| `loopback_ipv4_unattributed` | IPv4 | same-machine loopback | Entire five-second window | Explicit unmatched-row handling |
-| `loopback_ipv6_unattributed` | IPv6 | same-machine loopback | Entire five-second window | Explicit unmatched-row handling |
-| `loopback_ipv4_short` | IPv4 | same-machine loopback | At most 100 milliseconds between scheduled samples | Demonstrate snapshot miss risk |
-| `loopback_ipv6_short` | IPv6 | same-machine loopback | At most 100 milliseconds between scheduled samples | Demonstrate snapshot miss risk |
+| Label                        | Family | Remote class          | Lifetime                                           | Purpose                                         |
+| ---------------------------- | ------ | --------------------- | -------------------------------------------------- | ----------------------------------------------- |
+| `loopback_ipv4_long`         | IPv4   | same-machine loopback | Entire five-second window                          | Endpoint visibility and fixture attribution     |
+| `loopback_ipv6_long`         | IPv6   | same-machine loopback | Entire five-second window                          | Endpoint visibility and fixture attribution     |
+| `external_ipv4_long`         | IPv4   | externally addressed  | Entire five-second window                          | External-address classification and attribution |
+| `external_ipv6_long`         | IPv6   | externally addressed  | Entire five-second window                          | External-address classification and attribution |
+| `loopback_ipv4_unattributed` | IPv4   | same-machine loopback | Entire five-second window                          | Explicit unmatched-row handling                 |
+| `loopback_ipv6_unattributed` | IPv6   | same-machine loopback | Entire five-second window                          | Explicit unmatched-row handling                 |
+| `loopback_ipv4_short`        | IPv4   | same-machine loopback | At most 100 milliseconds between scheduled samples | Demonstrate snapshot miss risk                  |
+| `loopback_ipv6_short`        | IPv6   | same-machine loopback | At most 100 milliseconds between scheduled samples | Demonstrate snapshot miss risk                  |
 
 The long loopback fixtures use listeners owned by the reviewed fixture
 program. The unattributed fixtures use a separately started reviewed companion
@@ -246,6 +246,13 @@ No result establishes complete network history, packet contents, provider
 privacy, compute location, product usefulness, or release readiness.
 
 ## Review and adopt-or-defer threshold
+
+The completed 1Z-D evidence satisfies the loopback-only threshold for the two
+long attributed fixtures on the reviewed Ubuntu and Windows baselines. Both
+platforms produced understandable sanitized evidence without elevation or
+retained unrelated details. This result does not satisfy the broader matrix or
+decide product adoption because external, unattributed, permission-limited,
+stale, and short-lived behavior remains unvalidated.
 
 After separately authorized runs, independent review must verify source and
 run identity, bounds, sanitization, termination, platform parity, and every

@@ -30,6 +30,7 @@ const required = [
   "docs/design/milestone-1z-b-network-observability-probe-preparation-contract.md",
   "docs/design/milestone-1z-c-native-probe-implementation-contract.md",
   "docs/design/network-observability-evidence-and-synthetic-probe-plan.md",
+  "docs/validation/milestone-1z-d-loopback-adapter-validation-record.md",
   "docs/distribution/snapcraft-expansion-verification-record.md",
   "docs/distribution/snap-disposition.md",
   "docs/research/network-observability-platform-feasibility.md",
@@ -371,6 +372,9 @@ const networkObservabilityNativeProbeImplementationContract = read(
 const networkObservabilityLoopbackValidationContract = read(
   "docs/design/milestone-1z-d-loopback-adapter-validation-contract.md",
 );
+const networkObservabilityLoopbackValidationRecord = read(
+  "docs/validation/milestone-1z-d-loopback-adapter-validation-record.md",
+);
 const networkProbeCargo = read("crates/aer-network-probe/Cargo.toml");
 const networkProbeLib = read("crates/aer-network-probe/src/lib.rs");
 const networkProbeModel = read("crates/aer-network-probe/src/model.rs");
@@ -658,7 +662,7 @@ assert.match(
 );
 assert.match(
   networkObservabilityProbePlan,
-  /PREPARATION COMPLETE; ISOLATED ADAPTER SOURCE MERGED; NO REAL ADAPTER\s+RUN/,
+  /BOUNDED LOOPBACK VALIDATION COMPLETE; PRODUCT ADOPTION UNDECIDED/,
 );
 assert.match(networkObservabilityProbePlan, /Ephemeral raw observation/);
 assert.match(networkObservabilityProbePlan, /Sanitized retained record/);
@@ -723,7 +727,7 @@ assert.match(
 );
 assert.match(
   networkObservabilityLoopbackValidationContract,
-  /one Ubuntu run and one Windows run each\s+require their own explicit authorization/,
+  /exactly one Ubuntu run and exactly one Windows run\. Both bounded runs completed,\s+both authorizations were consumed/,
 );
 assert.match(
   networkObservabilityLoopbackValidationContract,
@@ -736,6 +740,26 @@ assert.match(
 assert.match(
   networkObservabilityLoopbackValidationContract,
   /any external address, Internet connection, DNS name, provider endpoint/,
+);
+assert.match(
+  networkObservabilityLoopbackValidationRecord,
+  /BOUNDED UBUNTU AND WINDOWS LOOPBACK VALIDATION PASSED; PRODUCT ADOPTION NOT\s+DECIDED/,
+);
+assert.match(
+  networkObservabilityLoopbackValidationRecord,
+  /c0baf37624ea889f6f0ce6e68b41e83b27306f044345fa0d5a46e43e7f9cc73d/,
+);
+assert.match(
+  networkObservabilityLoopbackValidationRecord,
+  /308df0da61ee16fd033a84856ef28c82218d859365a7e367a37cd97cf07d0d73/,
+);
+assert.match(
+  networkObservabilityLoopbackValidationRecord,
+  /Both one-run authorizations are consumed/,
+);
+assert.match(
+  networkObservabilityLoopbackValidationRecord,
+  /externally addressed, LAN, UDP, unattributed, permission-limited, stale, or\s+short-lived connection visibility/,
 );
 assert.match(
   read("scripts/verify-target-license-coverage.mjs"),
