@@ -191,6 +191,16 @@ The current sequence is documentation-led and separately gated:
   account, registration, package, upload, store contact, or release is
   authorized. The next recommended planning slice is the separately gated,
   documentation-led bounded network-observability feasibility study.
+- **1Z-A — network-observability platform feasibility complete:** the
+  [documentation-only contract](design/milestone-1z-a-network-observability-feasibility-contract.md),
+  reconciled [planning note](design/bounded-network-observability-planning-note.md),
+  and [platform assessment](research/network-observability-platform-feasibility.md)
+  find a bounded, unelevated TCP snapshot probe plausible on both verified
+  platforms. Windows UDP owner-PID tables do not expose a remote destination,
+  and Linux process association depends on permission-controlled `/proc`
+  socket links. No live probe or product feature was adopted. The next
+  possible slice is a separately approved evidence-model and synthetic-probe
+  preparation contract.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -215,13 +225,10 @@ signed release is authorized.
   demand, with a new contract and immutable source-boundary design. PPA and
   official Debian/Ubuntu source-package work remain later, higher-effort
   possibilities. No additional distribution-channel work is authorized.
-- A documentation-led
-  [bounded network-observability feasibility study](design/bounded-network-observability-planning-note.md)
-  to determine whether the verified Windows and Linux platforms can provide
-  useful process-associated connection evidence without packet-content
-  inspection, persistent monitoring, or elevated privileges in the main
-  application. It remains behind the active distribution sequence and requires
-  a separate developer gate.
+- A separately gated network-observability evidence-model and synthetic-probe
+  preparation slice. It may define bounded TCP fixtures, sampling limits,
+  attribution states, sanitization, and stop conditions, but no platform probe
+  or product implementation is authorized.
 
 These are possibilities, not commitments, schedules, or implementation
 authority.
