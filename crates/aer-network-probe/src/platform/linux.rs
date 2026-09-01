@@ -132,15 +132,43 @@ fn snapshot_family(
     let mut output = Vec::new();
     loop {
         let mut buffer = [0_u8; 65_536];
-        // SAFETY: `buffer` owns 65,536 writable initialized bytes for recv;
-        // the returned length is checked before any parsing or slicing.
-        let received =
-            unsafe { libc::recv(fd.as_raw_fd(), buffer.as_mut_ptr().cast(), buffer.len(), 0) };
+        // The header's nlmsg_pid is the requesting socket's port ID in dump
+        // replies, so authenticate the sender using the address returned by
+        // recvmsg rather than treating that header field as a sender PID.
+        // SAFETY: zero is valid initialization for these owned stack values;
+        // every pointer below refers to live writable storage for the duration
+        // of recvmsg, and the returned lengths and flags are checked before
+        // any parsing or slicing.
+        let mut source: libc::sockaddr_nl = unsafe { zeroed() };
+        let mut iov = libc::iovec {
+            iov_base: buffer.as_mut_ptr().cast(),
+            iov_len: buffer.len(),
+        };
+        // SAFETY: zero is a valid initial state for msghdr before assigning
+        // the name and single-buffer vector used by recvmsg.
+        let mut message: libc::msghdr = unsafe { zeroed() };
+        message.msg_name = ptr::addr_of_mut!(source).cast();
+        message.msg_namelen = size_of::<libc::sockaddr_nl>() as libc::socklen_t;
+        message.msg_iov = ptr::addr_of_mut!(iov);
+        message.msg_iovlen = 1;
+        // SAFETY: `message` points only to the live source-address and buffer
+        // storage above; the owned socket remains valid for this call.
+        let received = unsafe { libc::recvmsg(fd.as_raw_fd(), ptr::addr_of_mut!(message), 0) };
         if received <= 0 {
             return Err(AdapterError::PlatformFailure);
         }
+        validate_datagram_source(
+            message.msg_namelen,
+            source.nl_family,
+            source.nl_pid,
+            message.msg_flags,
+        )?;
+        let received = usize::try_from(received).map_err(|_| AdapterError::MalformedResponse)?;
+        if received > buffer.len() {
+            return Err(AdapterError::BufferChanged);
+        }
         let done = parse_netlink(
-            &buffer[..received as usize],
+            &buffer[..received],
             sequence,
             family,
             request,
@@ -173,12 +201,7 @@ fn parse_netlink(
         let length = read_u32_ne(buffer, offset)? as usize;
         let message_type = read_u16_ne(buffer, offset + 4)?;
         let message_sequence = read_u32_ne(buffer, offset + 8)?;
-        let sender_pid = read_u32_ne(buffer, offset + 12)?;
-        if length < NL_HEADER
-            || length > buffer.len() - offset
-            || message_sequence != sequence
-            || sender_pid != 0
-        {
+        if length < NL_HEADER || length > buffer.len() - offset || message_sequence != sequence {
             return Err(AdapterError::MalformedResponse);
         }
         if message_type == NLMSG_DONE {
@@ -204,6 +227,24 @@ fn parse_netlink(
         }
     }
     Ok(false)
+}
+
+fn validate_datagram_source(
+    source_length: libc::socklen_t,
+    source_family: u16,
+    source_port_id: u32,
+    flags: i32,
+) -> Result<(), AdapterError> {
+    if flags & libc::MSG_TRUNC != 0 {
+        return Err(AdapterError::BufferChanged);
+    }
+    if source_length < size_of::<libc::sockaddr_nl>() as libc::socklen_t
+        || source_family != libc::AF_NETLINK as u16
+        || source_port_id != 0
+    {
+        return Err(AdapterError::MalformedResponse);
+    }
+    Ok(())
 }
 
 fn parse_diag(
@@ -395,6 +436,45 @@ mod tests {
         assert_eq!(
             parse_socket_link(std::path::Path::new("socket:[name]")),
             None
+        );
+    }
+
+    #[test]
+    fn dump_parser_accepts_requester_port_id_in_response_header() {
+        let request = SnapshotRequest::artificial(crate::model::SampleIndex::new(0).unwrap());
+        let mut output = Vec::new();
+        let mut bytes = [0_u8; NL_HEADER];
+        bytes[0..4].copy_from_slice(&(NL_HEADER as u32).to_ne_bytes());
+        bytes[4..6].copy_from_slice(&NLMSG_DONE.to_ne_bytes());
+        bytes[8..12].copy_from_slice(&(7_u32).to_ne_bytes());
+        bytes[12..16].copy_from_slice(&(42_424_u32).to_ne_bytes());
+        assert_eq!(
+            parse_netlink(
+                &bytes,
+                7,
+                AddressFamily::Ipv4,
+                &request,
+                &BTreeMap::new(),
+                &mut output,
+            ),
+            Ok(true)
+        );
+    }
+
+    #[test]
+    fn datagram_source_requires_kernel_address_and_rejects_truncation() {
+        let length = size_of::<libc::sockaddr_nl>() as libc::socklen_t;
+        assert_eq!(
+            validate_datagram_source(length, libc::AF_NETLINK as u16, 0, 0),
+            Ok(())
+        );
+        assert_eq!(
+            validate_datagram_source(length, libc::AF_NETLINK as u16, 1, 0),
+            Err(AdapterError::MalformedResponse)
+        );
+        assert_eq!(
+            validate_datagram_source(length, libc::AF_NETLINK as u16, 0, libc::MSG_TRUNC),
+            Err(AdapterError::BufferChanged)
         );
     }
 }
