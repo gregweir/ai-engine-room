@@ -181,6 +181,16 @@ The current sequence is documentation-led and separately gated:
   `canonical/gpu-snap.git` source. The procedure stopped before compilation;
   no artifact, installation, account, upload, or store action occurred. The
   workflow and procedure were removed, and no retry is authorized.
+- **1Y-D — Snap disposition complete:** the
+  [closure contract](design/milestone-1y-d-snap-disposition-contract.md) and
+  [disposition record](distribution/snap-disposition.md) defer Snap
+  distribution for the current preview. The tracked Snapcraft definition and
+  launcher remain historical, non-release proposal evidence. Reconsideration
+  requires meaningful demand, a new developer-approved contract, and an
+  immutable source boundary before any new expansion or build gate. No
+  account, registration, package, upload, store contact, or release is
+  authorized. The next recommended planning slice is the separately gated,
+  documentation-led bounded network-observability feasibility study.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -201,11 +211,10 @@ signed release is authorized.
 - A bounded WinGet silent-install feasibility run only after a supported
   disposable Windows environment and exact candidate receive a renewed gate,
   followed by a separate submission decision only if that candidate passes.
-- A separately gated static Snapcraft source-boundary revision deciding whether
-  to pin and justify all GNOME-extension generated inputs, replace the
-  extension with explicit least-privilege packaging, or defer the channel. No
-  additional expansion or build is authorized. PPA and official Debian/Ubuntu
-  source-package work remain later, higher-effort possibilities.
+- Future Snap reconsideration only after meaningful user or distribution
+  demand, with a new contract and immutable source-boundary design. PPA and
+  official Debian/Ubuntu source-package work remain later, higher-effort
+  possibilities. No additional distribution-channel work is authorized.
 - A documentation-led
   [bounded network-observability feasibility study](design/bounded-network-observability-planning-note.md)
   to determine whether the verified Windows and Linux platforms can provide
