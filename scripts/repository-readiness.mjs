@@ -23,6 +23,9 @@ const required = [
   ".github/PULL_REQUEST_TEMPLATE.md",
   ".github/workflows/deterministic.yml",
   "docs/roadmap.md",
+  "docs/user-guide.md",
+  "docs/design/architecture.md",
+  "docs/design/milestone-2a-safe-report-save-feasibility-contract.md",
   "docs/design/milestone-1y-c-snapcraft-one-build-preparation-contract.md",
   "docs/design/milestone-1y-d-snap-disposition-contract.md",
   "docs/design/bounded-network-observability-planning-note.md",
@@ -35,6 +38,7 @@ const required = [
   "docs/distribution/snapcraft-expansion-verification-record.md",
   "docs/distribution/snap-disposition.md",
   "docs/research/network-observability-platform-feasibility.md",
+  "docs/research/safe-report-save-feasibility.md",
   "docs/release/linux-pre-release-verification.md",
   "docs/release/linux-pre-release-build-evidence.md",
   "docs/release/lm-studio-live-verification.md",
@@ -316,6 +320,15 @@ const unsignedPreviewContract = read(
 );
 const signpathAssessment = read(
   "docs/release/signpath-eligibility-assessment.md",
+);
+const roadmap = read("docs/roadmap.md");
+const architecture = read("docs/design/architecture.md");
+const userGuide = read("docs/user-guide.md");
+const reportSaveFeasibilityContract = read(
+  "docs/design/milestone-2a-safe-report-save-feasibility-contract.md",
+);
+const reportSaveFeasibility = read(
+  "docs/research/safe-report-save-feasibility.md",
 );
 const ollamaSource = read("src-tauri/src/runtime/ollama.rs");
 const inventorySource = read("src-tauri/src/runtime/inventory.rs");
@@ -1455,6 +1468,63 @@ assert.match(
 assert.match(
   signpathAssessment,
   /SignPath Foundation as its authenticated certificate publisher remains a\s+separate future decision/,
+);
+assert.match(
+  reportSaveFeasibilityContract,
+  /Prepared locally on 2026-09-01 under developer authorization from exact public\s+baseline `54cc29f6afaee714606a0586c672d060a3e583c8`/,
+);
+assert.match(
+  reportSaveFeasibilityContract,
+  /It does not\s+authorize the feasibility study, product implementation, a product file write/,
+);
+assert.match(
+  reportSaveFeasibility,
+  /exact\s+public baseline `1e08567104d57f58484030b0c2a496a2381dc579`/,
+);
+assert.match(reportSaveFeasibility, /Disposition: PREPARE, NOT ADOPT/);
+assert.match(reportSaveFeasibility, /backend-owned Tauri save\s+dialog/);
+assert.match(
+  reportSaveFeasibility,
+  /exactly the retained preview's UTF-8 bytes with no BOM/,
+);
+assert.match(reportSaveFeasibility, /does not replace an existing destination/);
+assert.match(reportSaveFeasibility, /no `dialog:\*` or `fs:\*` permission/);
+assert.match(
+  reportSaveFeasibility,
+  /No file dialog, report write, provider, inference, package, publication, or\s+release action was performed/,
+);
+assert.match(
+  architecture,
+  /safe report-save feasibility study[\s\S]*does not adopt or implement saving/,
+);
+assert.match(
+  userGuide,
+  /Saving a report to a file is not available in the current preview/,
+);
+assert.match(
+  roadmap,
+  /2A — safe report-save feasibility complete; implementation preparation not\s+authorized/,
+);
+assert.match(roadmap, /The disposition is \*\*prepare, not adopt\*\*/);
+assert.deepEqual(capability.permissions, [
+  "core:default",
+  "clipboard-manager:allow-write-text",
+]);
+assert.ok(
+  !capability.permissions.some(
+    (permission) =>
+      permission.startsWith("dialog:") || permission.startsWith("fs:"),
+  ),
+  "report-save feasibility must not expose frontend dialog or filesystem permissions",
+);
+assert.ok(
+  !("@tauri-apps/plugin-dialog" in pkg.dependencies) &&
+    !("@tauri-apps/plugin-fs" in pkg.dependencies),
+  "report-save feasibility must not add frontend dialog or filesystem dependencies",
+);
+assert.doesNotMatch(
+  cargo,
+  /tauri-plugin-dialog|tauri-plugin-fs|tempfile|atomic-write-file/,
 );
 for (const text of [readme, support, signpathAssessment]) {
   assert.match(
