@@ -6,9 +6,10 @@ Planning direction recorded on 2026-08-31; documentation feasibility completed
 under the [Milestone 1Z-A contract](milestone-1z-a-network-observability-feasibility-contract.md),
 and evidence-model and synthetic-probe preparation completed under the
 [Milestone 1Z-B contract](milestone-1z-b-network-observability-probe-preparation-contract.md).
-This note remains a planning boundary, not an implementation contract. It
-authorizes no product, platform probe, privilege, packaging, release, or
-external action.
+The isolated 1Z-C implementation and separately authorized 1Z-D loopback
+validation are also complete. This note remains a planning boundary, not an
+implementation contract. It authorizes no product integration, additional
+platform probe, privilege, packaging, release, or external action.
 
 The package-manager investigation is closed for the current preview. The
 [platform assessment](../research/network-observability-platform-feasibility.md)
@@ -139,14 +140,14 @@ evidence of cross-platform parity.
    [implementation contract](milestone-1z-c-native-probe-implementation-contract.md)
    produced an isolated library with pure-test coverage and no product call
    path. No real adapter was called.
-4. **Loopback-only adapter validation — contract next, runs not authorized:**
-   the 1Z-D
-   [contract](milestone-1z-d-loopback-adapter-validation-contract.md) narrows
-   the first real-platform evidence to one long-lived attributed IPv4 loopback
-   fixture and one IPv6 fixture. Implementation, Ubuntu execution, and Windows
-   execution remain separate gates. External, unattributed, and short-lived
-   fixtures are deferred.
-5. **Adopt-or-defer decision:** proceed only if later evidence gives a
+4. **Loopback-only adapter validation — complete:** the 1Z-D
+   [contract](milestone-1z-d-loopback-adapter-validation-contract.md) and
+   [validation record](../validation/milestone-1z-d-loopback-adapter-validation-record.md)
+   establish bounded Ubuntu and Windows passes for one long-lived attributed
+   IPv4 loopback fixture and one IPv6 fixture. Both one-run authorizations are
+   consumed. External, unattributed, and short-lived fixtures remain deferred.
+5. **Adopt-or-defer disposition — next, not authorized:** proceed only if the
+   reviewed evidence gives a
    non-specialist useful evidence without disproportionate privilege, security,
    maintenance, or support burden.
 6. **Product contract:** only after adoption, define adapters, domain types,

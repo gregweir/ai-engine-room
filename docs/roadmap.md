@@ -220,16 +220,17 @@ The current sequence is documentation-led and separately gated:
   `a236b76ffbb18e8f5cce8e629861dc241bbf12b6`, and exact post-merge ordinary CI
   passed. The product has no call path to either adapter, and neither adapter
   has been executed.
-- **1Z-D — loopback-only adapter-validation implementation in preparation:** the
-  [contract](design/milestone-1z-d-loopback-adapter-validation-contract.md)
-  narrows first real-adapter evidence to one long-lived attributed IPv4
-  loopback fixture and one IPv6 fixture, exactly 11 snapshots over at most five
-  seconds, a 15-second outer timeout, closed sanitized output, and confirmed
-  teardown. External, unattributed, and short-lived fixtures remain deferred.
-  One isolated local implementation commit is authorized from exact parent
-  `5d3b8744350904f41e7faa468ca071fa80b52eb7`; its exact result requires
-  separate push approval. Exactly one run per platform remains separately
-  gated, and no adapter execution is currently authorized.
+- **1Z-D — bounded loopback adapter validation complete:** the
+  [contract](design/milestone-1z-d-loopback-adapter-validation-contract.md) and
+  [validation record](validation/milestone-1z-d-loopback-adapter-validation-record.md)
+  establish independently reviewed Ubuntu and Windows passes for one
+  long-lived attributed IPv4 loopback fixture and one IPv6 fixture. Each run
+  completed 11 snapshots over exactly five seconds without elevation, missed
+  fixtures, retained unrelated details, or a rerun. Both one-run
+  authorizations are consumed. External, unattributed, permission-limited,
+  stale, and short-lived behavior remains unvalidated, and no product adoption
+  or integration follows from this bounded evidence. The next possible slice
+  is a separately gated documentation-only disposition decision.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -254,11 +255,11 @@ signed release is authorized.
   demand, with a new contract and immutable source-boundary design. PPA and
   official Debian/Ubuntu source-package work remain later, higher-effort
   possibilities. No additional distribution-channel work is authorized.
-- A separately gated network-observability execution sequence. The proposed
-  1Z-D slice is loopback-only and requires a separately approved implementation
-  plus one explicit authorization per platform. Any later externally addressed
+- A separately gated network-observability disposition decision after the
+  completed loopback-only 1Z-D evidence. Any later externally addressed
   fixture must have its own contract with pinned controlled endpoints. No
-  adapter execution or platform run is currently authorized.
+  additional adapter execution, product integration, or platform run is
+  currently authorized.
 
 These are possibilities, not commitments, schedules, or implementation
 authority.

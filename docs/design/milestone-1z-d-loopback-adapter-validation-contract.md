@@ -2,18 +2,18 @@
 
 ## Status
 
-Contract preparation merged on 2026-09-01. Isolated implementation preparation
-is authorized from exact merged baseline
-`5d3b8744350904f41e7faa468ca071fa80b52eb7`. This authorization covers one
-local implementation commit within the path allow-list below and
-artificial-only deterministic verification. It does not authorize a push, a
-real adapter call, a fixture or executable run, a socket or process-table
-observation, or either platform run.
+Contract preparation, isolated implementation, correction, deterministic CI,
+and merge completed on 2026-09-01. The developer then separately authorized
+exactly one Ubuntu run and exactly one Windows run. Both bounded runs completed,
+both authorizations were consumed, and both sanitized outcomes passed
+independent evidence-only review.
 
-The developer must separately approve the exact implementation commit before
-push. After deterministic CI passes, one Ubuntu run and one Windows run each
-require their own explicit authorization. Approval of either run does not
-authorize the other.
+The separately approved
+[validation record](../validation/milestone-1z-d-loopback-adapter-validation-record.md)
+contains the reviewed identities, sanitized records, bounded conclusions, and
+non-claims. This contract grants no rerun, product integration, broader
+fixture, external-address observation, packaging, publication, or release
+authority.
 
 ## Decision and purpose
 
