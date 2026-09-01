@@ -54,6 +54,8 @@ The later implementation change may modify only:
 - `crates/aer-network-probe/src/platform/windows.rs`;
 - generated third-party licence and source materials required by the normal
   repository licence process;
+- `scripts/verify-target-license-coverage.mjs` solely to classify
+  `aer-network-probe` as a local workspace package;
 - `scripts/repository-readiness.mjs`; and
 - this contract and `docs/roadmap.md` for exact implementation status.
 

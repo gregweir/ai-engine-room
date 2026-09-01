@@ -30,7 +30,11 @@ const tree = execFileSync(
   ],
   { encoding: "utf8" },
 );
-const localPackages = new Set(["aer-core", "aiengineroom"]);
+const localPackages = new Set([
+  "aer-core",
+  "aer-network-probe",
+  "aiengineroom",
+]);
 const targetPackages = new Set();
 for (const line of tree.split(/\r?\n/)) {
   const match = line.replace(/ \(\*\)$/, "").match(/^([^ ]+) v([^ ]+)/);

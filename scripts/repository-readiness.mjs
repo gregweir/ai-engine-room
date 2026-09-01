@@ -681,6 +681,14 @@ assert.match(
   /There is no fallback to a provider, model service, public website, DNS name/,
 );
 assert.match(
+  networkObservabilityNativeProbeImplementationContract,
+  /`scripts\/verify-target-license-coverage\.mjs` solely to classify\s+`aer-network-probe` as a local workspace package/,
+);
+assert.match(
+  read("scripts/verify-target-license-coverage.mjs"),
+  /const localPackages = new Set\(\[\s+"aer-core",\s+"aer-network-probe",\s+"aiengineroom",?\s+\]\)/,
+);
+assert.match(
   read("Cargo.toml"),
   /members = \["src-tauri", "crates\/aer-core", "crates\/aer-network-probe"\]/,
 );
