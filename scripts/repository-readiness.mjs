@@ -27,6 +27,8 @@ const required = [
   "docs/design/milestone-1y-d-snap-disposition-contract.md",
   "docs/design/bounded-network-observability-planning-note.md",
   "docs/design/milestone-1z-a-network-observability-feasibility-contract.md",
+  "docs/design/milestone-1z-b-network-observability-probe-preparation-contract.md",
+  "docs/design/network-observability-evidence-and-synthetic-probe-plan.md",
   "docs/distribution/snapcraft-expansion-verification-record.md",
   "docs/distribution/snap-disposition.md",
   "docs/research/network-observability-platform-feasibility.md",
@@ -359,6 +361,12 @@ const networkObservabilityPlanning = read(
 const networkObservabilityFeasibilityContract = read(
   "docs/design/milestone-1z-a-network-observability-feasibility-contract.md",
 );
+const networkObservabilityProbePreparationContract = read(
+  "docs/design/milestone-1z-b-network-observability-probe-preparation-contract.md",
+);
+const networkObservabilityProbePlan = read(
+  "docs/design/network-observability-evidence-and-synthetic-probe-plan.md",
+);
 const networkObservabilityFeasibility = read(
   "docs/research/network-observability-platform-feasibility.md",
 );
@@ -596,6 +604,49 @@ assert.match(
 assert.match(
   networkObservabilityFeasibility,
   /Do not yet\s+adopt network observability as a product feature/,
+);
+assert.match(
+  networkObservabilityProbePreparationContract,
+  /Documentation-only preparation authorized/,
+);
+assert.match(
+  networkObservabilityProbePreparationContract,
+  /does not\s+authorize implementing or running that probe/,
+);
+assert.match(
+  networkObservabilityProbePreparationContract,
+  /exactly 11 samples at 500-millisecond intervals/,
+);
+assert.match(
+  networkObservabilityProbePreparationContract,
+  /15-second fail-closed\s+outer timeout/,
+);
+assert.match(
+  networkObservabilityProbePreparationContract,
+  /one explicitly bounded run authorization per platform/,
+);
+assert.match(
+  networkObservabilityProbePlan,
+  /PREPARATION COMPLETE; NO PROBE IMPLEMENTED OR RUN/,
+);
+assert.match(networkObservabilityProbePlan, /Ephemeral raw observation/);
+assert.match(networkObservabilityProbePlan, /Sanitized retained record/);
+assert.match(networkObservabilityProbePlan, /Controlled fixture matrix/);
+assert.match(
+  networkObservabilityProbePlan,
+  /exactly 11 scheduled snapshots/,
+);
+assert.match(
+  networkObservabilityProbePlan,
+  /No DNS name, provider endpoint, model service, public website/,
+);
+assert.match(
+  networkObservabilityProbePlan,
+  /Short-lived fixtures may be observed or missed/,
+);
+assert.match(
+  networkObservabilityProbePlan,
+  /No product feature is adopted/,
 );
 assert.ok(!("remote" in capability), "capability must remain local");
 assert.match(cargo, /^version = "0\.1\.0"$/m);

@@ -201,6 +201,16 @@ The current sequence is documentation-led and separately gated:
   socket links. No live probe or product feature was adopted. The next
   possible slice is a separately approved evidence-model and synthetic-probe
   preparation contract.
+- **1Z-B — evidence-model and synthetic-probe preparation complete:** the
+  [documentation-only contract](design/milestone-1z-b-network-observability-probe-preparation-contract.md)
+  and [probe plan](design/network-observability-evidence-and-synthetic-probe-plan.md)
+  define ephemeral raw facts, derived classifications, sanitized retained
+  evidence, controlled TCP fixtures, exactly 11 samples over at most five
+  seconds, a 15-second outer timeout, termination checks, and fail-closed
+  result classes. No native probe, live connection inspection, endpoint
+  contact, or product implementation occurred. A later implementation and
+  one bounded run per platform require a new exact developer-approved contract
+  and separate execution authorizations.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -225,10 +235,11 @@ signed release is authorized.
   demand, with a new contract and immutable source-boundary design. PPA and
   official Debian/Ubuntu source-package work remain later, higher-effort
   possibilities. No additional distribution-channel work is authorized.
-- A separately gated network-observability evidence-model and synthetic-probe
-  preparation slice. It may define bounded TCP fixtures, sampling limits,
-  attribution states, sanitization, and stop conditions, but no platform probe
-  or product implementation is authorized.
+- A separately gated network-observability native-probe implementation and
+  bounded execution slice. It must preserve or narrow the 1Z-B TCP fixture,
+  sampling, attribution, sanitization, termination, and stop boundaries; pin
+  any controlled external endpoints; and require one explicit authorization
+  per platform. No implementation or platform run is currently authorized.
 
 These are possibilities, not commitments, schedules, or implementation
 authority.

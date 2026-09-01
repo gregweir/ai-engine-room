@@ -3,7 +3,9 @@
 ## Status
 
 Planning direction recorded on 2026-08-31; documentation feasibility completed
-under the [Milestone 1Z-A contract](milestone-1z-a-network-observability-feasibility-contract.md).
+under the [Milestone 1Z-A contract](milestone-1z-a-network-observability-feasibility-contract.md),
+and evidence-model and synthetic-probe preparation completed under the
+[Milestone 1Z-B contract](milestone-1z-b-network-observability-probe-preparation-contract.md).
 This note remains a planning boundary, not an implementation contract. It
 authorizes no product, platform probe, privilege, packaging, release, or
 external action.
@@ -129,11 +131,14 @@ evidence of cross-platform parity.
 1. **Evidence and privilege feasibility — complete:** the 1Z-A assessment
    documents platform APIs, visibility, permissions, blind spots, and stop
    conditions without collecting live evidence.
-2. **Evidence-model and probe preparation — next, not authorized:** define
+2. **Evidence-model and probe preparation — complete:** the 1Z-B
+   [plan](network-observability-evidence-and-synthetic-probe-plan.md) defines
    fact, inference, unavailable states, sanitization, retention, fixtures,
-   bounds, and non-claims before collecting live evidence.
-3. **Bounded platform probes:** only after separate authorization, test known
-   synthetic local and external connections on the exact verified baselines.
+   fixed bounds, and non-claims without collecting live evidence.
+3. **Native implementation and bounded platform probes — next, not
+   authorized:** only under a new exact contract, implement and test known
+   synthetic local and controlled external connections on the exact verified
+   baselines, with a separate one-run authorization for each platform.
 4. **Adopt-or-defer decision:** proceed only if the result gives a
    non-specialist useful evidence without disproportionate privilege, security,
    maintenance, or support burden.
