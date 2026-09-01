@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "generatorSha256": "c9c18d525aa3976391576dd5bf8f443ad8bffa4468475a5e099151e70fb36f91",
   "spdxLicenseListRevision": "a3cbf2e897d54bccec0c35469c691521d089ef53",
-  "cargoLockSha256": "ab37133a1f780e3889fa0f166068e30e3047d47e65b0dcfc77357a499ec5dfe1",
+  "cargoLockSha256": "aa5fad4f96ac64fd99b905b2dd5c0d6ffd927ef9796edc192885894e7d41c8d1",
   "packageLockSha256": "013e1fcd2917509cd098dfecacc83bd25c4aea1e01633f051d0f048bdf7d8dad",
   "rustRegistryComponentCount": 471,
   "frontendComponentCount": 22,
