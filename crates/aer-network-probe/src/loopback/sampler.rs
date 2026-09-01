@@ -47,7 +47,7 @@ pub(crate) fn run() -> Result<(), SamplerError> {
     let processes = platform_processes(&identities)?;
     let started = Instant::now();
     let mut rows = Vec::<RawRow>::new();
-    let mut completions = Vec::with_capacity(usize::from(SAMPLE_COUNT));
+    let mut sample_starts = Vec::with_capacity(usize::from(SAMPLE_COUNT));
     let mut acquisition = AcquisitionCompleteness::Complete;
 
     for raw_index in 0..SAMPLE_COUNT {
@@ -65,10 +65,11 @@ pub(crate) fn run() -> Result<(), SamplerError> {
         let index = SampleIndex::new(raw_index).map_err(|_| SamplerError::ScheduleBound)?;
         let request =
             SnapshotRequest::new(index, processes.clone()).map_err(|_| SamplerError::Identity)?;
+        let sample_started = Instant::now();
         match snapshot(&request) {
             Ok(snapshot) => {
                 rows.extend(snapshot.rows().iter().cloned());
-                completions.push(Instant::now());
+                sample_starts.push(sample_started.duration_since(started));
             }
             Err(error) => {
                 acquisition = acquisition_for_error(error);
@@ -77,11 +78,11 @@ pub(crate) fn run() -> Result<(), SamplerError> {
         }
     }
 
-    let (max_interval_ms, actual_window_ms) = timing_summary(&completions)?;
+    let (max_interval_ms, actual_window_ms) = timing_summary(&sample_starts)?;
     if actual_window_ms > 5_000 {
         return Err(SamplerError::ScheduleBound);
     }
-    if completions.len() != usize::from(SAMPLE_COUNT)
+    if sample_starts.len() != usize::from(SAMPLE_COUNT)
         && acquisition == AcquisitionCompleteness::Complete
     {
         acquisition = AcquisitionCompleteness::Partial;
@@ -94,7 +95,7 @@ pub(crate) fn run() -> Result<(), SamplerError> {
         sanitize_raw(&rows, acquisition, &fixtures).map_err(|_| SamplerError::Sanitization)?;
     let record = CandidateRecord::from_batch(
         platform_token(),
-        completions.len() as u8,
+        sample_starts.len() as u8,
         max_interval_ms,
         actual_window_ms,
         acquisition,
@@ -222,28 +223,28 @@ fn acquisition_for_error(error: AdapterError) -> AcquisitionCompleteness {
     }
 }
 
-fn timing_summary(completions: &[Instant]) -> Result<(u16, u16), SamplerError> {
-    if completions.is_empty() {
+fn timing_summary(sample_starts: &[Duration]) -> Result<(u16, u16), SamplerError> {
+    if sample_starts.is_empty() {
         return Ok((0, 0));
     }
     let mut maximum = Duration::ZERO;
-    for pair in completions.windows(2) {
-        maximum = maximum.max(pair[1].duration_since(pair[0]));
+    for pair in sample_starts.windows(2) {
+        maximum = maximum.max(
+            pair[1]
+                .checked_sub(pair[0])
+                .ok_or(SamplerError::ScheduleBound)?,
+        );
     }
-    let window = completions
+    let window = sample_starts
         .last()
         .ok_or(SamplerError::ScheduleBound)?
-        .duration_since(completions[0]);
-    Ok((ceil_millis(maximum)?, ceil_millis(window)?))
+        .checked_sub(sample_starts[0])
+        .ok_or(SamplerError::ScheduleBound)?;
+    Ok((whole_millis(maximum)?, whole_millis(window)?))
 }
 
-fn ceil_millis(duration: Duration) -> Result<u16, SamplerError> {
-    let nanos = duration.as_nanos();
-    let millis = nanos
-        .checked_add(999_999)
-        .ok_or(SamplerError::ScheduleBound)?
-        / 1_000_000;
-    u16::try_from(millis).map_err(|_| SamplerError::ScheduleBound)
+fn whole_millis(duration: Duration) -> Result<u16, SamplerError> {
+    u16::try_from(duration.as_millis()).map_err(|_| SamplerError::ScheduleBound)
 }
 
 #[cfg(test)]
@@ -276,9 +277,33 @@ mod tests {
     }
 
     #[test]
-    fn millisecond_summary_rounds_up_without_using_a_timer() {
-        assert_eq!(ceil_millis(Duration::from_nanos(1)).unwrap(), 1);
-        assert_eq!(ceil_millis(Duration::from_millis(500)).unwrap(), 500);
-        assert_eq!(ceil_millis(Duration::from_micros(500_001)).unwrap(), 501);
+    fn timing_summary_uses_snapshot_starts_at_millisecond_resolution() {
+        let sample_starts = [
+            Duration::from_micros(10),
+            Duration::from_micros(500_999),
+            Duration::from_micros(1_000_999),
+        ];
+        assert_eq!(timing_summary(&sample_starts).unwrap(), (500, 1000));
+    }
+
+    #[test]
+    fn timing_summary_rejects_reordered_or_unrepresentable_offsets() {
+        assert_eq!(
+            timing_summary(&[Duration::from_secs(1), Duration::ZERO]),
+            Err(SamplerError::ScheduleBound)
+        );
+        assert_eq!(
+            whole_millis(Duration::from_millis(u64::from(u16::MAX) + 1)),
+            Err(SamplerError::ScheduleBound)
+        );
+    }
+
+    #[test]
+    fn millisecond_resolution_preserves_the_five_second_boundary() {
+        assert_eq!(
+            whole_millis(Duration::from_micros(5_000_999)).unwrap(),
+            5_000
+        );
+        assert_eq!(whole_millis(Duration::from_millis(5_001)).unwrap(), 5_001);
     }
 }
