@@ -136,9 +136,12 @@ evidence of cross-platform parity.
    fact, inference, unavailable states, sanitization, retention, fixtures,
    fixed bounds, and non-claims without collecting live evidence.
 3. **Native implementation and bounded platform probes — next, not
-   authorized:** only under a new exact contract, implement and test known
-   synthetic local and controlled external connections on the exact verified
-   baselines, with a separate one-run authorization for each platform.
+   authorized:** the 1Z-C
+   [implementation contract](milestone-1z-c-native-probe-implementation-contract.md)
+   fixes an isolated library and pure-test boundary. Its exact implementation
+   commit still requires developer approval. Any later probe execution must
+   test known synthetic local and controlled external connections on the exact
+   verified baselines, with a separate one-run authorization for each platform.
 4. **Adopt-or-defer decision:** proceed only if the result gives a
    non-specialist useful evidence without disproportionate privilege, security,
    maintenance, or support burden.

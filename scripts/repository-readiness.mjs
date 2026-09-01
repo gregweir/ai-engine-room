@@ -28,6 +28,7 @@ const required = [
   "docs/design/bounded-network-observability-planning-note.md",
   "docs/design/milestone-1z-a-network-observability-feasibility-contract.md",
   "docs/design/milestone-1z-b-network-observability-probe-preparation-contract.md",
+  "docs/design/milestone-1z-c-native-probe-implementation-contract.md",
   "docs/design/network-observability-evidence-and-synthetic-probe-plan.md",
   "docs/distribution/snapcraft-expansion-verification-record.md",
   "docs/distribution/snap-disposition.md",
@@ -364,6 +365,9 @@ const networkObservabilityFeasibilityContract = read(
 const networkObservabilityProbePreparationContract = read(
   "docs/design/milestone-1z-b-network-observability-probe-preparation-contract.md",
 );
+const networkObservabilityNativeProbeImplementationContract = read(
+  "docs/design/milestone-1z-c-native-probe-implementation-contract.md",
+);
 const networkObservabilityProbePlan = read(
   "docs/design/network-observability-evidence-and-synthetic-probe-plan.md",
 );
@@ -647,6 +651,34 @@ assert.match(
 assert.match(
   networkObservabilityProbePlan,
   /No product feature is adopted/,
+);
+assert.match(
+  networkObservabilityNativeProbeImplementationContract,
+  /Documentation-only implementation preparation authorized/,
+);
+assert.match(
+  networkObservabilityNativeProbeImplementationContract,
+  /It does not\s+authorize that change, a probe executable/,
+);
+assert.match(
+  networkObservabilityNativeProbeImplementationContract,
+  /`aer-network-probe` is a workspace library used only for compilation and pure\s+unit tests/,
+);
+assert.match(
+  networkObservabilityNativeProbeImplementationContract,
+  /No binary target, example, benchmark, build script, integration test, live\s+test, workflow, fixture process/,
+);
+assert.match(
+  networkObservabilityNativeProbeImplementationContract,
+  /Tests must not open any socket, read `\/proc`, call IP Helper/,
+);
+assert.match(
+  networkObservabilityNativeProbeImplementationContract,
+  /one explicit run authorization for Ubuntu and a separate explicit run\s+authorization for Windows/,
+);
+assert.match(
+  networkObservabilityNativeProbeImplementationContract,
+  /There is no fallback to a provider, model service, public website, DNS name/,
 );
 assert.ok(!("remote" in capability), "capability must remain local");
 assert.match(cargo, /^version = "0\.1\.0"$/m);
