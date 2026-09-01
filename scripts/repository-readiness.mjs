@@ -383,6 +383,24 @@ const networkProbeLinux = read(
 const networkProbeWindows = read(
   "crates/aer-network-probe/src/platform/windows.rs",
 );
+const networkProbeLoopbackMain = read(
+  "crates/aer-network-probe/src/loopback_main.rs",
+);
+const networkProbeLoopbackModule = read(
+  "crates/aer-network-probe/src/loopback/mod.rs",
+);
+const networkProbeLoopbackFixture = read(
+  "crates/aer-network-probe/src/loopback/fixture.rs",
+);
+const networkProbeLoopbackSampler = read(
+  "crates/aer-network-probe/src/loopback/sampler.rs",
+);
+const networkProbeLoopbackSupervisor = read(
+  "crates/aer-network-probe/src/loopback/supervisor.rs",
+);
+const networkProbeLoopbackRecord = read(
+  "crates/aer-network-probe/src/loopback/record.rs",
+);
 const networkObservabilityProbePlan = read(
   "docs/design/network-observability-evidence-and-synthetic-probe-plan.md",
 );
@@ -689,7 +707,7 @@ assert.match(
 );
 assert.match(
   networkObservabilityLoopbackValidationContract,
-  /`a236b76ffbb18e8f5cce8e629861dc241bbf12b6`/,
+  /`5d3b8744350904f41e7faa468ca071fa80b52eb7`/,
 );
 assert.match(
   networkObservabilityLoopbackValidationContract,
@@ -733,6 +751,10 @@ assert.doesNotMatch(
   "the product and domain core must not depend on the isolated probe crate",
 );
 assert.match(networkProbeCargo, /^default = \[\]$/m);
+assert.match(
+  networkProbeCargo,
+  /\[\[bin\]\]\s+name = "aer-network-probe-loopback"\s+path = "src\/loopback_main\.rs"/,
+);
 assert.match(networkProbeCargo, /^libc = "0\.2"$/m);
 assert.match(networkProbeCargo, /windows-sys = \{ version = "0\.61\.2"/);
 assert.doesNotMatch(
@@ -750,13 +772,61 @@ for (const forbiddenPath of [
   assert.equal(
     existsSync(forbiddenPath),
     false,
-    `isolated probe executable/test path must remain absent: ${forbiddenPath}`,
+    `unapproved probe executable/test path must remain absent: ${forbiddenPath}`,
   );
 }
 assert.doesNotMatch(
   networkProbeLib,
   /pub\s+mod\s+(?:adapter|platform)|fn\s+main|tauri::command/,
-  "native adapters must not be exported or made executable",
+  "native adapters must not be exported through the library or product",
+);
+assert.match(
+  networkProbeLoopbackMain,
+  /loopback::parse_role\(&arguments\)\.and_then\(loopback::run\)/,
+);
+assert.match(networkProbeLoopbackMain, /sanitization_stop/);
+assert.match(
+  networkProbeLoopbackModule,
+  /\[role\] if role == "supervisor"[\s\S]*\[role\] if role == "sampler"[\s\S]*family == "ipv4"[\s\S]*family == "ipv6"/,
+);
+assert.match(networkProbeLoopbackFixture, /Ipv4Addr::LOCALHOST, 0/);
+assert.match(networkProbeLoopbackFixture, /Ipv6Addr::LOCALHOST, 0/);
+assert.match(
+  networkProbeLoopbackFixture,
+  /const READY_TOKEN: &str = "fixture_ready"/,
+);
+assert.match(
+  networkProbeLoopbackFixture,
+  /const STOP_TOKEN: &str = "fixture_stop"/,
+);
+assert.doesNotMatch(
+  networkProbeLoopbackFixture,
+  /write_all\([^\n]*(?:address|port)|println!|eprintln!/,
+  "fixture must not expose its numeric endpoint",
+);
+assert.match(networkProbeLoopbackSampler, /const SAMPLE_COUNT: u8 = 11/);
+assert.match(
+  networkProbeLoopbackSampler,
+  /const INTERVAL: Duration = Duration::from_millis\(500\)/,
+);
+assert.match(
+  networkProbeLoopbackSampler,
+  /const WINDOW: Duration = Duration::from_secs\(5\)/,
+);
+assert.match(
+  networkProbeLoopbackSampler,
+  /sanitize_raw\(&rows, acquisition, &fixtures\)/,
+);
+assert.match(networkProbeLoopbackSupervisor, /Duration::from_secs\(15\)/);
+assert.match(networkProbeLoopbackSupervisor, /ordinary_user_preflight\(\)/);
+assert.match(networkProbeLoopbackSupervisor, /candidate\s*\.encode_final\(\)/);
+assert.match(networkProbeLoopbackRecord, /CandidateRecord::parse_candidate/);
+assert.match(networkProbeLoopbackRecord, /supervisor_termination=pending_exit/);
+assert.match(networkProbeLoopbackRecord, /bounded_loopback_observation_only/);
+assert.doesNotMatch(
+  `${networkProbeLoopbackMain}\n${networkProbeLoopbackModule}\n${networkProbeLoopbackFixture}\n${networkProbeLoopbackSampler}\n${networkProbeLoopbackSupervisor}\n${networkProbeLoopbackRecord}`,
+  /https?:|ToSocketAddrs|UdpSocket|reqwest|ureq|serde|dns|telemetry|provider|inference|tauri::command|upload|publish|release/i,
+  "the loopback runner must remain isolated from external and product paths",
 );
 assert.match(networkProbeModel, /pub enum AddressClass/);
 assert.match(networkProbeModel, /samples: \[bool; 11\]/);

@@ -7,6 +7,10 @@ license = "Apache-2.0"
 [features]
 default = []
 
+[[bin]]
+name = "aer-network-probe-loopback"
+path = "src/loopback_main.rs"
+
 [dependencies]
 
 [target.'cfg(target_os = "linux")'.dependencies]
@@ -17,5 +21,6 @@ windows-sys = { version = "0.61.2", features = [
   "Win32_Foundation",
   "Win32_NetworkManagement_IpHelper",
   "Win32_Networking_WinSock",
+  "Win32_Security",
   "Win32_System_Threading",
 ] }
