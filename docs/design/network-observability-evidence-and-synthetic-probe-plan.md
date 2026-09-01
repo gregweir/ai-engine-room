@@ -1,6 +1,6 @@
 # Network-observability evidence and synthetic-probe plan
 
-Status: **BOUNDED LOOPBACK VALIDATION COMPLETE; PRODUCT ADOPTION UNDECIDED** on
+Status: **BOUNDED LOOPBACK VALIDATION COMPLETE; PRODUCT ADOPTION DEFERRED** on
 2026-09-01.
 
 ## Decision
@@ -16,6 +16,9 @@ The isolated non-product adapter library is merged under the
 the loopback-only runner and platform executions completed under the
 [1Z-D contract](milestone-1z-d-loopback-adapter-validation-contract.md). Both
 one-run authorizations are consumed; no rerun or broader fixture is authorized.
+The 1Z-E
+[disposition](milestone-1z-e-network-observability-disposition.md) defers
+product adoption and additional platform validation.
 
 ## Milestone 1Z-D narrowing decision
 
@@ -264,6 +267,12 @@ Defer the feature if either platform requires broader privilege, Linux process
 association is predictably too incomplete, sanitized output cannot explain
 material gaps, externally addressed fixtures cannot be controlled safely, or
 the evidence would encourage a non-specialist to infer privacy guarantees.
+
+The 1Z-E disposition applies that threshold conservatively. Although the two
+loopback fixtures passed, the evidence does not cover the externally addressed
+behavior needed for the main user question, and the cost and ambiguity of the
+next evidence step are not justified by demonstrated demand. The current
+sequence therefore stops without product adoption or another platform run.
 
 ## References
 

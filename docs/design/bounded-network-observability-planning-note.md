@@ -7,15 +7,18 @@ under the [Milestone 1Z-A contract](milestone-1z-a-network-observability-feasibi
 and evidence-model and synthetic-probe preparation completed under the
 [Milestone 1Z-B contract](milestone-1z-b-network-observability-probe-preparation-contract.md).
 The isolated 1Z-C implementation and separately authorized 1Z-D loopback
-validation are also complete. This note remains a planning boundary, not an
-implementation contract. It authorizes no product integration, additional
-platform probe, privilege, packaging, release, or external action.
+validation are also complete. The 1Z-E
+[disposition](milestone-1z-e-network-observability-disposition.md) defers
+product adoption and additional platform validation. This note remains a
+planning boundary, not an implementation contract. It authorizes no product
+integration, additional platform probe, privilege, packaging, release, or
+external action.
 
 The package-manager investigation is closed for the current preview. The
 [platform assessment](../research/network-observability-platform-feasibility.md)
 finds a bounded TCP probe plausible on both verified platforms while excluding
 UDP from the first cross-platform slice and preserving conditional Linux
-process attribution. Product adoption remains undecided.
+process attribution. Product adoption is deferred.
 
 ## Product question
 
@@ -146,12 +149,15 @@ evidence of cross-platform parity.
    establish bounded Ubuntu and Windows passes for one long-lived attributed
    IPv4 loopback fixture and one IPv6 fixture. Both one-run authorizations are
    consumed. External, unattributed, and short-lived fixtures remain deferred.
-5. **Adopt-or-defer disposition — next, not authorized:** proceed only if the
-   reviewed evidence gives a
-   non-specialist useful evidence without disproportionate privilege, security,
-   maintenance, or support burden.
-6. **Product contract:** only after adoption, define adapters, domain types,
-   presentation, reporting, tests, native verification, and independent review.
+5. **Adopt-or-defer disposition — complete; adoption deferred:** the 1Z-E
+   [disposition](milestone-1z-e-network-observability-disposition.md) closes the
+   current sequence because the loopback evidence does not yet answer the main
+   externally addressed user question and further validation is not justified
+   by demonstrated demand.
+6. **Product contract — not authorized:** only after a future renewed evidence
+   sequence and adoption decision may a separate contract define adapters,
+   domain types, presentation, reporting, tests, native verification, and
+   independent review.
 
 Each step requires its own developer gate. Deferral at any step is an acceptable
 outcome.
