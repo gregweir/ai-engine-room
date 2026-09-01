@@ -1,5 +1,8 @@
 # AI Engine Room
 
+[![CI](https://github.com/gregweir/ai-engine-room/actions/workflows/deterministic.yml/badge.svg?branch=main)](https://github.com/gregweir/ai-engine-room/actions/workflows/deterministic.yml)
+[![Apache-2.0 License](https://img.shields.io/badge/license-Apache--2.0-green.svg)](LICENSE)
+
 **AI Engine Room helps everyday users understand what their local AI runtimes
 are doing—without managing servers, running inference unless explicitly
 authorized, or making decisions on their behalf.**
