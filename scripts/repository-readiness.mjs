@@ -368,6 +368,18 @@ const networkObservabilityProbePreparationContract = read(
 const networkObservabilityNativeProbeImplementationContract = read(
   "docs/design/milestone-1z-c-native-probe-implementation-contract.md",
 );
+const networkProbeCargo = read("crates/aer-network-probe/Cargo.toml");
+const networkProbeLib = read("crates/aer-network-probe/src/lib.rs");
+const networkProbeModel = read("crates/aer-network-probe/src/model.rs");
+const networkProbeClassifier = read("crates/aer-network-probe/src/classify.rs");
+const networkProbeSanitizer = read("crates/aer-network-probe/src/sanitize.rs");
+const networkProbeAdapter = read("crates/aer-network-probe/src/adapter.rs");
+const networkProbeLinux = read(
+  "crates/aer-network-probe/src/platform/linux.rs",
+);
+const networkProbeWindows = read(
+  "crates/aer-network-probe/src/platform/windows.rs",
+);
 const networkObservabilityProbePlan = read(
   "docs/design/network-observability-evidence-and-synthetic-probe-plan.md",
 );
@@ -480,10 +492,7 @@ for (const payload of [
   );
 }
 assert.match(snapDesktop, /^Exec=ai-engine-room$/m);
-assert.match(
-  snapDesktop,
-  /^Icon=\$\{SNAP\}\/meta\/gui\/ai-engine-room\.png$/m,
-);
+assert.match(snapDesktop, /^Icon=\$\{SNAP\}\/meta\/gui\/ai-engine-room\.png$/m);
 assert.match(snapDesktop, /^Terminal=false$/m);
 assert.doesNotMatch(snapDesktop, /(?:sh|bash|powershell|cmd)(?:\s|$)/im);
 assert.match(
@@ -499,7 +508,10 @@ assert.match(snapcraftBuildPreparation, /`ubuntu-24\.04` amd64/);
 assert.match(snapcraftBuildPreparation, /`contents: read`/);
 assert.match(snapcraftBuildPreparation, /45-minute job timeout/);
 assert.match(snapcraftBuildPreparation, /`snapcraft expand-extensions`/);
-assert.match(snapcraftBuildPreparation, /`mount-observe` and `calendar-service`/);
+assert.match(
+  snapcraftBuildPreparation,
+  /`mount-observe` and `calendar-service`/,
+);
 assert.match(snapcraftBuildPreparation, /`--destructive-mode`/);
 assert.match(snapcraftBuildPreparation, /Exactly one `\.snap` must exist/);
 assert.match(
@@ -542,10 +554,7 @@ assert.match(
   /No build command ran\. No `\.snap` was produced/,
 );
 assert.match(snapcraftExpansionVerification, /no retry is authorized/i);
-assert.match(
-  snapDispositionContract,
-  /documentation-only closure proposal/,
-);
+assert.match(snapDispositionContract, /documentation-only closure proposal/);
 assert.match(
   snapDispositionContract,
   /Defer Snap distribution for the current preview/,
@@ -597,10 +606,7 @@ assert.match(
   networkObservabilityFeasibility,
   /Windows owner-PID\s+UDP rows describe bound local endpoints and do not include a remote address/,
 );
-assert.match(
-  networkObservabilityFeasibility,
-  /PTRACE_MODE_READ_FSCREDS/,
-);
+assert.match(networkObservabilityFeasibility, /PTRACE_MODE_READ_FSCREDS/);
 assert.match(
   networkObservabilityFeasibility,
   /Proceed only to evidence-model and synthetic-probe preparation/,
@@ -636,10 +642,7 @@ assert.match(
 assert.match(networkObservabilityProbePlan, /Ephemeral raw observation/);
 assert.match(networkObservabilityProbePlan, /Sanitized retained record/);
 assert.match(networkObservabilityProbePlan, /Controlled fixture matrix/);
-assert.match(
-  networkObservabilityProbePlan,
-  /exactly 11 scheduled snapshots/,
-);
+assert.match(networkObservabilityProbePlan, /exactly 11 scheduled snapshots/);
 assert.match(
   networkObservabilityProbePlan,
   /No DNS name, provider endpoint, model service, public website/,
@@ -648,17 +651,14 @@ assert.match(
   networkObservabilityProbePlan,
   /Short-lived fixtures may be observed or missed/,
 );
+assert.match(networkObservabilityProbePlan, /No product feature is adopted/);
 assert.match(
-  networkObservabilityProbePlan,
-  /No product feature is adopted/,
+  networkObservabilityNativeProbeImplementationContract,
+  /Contract merged on 2026-09-01/,
 );
 assert.match(
   networkObservabilityNativeProbeImplementationContract,
-  /Documentation-only implementation preparation authorized/,
-);
-assert.match(
-  networkObservabilityNativeProbeImplementationContract,
-  /It does not\s+authorize that change, a probe executable/,
+  /separately approved for push/,
 );
 assert.match(
   networkObservabilityNativeProbeImplementationContract,
@@ -679,6 +679,81 @@ assert.match(
 assert.match(
   networkObservabilityNativeProbeImplementationContract,
   /There is no fallback to a provider, model service, public website, DNS name/,
+);
+assert.match(
+  read("Cargo.toml"),
+  /members = \["src-tauri", "crates\/aer-core", "crates\/aer-network-probe"\]/,
+);
+assert.doesNotMatch(
+  `${read("src-tauri/Cargo.toml")}\n${read("crates/aer-core/Cargo.toml")}`,
+  /aer-network-probe/,
+  "the product and domain core must not depend on the isolated probe crate",
+);
+assert.match(networkProbeCargo, /^default = \[\]$/m);
+assert.match(networkProbeCargo, /^libc = "0\.2"$/m);
+assert.match(networkProbeCargo, /windows-sys = \{ version = "0\.61\.2"/);
+assert.doesNotMatch(
+  networkProbeCargo,
+  /tokio|async-std|reqwest|ureq|serde|pcap|dns|trust-dns|build-dependencies/,
+  "the isolated probe crate must keep only reviewed native bindings",
+);
+for (const forbiddenPath of [
+  "crates/aer-network-probe/src/main.rs",
+  "crates/aer-network-probe/build.rs",
+  "crates/aer-network-probe/examples",
+  "crates/aer-network-probe/benches",
+  "crates/aer-network-probe/tests",
+]) {
+  assert.equal(
+    existsSync(forbiddenPath),
+    false,
+    `isolated probe executable/test path must remain absent: ${forbiddenPath}`,
+  );
+}
+assert.doesNotMatch(
+  networkProbeLib,
+  /pub\s+mod\s+(?:adapter|platform)|fn\s+main|tauri::command/,
+  "native adapters must not be exported or made executable",
+);
+assert.match(networkProbeModel, /pub enum AddressClass/);
+assert.match(networkProbeModel, /samples: \[bool; 11\]/);
+assert.doesNotMatch(
+  networkProbeModel,
+  /IpAddr|SocketAddr|PathBuf|String|SystemTime|Duration/,
+  "retained model types must be structurally unable to hold raw identity fields",
+);
+assert.match(
+  networkProbeClassifier,
+  /IANA_REGISTRY_RETRIEVED: &str = "2026-09-01"/,
+);
+assert.match(
+  networkProbeClassifier,
+  /IANA_REGISTRY_LAST_UPDATED: &str = "2025-10-09"/,
+);
+assert.doesNotMatch(
+  networkProbeClassifier,
+  /lookup_host|ToSocketAddrs|reqwest|ureq|dns/i,
+  "address classification must remain numeric and pure",
+);
+assert.match(networkProbeSanitizer, /ListenerRejected/);
+assert.match(networkProbeSanitizer, /NonTcpRejected/);
+assert.match(networkProbeSanitizer, /UnknownFixture/);
+assert.match(networkProbeSanitizer, /ClassificationMismatch/);
+assert.match(networkProbeAdapter, /MAX_ALLOW_LIST: usize = 16/);
+assert.doesNotMatch(
+  networkProbeAdapter,
+  /thread|sleep|timer|retry|log|write|spawn|resolve/i,
+  "the adapter seam must not add orchestration, persistence, or discovery",
+);
+assert.match(networkProbeWindows, /GetExtendedTcpTable/);
+assert.match(networkProbeWindows, /QueryFullProcessImageNameW/);
+assert.match(networkProbeWindows, /PROCESS_QUERY_LIMITED_INFORMATION/);
+assert.match(networkProbeLinux, /NETLINK_SOCK_DIAG/);
+assert.match(networkProbeLinux, /process\.join\("fd"\)/);
+assert.doesNotMatch(
+  `${networkProbeLinux}\n${networkProbeWindows}`,
+  /setInterval|setTimeout|Command::new|TcpStream|TcpListener|UdpSocket|ToSocketAddrs/,
+  "native adapters must not schedule, spawn, or create fixture traffic",
 );
 assert.ok(!("remote" in capability), "capability must remain local");
 assert.match(cargo, /^version = "0\.1\.0"$/m);
@@ -1217,10 +1292,7 @@ assert.match(
 );
 assert.match(signpathAssessment, /not application-ready/i);
 assert.match(signpathAssessment, /SignPath Foundation/);
-assert.match(
-  signpathAssessment,
-  /public \[`v0\.1\.0-preview\.1` release\]/,
-);
+assert.match(signpathAssessment, /public \[`v0\.1\.0-preview\.1` release\]/);
 assert.match(signpathAssessment, /No application,\s+account, certificate/);
 assert.match(
   signpathAssessment,

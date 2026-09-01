@@ -2,11 +2,13 @@
 
 ## Status
 
-Documentation-only implementation preparation authorized on 2026-08-31. This
-contract proposes one isolated, non-product Rust library change. It does not
-authorize that change, a probe executable, socket or process-table access,
-opening a connection, fixture execution, endpoint contact, product integration,
-or a platform run.
+Contract merged on 2026-09-01. The developer separately authorized preparation
+of one local isolated, non-product Rust library change from merge baseline
+`2d8078a655350b22ffe9fdc45db7616581565966`. The implementation remains local
+until its exact commit, parent, changed paths, lock diff, and test commands are
+reported and separately approved for push. No real adapter call, probe
+executable, socket or process-table access, connection, fixture execution,
+endpoint contact, product integration, or platform run is authorized.
 
 ## Purpose
 
@@ -22,13 +24,14 @@ may not provide or invoke an executable path.
 
 ## Reviewed baseline
 
-| Field | Required value |
-| --- | --- |
-| Repository | `gregweir/ai-engine-room` |
-| Baseline commit | `42c605c3905eb0e314e7a73a032f36cad5a0cf4a` |
-| Proposed implementation branch | `codex/network-observability-native-probe-implementation` |
-| New crate | `crates/aer-network-probe` |
-| Product application crate | `src-tauri` — must not depend on the new crate |
+| Field                            | Required value                                            |
+| -------------------------------- | --------------------------------------------------------- |
+| Repository                       | `gregweir/ai-engine-room`                                 |
+| Contract baseline commit         | `42c605c3905eb0e314e7a73a032f36cad5a0cf4a`                |
+| Authorized implementation parent | `2d8078a655350b22ffe9fdc45db7616581565966`                |
+| Proposed implementation branch   | `codex/network-observability-native-probe-implementation` |
+| New crate                        | `crates/aer-network-probe`                                |
+| Product application crate        | `src-tauri` — must not depend on the new crate            |
 
 Before the later implementation branch is pushed, its exact commit, parent,
 changed paths, dependency-lock diff, and test commands must be reported for

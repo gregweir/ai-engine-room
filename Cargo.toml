@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["src-tauri", "crates/aer-core"]
+members = ["src-tauri", "crates/aer-core", "crates/aer-network-probe"]
 
 [workspace.dependencies]
 serde = { version = "1", features = ["derive"] }
