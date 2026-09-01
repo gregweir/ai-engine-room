@@ -211,6 +211,14 @@ The current sequence is documentation-led and separately gated:
   contact, or product implementation occurred. A later implementation and
   one bounded run per platform require a new exact developer-approved contract
   and separate execution authorizations.
+- **1Z-C — native-probe implementation contract prepared:** the
+  [documentation-only contract](design/milestone-1z-c-native-probe-implementation-contract.md)
+  fixes an isolated workspace-library boundary, closed raw and sanitized
+  models, pure classification and projection tests, target-gated Windows and
+  Linux adapter source, reviewed dependencies, and mechanical product
+  isolation. It adds no native source and authorizes no implementation or
+  execution. The exact implementation commit requires separate developer
+  approval; real adapter calls and each platform run remain later gates.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -236,10 +244,12 @@ signed release is authorized.
   official Debian/Ubuntu source-package work remain later, higher-effort
   possibilities. No additional distribution-channel work is authorized.
 - A separately gated network-observability native-probe implementation and
-  bounded execution slice. It must preserve or narrow the 1Z-B TCP fixture,
-  sampling, attribution, sanitization, termination, and stop boundaries; pin
-  any controlled external endpoints; and require one explicit authorization
-  per platform. No implementation or platform run is currently authorized.
+  bounded execution sequence. The exact 1Z-C isolated-library implementation
+  commit requires developer approval before merge. A later 1Z-D contract must
+  preserve or narrow the 1Z-B TCP fixture, sampling, attribution, sanitization,
+  termination, and stop boundaries; pin controlled external endpoints; and
+  require one explicit authorization per platform. No implementation or
+  platform run is currently authorized.
 
 These are possibilities, not commitments, schedules, or implementation
 authority.
