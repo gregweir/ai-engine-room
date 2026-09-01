@@ -24,7 +24,9 @@ const required = [
   ".github/workflows/deterministic.yml",
   "docs/roadmap.md",
   "docs/design/milestone-1y-c-snapcraft-one-build-preparation-contract.md",
+  "docs/design/milestone-1y-d-snap-disposition-contract.md",
   "docs/distribution/snapcraft-expansion-verification-record.md",
+  "docs/distribution/snap-disposition.md",
   "docs/release/linux-pre-release-verification.md",
   "docs/release/linux-pre-release-build-evidence.md",
   "docs/release/lm-studio-live-verification.md",
@@ -344,6 +346,10 @@ const snapcraftBuildPreparation = read(
 const snapcraftExpansionVerification = read(
   "docs/distribution/snapcraft-expansion-verification-record.md",
 );
+const snapDispositionContract = read(
+  "docs/design/milestone-1y-d-snap-disposition-contract.md",
+);
+const snapDisposition = read("docs/distribution/snap-disposition.md");
 
 const sourceSection = (source, start, end) => {
   const startIndex = source.indexOf(start);
@@ -512,6 +518,35 @@ assert.match(
   /No build command ran\. No `\.snap` was produced/,
 );
 assert.match(snapcraftExpansionVerification, /no retry is authorized/i);
+assert.match(
+  snapDispositionContract,
+  /documentation-only closure proposal/,
+);
+assert.match(
+  snapDispositionContract,
+  /Defer Snap distribution for the current preview/,
+);
+assert.match(
+  snapDispositionContract,
+  /next recommended\s+planning slice is the already identified documentation-led bounded\s+network-observability feasibility study/,
+);
+assert.match(
+  snapDisposition,
+  /DEFERRED; NO ADDITIONAL SNAPCRAFT RUN AUTHORIZED/,
+);
+assert.match(snapDisposition, /canonical\/gpu-snap\.git/);
+assert.match(
+  snapDisposition,
+  /not a supported\s+package definition, release candidate, store submission, or authorization to\s+run Snapcraft/,
+);
+assert.match(
+  snapDisposition,
+  /evidence of meaningful demand and a new\s+developer-approved contract/,
+);
+assert.match(
+  snapcraftExpansionVerification,
+  /developer selected deferral in the separately reviewed/,
+);
 assert.ok(!("remote" in capability), "capability must remain local");
 assert.match(cargo, /^version = "0\.1\.0"$/m);
 assert.match(

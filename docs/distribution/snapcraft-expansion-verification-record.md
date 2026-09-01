@@ -113,24 +113,24 @@ documented GNOME plugs were absent in this exact expansion, while new generated
 GPU parts and sources became visible. Expansion must remain a gate because its
 result depends on the installed Snapcraft revision.
 
-## Recommended next decision
+## Subsequent disposition
 
-Do not retry this gate or broaden its allowlist in place. A later, separately
-approved static revision should first decide whether to:
+The developer selected deferral in the separately reviewed
+[Snap disposition](snap-disposition.md). The project will not retry this gate,
+broaden its allowlist, replace the GNOME extension, or prepare a Snap Store
+submission under the current release sequence. The tracked static definition
+remains historical proposal evidence, not a supported package or execution
+authority.
 
-- keep the GNOME extension and establish an immutable, reviewable identity for
-  every generated source and build-plan transformation;
-- replace the extension with explicit, least-privilege packaging inputs whose
-  sources and interfaces can be pinned and reviewed; or
-- defer Snap packaging if either approach creates disproportionate maintenance
-  or supply-chain burden.
-
-Only after that static decision and ordinary deterministic review should the
-project consider another exact expansion/build gate.
+Future reconsideration requires evidence of meaningful demand, a fresh
+developer-approved contract, and an immutable, reviewable boundary for every
+generated and external source before any new expansion or build gate.
 
 ## References
 
 - [Milestone 1Y-C preparation contract](../design/milestone-1y-c-snapcraft-one-build-preparation-contract.md)
+- [Milestone 1Y-D disposition contract](../design/milestone-1y-d-snap-disposition-contract.md)
+- [Snap disposition](snap-disposition.md)
 - [Static Snapcraft packaging proposal](snapcraft-static-proposal.md)
 - [Snapcraft GNOME extension](https://documentation.ubuntu.com/snapcraft/latest/reference/extensions/gnome-extension/)
 - [Snapcraft build environment options](https://documentation.ubuntu.com/snapcraft/stable/reference/build-environment-options/)
