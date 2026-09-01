@@ -181,15 +181,33 @@ impl SanitizedFixtureResult {
         })
     }
 
-    pub fn fixture(&self) -> FixtureLabel { self.fixture }
-    pub fn family(&self) -> AddressFamily { self.family }
-    pub fn state(&self) -> TcpState { self.state }
-    pub fn scope(&self) -> AddressClass { self.scope }
-    pub fn association(&self) -> ProcessAssociation { self.association }
-    pub fn outcome(&self) -> FixtureOutcome { self.outcome }
-    pub fn acquisition(&self) -> AcquisitionCompleteness { self.acquisition }
-    pub fn observed(&self, index: SampleIndex) -> bool { self.samples[usize::from(index.get())] }
-    pub fn deduplicated_count(&self) -> u16 { self.deduplicated_count }
+    pub fn fixture(&self) -> FixtureLabel {
+        self.fixture
+    }
+    pub fn family(&self) -> AddressFamily {
+        self.family
+    }
+    pub fn state(&self) -> TcpState {
+        self.state
+    }
+    pub fn scope(&self) -> AddressClass {
+        self.scope
+    }
+    pub fn association(&self) -> ProcessAssociation {
+        self.association
+    }
+    pub fn outcome(&self) -> FixtureOutcome {
+        self.outcome
+    }
+    pub fn acquisition(&self) -> AcquisitionCompleteness {
+        self.acquisition
+    }
+    pub fn observed(&self, index: SampleIndex) -> bool {
+        self.samples[usize::from(index.get())]
+    }
+    pub fn deduplicated_count(&self) -> u16 {
+        self.deduplicated_count
+    }
 
     #[cfg(test)]
     #[allow(clippy::too_many_arguments)]
@@ -204,7 +222,18 @@ impl SanitizedFixtureResult {
         sample_indexes: &[SampleIndex],
         deduplicated_count: u16,
     ) -> Self {
-        Self::create(fixture, family, state, scope, association, outcome, acquisition, sample_indexes, deduplicated_count).unwrap()
+        Self::create(
+            fixture,
+            family,
+            state,
+            scope,
+            association,
+            outcome,
+            acquisition,
+            sample_indexes,
+            deduplicated_count,
+        )
+        .unwrap()
     }
 }
 

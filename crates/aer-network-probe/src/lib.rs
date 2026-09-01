@@ -67,10 +67,15 @@ mod tests {
 
     #[test]
     fn sanitizer_rejects_out_of_contract_inputs() {
-        assert_eq!(SampleIndex::new(11), Err(crate::model::ModelError::SampleOutOfRange));
+        assert_eq!(
+            SampleIndex::new(11),
+            Err(crate::model::ModelError::SampleOutOfRange)
+        );
         assert_eq!(
             sanitize(
-                &[ArtificialObservation::listener(FixtureLabel::LoopbackIpv4Long)],
+                &[ArtificialObservation::listener(
+                    FixtureLabel::LoopbackIpv4Long
+                )],
                 AcquisitionCompleteness::Complete,
                 &[FixtureLabel::LoopbackIpv4Long],
             ),

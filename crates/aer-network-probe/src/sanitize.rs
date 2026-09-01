@@ -1,13 +1,11 @@
 use std::collections::{BTreeMap, BTreeSet};
 use std::net::{IpAddr, Ipv4Addr};
 
-use crate::adapter::{
-    NumericEndpoint, PlatformOwner, RawProtocol, RawRow, MAX_RAW_ROWS,
-};
+use crate::adapter::{NumericEndpoint, PlatformOwner, RawProtocol, RawRow, MAX_RAW_ROWS};
 use crate::classify::classify;
 use crate::model::{
-    AcquisitionCompleteness, AddressClass, AddressFamily, FixtureLabel, FixtureOutcome,
-    ModelError, ProcessAssociation, SampleIndex, SanitizedBatch, SanitizedFixtureResult, TcpState,
+    AcquisitionCompleteness, AddressClass, AddressFamily, FixtureLabel, FixtureOutcome, ModelError,
+    ProcessAssociation, SampleIndex, SanitizedBatch, SanitizedFixtureResult, TcpState,
 };
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -53,7 +51,10 @@ impl ArtificialObservation {
                     address: IpAddr::V4(Ipv4Addr::LOCALHOST),
                     port: 41_001,
                 },
-                remote: NumericEndpoint { address: remote_address, port: 41_002 },
+                remote: NumericEndpoint {
+                    address: remote_address,
+                    port: 41_002,
+                },
                 owner: PlatformOwner::Artificial,
                 association,
             },
@@ -134,7 +135,13 @@ pub fn sanitize(
         // deliberately read only inside this projection and have no retained
         // field. This makes omission structural rather than text filtering.
         let _discarded_raw = (&row.local, row.remote.port, &row.owner);
-        let key = Key { fixture, family, state: row.state, scope, association: row.association };
+        let key = Key {
+            fixture,
+            family,
+            state: row.state,
+            scope,
+            association: row.association,
+        };
         groups.entry(key).or_default().insert(row.sample_index);
         let count = counts.entry(key).or_default();
         *count = count.checked_add(1).ok_or(SanitizeError::ResultLimit)?;
@@ -187,7 +194,8 @@ mod tests {
             &[one.clone(), one],
             AcquisitionCompleteness::Partial,
             &[FixtureLabel::LoopbackIpv4Long],
-        ).unwrap();
+        )
+        .unwrap();
         assert_eq!(batch.results().len(), 1);
         assert!(batch.results()[0].observed(SampleIndex::new(2).unwrap()));
         assert_eq!(batch.results()[0].deduplicated_count(), 2);
@@ -202,7 +210,14 @@ mod tests {
             IpAddr::V6(Ipv6Addr::LOCALHOST),
             ProcessAssociation::SupportedProcess,
         );
-        assert_eq!(sanitize(&[wrong_family], AcquisitionCompleteness::Complete, &[FixtureLabel::LoopbackIpv4Long]), Err(SanitizeError::FamilyMismatch));
+        assert_eq!(
+            sanitize(
+                &[wrong_family],
+                AcquisitionCompleteness::Complete,
+                &[FixtureLabel::LoopbackIpv4Long]
+            ),
+            Err(SanitizeError::FamilyMismatch)
+        );
 
         let wrong_scope = ArtificialObservation::tcp(
             FixtureLabel::ExternalIpv4Long,
@@ -211,6 +226,13 @@ mod tests {
             IpAddr::V4(Ipv4Addr::LOCALHOST),
             ProcessAssociation::SupportedProcess,
         );
-        assert_eq!(sanitize(&[wrong_scope], AcquisitionCompleteness::Complete, &[FixtureLabel::ExternalIpv4Long]), Err(SanitizeError::ClassificationMismatch));
+        assert_eq!(
+            sanitize(
+                &[wrong_scope],
+                AcquisitionCompleteness::Complete,
+                &[FixtureLabel::ExternalIpv4Long]
+            ),
+            Err(SanitizeError::ClassificationMismatch)
+        );
     }
 }

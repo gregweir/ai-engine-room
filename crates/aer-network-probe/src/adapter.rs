@@ -75,12 +75,18 @@ impl SnapshotRequest {
         if processes.len() > MAX_ALLOW_LIST {
             return Err(AdapterError::InvalidRequest);
         }
-        Ok(Self { sample_index, processes })
+        Ok(Self {
+            sample_index,
+            processes,
+        })
     }
 
     #[cfg(test)]
     pub(crate) fn artificial(sample_index: SampleIndex) -> Self {
-        Self { sample_index, processes: Vec::new() }
+        Self {
+            sample_index,
+            processes: Vec::new(),
+        }
     }
 }
 
@@ -111,7 +117,9 @@ pub(crate) struct FakeAdapter(Result<RawSnapshot, AdapterError>);
 
 #[cfg(test)]
 impl FakeAdapter {
-    pub(crate) fn failed(error: AdapterError) -> Self { Self(Err(error)) }
+    pub(crate) fn failed(error: AdapterError) -> Self {
+        Self(Err(error))
+    }
 }
 
 #[cfg(test)]
