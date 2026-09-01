@@ -229,8 +229,17 @@ The current sequence is documentation-led and separately gated:
   fixtures, retained unrelated details, or a rerun. Both one-run
   authorizations are consumed. External, unattributed, permission-limited,
   stale, and short-lived behavior remains unvalidated, and no product adoption
-  or integration follows from this bounded evidence. The next possible slice
-  is a separately gated documentation-only disposition decision.
+  or integration follows from this bounded evidence. The 1Z-E disposition
+  below records the resulting deferral.
+- **1Z-E — disposition complete; product adoption deferred:** the
+  [disposition](design/milestone-1z-e-network-observability-disposition.md)
+  closes the current network-observability sequence after the bounded 1Z-D
+  loopback passes. The evidence does not cover the externally addressed
+  behavior needed for the main user question, and another validation step is
+  not justified by demonstrated demand or current product priority. The
+  isolated probe remains outside the product, both run authorizations remain
+  consumed, and no further validation, integration, packaging, or release is
+  authorized.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -255,11 +264,11 @@ signed release is authorized.
   demand, with a new contract and immutable source-boundary design. PPA and
   official Debian/Ubuntu source-package work remain later, higher-effort
   possibilities. No additional distribution-channel work is authorized.
-- A separately gated network-observability disposition decision after the
-  completed loopback-only 1Z-D evidence. Any later externally addressed
-  fixture must have its own contract with pinned controlled endpoints. No
-  additional adapter execution, product integration, or platform run is
-  currently authorized.
+- Network observability only after the 1Z-E deferral conditions are met and a
+  new developer-approved documentation contract defines a smallest useful
+  evidence gap. Any later externally addressed fixture must have its own
+  contract with pinned controlled endpoints. No additional adapter execution,
+  product integration, or platform run is currently authorized.
 
 These are possibilities, not commitments, schedules, or implementation
 authority.

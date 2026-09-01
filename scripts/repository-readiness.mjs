@@ -29,6 +29,7 @@ const required = [
   "docs/design/milestone-1z-a-network-observability-feasibility-contract.md",
   "docs/design/milestone-1z-b-network-observability-probe-preparation-contract.md",
   "docs/design/milestone-1z-c-native-probe-implementation-contract.md",
+  "docs/design/milestone-1z-e-network-observability-disposition.md",
   "docs/design/network-observability-evidence-and-synthetic-probe-plan.md",
   "docs/validation/milestone-1z-d-loopback-adapter-validation-record.md",
   "docs/distribution/snapcraft-expansion-verification-record.md",
@@ -375,6 +376,9 @@ const networkObservabilityLoopbackValidationContract = read(
 const networkObservabilityLoopbackValidationRecord = read(
   "docs/validation/milestone-1z-d-loopback-adapter-validation-record.md",
 );
+const networkObservabilityDisposition = read(
+  "docs/design/milestone-1z-e-network-observability-disposition.md",
+);
 const networkProbeCargo = read("crates/aer-network-probe/Cargo.toml");
 const networkProbeLib = read("crates/aer-network-probe/src/lib.rs");
 const networkProbeModel = read("crates/aer-network-probe/src/model.rs");
@@ -617,10 +621,7 @@ assert.match(
   networkObservabilityPlanning,
   /documentation feasibility completed/,
 );
-assert.match(
-  networkObservabilityPlanning,
-  /Product adoption remains undecided/,
-);
+assert.match(networkObservabilityPlanning, /Product adoption is deferred/);
 assert.match(
   networkObservabilityFeasibility,
   /DOCUMENTATION FEASIBILITY COMPLETE; NO PLATFORM PROBE/,
@@ -662,7 +663,7 @@ assert.match(
 );
 assert.match(
   networkObservabilityProbePlan,
-  /BOUNDED LOOPBACK VALIDATION COMPLETE; PRODUCT ADOPTION UNDECIDED/,
+  /BOUNDED LOOPBACK VALIDATION COMPLETE; PRODUCT ADOPTION DEFERRED/,
 );
 assert.match(networkObservabilityProbePlan, /Ephemeral raw observation/);
 assert.match(networkObservabilityProbePlan, /Sanitized retained record/);
@@ -760,6 +761,22 @@ assert.match(
 assert.match(
   networkObservabilityLoopbackValidationRecord,
   /externally addressed, LAN, UDP, unattributed, permission-limited, stale, or\s+short-lived connection visibility/,
+);
+assert.match(
+  networkObservabilityDisposition,
+  /PRODUCT ADOPTION AND ADDITIONAL PLATFORM VALIDATION DEFERRED/,
+);
+assert.match(
+  networkObservabilityDisposition,
+  /`de7c83e5b57e870f01e590918a6195ecbcbed45d`/,
+);
+assert.match(
+  networkObservabilityDisposition,
+  /The isolated `aer-network-probe` source remains a developer-only evidence\s+instrument with no product call path/,
+);
+assert.match(
+  networkObservabilityDisposition,
+  /No further network-observability action is the\s+default/,
 );
 assert.match(
   read("scripts/verify-target-license-coverage.mjs"),
