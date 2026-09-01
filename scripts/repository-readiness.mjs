@@ -368,6 +368,9 @@ const networkObservabilityProbePreparationContract = read(
 const networkObservabilityNativeProbeImplementationContract = read(
   "docs/design/milestone-1z-c-native-probe-implementation-contract.md",
 );
+const networkObservabilityLoopbackValidationContract = read(
+  "docs/design/milestone-1z-d-loopback-adapter-validation-contract.md",
+);
 const networkProbeCargo = read("crates/aer-network-probe/Cargo.toml");
 const networkProbeLib = read("crates/aer-network-probe/src/lib.rs");
 const networkProbeModel = read("crates/aer-network-probe/src/model.rs");
@@ -637,7 +640,7 @@ assert.match(
 );
 assert.match(
   networkObservabilityProbePlan,
-  /PREPARATION COMPLETE; NO PROBE IMPLEMENTED OR RUN/,
+  /PREPARATION COMPLETE; ISOLATED ADAPTER SOURCE MERGED; NO REAL ADAPTER\s+RUN/,
 );
 assert.match(networkObservabilityProbePlan, /Ephemeral raw observation/);
 assert.match(networkObservabilityProbePlan, /Sanitized retained record/);
@@ -683,6 +686,38 @@ assert.match(
 assert.match(
   networkObservabilityNativeProbeImplementationContract,
   /`scripts\/verify-target-license-coverage\.mjs` solely to classify\s+`aer-network-probe` as a local workspace package/,
+);
+assert.match(
+  networkObservabilityLoopbackValidationContract,
+  /`a236b76ffbb18e8f5cce8e629861dc241bbf12b6`/,
+);
+assert.match(
+  networkObservabilityLoopbackValidationContract,
+  /exactly two attributed, long-lived loopback TCP fixtures/,
+);
+assert.match(
+  networkObservabilityLoopbackValidationContract,
+  /exactly 11 scheduled snapshots, indexes `0` through `10`/,
+);
+assert.match(
+  networkObservabilityLoopbackValidationContract,
+  /15-second fail-closed outer timeout/,
+);
+assert.match(
+  networkObservabilityLoopbackValidationContract,
+  /one Ubuntu run and one Windows run each\s+require their own explicit authorization/,
+);
+assert.match(
+  networkObservabilityLoopbackValidationContract,
+  /No new dependency, build script, integration test, workflow, Tauri command/,
+);
+assert.match(
+  networkObservabilityLoopbackValidationContract,
+  /The root lockfile must remain byte-for-byte\s+unchanged/,
+);
+assert.match(
+  networkObservabilityLoopbackValidationContract,
+  /any external address, Internet connection, DNS name, provider endpoint/,
 );
 assert.match(
   read("scripts/verify-target-license-coverage.mjs"),

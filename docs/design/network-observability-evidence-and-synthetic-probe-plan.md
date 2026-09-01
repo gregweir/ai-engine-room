@@ -1,6 +1,7 @@
 # Network-observability evidence and synthetic-probe plan
 
-Status: **PREPARATION COMPLETE; NO PROBE IMPLEMENTED OR RUN** on 2026-08-31.
+Status: **PREPARATION COMPLETE; ISOLATED ADAPTER SOURCE MERGED; NO REAL ADAPTER
+RUN** on 2026-09-01.
 
 ## Decision
 
@@ -9,10 +10,26 @@ well enough for a later execution proposal. No product feature is adopted.
 No socket or process table was inspected, no connection was opened, and no
 native probe or fixture was implemented or run during this preparation.
 
-The next possible step is a separately approved native-probe implementation
-and execution contract. It must preserve or narrow every bound below, pin any
-controlled external endpoint, and require a separate one-run authorization for
-each platform.
+The isolated non-product adapter library is now merged under the
+[1Z-C contract](milestone-1z-c-native-probe-implementation-contract.md). The
+next possible step is the separately approved loopback-only runner
+implementation defined by the 1Z-D contract below. It preserves or narrows
+every applicable bound and requires a separate one-run authorization for each
+platform.
+
+## Milestone 1Z-D narrowing decision
+
+The first proposed real-adapter validation is narrowed to the long-lived
+`loopback_ipv4_long` and `loopback_ipv6_long` fixtures only. It preserves the
+11-snapshot, five-second-window, 15-second-timeout, sanitization, privilege,
+termination, and separate-platform-authorization bounds below while creating
+no external connection.
+
+Externally addressed, unattributed, and short-lived fixtures remain deferred.
+This loopback-only slice cannot validate those behaviors and cannot support a
+product-adoption decision. Any later external fixture still requires a new
+contract that pins numeric endpoints, control, payload, logging, retention,
+and deletion terms with no fallback.
 
 ## Questions the probe may answer
 

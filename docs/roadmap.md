@@ -211,15 +211,23 @@ The current sequence is documentation-led and separately gated:
   contact, or product implementation occurred. A later implementation and
   one bounded run per platform require a new exact developer-approved contract
   and separate execution authorizations.
-- **1Z-C — isolated native-probe implementation preparation authorized:** the
+- **1Z-C — isolated native-probe implementation complete:** the
   [merged contract](design/milestone-1z-c-native-probe-implementation-contract.md)
   fixes an isolated workspace-library boundary, closed raw and sanitized
   models, pure classification and projection tests, target-gated Windows and
   Linux adapter source, reviewed dependencies, and mechanical product
-  isolation. One local implementation change is authorized from exact parent
-  `2d8078a655350b22ffe9fdc45db7616581565966`; its exact resulting commit must
-  be reported and separately approved before push. Real adapter calls and each
-  platform run remain later gates.
+  isolation. PR #29 merged at
+  `a236b76ffbb18e8f5cce8e629861dc241bbf12b6`, and exact post-merge ordinary CI
+  passed. The product has no call path to either adapter, and neither adapter
+  has been executed.
+- **1Z-D — loopback-only adapter-validation contract in preparation:** the
+  [contract](design/milestone-1z-d-loopback-adapter-validation-contract.md)
+  narrows first real-adapter evidence to one long-lived attributed IPv4
+  loopback fixture and one IPv6 fixture, exactly 11 snapshots over at most five
+  seconds, a 15-second outer timeout, closed sanitized output, and confirmed
+  teardown. External, unattributed, and short-lived fixtures remain deferred.
+  Implementation and exactly one run per platform require separate approvals;
+  no adapter execution is currently authorized.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -244,14 +252,11 @@ signed release is authorized.
   demand, with a new contract and immutable source-boundary design. PPA and
   official Debian/Ubuntu source-package work remain later, higher-effort
   possibilities. No additional distribution-channel work is authorized.
-- A separately gated network-observability native-probe implementation and
-  bounded execution sequence. One local 1Z-C isolated-library implementation
-  is authorized, but its exact commit requires developer approval before push.
-  A later 1Z-D contract must
-  preserve or narrow the 1Z-B TCP fixture, sampling, attribution, sanitization,
-  termination, and stop boundaries; pin controlled external endpoints; and
-  require one explicit authorization per platform. No adapter execution or
-  platform run is currently authorized.
+- A separately gated network-observability execution sequence. The proposed
+  1Z-D slice is loopback-only and requires a separately approved implementation
+  plus one explicit authorization per platform. Any later externally addressed
+  fixture must have its own contract with pinned controlled endpoints. No
+  adapter execution or platform run is currently authorized.
 
 These are possibilities, not commitments, schedules, or implementation
 authority.
