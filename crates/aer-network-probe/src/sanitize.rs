@@ -100,15 +100,32 @@ pub fn sanitize(
     if observations.len() > MAX_RAW_ROWS {
         return Err(SanitizeError::ResultLimit);
     }
+    if observations
+        .iter()
+        .any(|observation| observation.unknown_fixture)
+    {
+        return Err(SanitizeError::UnknownFixture);
+    }
+    let rows: Vec<_> = observations
+        .iter()
+        .map(|observation| observation.row.clone())
+        .collect();
+    sanitize_raw(&rows, acquisition, allowed_fixtures)
+}
+
+pub(crate) fn sanitize_raw(
+    rows: &[RawRow],
+    acquisition: AcquisitionCompleteness,
+    allowed_fixtures: &[FixtureLabel],
+) -> Result<SanitizedBatch, SanitizeError> {
+    if rows.len() > MAX_RAW_ROWS {
+        return Err(SanitizeError::ResultLimit);
+    }
     let allowed: BTreeSet<_> = allowed_fixtures.iter().copied().collect();
     let mut groups: BTreeMap<Key, BTreeSet<SampleIndex>> = BTreeMap::new();
     let mut counts: BTreeMap<Key, u16> = BTreeMap::new();
 
-    for artificial in observations {
-        if artificial.unknown_fixture {
-            return Err(SanitizeError::UnknownFixture);
-        }
-        let row = &artificial.row;
+    for row in rows {
         let fixture = row.fixture.ok_or(SanitizeError::UnknownFixture)?;
         if !allowed.contains(&fixture) {
             return Err(SanitizeError::UnknownFixture);

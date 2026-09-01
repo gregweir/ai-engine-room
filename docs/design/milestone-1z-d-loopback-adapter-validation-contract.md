@@ -2,11 +2,13 @@
 
 ## Status
 
-Contract preparation authorized on 2026-09-01 from exact merged baseline
-`a236b76ffbb18e8f5cce8e629861dc241bbf12b6`. This change defines a possible
-loopback-only implementation and execution sequence. It does not authorize
-that implementation, a build of an executable probe, a real adapter call, a
-socket or process-table observation, or either platform run.
+Contract preparation merged on 2026-09-01. Isolated implementation preparation
+is authorized from exact merged baseline
+`5d3b8744350904f41e7faa468ca071fa80b52eb7`. This authorization covers one
+local implementation commit within the path allow-list below and
+artificial-only deterministic verification. It does not authorize a push, a
+real adapter call, a fixture or executable run, a socket or process-table
+observation, or either platform run.
 
 The developer must separately approve the exact implementation commit before
 push. After deterministic CI passes, one Ubuntu run and one Windows run each
@@ -34,15 +36,15 @@ product decision.
 
 ## Reviewed baseline
 
-| Field               | Required value                                             |
-| ------------------- | ---------------------------------------------------------- |
-| Repository          | `gregweir/ai-engine-room`                                  |
-| Contract parent     | `a236b76ffbb18e8f5cce8e629861dc241bbf12b6`                 |
-| Contract branch     | `codex/network-observability-bounded-execution-contract`   |
-| Implementation base | Exact future `main` commit separately reported before work |
-| Ubuntu class        | Ubuntu 24.04 LTS x86_64, ordinary user                     |
-| Windows class       | Windows 11 25H2 build 26200.7462 x64, ordinary user        |
-| Product integration | None                                                       |
+| Field               | Required value                                           |
+| ------------------- | -------------------------------------------------------- |
+| Repository          | `gregweir/ai-engine-room`                                |
+| Contract parent     | `a236b76ffbb18e8f5cce8e629861dc241bbf12b6`               |
+| Contract branch     | `codex/network-observability-bounded-execution-contract` |
+| Implementation base | `5d3b8744350904f41e7faa468ca071fa80b52eb7`               |
+| Ubuntu class        | Ubuntu 24.04 LTS x86_64, ordinary user                   |
+| Windows class       | Windows 11 25H2 build 26200.7462 x64, ordinary user      |
+| Product integration | None                                                     |
 
 At each later gate, HEAD, tree, remotes, live `origin/main`, changed paths,
 tool versions, target triple, and working-tree state must be reported. A
@@ -176,6 +178,12 @@ preflight before execution and are not passed into the executable. Independent
 review may combine those two identities with the sanitized runtime record only
 after successful termination and exclusion scanning.
 
+The supervisor cannot truthfully attest to its own completed termination before
+it exits. Its sanitized line must therefore use the fixed
+`supervisor_termination=pending_exit` token. Independent review may replace that
+pending state with the externally observed exit result only after the process
+has ended and all capture and exclusion checks succeed.
+
 The exclusion scan must reject path separators, IP-address and socket-address
 syntax, decimal port/PID-style fields, usernames, hostnames, unapproved labels,
 free text, or any field outside the grammar. Failure produces only a fixed
@@ -255,10 +263,12 @@ This contract does not authorize:
 
 ## Contract acceptance
 
-This contract change is ready for review only if its exact branch contains
-documentation and deterministic guardrails alone, ordinary CI passes, and no
+The implementation change is ready for review only if its exact branch stays
+within the later implementation allow-list, the root lockfile and product
+isolation remain unchanged, artificial-only deterministic checks pass, and no
 probe, fixture, adapter, socket, process table, endpoint, product, package, or
-platform execution occurred.
+platform execution occurred. Its exact local commit must be reported for
+separate push approval.
 
 ## References
 

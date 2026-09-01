@@ -220,14 +220,16 @@ The current sequence is documentation-led and separately gated:
   `a236b76ffbb18e8f5cce8e629861dc241bbf12b6`, and exact post-merge ordinary CI
   passed. The product has no call path to either adapter, and neither adapter
   has been executed.
-- **1Z-D — loopback-only adapter-validation contract in preparation:** the
+- **1Z-D — loopback-only adapter-validation implementation in preparation:** the
   [contract](design/milestone-1z-d-loopback-adapter-validation-contract.md)
   narrows first real-adapter evidence to one long-lived attributed IPv4
   loopback fixture and one IPv6 fixture, exactly 11 snapshots over at most five
   seconds, a 15-second outer timeout, closed sanitized output, and confirmed
   teardown. External, unattributed, and short-lived fixtures remain deferred.
-  Implementation and exactly one run per platform require separate approvals;
-  no adapter execution is currently authorized.
+  One isolated local implementation commit is authorized from exact parent
+  `5d3b8744350904f41e7faa468ca071fa80b52eb7`; its exact result requires
+  separate push approval. Exactly one run per platform remains separately
+  gated, and no adapter execution is currently authorized.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
