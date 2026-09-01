@@ -135,17 +135,21 @@ evidence of cross-platform parity.
    [plan](network-observability-evidence-and-synthetic-probe-plan.md) defines
    fact, inference, unavailable states, sanitization, retention, fixtures,
    fixed bounds, and non-claims without collecting live evidence.
-3. **Native implementation and bounded platform probes — next, not
-   authorized:** the 1Z-C
+3. **Isolated native implementation — complete:** the 1Z-C
    [implementation contract](milestone-1z-c-native-probe-implementation-contract.md)
-   fixes an isolated library and pure-test boundary. Its exact implementation
-   commit still requires developer approval. Any later probe execution must
-   test known synthetic local and controlled external connections on the exact
-   verified baselines, with a separate one-run authorization for each platform.
-4. **Adopt-or-defer decision:** proceed only if the result gives a
+   produced an isolated library with pure-test coverage and no product call
+   path. No real adapter was called.
+4. **Loopback-only adapter validation — contract next, runs not authorized:**
+   the 1Z-D
+   [contract](milestone-1z-d-loopback-adapter-validation-contract.md) narrows
+   the first real-platform evidence to one long-lived attributed IPv4 loopback
+   fixture and one IPv6 fixture. Implementation, Ubuntu execution, and Windows
+   execution remain separate gates. External, unattributed, and short-lived
+   fixtures are deferred.
+5. **Adopt-or-defer decision:** proceed only if later evidence gives a
    non-specialist useful evidence without disproportionate privilege, security,
    maintenance, or support burden.
-5. **Product contract:** only after adoption, define adapters, domain types,
+6. **Product contract:** only after adoption, define adapters, domain types,
    presentation, reporting, tests, native verification, and independent review.
 
 Each step requires its own developer gate. Deferral at any step is an acceptable
