@@ -48,6 +48,28 @@ separately authorized one run bound to the exact product source, package hash,
 executable hash, helper commit, and helper blob. Merely merging or invoking the
 helper without that authorization is prohibited.
 
+All dependency and shell diagnostics are suppressed. Only controlled prompts,
+stop reasons, result labels, byte lengths, hashes, and the numeric launcher
+result may reach the terminal. Both modes require the exact reviewed local X11
+display, session type, user runtime directory, session bus, and X authority;
+nonempty lookalike variables are insufficient.
+
+Terminal B re-establishes exactly one running candidate after every physical
+UI checkpoint and again before each later fixture mutation. Any unexpected
+exit stops further validation. A numeric launcher result is not automatically
+a pass: only result `0` permits `TERMINATION_CHECK=pass`; timeout, forced
+termination, launch failure, and every other result are reported as failure.
+
+On every helper failure, the controlled exit handler clears the clipboard if
+the helper changed it. If the candidate is still running, it instructs the
+physically present operator to close the application normally and waits for a
+short `CLOSED` acknowledgement; it never signals the process. After process
+absence, it restores and removes only the fixed fixtures and attempted fixed
+destinations, then removes the disposable directory only if empty. Any unknown
+entry, unexpected type, ownership or resolution mismatch, clipboard failure,
+remaining process, or removal failure produces `FAILURE_CLEANUP=unconfirmed`
+and prohibits broader cleanup or a retry.
+
 ## Physical-console procedure
 
 The future operator uses only the approved Ubuntu machine and remains at its
