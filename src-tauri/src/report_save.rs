@@ -190,6 +190,7 @@ trait StorageAdapter {
 enum CommitResult {
     Saved,
     DestinationExists,
+    #[cfg_attr(target_os = "windows", allow(dead_code))]
     Unavailable,
     Failed,
     CompletionUncertain,
@@ -411,12 +412,7 @@ fn platform_commit(staging: &Path, destination: &Path) -> CommitResult {
     }
     match io::Error::last_os_error().raw_os_error() {
         Some(libc::EEXIST) => CommitResult::DestinationExists,
-        Some(code)
-            if matches!(
-                code,
-                libc::ENOSYS | libc::EINVAL | libc::EOPNOTSUPP | libc::EXDEV
-            ) =>
-        {
+        Some(libc::ENOSYS | libc::EINVAL | libc::EOPNOTSUPP | libc::EXDEV) => {
             CommitResult::Unavailable
         }
         Some(_) => CommitResult::CompletionUncertain,
@@ -448,9 +444,7 @@ fn platform_commit(staging: &Path, destination: &Path) -> CommitResult {
         .raw_os_error()
         .map(|value| value as u32)
     {
-        Some(code) if matches!(code, ERROR_FILE_EXISTS | ERROR_ALREADY_EXISTS) => {
-            CommitResult::DestinationExists
-        }
+        Some(ERROR_FILE_EXISTS | ERROR_ALREADY_EXISTS) => CommitResult::DestinationExists,
         Some(_) => CommitResult::CompletionUncertain,
         None => CommitResult::Failed,
     }
