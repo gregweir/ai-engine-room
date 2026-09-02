@@ -12,6 +12,9 @@
 //! feature off, supported production targets use their cfg-gated provider and
 //! unsupported targets return an empty snapshot.
 
+use crate::report_save::{
+    ReportPreviewError, ReportPreviewResponse, ReportSaveResult, ReportSaveState,
+};
 use crate::view::{
     inference_observation_view, loaded_models_view, model_inventory_view, runtime_status_view,
     snapshot_view, InferenceObservationRequest, InferenceObservationView, LoadedModelSetView,
@@ -36,8 +39,28 @@ pub fn current_machine_context() -> crate::machine::MachineContextView {
 /// sanitized, report-safe representation — no internal ids, raw errors, or
 /// diagnostics.
 #[tauri::command]
-pub fn report_preview() -> String {
-    report_preview_of(&build_snapshot())
+pub fn report_preview(
+    state: tauri::State<'_, ReportSaveState>,
+) -> Result<ReportPreviewResponse, ReportPreviewError> {
+    state.retain_preview(report_preview_of(&build_snapshot()))
+}
+
+/// Save only the retained report generation selected by the WebView. The
+/// backend owns the native dialog and filesystem boundary; neither a path nor
+/// report text is accepted over IPC. The blocking dialog and file operation
+/// execute off the main thread.
+#[tauri::command]
+pub async fn save_report(
+    generation: String,
+    app: tauri::AppHandle,
+    state: tauri::State<'_, ReportSaveState>,
+) -> ReportSaveResult {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || {
+        crate::report_save::save_native(state, app, generation)
+    })
+    .await
+    .unwrap_or(ReportSaveResult::Failed)
 }
 
 /// The current runtime detection status for the supported AI runtime (Ollama

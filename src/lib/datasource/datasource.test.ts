@@ -85,7 +85,13 @@ describe("createDataSourceFor — Tauri (IPC) path", () => {
         return Promise.resolve({ at: 7, entries: [] });
       }
       if (cmd === "report_preview") {
-        return Promise.resolve("preview-from-ipc");
+        return Promise.resolve({
+          text: "preview-from-ipc",
+          generation: "0000000000000001",
+        });
+      }
+      if (cmd === "save_report") {
+        return Promise.resolve("saved");
       }
       return Promise.reject(new Error(`unexpected command: ${cmd}`));
     });
@@ -97,8 +103,16 @@ describe("createDataSourceFor — Tauri (IPC) path", () => {
     expect(vi.mocked(invoke)).toHaveBeenCalledWith("current_snapshot");
 
     const preview = await ds.reportPreview();
-    expect(preview).toBe("preview-from-ipc");
+    expect(preview).toEqual({
+      text: "preview-from-ipc",
+      generation: "0000000000000001",
+    });
     expect(vi.mocked(invoke)).toHaveBeenCalledWith("report_preview");
+
+    await expect(ds.saveReport!("0000000000000001")).resolves.toBe("saved");
+    expect(vi.mocked(invoke)).toHaveBeenCalledWith("save_report", {
+      generation: "0000000000000001",
+    });
   });
 });
 
@@ -126,8 +140,9 @@ describe("createDataSourceFor — browser dev (fixture) path", () => {
     const llamaCpp = await ds.llamaCppSnapshot!();
     const after = await ds.reportPreview();
     expect(llamaCpp.served_model?.model_id).toBe("artificial-leaf-server");
-    expect(after).toBe(before);
-    expect(after).not.toMatch(
+    expect(after).toEqual(before);
+    const text = typeof after === "string" ? after : after.text;
+    expect(text).not.toMatch(
       /llama_cpp|artificial-leaf-server|127\.0\.0\.1:8080|same_machine_loopback|not_independently_verified/i,
     );
     expect(vi.mocked(invoke)).not.toHaveBeenCalled();
@@ -149,19 +164,22 @@ describe("createDataSourceFor — browser dev (fixture) path", () => {
     const lm = await ds.lmStudioSnapshot!();
     expect(lm.models.length).toBeGreaterThan(0);
     const after = await ds.reportPreview();
-    expect(after).toBe(before);
-    expect(after).not.toMatch(/LM Studio|Artificial Leaf|loaded instance/i);
+    expect(after).toEqual(before);
+    const text = typeof after === "string" ? after : after.text;
+    expect(text).not.toMatch(/LM Studio|Artificial Leaf|loaded instance/i);
     expect(vi.mocked(invoke)).not.toHaveBeenCalled();
   });
   it("returns fixture data and never calls invoke", async () => {
     const ds = await createDataSourceFor(false, true);
+    expect(ds.saveReport).toBeUndefined();
 
     const snap = await ds.currentSnapshot();
     expect(snap.entries.length).toBeGreaterThan(0);
     expect(vi.mocked(invoke)).not.toHaveBeenCalled();
 
     const preview = await ds.reportPreview();
-    expect(preview).toContain("Memory in use");
+    const text = typeof preview === "string" ? preview : preview.text;
+    expect(text).toContain("Memory in use");
     expect(vi.mocked(invoke)).not.toHaveBeenCalled();
   });
 
@@ -176,11 +194,12 @@ describe("createDataSourceFor — browser dev (fixture) path", () => {
   it("report preview is report-safe: no paths, ids, or raw errors", async () => {
     const ds = await createDataSourceFor(false, true);
     const preview = await ds.reportPreview();
-    expect(preview).not.toContain("/home/");
-    expect(preview).not.toContain("@");
-    expect(preview).not.toContain("os.ram.used");
-    expect(preview).not.toContain("timed out");
-    expect(preview).toContain("available");
+    const text = typeof preview === "string" ? preview : preview.text;
+    expect(text).not.toContain("/home/");
+    expect(text).not.toContain("@");
+    expect(text).not.toContain("os.ram.used");
+    expect(text).not.toContain("timed out");
+    expect(text).toContain("available");
   });
 });
 
@@ -565,10 +584,8 @@ describe("createDataSourceFor — loaded models", () => {
       interpretation: "Ollama reports these models as currently loaded.",
       why_it_matters:
         "Each entry shows the model name and the loaded size Ollama reports for it.",
-      resource_interpretation:
-        "Controlled provider resource interpretation.",
-      resource_qualification:
-        "Controlled provider resource qualification.",
+      resource_interpretation: "Controlled provider resource interpretation.",
+      resource_qualification: "Controlled provider resource qualification.",
     };
     vi.mocked(invoke).mockImplementation((cmd: string) => {
       if (cmd === "current_loaded_models") return Promise.resolve(loaded);

@@ -142,8 +142,15 @@ describe("Report clipboard workflow", () => {
 
   it("keeps the privacy disclosure visible and has no axe violations", async () => {
     const { clipboard } = fakeClipboard();
+    const saveReport = vi.fn(async () => "saved" as const);
     const view = render(ReportWorkspace, {
-      props: { preview, clipboard, clipboardState: "native-ready" },
+      props: {
+        preview,
+        generation: "0000000000000001",
+        saveReport,
+        clipboard,
+        clipboardState: "native-ready",
+      },
     });
 
     expect(
@@ -153,9 +160,112 @@ describe("Report clipboard workflow", () => {
     expect(
       view.getByText(/does not automatically send or upload/s),
     ).toBeVisible();
+    expect(
+      view.getByText(/Other software may read or synchronize/s),
+    ).toBeVisible();
     const results = await axe(view.container, {
       rules: { "color-contrast": { enabled: false } },
     });
     expect(results.violations).toEqual([]);
+  });
+});
+
+describe("Report save workflow", () => {
+  const generation = "0000000000000001";
+
+  it("saves only the opaque generation after explicit activation", async () => {
+    const { clipboard } = fakeClipboard();
+    const saveReport = vi.fn(async (_generation: string) => "saved" as const);
+    const view = render(ReportWorkspace, {
+      props: {
+        preview,
+        generation,
+        saveReport,
+        clipboard,
+        clipboardState: "native-ready",
+      },
+    });
+
+    expect(saveReport).not.toHaveBeenCalled();
+    const button = view.getByRole("button", { name: "Save report…" });
+    await userEvent.setup().click(button);
+    expect(saveReport).toHaveBeenCalledTimes(1);
+    expect(saveReport).toHaveBeenCalledWith(generation);
+    expect(view.getByRole("status")).toHaveTextContent(
+      "Report saved as a plain-text file.",
+    );
+    expect(button).toHaveFocus();
+  });
+
+  it("suppresses duplicate saves while keeping Copy independently available", async () => {
+    let resolveSave!: (result: "cancelled") => void;
+    const pendingSave = new Promise<"cancelled">((resolve) => {
+      resolveSave = resolve;
+    });
+    const saveReport = vi.fn(() => pendingSave);
+    const { clipboard } = fakeClipboard();
+    const view = render(ReportWorkspace, {
+      props: {
+        preview,
+        generation,
+        saveReport,
+        clipboard,
+        clipboardState: "native-ready",
+      },
+    });
+    const user = userEvent.setup();
+    const save = view.getByRole("button", { name: "Save report…" });
+    const copy = view.getByRole("button", { name: "Copy report" });
+
+    await user.click(save);
+    expect(save).toBeDisabled();
+    expect(save).toHaveAttribute("aria-busy", "true");
+    expect(copy).toBeEnabled();
+    await user.click(save);
+    expect(saveReport).toHaveBeenCalledTimes(1);
+
+    resolveSave("cancelled");
+    expect(await view.findByRole("status")).toHaveTextContent(
+      "Save cancelled. No report file was created.",
+    );
+  });
+
+  it("keeps browser/mock mode without an active save control", () => {
+    const { clipboard } = fakeClipboard();
+    const view = render(ReportWorkspace, {
+      props: {
+        preview,
+        clipboard,
+        clipboardState: "browser-unavailable",
+      },
+    });
+    expect(view.queryByRole("button", { name: "Save report…" })).toBeNull();
+    expect(
+      view.getByText("Save report is available in the native app."),
+    ).toBeVisible();
+  });
+
+  it("shows controlled alert wording and no raw rejection", async () => {
+    const raw = "private native path and operating-system code";
+    const saveReport = vi.fn(async () => {
+      throw new Error(raw);
+    });
+    const { clipboard } = fakeClipboard();
+    const view = render(ReportWorkspace, {
+      props: {
+        preview,
+        generation,
+        saveReport,
+        clipboard,
+        clipboardState: "native-ready",
+      },
+    });
+    await userEvent
+      .setup()
+      .click(view.getByRole("button", { name: "Save report…" }));
+    expect(view.getByRole("alert")).toHaveTextContent(
+      "Could not save the report. No completed report file was created.",
+    );
+    expect(view.container).not.toHaveTextContent(raw);
   });
 });

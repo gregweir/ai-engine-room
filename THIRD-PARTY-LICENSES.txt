@@ -1363,6 +1363,11 @@ Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/reqwest/0.13.4/download
 Included documents: L0250 (LICENSE-APACHE), L0252 (LICENSE-MIT)
 
+rfd 0.16.0
+Declared licence: MIT
+Exact source: https://crates.io/api/v1/crates/rfd/0.16.0/download
+Included documents: L0253 (LICENSE)
+
 rustc_version 0.4.1
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/rustc_version/0.4.1/download
@@ -1376,7 +1381,7 @@ Included documents: L0014 (LICENSE-APACHE), L0003 (LICENSE-MIT)
 rustix 1.1.4
 Declared licence: Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/rustix/1.1.4/download
-Included documents: L0253 (COPYRIGHT), L0019 (LICENSE-APACHE), L0154 (LICENSE-Apache-2.0_WITH_LLVM-exception), L0003 (LICENSE-MIT)
+Included documents: L0254 (COPYRIGHT), L0019 (LICENSE-APACHE), L0154 (LICENSE-Apache-2.0_WITH_LLVM-exception), L0003 (LICENSE-MIT)
 
 rustversion 1.0.23
 Declared licence: MIT OR Apache-2.0
@@ -1391,37 +1396,37 @@ Included documents: L0014 (LICENSE-APACHE), L0096 (LICENSE-BOOST)
 same-file 1.0.6
 Declared licence: Unlicense/MIT
 Exact source: https://crates.io/api/v1/crates/same-file/1.0.6/download
-Included documents: L0004 (COPYING), L0254 (LICENSE-MIT), L0006 (UNLICENSE)
+Included documents: L0004 (COPYING), L0255 (LICENSE-MIT), L0006 (UNLICENSE)
 
 schemars_derive 0.8.22
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/schemars_derive/0.8.22/download
-Included documents: L0255 (LICENSE)
+Included documents: L0256 (LICENSE)
 
 schemars 0.8.22
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/schemars/0.8.22/download
-Included documents: L0255 (LICENSE)
+Included documents: L0256 (LICENSE)
 
 schemars 0.9.0
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/schemars/0.9.0/download
-Included documents: L0255 (LICENSE)
+Included documents: L0256 (LICENSE)
 
 schemars 1.2.2
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/schemars/1.2.2/download
-Included documents: L0255 (LICENSE)
+Included documents: L0256 (LICENSE)
 
 scopeguard 1.2.0
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/scopeguard/1.2.0/download
-Included documents: L0019 (LICENSE-APACHE), L0256 (LICENSE-MIT)
+Included documents: L0019 (LICENSE-APACHE), L0257 (LICENSE-MIT)
 
 selectors 0.36.1
 Declared licence: MPL-2.0
 Exact source: https://crates.io/api/v1/crates/selectors/0.36.1/download
-Included documents: L0225 (SPDX-MPL-2.0.txt), L0257 (README.md), L0258 (Cargo.toml.orig), L0259 (Cargo.toml)
+Included documents: L0225 (SPDX-MPL-2.0.txt), L0258 (README.md), L0259 (Cargo.toml.orig), L0260 (Cargo.toml)
 
 semver 1.0.28
 Declared licence: MIT OR Apache-2.0
@@ -1456,17 +1461,17 @@ Included documents: L0014 (LICENSE-APACHE), L0003 (LICENSE-MIT)
 serde_spanned 0.6.9
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/serde_spanned/0.6.9/download
-Included documents: L0055 (LICENSE-APACHE), L0260 (LICENSE-MIT)
+Included documents: L0055 (LICENSE-APACHE), L0261 (LICENSE-MIT)
 
 serde_spanned 1.1.1
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/serde_spanned/1.1.1/download
-Included documents: L0055 (LICENSE-APACHE), L0260 (LICENSE-MIT)
+Included documents: L0055 (LICENSE-APACHE), L0261 (LICENSE-MIT)
 
 serde_urlencoded 0.7.1
 Declared licence: MIT/Apache-2.0
 Exact source: https://crates.io/api/v1/crates/serde_urlencoded/0.7.1/download
-Included documents: L0014 (LICENSE-APACHE), L0261 (LICENSE-MIT)
+Included documents: L0014 (LICENSE-APACHE), L0262 (LICENSE-MIT)
 
 serde_with_macros 3.22.0
 Declared licence: MIT OR Apache-2.0
@@ -1491,12 +1496,12 @@ Included documents: L0014 (LICENSE-APACHE), L0003 (LICENSE-MIT)
 serialize-to-javascript-impl 0.1.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/serialize-to-javascript-impl/0.1.2/download
-Included documents: L0262 (LICENSE-APACHE), L0263 (LICENSE-MIT)
+Included documents: L0263 (LICENSE-APACHE), L0264 (LICENSE-MIT)
 
 serialize-to-javascript 0.1.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/serialize-to-javascript/0.1.2/download
-Included documents: L0262 (LICENSE-APACHE), L0263 (LICENSE-MIT)
+Included documents: L0263 (LICENSE-APACHE), L0264 (LICENSE-MIT)
 
 servo_arc 0.4.3
 Declared licence: MIT OR Apache-2.0
@@ -1506,32 +1511,32 @@ Included documents: L0019 (LICENSE-APACHE), L0003 (LICENSE-MIT)
 sha2 0.10.9
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/sha2/0.10.9/download
-Included documents: L0026 (LICENSE-APACHE), L0264 (LICENSE-MIT)
+Included documents: L0026 (LICENSE-APACHE), L0265 (LICENSE-MIT)
 
 shlex 2.0.1
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/shlex/2.0.1/download
-Included documents: L0265 (LICENSE-APACHE), L0266 (LICENSE-MIT)
+Included documents: L0266 (LICENSE-APACHE), L0267 (LICENSE-MIT)
 
 simd-adler32 0.3.10
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/simd-adler32/0.3.10/download
-Included documents: L0267 (LICENSE.md)
+Included documents: L0268 (LICENSE.md)
 
 siphasher 1.0.3
 Declared licence: MIT/Apache-2.0
 Exact source: https://crates.io/api/v1/crates/siphasher/1.0.3/download
-Included documents: L0268 (COPYING)
+Included documents: L0269 (COPYING)
 
 slab 0.4.12
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/slab/0.4.12/download
-Included documents: L0269 (LICENSE)
+Included documents: L0270 (LICENSE)
 
 smallvec 1.15.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/smallvec/1.15.2/download
-Included documents: L0019 (LICENSE-APACHE), L0270 (LICENSE-MIT)
+Included documents: L0019 (LICENSE-APACHE), L0271 (LICENSE-MIT)
 
 socket2 0.6.5
 Declared licence: MIT OR Apache-2.0
@@ -1541,7 +1546,7 @@ Included documents: L0019 (LICENSE-APACHE), L0040 (LICENSE-MIT)
 softbuffer 0.4.8
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/softbuffer/0.4.8/download
-Included documents: L0271 (LICENSE-APACHE), L0272 (LICENSE-MIT)
+Included documents: L0272 (LICENSE-APACHE), L0273 (LICENSE-MIT)
 
 soup3-sys 0.5.0
 Declared licence: MIT
@@ -1556,7 +1561,7 @@ Included documents: L0135 (LICENSE)
 stable_deref_trait 1.2.1
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/stable_deref_trait/1.2.1/download
-Included documents: L0019 (LICENSE-APACHE), L0273 (LICENSE-MIT)
+Included documents: L0019 (LICENSE-APACHE), L0274 (LICENSE-MIT)
 
 string_cache_codegen 0.6.1
 Declared licence: MIT OR Apache-2.0
@@ -1571,12 +1576,12 @@ Included documents: L0019 (LICENSE-APACHE), L0052 (LICENSE-MIT)
 strsim 0.11.1
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/strsim/0.11.1/download
-Included documents: L0274 (LICENSE)
+Included documents: L0275 (LICENSE)
 
 swift-rs 1.0.7
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/swift-rs/1.0.7/download
-Included documents: L0275 (LICENSE-APACHE), L0276 (LICENSE-MIT)
+Included documents: L0276 (LICENSE-APACHE), L0277 (LICENSE-MIT)
 
 syn 1.0.109
 Declared licence: MIT OR Apache-2.0
@@ -1601,7 +1606,7 @@ Included documents: L0015 (LICENSE)
 synstructure 0.13.2
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/synstructure/0.13.2/download
-Included documents: L0277 (LICENSE)
+Included documents: L0278 (LICENSE)
 
 system-deps 6.2.2
 Declared licence: MIT OR Apache-2.0
@@ -1611,12 +1616,12 @@ Included documents: L0019 (LICENSE-APACHE), L0003 (LICENSE-MIT)
 tao-macros 0.1.4
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/tao-macros/0.1.4/download
-Included documents: L0019 (LICENSE-APACHE), L0278 (LICENSE-MIT), L0279 (LICENSE.spdx)
+Included documents: L0019 (LICENSE-APACHE), L0279 (LICENSE-MIT), L0280 (LICENSE.spdx)
 
 tao 0.35.3
 Declared licence: Apache-2.0
 Exact source: https://crates.io/api/v1/crates/tao/0.35.3/download
-Included documents: L0062 (LICENSE), L0280 (LICENSE.spdx)
+Included documents: L0062 (LICENSE), L0281 (LICENSE.spdx)
 
 target-lexicon 0.12.16
 Declared licence: Apache-2.0 WITH LLVM-exception
@@ -1626,57 +1631,67 @@ Included documents: L0154 (LICENSE)
 tauri-build 2.6.3
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/tauri-build/2.6.3/download
-Included documents: L0015 (LICENSE_APACHE-2.0), L0281 (LICENSE_MIT)
+Included documents: L0015 (LICENSE_APACHE-2.0), L0282 (LICENSE_MIT)
 
 tauri-codegen 2.6.3
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/tauri-codegen/2.6.3/download
-Included documents: L0015 (LICENSE_APACHE-2.0), L0281 (LICENSE_MIT)
+Included documents: L0015 (LICENSE_APACHE-2.0), L0282 (LICENSE_MIT)
 
 tauri-macros 2.6.3
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/tauri-macros/2.6.3/download
-Included documents: L0015 (LICENSE_APACHE-2.0), L0281 (LICENSE_MIT)
+Included documents: L0015 (LICENSE_APACHE-2.0), L0282 (LICENSE_MIT)
 
 tauri-plugin-clipboard-manager 2.3.2
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/tauri-plugin-clipboard-manager/2.3.2/download
-Included documents: L0015 (LICENSE_APACHE-2.0), L0281 (LICENSE_MIT), L0282 (LICENSE.spdx)
+Included documents: L0015 (LICENSE_APACHE-2.0), L0282 (LICENSE_MIT), L0283 (LICENSE.spdx)
+
+tauri-plugin-dialog 2.7.2
+Declared licence: Apache-2.0 OR MIT
+Exact source: https://crates.io/api/v1/crates/tauri-plugin-dialog/2.7.2/download
+Included documents: L0015 (LICENSE_APACHE-2.0), L0282 (LICENSE_MIT), L0283 (LICENSE.spdx)
+
+tauri-plugin-fs 2.5.2
+Declared licence: Apache-2.0 OR MIT
+Exact source: https://crates.io/api/v1/crates/tauri-plugin-fs/2.5.2/download
+Included documents: L0015 (LICENSE_APACHE-2.0), L0282 (LICENSE_MIT), L0283 (LICENSE.spdx)
 
 tauri-plugin 2.6.3
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/tauri-plugin/2.6.3/download
-Included documents: L0068 (SPDX-Apache-2.0.txt), L0028 (SPDX-MIT.txt), L0283 (Cargo.toml.orig), L0284 (Cargo.toml)
+Included documents: L0068 (SPDX-Apache-2.0.txt), L0028 (SPDX-MIT.txt), L0284 (Cargo.toml.orig), L0285 (Cargo.toml)
 
 tauri-runtime-wry 2.11.4
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/tauri-runtime-wry/2.11.4/download
-Included documents: L0015 (LICENSE_APACHE-2.0), L0281 (LICENSE_MIT)
+Included documents: L0015 (LICENSE_APACHE-2.0), L0282 (LICENSE_MIT)
 
 tauri-runtime 2.11.3
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/tauri-runtime/2.11.3/download
-Included documents: L0015 (LICENSE_APACHE-2.0), L0281 (LICENSE_MIT)
+Included documents: L0015 (LICENSE_APACHE-2.0), L0282 (LICENSE_MIT)
 
 tauri-utils 2.9.3
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/tauri-utils/2.9.3/download
-Included documents: L0015 (LICENSE_APACHE-2.0), L0281 (LICENSE_MIT)
+Included documents: L0015 (LICENSE_APACHE-2.0), L0282 (LICENSE_MIT)
 
 tauri-winres 0.3.6
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/tauri-winres/0.3.6/download
-Included documents: L0285 (LICENSE)
+Included documents: L0286 (LICENSE)
 
 tauri 2.11.5
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/tauri/2.11.5/download
-Included documents: L0015 (LICENSE_APACHE-2.0), L0281 (LICENSE_MIT)
+Included documents: L0015 (LICENSE_APACHE-2.0), L0282 (LICENSE_MIT)
 
 tendril 0.5.1
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/tendril/0.5.1/download
-Included documents: L0019 (LICENSE-APACHE), L0286 (LICENSE-MIT)
+Included documents: L0019 (LICENSE-APACHE), L0287 (LICENSE-MIT)
 
 thiserror-impl 1.0.69
 Declared licence: MIT OR Apache-2.0
@@ -1701,22 +1716,22 @@ Included documents: L0014 (LICENSE-APACHE), L0003 (LICENSE-MIT)
 tiff 0.11.3
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/tiff/0.11.3/download
-Included documents: L0287 (LICENSE), L0288 (tests/COPYRIGHT)
+Included documents: L0288 (LICENSE), L0289 (tests/COPYRIGHT)
 
 time-core 0.1.9
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/time-core/0.1.9/download
-Included documents: L0015 (LICENSE-Apache), L0289 (LICENSE-MIT)
+Included documents: L0015 (LICENSE-Apache), L0290 (LICENSE-MIT)
 
 time-macros 0.2.32
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/time-macros/0.2.32/download
-Included documents: L0015 (LICENSE-Apache), L0289 (LICENSE-MIT)
+Included documents: L0015 (LICENSE-Apache), L0290 (LICENSE-MIT)
 
 time 0.3.55
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/time/0.3.55/download
-Included documents: L0015 (LICENSE-Apache), L0289 (LICENSE-MIT)
+Included documents: L0015 (LICENSE-Apache), L0290 (LICENSE-MIT)
 
 tinystr 0.8.4
 Declared licence: Unicode-3.0
@@ -1726,7 +1741,7 @@ Included documents: L0128 (LICENSE)
 tinyvec_macros 0.1.1
 Declared licence: MIT OR Apache-2.0 OR Zlib
 Exact source: https://crates.io/api/v1/crates/tinyvec_macros/0.1.1/download
-Included documents: L0290 (LICENSE-APACHE.md), L0291 (LICENSE-MIT.md), L0292 (LICENSE-ZLIB.md)
+Included documents: L0291 (LICENSE-APACHE.md), L0292 (LICENSE-MIT.md), L0293 (LICENSE-ZLIB.md)
 
 tinyvec 1.12.0
 Declared licence: Zlib OR Apache-2.0 OR MIT
@@ -1736,12 +1751,12 @@ Included documents: L0091 (LICENSE-APACHE.md), L0063 (LICENSE-MIT.md), L0037 (LI
 tokio-util 0.7.19
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/tokio-util/0.7.19/download
-Included documents: L0293 (LICENSE)
+Included documents: L0294 (LICENSE)
 
 tokio 1.53.1
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/tokio/1.53.1/download
-Included documents: L0293 (LICENSE)
+Included documents: L0294 (LICENSE)
 
 toml_datetime 0.6.3
 Declared licence: MIT OR Apache-2.0
@@ -1751,97 +1766,97 @@ Included documents: L0019 (LICENSE-APACHE), L0040 (LICENSE-MIT)
 toml_datetime 0.7.5+spec-1.1.0
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/toml_datetime/0.7.5%2Bspec-1.1.0/download
-Included documents: L0055 (LICENSE-APACHE), L0260 (LICENSE-MIT)
+Included documents: L0055 (LICENSE-APACHE), L0261 (LICENSE-MIT)
 
 toml_datetime 1.1.1+spec-1.1.0
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/toml_datetime/1.1.1%2Bspec-1.1.0/download
-Included documents: L0055 (LICENSE-APACHE), L0260 (LICENSE-MIT)
+Included documents: L0055 (LICENSE-APACHE), L0261 (LICENSE-MIT)
 
 toml_edit 0.19.15
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/toml_edit/0.19.15/download
-Included documents: L0055 (LICENSE-APACHE), L0260 (LICENSE-MIT)
+Included documents: L0055 (LICENSE-APACHE), L0261 (LICENSE-MIT)
 
 toml_edit 0.20.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/toml_edit/0.20.2/download
-Included documents: L0055 (LICENSE-APACHE), L0260 (LICENSE-MIT)
+Included documents: L0055 (LICENSE-APACHE), L0261 (LICENSE-MIT)
 
 toml_edit 0.25.13+spec-1.1.0
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/toml_edit/0.25.13%2Bspec-1.1.0/download
-Included documents: L0055 (LICENSE-APACHE), L0260 (LICENSE-MIT)
+Included documents: L0055 (LICENSE-APACHE), L0261 (LICENSE-MIT)
 
 toml_parser 1.1.3+spec-1.1.0
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/toml_parser/1.1.3%2Bspec-1.1.0/download
-Included documents: L0055 (LICENSE-APACHE), L0260 (LICENSE-MIT)
+Included documents: L0055 (LICENSE-APACHE), L0261 (LICENSE-MIT)
 
 toml_writer 1.1.2+spec-1.1.0
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/toml_writer/1.1.2%2Bspec-1.1.0/download
-Included documents: L0055 (LICENSE-APACHE), L0260 (LICENSE-MIT)
+Included documents: L0055 (LICENSE-APACHE), L0261 (LICENSE-MIT)
 
 toml 0.8.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/toml/0.8.2/download
-Included documents: L0055 (LICENSE-APACHE), L0260 (LICENSE-MIT)
+Included documents: L0055 (LICENSE-APACHE), L0261 (LICENSE-MIT)
 
 toml 0.9.12+spec-1.1.0
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/toml/0.9.12%2Bspec-1.1.0/download
-Included documents: L0055 (LICENSE-APACHE), L0260 (LICENSE-MIT)
+Included documents: L0055 (LICENSE-APACHE), L0261 (LICENSE-MIT)
 
 toml 1.1.4+spec-1.1.0
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/toml/1.1.4%2Bspec-1.1.0/download
-Included documents: L0055 (LICENSE-APACHE), L0260 (LICENSE-MIT)
+Included documents: L0055 (LICENSE-APACHE), L0261 (LICENSE-MIT)
 
 tower-http 0.6.11
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/tower-http/0.6.11/download
-Included documents: L0294 (LICENSE)
+Included documents: L0295 (LICENSE)
 
 tower-layer 0.3.3
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/tower-layer/0.3.3/download
-Included documents: L0295 (LICENSE)
+Included documents: L0296 (LICENSE)
 
 tower-service 0.3.3
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/tower-service/0.3.3/download
-Included documents: L0295 (LICENSE)
+Included documents: L0296 (LICENSE)
 
 tower 0.5.3
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/tower/0.5.3/download
-Included documents: L0295 (LICENSE)
+Included documents: L0296 (LICENSE)
 
 tracing-core 0.1.36
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/tracing-core/0.1.36/download
-Included documents: L0296 (LICENSE), L0297 (src/spin/LICENSE)
+Included documents: L0297 (LICENSE), L0298 (src/spin/LICENSE)
 
 tracing 0.1.44
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/tracing/0.1.44/download
-Included documents: L0296 (LICENSE)
+Included documents: L0297 (LICENSE)
 
 tray-icon 0.24.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/tray-icon/0.24.2/download
-Included documents: L0019 (LICENSE-APACHE), L0164 (LICENSE-MIT), L0298 (LICENSE.spdx)
+Included documents: L0019 (LICENSE-APACHE), L0164 (LICENSE-MIT), L0299 (LICENSE.spdx)
 
 tree_magic_mini 3.2.2
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/tree_magic_mini/3.2.2/download
-Included documents: L0299 (LICENSE)
+Included documents: L0300 (LICENSE)
 
 try-lock 0.2.5
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/try-lock/0.2.5/download
-Included documents: L0300 (LICENSE)
+Included documents: L0301 (LICENSE)
 
 typeid 1.0.3
 Declared licence: MIT OR Apache-2.0
@@ -1851,42 +1866,42 @@ Included documents: L0014 (LICENSE-APACHE), L0003 (LICENSE-MIT)
 typenum 1.20.1
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/typenum/1.20.1/download
-Included documents: L0301 (LICENSE), L0302 (LICENSE-APACHE), L0303 (LICENSE-MIT)
+Included documents: L0302 (LICENSE), L0303 (LICENSE-APACHE), L0304 (LICENSE-MIT)
 
 unic-char-property 0.9.0
 Declared licence: MIT/Apache-2.0
 Exact source: https://crates.io/api/v1/crates/unic-char-property/0.9.0/download
-Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0304 (Cargo.toml.orig), L0305 (Cargo.toml)
+Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0305 (Cargo.toml.orig), L0306 (Cargo.toml)
 
 unic-char-range 0.9.0
 Declared licence: MIT/Apache-2.0
 Exact source: https://crates.io/api/v1/crates/unic-char-range/0.9.0/download
-Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0306 (Cargo.toml.orig), L0307 (Cargo.toml)
+Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0307 (Cargo.toml.orig), L0308 (Cargo.toml)
 
 unic-common 0.9.0
 Declared licence: MIT/Apache-2.0
 Exact source: https://crates.io/api/v1/crates/unic-common/0.9.0/download
-Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0308 (README.md), L0309 (Cargo.toml.orig), L0310 (Cargo.toml)
+Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0309 (README.md), L0310 (Cargo.toml.orig), L0311 (Cargo.toml)
 
 unic-ucd-ident 0.9.0
 Declared licence: MIT/Apache-2.0
 Exact source: https://crates.io/api/v1/crates/unic-ucd-ident/0.9.0/download
-Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0311 (Cargo.toml.orig), L0312 (Cargo.toml)
+Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0312 (Cargo.toml.orig), L0313 (Cargo.toml)
 
 unic-ucd-version 0.9.0
 Declared licence: MIT/Apache-2.0
 Exact source: https://crates.io/api/v1/crates/unic-ucd-version/0.9.0/download
-Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0313 (Cargo.toml.orig), L0314 (Cargo.toml)
+Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0314 (Cargo.toml.orig), L0315 (Cargo.toml)
 
 unicode-ident 1.0.24
 Declared licence: (MIT OR Apache-2.0) AND Unicode-3.0
 Exact source: https://crates.io/api/v1/crates/unicode-ident/1.0.24/download
-Included documents: L0014 (LICENSE-APACHE), L0003 (LICENSE-MIT), L0315 (LICENSE-UNICODE)
+Included documents: L0014 (LICENSE-APACHE), L0003 (LICENSE-MIT), L0316 (LICENSE-UNICODE)
 
 unicode-segmentation 1.13.3
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/unicode-segmentation/1.13.3/download
-Included documents: L0316 (COPYRIGHT), L0019 (LICENSE-APACHE), L0116 (LICENSE-MIT)
+Included documents: L0317 (COPYRIGHT), L0019 (LICENSE-APACHE), L0116 (LICENSE-MIT)
 
 url 2.5.8
 Declared licence: MIT OR Apache-2.0
@@ -1896,37 +1911,37 @@ Included documents: L0019 (LICENSE-APACHE), L0130 (LICENSE-MIT)
 urlpattern 0.3.0
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/urlpattern/0.3.0/download
-Included documents: L0317 (LICENSE)
+Included documents: L0318 (LICENSE)
 
 utf8_iter 1.0.4
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/utf8_iter/1.0.4/download
-Included documents: L0318 (COPYRIGHT), L0091 (LICENSE-APACHE), L0319 (LICENSE-MIT)
+Included documents: L0319 (COPYRIGHT), L0091 (LICENSE-APACHE), L0320 (LICENSE-MIT)
 
 uuid 1.24.1
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/uuid/1.24.1/download
-Included documents: L0019 (LICENSE-APACHE), L0320 (LICENSE-MIT)
+Included documents: L0019 (LICENSE-APACHE), L0321 (LICENSE-MIT)
 
 version_check 0.9.5
 Declared licence: MIT/Apache-2.0
 Exact source: https://crates.io/api/v1/crates/version_check/0.9.5/download
-Included documents: L0019 (LICENSE-APACHE), L0321 (LICENSE-MIT)
+Included documents: L0019 (LICENSE-APACHE), L0322 (LICENSE-MIT)
 
 version-compare 0.2.1
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/version-compare/0.2.1/download
-Included documents: L0322 (LICENSE)
+Included documents: L0323 (LICENSE)
 
 vswhom-sys 0.1.3
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/vswhom-sys/0.1.3/download
-Included documents: L0323 (LICENSE)
+Included documents: L0324 (LICENSE)
 
 vswhom 0.1.0
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/vswhom/0.1.0/download
-Included documents: L0323 (LICENSE)
+Included documents: L0324 (LICENSE)
 
 walkdir 2.5.0
 Declared licence: Unlicense/MIT
@@ -1936,7 +1951,7 @@ Included documents: L0004 (COPYING), L0005 (LICENSE-MIT), L0006 (UNLICENSE)
 want 0.3.1
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/want/0.3.1/download
-Included documents: L0324 (LICENSE)
+Included documents: L0325 (LICENSE)
 
 wasi 0.11.1+wasi-snapshot-preview1
 Declared licence: Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
@@ -1981,32 +1996,32 @@ Included documents: L0014 (LICENSE-APACHE), L0003 (LICENSE-MIT)
 wayland-backend 0.3.17
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/wayland-backend/0.3.17/download
-Included documents: L0325 (LICENSE.txt)
+Included documents: L0326 (LICENSE.txt)
 
 wayland-client 0.31.15
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/wayland-client/0.31.15/download
-Included documents: L0325 (LICENSE.txt)
+Included documents: L0326 (LICENSE.txt)
 
 wayland-protocols-wlr 0.3.12
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/wayland-protocols-wlr/0.3.12/download
-Included documents: L0325 (LICENSE.txt)
+Included documents: L0326 (LICENSE.txt)
 
 wayland-protocols 0.32.13
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/wayland-protocols/0.32.13/download
-Included documents: L0325 (LICENSE.txt), L0326 (protocols/COPYING)
+Included documents: L0326 (LICENSE.txt), L0327 (protocols/COPYING)
 
 wayland-scanner 0.31.11
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/wayland-scanner/0.31.11/download
-Included documents: L0325 (LICENSE.txt)
+Included documents: L0326 (LICENSE.txt)
 
 wayland-sys 0.31.11
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/wayland-sys/0.31.11/download
-Included documents: L0325 (LICENSE.txt)
+Included documents: L0326 (LICENSE.txt)
 
 web_atoms 0.2.6
 Declared licence: MIT OR Apache-2.0
@@ -2021,257 +2036,307 @@ Included documents: L0019 (LICENSE-APACHE), L0040 (LICENSE-MIT)
 webkit2gtk-sys 2.0.2
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/webkit2gtk-sys/2.0.2/download
-Included documents: L0327 (LICENSE)
+Included documents: L0328 (LICENSE)
 
 webkit2gtk 2.0.2
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/webkit2gtk/2.0.2/download
-Included documents: L0328 (LICENSE)
+Included documents: L0329 (LICENSE)
 
 webview2-com-macros 0.8.1
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/webview2-com-macros/0.8.1/download
-Included documents: L0028 (SPDX-MIT.txt), L0329 (README.md), L0330 (Cargo.toml.orig), L0331 (Cargo.toml)
+Included documents: L0028 (SPDX-MIT.txt), L0330 (README.md), L0331 (Cargo.toml.orig), L0332 (Cargo.toml)
 
 webview2-com-sys 0.38.2
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/webview2-com-sys/0.38.2/download
-Included documents: L0028 (SPDX-MIT.txt), L0332 (README.md), L0333 (Cargo.toml.orig), L0334 (Cargo.toml)
+Included documents: L0028 (SPDX-MIT.txt), L0333 (README.md), L0334 (Cargo.toml.orig), L0335 (Cargo.toml)
 
 webview2-com 0.38.2
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/webview2-com/0.38.2/download
-Included documents: L0028 (SPDX-MIT.txt), L0335 (README.md), L0336 (Cargo.toml.orig), L0337 (Cargo.toml)
+Included documents: L0028 (SPDX-MIT.txt), L0336 (README.md), L0337 (Cargo.toml.orig), L0338 (Cargo.toml)
 
 weezl 0.1.12
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/weezl/0.1.12/download
-Included documents: L0019 (LICENSE-APACHE), L0338 (LICENSE-MIT)
+Included documents: L0019 (LICENSE-APACHE), L0339 (LICENSE-MIT)
 
 winapi-i686-pc-windows-gnu 0.4.0
 Declared licence: MIT/Apache-2.0
 Exact source: https://crates.io/api/v1/crates/winapi-i686-pc-windows-gnu/0.4.0/download
-Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0339 (Cargo.toml.orig), L0340 (Cargo.toml)
+Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0340 (Cargo.toml.orig), L0341 (Cargo.toml)
 
 winapi-util 0.1.11
 Declared licence: Unlicense OR MIT
 Exact source: https://crates.io/api/v1/crates/winapi-util/0.1.11/download
-Included documents: L0004 (COPYING), L0254 (LICENSE-MIT), L0006 (UNLICENSE)
+Included documents: L0004 (COPYING), L0255 (LICENSE-MIT), L0006 (UNLICENSE)
 
 winapi-x86_64-pc-windows-gnu 0.4.0
 Declared licence: MIT/Apache-2.0
 Exact source: https://crates.io/api/v1/crates/winapi-x86_64-pc-windows-gnu/0.4.0/download
-Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0341 (Cargo.toml.orig), L0342 (Cargo.toml)
+Included documents: L0028 (SPDX-MIT.txt), L0068 (SPDX-Apache-2.0.txt), L0342 (Cargo.toml.orig), L0343 (Cargo.toml)
 
 winapi 0.3.9
 Declared licence: MIT/Apache-2.0
 Exact source: https://crates.io/api/v1/crates/winapi/0.3.9/download
-Included documents: L0055 (LICENSE-APACHE), L0343 (LICENSE-MIT)
+Included documents: L0055 (LICENSE-APACHE), L0344 (LICENSE-MIT)
 
 window-vibrancy 0.6.0
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/window-vibrancy/0.6.0/download
-Included documents: L0019 (LICENSE-APACHE), L0344 (LICENSE-MIT), L0345 (LICENSE.spdx)
+Included documents: L0019 (LICENSE-APACHE), L0345 (LICENSE-MIT), L0346 (LICENSE.spdx)
 
 windows_aarch64_gnullvm 0.42.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_aarch64_gnullvm/0.42.2/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_aarch64_gnullvm 0.52.6
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_aarch64_gnullvm/0.52.6/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
+
+windows_aarch64_gnullvm 0.53.1
+Declared licence: MIT OR Apache-2.0
+Exact source: https://crates.io/api/v1/crates/windows_aarch64_gnullvm/0.53.1/download
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_aarch64_msvc 0.42.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_aarch64_msvc/0.42.2/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_aarch64_msvc 0.52.6
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_aarch64_msvc/0.52.6/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
+
+windows_aarch64_msvc 0.53.1
+Declared licence: MIT OR Apache-2.0
+Exact source: https://crates.io/api/v1/crates/windows_aarch64_msvc/0.53.1/download
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_i686_gnu 0.42.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_i686_gnu/0.42.2/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_i686_gnu 0.52.6
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_i686_gnu/0.52.6/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
+
+windows_i686_gnu 0.53.1
+Declared licence: MIT OR Apache-2.0
+Exact source: https://crates.io/api/v1/crates/windows_i686_gnu/0.53.1/download
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_i686_gnullvm 0.52.6
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_i686_gnullvm/0.52.6/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
+
+windows_i686_gnullvm 0.53.1
+Declared licence: MIT OR Apache-2.0
+Exact source: https://crates.io/api/v1/crates/windows_i686_gnullvm/0.53.1/download
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_i686_msvc 0.42.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_i686_msvc/0.42.2/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_i686_msvc 0.52.6
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_i686_msvc/0.52.6/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
+
+windows_i686_msvc 0.53.1
+Declared licence: MIT OR Apache-2.0
+Exact source: https://crates.io/api/v1/crates/windows_i686_msvc/0.53.1/download
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_x86_64_gnu 0.42.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_x86_64_gnu/0.42.2/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_x86_64_gnu 0.52.6
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_x86_64_gnu/0.52.6/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
+
+windows_x86_64_gnu 0.53.1
+Declared licence: MIT OR Apache-2.0
+Exact source: https://crates.io/api/v1/crates/windows_x86_64_gnu/0.53.1/download
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_x86_64_gnullvm 0.42.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_x86_64_gnullvm/0.42.2/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_x86_64_gnullvm 0.52.6
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_x86_64_gnullvm/0.52.6/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
+
+windows_x86_64_gnullvm 0.53.1
+Declared licence: MIT OR Apache-2.0
+Exact source: https://crates.io/api/v1/crates/windows_x86_64_gnullvm/0.53.1/download
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_x86_64_msvc 0.42.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_x86_64_msvc/0.42.2/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows_x86_64_msvc 0.52.6
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows_x86_64_msvc/0.52.6/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
+
+windows_x86_64_msvc 0.53.1
+Declared licence: MIT OR Apache-2.0
+Exact source: https://crates.io/api/v1/crates/windows_x86_64_msvc/0.53.1/download
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-collections 0.2.0
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-collections/0.2.0/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-core 0.61.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-core/0.61.2/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-core 0.62.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-core/0.62.2/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-future 0.2.1
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-future/0.2.1/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-implement 0.60.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-implement/0.60.2/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-interface 0.59.3
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-interface/0.59.3/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-link 0.1.3
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-link/0.1.3/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-link 0.2.1
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-link/0.2.1/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-numerics 0.2.0
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-numerics/0.2.0/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-result 0.3.4
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-result/0.3.4/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-result 0.4.1
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-result/0.4.1/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-strings 0.4.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-strings/0.4.2/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-strings 0.5.1
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-strings/0.5.1/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-sys 0.45.0
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-sys/0.45.0/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-sys 0.59.0
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-sys/0.59.0/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
+
+windows-sys 0.60.2
+Declared licence: MIT OR Apache-2.0
+Exact source: https://crates.io/api/v1/crates/windows-sys/0.60.2/download
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-sys 0.61.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-sys/0.61.2/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-targets 0.42.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-targets/0.42.2/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-targets 0.52.6
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-targets/0.52.6/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
+
+windows-targets 0.53.5
+Declared licence: MIT OR Apache-2.0
+Exact source: https://crates.io/api/v1/crates/windows-targets/0.53.5/download
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-threading 0.1.0
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-threading/0.1.0/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows-version 0.1.7
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows-version/0.1.7/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 windows 0.61.3
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/windows/0.61.3/download
-Included documents: L0346 (license-apache-2.0), L0347 (license-mit)
+Included documents: L0347 (license-apache-2.0), L0348 (license-mit)
 
 winnow 0.5.40
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/winnow/0.5.40/download
-Included documents: L0348 (LICENSE-MIT)
+Included documents: L0349 (LICENSE-MIT)
 
 winnow 0.7.15
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/winnow/0.7.15/download
-Included documents: L0348 (LICENSE-MIT)
+Included documents: L0349 (LICENSE-MIT)
 
 winnow 1.0.4
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/winnow/1.0.4/download
-Included documents: L0348 (LICENSE-MIT)
+Included documents: L0349 (LICENSE-MIT)
 
 winreg 0.55.0
 Declared licence: MIT
 Exact source: https://crates.io/api/v1/crates/winreg/0.55.0/download
-Included documents: L0349 (LICENSE)
+Included documents: L0350 (LICENSE)
 
 wit-bindgen 0.57.1
 Declared licence: Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
@@ -2281,7 +2346,7 @@ Included documents: L0019 (LICENSE-APACHE), L0154 (LICENSE-Apache-2.0_WITH_LLVM-
 wl-clipboard-rs 0.9.3
 Declared licence: MIT/Apache-2.0
 Exact source: https://crates.io/api/v1/crates/wl-clipboard-rs/0.9.3/download
-Included documents: L0019 (LICENSE-APACHE), L0350 (LICENSE-MIT)
+Included documents: L0019 (LICENSE-APACHE), L0351 (LICENSE-MIT)
 
 writeable 0.6.4
 Declared licence: Unicode-3.0
@@ -2291,7 +2356,7 @@ Included documents: L0128 (LICENSE)
 wry 0.55.1
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/wry/0.55.1/download
-Included documents: L0019 (LICENSE-APACHE), L0351 (LICENSE-MIT), L0352 (LICENSE.spdx)
+Included documents: L0019 (LICENSE-APACHE), L0352 (LICENSE-MIT), L0353 (LICENSE.spdx)
 
 x11-dl 2.21.0
 Declared licence: MIT
@@ -2306,12 +2371,12 @@ Included documents: L0003 (LICENSE-MIT)
 x11rb-protocol 0.13.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/x11rb-protocol/0.13.2/download
-Included documents: L0091 (LICENSE-APACHE), L0353 (LICENSE-MIT)
+Included documents: L0091 (LICENSE-APACHE), L0354 (LICENSE-MIT)
 
 x11rb 0.13.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://crates.io/api/v1/crates/x11rb/0.13.2/download
-Included documents: L0091 (LICENSE-APACHE), L0353 (LICENSE-MIT)
+Included documents: L0091 (LICENSE-APACHE), L0354 (LICENSE-MIT)
 
 yoke-derive 0.8.2
 Declared licence: Unicode-3.0
@@ -2326,12 +2391,12 @@ Included documents: L0128 (LICENSE)
 zerocopy-derive 0.8.56
 Declared licence: BSD-2-Clause OR Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/zerocopy-derive/0.8.56/download
-Included documents: L0354 (LICENSE-APACHE), L0355 (LICENSE-BSD), L0356 (LICENSE-MIT)
+Included documents: L0355 (LICENSE-APACHE), L0356 (LICENSE-BSD), L0357 (LICENSE-MIT)
 
 zerocopy 0.8.56
 Declared licence: BSD-2-Clause OR Apache-2.0 OR MIT
 Exact source: https://crates.io/api/v1/crates/zerocopy/0.8.56/download
-Included documents: L0354 (LICENSE-APACHE), L0355 (LICENSE-BSD), L0356 (LICENSE-MIT)
+Included documents: L0355 (LICENSE-APACHE), L0356 (LICENSE-BSD), L0357 (LICENSE-MIT)
 
 zerofrom-derive 0.1.7
 Declared licence: Unicode-3.0
@@ -2366,132 +2431,132 @@ Included documents: L0003 (LICENSE-MIT)
 zune-core 0.5.3
 Declared licence: MIT OR Apache-2.0 OR Zlib
 Exact source: https://crates.io/api/v1/crates/zune-core/0.5.3/download
-Included documents: L0262 (LICENSE-APACHE), L0357 (LICENSE-MIT), L0358 (LICENSE-ZLIB)
+Included documents: L0263 (LICENSE-APACHE), L0358 (LICENSE-MIT), L0359 (LICENSE-ZLIB)
 
 zune-jpeg 0.5.15
 Declared licence: MIT OR Apache-2.0 OR Zlib
 Exact source: https://crates.io/api/v1/crates/zune-jpeg/0.5.15/download
-Included documents: L0262 (LICENSE-APACHE), L0357 (LICENSE-MIT), L0358 (LICENSE-ZLIB)
+Included documents: L0263 (LICENSE-APACHE), L0358 (LICENSE-MIT), L0359 (LICENSE-ZLIB)
 
 @jridgewell/gen-mapping 0.3.13
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.13.tgz
-Included documents: L0359 (LICENSE)
+Included documents: L0360 (LICENSE)
 
 @jridgewell/remapping 2.3.5
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/@jridgewell/remapping/-/remapping-2.3.5.tgz
-Included documents: L0359 (LICENSE)
+Included documents: L0360 (LICENSE)
 
 @jridgewell/resolve-uri 3.1.2
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz
-Included documents: L0360 (LICENSE)
+Included documents: L0361 (LICENSE)
 
 @jridgewell/sourcemap-codec 1.5.5
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.5.tgz
-Included documents: L0359 (LICENSE)
+Included documents: L0360 (LICENSE)
 
 @jridgewell/trace-mapping 0.3.31
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz
-Included documents: L0359 (LICENSE)
+Included documents: L0360 (LICENSE)
 
 @sveltejs/acorn-typescript 1.0.13
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/@sveltejs/acorn-typescript/-/acorn-typescript-1.0.13.tgz
-Included documents: L0361 (LICENSE.md)
+Included documents: L0362 (LICENSE.md)
 
 @tauri-apps/api 2.11.1
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://registry.npmjs.org/@tauri-apps/api/-/api-2.11.1.tgz
-Included documents: L0015 (LICENSE_APACHE-2.0), L0281 (LICENSE_MIT)
+Included documents: L0015 (LICENSE_APACHE-2.0), L0282 (LICENSE_MIT)
 
 @tauri-apps/plugin-clipboard-manager 2.3.2
 Declared licence: MIT OR Apache-2.0
 Exact source: https://registry.npmjs.org/@tauri-apps/plugin-clipboard-manager/-/plugin-clipboard-manager-2.3.2.tgz
-Included documents: L0282 (LICENSE.spdx)
+Included documents: L0283 (LICENSE.spdx)
 
 @types/estree 1.0.9
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/@types/estree/-/estree-1.0.9.tgz
-Included documents: L0347 (LICENSE)
+Included documents: L0348 (LICENSE)
 
 @types/trusted-types 2.0.7
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/@types/trusted-types/-/trusted-types-2.0.7.tgz
-Included documents: L0347 (LICENSE)
+Included documents: L0348 (LICENSE)
 
 acorn 8.18.0
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/acorn/-/acorn-8.18.0.tgz
-Included documents: L0362 (LICENSE)
+Included documents: L0363 (LICENSE)
 
 aria-query 5.3.1
 Declared licence: Apache-2.0
 Exact source: https://registry.npmjs.org/aria-query/-/aria-query-5.3.1.tgz
-Included documents: L0363 (LICENSE)
+Included documents: L0364 (LICENSE)
 
 axobject-query 4.1.0
 Declared licence: Apache-2.0
 Exact source: https://registry.npmjs.org/axobject-query/-/axobject-query-4.1.0.tgz
-Included documents: L0363 (LICENSE)
+Included documents: L0364 (LICENSE)
 
 clsx 2.1.1
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/clsx/-/clsx-2.1.1.tgz
-Included documents: L0364 (license)
+Included documents: L0365 (license)
 
 devalue 5.9.0
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/devalue/-/devalue-5.9.0.tgz
-Included documents: L0365 (LICENSE)
+Included documents: L0366 (LICENSE)
 
 esm-env 1.2.2
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/esm-env/-/esm-env-1.2.2.tgz
-Included documents: L0366 (LICENSE)
+Included documents: L0367 (LICENSE)
 
 esrap 2.3.4
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/esrap/-/esrap-2.3.4.tgz
-Included documents: L0367 (LICENSE)
+Included documents: L0368 (LICENSE)
 
 is-reference 3.0.3
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/is-reference/-/is-reference-3.0.3.tgz
-Included documents: L0028 (SPDX-MIT.txt), L0368 (package.json), L0369 (README.md)
+Included documents: L0028 (SPDX-MIT.txt), L0369 (package.json), L0370 (README.md)
 
 locate-character 3.0.0
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/locate-character/-/locate-character-3.0.0.tgz
-Included documents: L0028 (SPDX-MIT.txt), L0370 (package.json), L0371 (README.md)
+Included documents: L0028 (SPDX-MIT.txt), L0371 (package.json), L0372 (README.md)
 
 magic-string 0.30.21
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/magic-string/-/magic-string-0.30.21.tgz
-Included documents: L0372 (LICENSE)
+Included documents: L0373 (LICENSE)
 
 svelte 5.56.9
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/svelte/-/svelte-5.56.9.tgz
-Included documents: L0373 (LICENSE.md)
+Included documents: L0374 (LICENSE.md)
 
 zimmerframe 1.1.4
 Declared licence: MIT
 Exact source: https://registry.npmjs.org/zimmerframe/-/zimmerframe-1.1.4.tgz
-Included documents: L0374 (LICENSE)
+Included documents: L0375 (LICENSE)
 
 NSIS 3.11
 Declared licence: zlib/libpng; LZMA module under CPL-1.0 with linking exception
 Exact source: https://downloads.sourceforge.net/project/nsis/NSIS%203/3.11/nsis-3.11-src.tar.bz2
-Included documents: L0375 (COPYING)
+Included documents: L0376 (COPYING)
 
 nsis_tauri_utils 0.5.3
 Declared licence: Apache-2.0 OR MIT
 Exact source: https://codeload.github.com/tauri-apps/nsis-tauri-utils/tar.gz/13d9edd27b69310e108d6fbd49f90992f8a05390
-Included documents: L0015 (LICENSE_APACHE-2.0), L0376 (LICENSE_MIT)
+Included documents: L0015 (LICENSE_APACHE-2.0), L0377 (LICENSE_MIT)
 
 LICENCE AND NOTICE DOCUMENTS
 ============================
@@ -34804,7 +34869,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-L0253 SHA-256 377c2e7c53250cc5905c0b0532d35973392af16ffb9596a41d99d202cf3617c9
+L0253 SHA-256 65fc947f4bac882a2cd104ef73c246b1b037059df9f2b3a58b7f77f0b9e56071
+==============================================================================
+
+MIT License
+
+Copyright (c) 2022 Bartłomiej Maryńczak
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+L0254 SHA-256 377c2e7c53250cc5905c0b0532d35973392af16ffb9596a41d99d202cf3617c9
 ==============================================================================
 
 Short version for non-lawyers:
@@ -34838,7 +34929,7 @@ is licensed under:
 at your option.
 
 ==============================================================================
-L0254 SHA-256 cb3c929a05e6cbc9de9ab06a4c57eeb60ca8c724bef6c138c87d3a577e27aa14
+L0255 SHA-256 cb3c929a05e6cbc9de9ab06a4c57eeb60ca8c724bef6c138c87d3a577e27aa14
 ==============================================================================
 
 The MIT License (MIT)
@@ -34864,7 +34955,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-L0255 SHA-256 1954992a2b32e8a2af24a4c11b726902e344c1934b947a77f04d404908f8db30
+L0256 SHA-256 1954992a2b32e8a2af24a4c11b726902e344c1934b947a77f04d404908f8db30
 ==============================================================================
 
 MIT License
@@ -34890,7 +34981,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0256 SHA-256 fb77f0a9c53e473abe5103c8632ef9f0f2874d4fb3f17cb2d8c661aab9cee9d7
+L0257 SHA-256 fb77f0a9c53e473abe5103c8632ef9f0f2874d4fb3f17cb2d8c661aab9cee9d7
 ==============================================================================
 
 Copyright (c) 2016-2019 Ulrik Sverdrup "bluss" and scopeguard developers
@@ -34920,7 +35011,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0257 SHA-256 c0a9128170286f7c593f0c316f00d4a9c8671140bbd9d59f7e6c001d696b2810
+L0258 SHA-256 c0a9128170286f7c593f0c316f00d4a9c8671140bbd9d59f7e6c001d696b2810
 ==============================================================================
 
 rust-selectors
@@ -34949,7 +35040,7 @@ If you don’t already have a tree data structure,
 consider using [Kuchiki](https://github.com/kuchiki-rs/kuchiki) itself.
 
 ==============================================================================
-L0258 SHA-256 be6ed6441d04b710178c3b50052672755e15e5cf3780060ca9fdd2c8aba1d392
+L0259 SHA-256 be6ed6441d04b710178c3b50052672755e15e5cf3780060ca9fdd2c8aba1d392
 ==============================================================================
 
 [package]
@@ -34991,7 +35082,7 @@ new_debug_unreachable = "1"
 phf_codegen = "0.13"
 
 ==============================================================================
-L0259 SHA-256 c4d292da59a7b7787100f0839b7c18d9a2fa661ab7906d1617137469e1aca2da
+L0260 SHA-256 c4d292da59a7b7787100f0839b7c18d9a2fa661ab7906d1617137469e1aca2da
 ==============================================================================
 
 # THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
@@ -35084,7 +35175,7 @@ optional = true
 version = "0.13"
 
 ==============================================================================
-L0260 SHA-256 6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6
+L0261 SHA-256 6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6
 ==============================================================================
 
 Copyright (c) Individual contributors
@@ -35108,7 +35199,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0261 SHA-256 b9eb266294324f672cbe945fe8f2e32f85024f0d61a1a7d14382cdde0ac44769
+L0262 SHA-256 b9eb266294324f672cbe945fe8f2e32f85024f0d61a1a7d14382cdde0ac44769
 ==============================================================================
 
 Copyright (c) 2016 Anthony Ramine
@@ -35138,7 +35229,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0262 SHA-256 c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+L0263 SHA-256 c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 ==============================================================================
 
                                  Apache License
@@ -35344,7 +35435,7 @@ L0262 SHA-256 c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
    limitations under the License.
 
 ==============================================================================
-L0263 SHA-256 e53a7165e8bc3ced5e5628404b3d2d28ecc14ad720f1c09ba28385d5151ecf93
+L0264 SHA-256 e53a7165e8bc3ced5e5628404b3d2d28ecc14ad720f1c09ba28385d5151ecf93
 ==============================================================================
 
 MIT License
@@ -35370,7 +35461,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0264 SHA-256 b4eb00df6e2a4d22518fcaa6a2b4646f249b3a3c9814509b22bd2091f1392ff1
+L0265 SHA-256 b4eb00df6e2a4d22518fcaa6a2b4646f249b3a3c9814509b22bd2091f1392ff1
 ==============================================================================
 
 Copyright (c) 2006-2009 Graydon Hoare
@@ -35402,7 +35493,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0265 SHA-256 553fffcd9b1cb158bc3e9edc35da85ca5c3b3d7d2e61c883ebcfa8a65814b583
+L0266 SHA-256 553fffcd9b1cb158bc3e9edc35da85ca5c3b3d7d2e61c883ebcfa8a65814b583
 ==============================================================================
 
 Copyright 2015 Nicholas Allegra (comex).
@@ -35420,7 +35511,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-L0266 SHA-256 4455bf75a91154108304cb283e0fea9948c14f13e20d60887cf2552449dea3b1
+L0267 SHA-256 4455bf75a91154108304cb283e0fea9948c14f13e20d60887cf2552449dea3b1
 ==============================================================================
 
 The MIT License (MIT)
@@ -35446,7 +35537,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-L0267 SHA-256 42a35170233e83e18856792e748de4c1ce4a63b2afce9a370c89ef3fe23f9f2d
+L0268 SHA-256 42a35170233e83e18856792e748de4c1ce4a63b2afce9a370c89ef3fe23f9f2d
 ==============================================================================
 
 MIT License
@@ -35472,7 +35563,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0268 SHA-256 c962ee4d1d05ddc138b202b2540219ebc57893fcf97b364852094a9a94ce1365
+L0269 SHA-256 c962ee4d1d05ddc138b202b2540219ebc57893fcf97b364852094a9a94ce1365
 ==============================================================================
 
 Copyright 2012-2016 The Rust Project Developers.
@@ -35484,7 +35575,7 @@ http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
 option.
 
 ==============================================================================
-L0269 SHA-256 8ce0830173fdac609dfb4ea603fdc002c2f4af0dc9b1a005653f5da9cf534b18
+L0270 SHA-256 8ce0830173fdac609dfb4ea603fdc002c2f4af0dc9b1a005653f5da9cf534b18
 ==============================================================================
 
 Copyright (c) 2019 Carl Lerche
@@ -35514,7 +35605,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0270 SHA-256 0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9
+L0271 SHA-256 0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9
 ==============================================================================
 
 Copyright (c) 2018 The Servo Project Developers
@@ -35544,7 +35635,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0271 SHA-256 a4445427440043e8ce6fadf7a43fb906cb0d7f6c573a560a9f142cf9f9bf8ff4
+L0272 SHA-256 a4445427440043e8ce6fadf7a43fb906cb0d7f6c573a560a9f142cf9f9bf8ff4
 ==============================================================================
 
 Apache License
@@ -35750,7 +35841,7 @@ Apache License
    limitations under the License.
 
 ==============================================================================
-L0272 SHA-256 74f180f4d19f51aede780e1884b37d02c19cbbad872f8ca3b6450288db66e5cd
+L0273 SHA-256 74f180f4d19f51aede780e1884b37d02c19cbbad872f8ca3b6450288db66e5cd
 ==============================================================================
 
 Copyright 2022 Kirill Chibisov
@@ -35774,7 +35865,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0273 SHA-256 3c125f249fc6fb19f2415d027a0d9a170860583960ea53d08ea1d2b3f269d153
+L0274 SHA-256 3c125f249fc6fb19f2415d027a0d9a170860583960ea53d08ea1d2b3f269d153
 ==============================================================================
 
 Copyright (c) 2017 Robert Grosse
@@ -35804,7 +35895,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0274 SHA-256 1e697ce8d21401fbf1bddd9b5c3fd4c4c79ae1e3bdf51f81761c85e11d5a89cd
+L0275 SHA-256 1e697ce8d21401fbf1bddd9b5c3fd4c4c79ae1e3bdf51f81761c85e11d5a89cd
 ==============================================================================
 
 The MIT License (MIT)
@@ -35832,7 +35923,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0275 SHA-256 ccaab19135434ffad2316174e87f6e0910bcef46b9ebfa18c38c5aca3a4726ed
+L0276 SHA-256 ccaab19135434ffad2316174e87f6e0910bcef46b9ebfa18c38c5aca3a4726ed
 ==============================================================================
 
                                  Apache License
@@ -36038,7 +36129,7 @@ L0275 SHA-256 ccaab19135434ffad2316174e87f6e0910bcef46b9ebfa18c38c5aca3a4726ed
    limitations under the License.
 
 ==============================================================================
-L0276 SHA-256 f3c3e9f4febe81ff14ccc233c344e6e60051290d1c1e5a2c670d63cc3608a5bb
+L0277 SHA-256 f3c3e9f4febe81ff14ccc233c344e6e60051290d1c1e5a2c670d63cc3608a5bb
 ==============================================================================
 
 Copyright (c) 2023 The swift-rs Developers
@@ -36062,7 +36153,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0277 SHA-256 219920e865eee70b7dcfc948a86b099e7f4fe2de01bcca2ca9a20c0a033f2b59
+L0278 SHA-256 219920e865eee70b7dcfc948a86b099e7f4fe2de01bcca2ca9a20c0a033f2b59
 ==============================================================================
 
 Copyright 2016 Nika Layzell
@@ -36074,7 +36165,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0278 SHA-256 ca52f53b2ee0b6a96d77d8ae0cb1b4624080dd0274c97f1cece24efaf4e145f2
+L0279 SHA-256 ca52f53b2ee0b6a96d77d8ae0cb1b4624080dd0274c97f1cece24efaf4e145f2
 ==============================================================================
 
 MIT License
@@ -36100,7 +36191,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0279 SHA-256 8f96817f33d08e1248cec9eb99fa8407c246d0c5a27f971aa4feada07634a3b4
+L0280 SHA-256 8f96817f33d08e1248cec9eb99fa8407c246d0c5a27f971aa4feada07634a3b4
 ==============================================================================
 
 SPDXVersion: SPDX-2.1
@@ -36124,7 +36215,7 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/tao.git
 Creator: Person: Daniel Thompson-Yvetot
 
 ==============================================================================
-L0280 SHA-256 02b6448337b757772d90e5f31caaa0f9e6afaad2221c01771d0a3deaa4d4196c
+L0281 SHA-256 02b6448337b757772d90e5f31caaa0f9e6afaad2221c01771d0a3deaa4d4196c
 ==============================================================================
 
 SPDXVersion: SPDX-2.1
@@ -36147,7 +36238,7 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/tao.git
 Creator: Person: Daniel Thompson-Yvetot
 
 ==============================================================================
-L0281 SHA-256 9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d
+L0282 SHA-256 9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d
 ==============================================================================
 
 MIT License
@@ -36173,7 +36264,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0282 SHA-256 9c1db6b7e7eb83e1cb2af973b5df2bdc63651ede0f38506ab98dfa0940487759
+L0283 SHA-256 9c1db6b7e7eb83e1cb2af973b5df2bdc63651ede0f38506ab98dfa0940487759
 ==============================================================================
 
 SPDXVersion: SPDX-2.1
@@ -36198,7 +36289,7 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/tauri.git
 Creator: Person: Daniel Thompson-Yvetot
 
 ==============================================================================
-L0283 SHA-256 cb733ae0ff8eae3102f43bbd4f2d7b0dba57de0e9df941685878f6c8f4173d34
+L0284 SHA-256 cb733ae0ff8eae3102f43bbd4f2d7b0dba57de0e9df941685878f6c8f4173d34
 ==============================================================================
 
 [package]
@@ -36243,7 +36334,7 @@ walkdir = { version = "2", optional = true }
 plist = { version = "1", optional = true }
 
 ==============================================================================
-L0284 SHA-256 4e3484456cd8ca73829c3fb45e64bf369e3184cfdaa33375c920c2fee666a569
+L0285 SHA-256 4e3484456cd8ca73829c3fb45e64bf369e3184cfdaa33375c920c2fee666a569
 ==============================================================================
 
 # THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
@@ -36334,7 +36425,7 @@ version = "1"
 optional = true
 
 ==============================================================================
-L0285 SHA-256 d9fa6b0e6fed50d4961b9c931587af6bd127df13e9473418d3e324f427db4f06
+L0286 SHA-256 d9fa6b0e6fed50d4961b9c931587af6bd127df13e9473418d3e324f427db4f06
 ==============================================================================
 
 The MIT License (MIT)
@@ -36367,7 +36458,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0286 SHA-256 60a7062291b01ba068f300612cdbdc20382ac1d4934f07bcdd7167c15299f309
+L0287 SHA-256 60a7062291b01ba068f300612cdbdc20382ac1d4934f07bcdd7167c15299f309
 ==============================================================================
 
 Copyright (c) 2015 Keegan McAllister
@@ -36397,7 +36488,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0287 SHA-256 20c097d0de27e2adc179140a3d542091951a030699c7e1c78655f2a2d08d4e3e
+L0288 SHA-256 20c097d0de27e2adc179140a3d542091951a030699c7e1c78655f2a2d08d4e3e
 ==============================================================================
 
 MIT License
@@ -36423,7 +36514,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0288 SHA-256 c6d1d56bb6e2fe4f0aed4aa8553261dd65247db6db50c87c9e9f3fbe095e2202
+L0289 SHA-256 c6d1d56bb6e2fe4f0aed4aa8553261dd65247db6db50c87c9e9f3fbe095e2202
 ==============================================================================
 
 subsubifd.tif:
@@ -36436,7 +36527,7 @@ usda/*.tif
   license: Public Domain
 
 ==============================================================================
-L0289 SHA-256 2537228d9a1b44a5dc595241349cae7090b326c8de165aaf89bfddef4a00d0fc
+L0290 SHA-256 2537228d9a1b44a5dc595241349cae7090b326c8de165aaf89bfddef4a00d0fc
 ==============================================================================
 
 Copyright (c) Jacob Pratt et al.
@@ -36460,7 +36551,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0290 SHA-256 1cdc81fa44119bd4ea2c08ae5c635df952bafacd0e5e4dba002c62d1c4c6fb1b
+L0291 SHA-256 1cdc81fa44119bd4ea2c08ae5c635df952bafacd0e5e4dba002c62d1c4c6fb1b
 ==============================================================================
 
                                  Apache License
@@ -36666,7 +36757,7 @@ L0290 SHA-256 1cdc81fa44119bd4ea2c08ae5c635df952bafacd0e5e4dba002c62d1c4c6fb1b
    limitations under the License.
 
 ==============================================================================
-L0291 SHA-256 1dd8eca0f83669e75fa119e34fb9e1be9d16e3e9b6368962b8019db6e8ae5f7b
+L0292 SHA-256 1dd8eca0f83669e75fa119e34fb9e1be9d16e3e9b6368962b8019db6e8ae5f7b
 ==============================================================================
 
 MIT License
@@ -36692,7 +36783,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0292 SHA-256 6abdec69ada0c5f06d4819d9a0db0824ce54d610665df0b64c774480db9c1f2a
+L0293 SHA-256 6abdec69ada0c5f06d4819d9a0db0824ce54d610665df0b64c774480db9c1f2a
 ==============================================================================
 
 zlib License
@@ -36716,7 +36807,7 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 
 ==============================================================================
-L0293 SHA-256 253cd04c6714889df2d32f3f64d669179a1c95c76ac43c40882c52eb06bc3552
+L0294 SHA-256 253cd04c6714889df2d32f3f64d669179a1c95c76ac43c40882c52eb06bc3552
 ==============================================================================
 
 MIT License
@@ -36742,7 +36833,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0294 SHA-256 5049cf464977eff4b4fcfa7988d84e74116956a3eb9d5f1d451b3f828f945233
+L0295 SHA-256 5049cf464977eff4b4fcfa7988d84e74116956a3eb9d5f1d451b3f828f945233
 ==============================================================================
 
 Copyright (c) 2019-2021 Tower Contributors
@@ -36772,7 +36863,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0295 SHA-256 4249c8e6c5ebb85f97c77e6457c6fafc1066406eb8f1ef61e796fbdc5ff18482
+L0296 SHA-256 4249c8e6c5ebb85f97c77e6457c6fafc1066406eb8f1ef61e796fbdc5ff18482
 ==============================================================================
 
 Copyright (c) 2019 Tower Contributors
@@ -36802,7 +36893,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0296 SHA-256 898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1
+L0297 SHA-256 898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1
 ==============================================================================
 
 Copyright (c) 2019 Tokio Contributors
@@ -36832,7 +36923,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0297 SHA-256 58545fed1565e42d687aecec6897d35c6d37ccb71479a137c0deb2203e125c79
+L0298 SHA-256 58545fed1565e42d687aecec6897d35c6d37ccb71479a137c0deb2203e125c79
 ==============================================================================
 
 The MIT License (MIT)
@@ -36858,7 +36949,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0298 SHA-256 44181d1db740d9841dbe6d7fa1963a23067f335567127fc15a9d050476af71a6
+L0299 SHA-256 44181d1db740d9841dbe6d7fa1963a23067f335567127fc15a9d050476af71a6
 ==============================================================================
 
 SPDXVersion: SPDX-2.1
@@ -36882,7 +36973,7 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/tray-icon.git
 Creator: Person: Daniel Thompson-Yvetot
 
 ==============================================================================
-L0299 SHA-256 a7cea8a5a56ba02950d098a7c56eed312fc745ceecd437e4aad2f7f8d38661b8
+L0300 SHA-256 a7cea8a5a56ba02950d098a7c56eed312fc745ceecd437e4aad2f7f8d38661b8
 ==============================================================================
 
 MIT License
@@ -36908,7 +36999,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0300 SHA-256 8b62775bacdfa5ae8390519b7cdf7ab7d6c53f008981f1b9abd6135ef745b67e
+L0301 SHA-256 8b62775bacdfa5ae8390519b7cdf7ab7d6c53f008981f1b9abd6135ef745b67e
 ==============================================================================
 
 Copyright (c) 2018-2023 Sean McArthur
@@ -36933,13 +37024,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-L0301 SHA-256 36bb253818ac13761081556ff5c457d626da9df1eb4f56194d9ad3926c418a68
+L0302 SHA-256 36bb253818ac13761081556ff5c457d626da9df1eb4f56194d9ad3926c418a68
 ==============================================================================
 
 MIT OR Apache-2.0
 
 ==============================================================================
-L0302 SHA-256 3c97f5b6ad4e73ad22dc0d1e0c7120579a350df57095120017ddfe5a8669604e
+L0303 SHA-256 3c97f5b6ad4e73ad22dc0d1e0c7120579a350df57095120017ddfe5a8669604e
 ==============================================================================
 
                               Apache License
@@ -37145,7 +37236,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-L0303 SHA-256 a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f
+L0304 SHA-256 a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f
 ==============================================================================
 
 The MIT License (MIT)
@@ -37171,7 +37262,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0304 SHA-256 132a2ace33bbc5f54a2c4a4b522f96b7260c9e0fdb7756a753b4017e101e86d0
+L0305 SHA-256 132a2ace33bbc5f54a2c4a4b522f96b7260c9e0fdb7756a753b4017e101e86d0
 ==============================================================================
 
 [package]
@@ -37199,7 +37290,7 @@ appveyor = { repository = "open-i18n/rust-unic", branch = "master", service = "g
 travis-ci = { repository = "open-i18n/rust-unic", branch = "master" }
 
 ==============================================================================
-L0305 SHA-256 1c21185c9bd84959d197f681719106c1a5f4dface3db421b6660bb9801787929
+L0306 SHA-256 1c21185c9bd84959d197f681719106c1a5f4dface3db421b6660bb9801787929
 ==============================================================================
 
 # THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
@@ -37246,7 +37337,7 @@ branch = "master"
 repository = "open-i18n/rust-unic"
 
 ==============================================================================
-L0306 SHA-256 d176bfd5d70a75b4b8b27ee24e9a8bdd3138aaa3bf0903a7f58497b4e4490f59
+L0307 SHA-256 d176bfd5d70a75b4b8b27ee24e9a8bdd3138aaa3bf0903a7f58497b4e4490f59
 ==============================================================================
 
 [package]
@@ -37284,7 +37375,7 @@ appveyor = { repository = "open-i18n/rust-unic", branch = "master", service = "g
 travis-ci = { repository = "open-i18n/rust-unic", branch = "master" }
 
 ==============================================================================
-L0307 SHA-256 36d694fec9b997f5cd86861a5d062d0e69794e051b07d8ebf1b79ab9482c3462
+L0308 SHA-256 36d694fec9b997f5cd86861a5d062d0e69794e051b07d8ebf1b79ab9482c3462
 ==============================================================================
 
 # THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
@@ -37340,7 +37431,7 @@ branch = "master"
 repository = "open-i18n/rust-unic"
 
 ==============================================================================
-L0308 SHA-256 54c3f5551f27720e50315ba3ed76b2bf47db4692de1e6bdc12434022971b5ee3
+L0309 SHA-256 54c3f5551f27720e50315ba3ed76b2bf47db4692de1e6bdc12434022971b5ee3
 ==============================================================================
 
 # UNIC — Common Utilities
@@ -37352,7 +37443,7 @@ This UNIC component provides common types, algorithms and macros not shared
 between many components.
 
 ==============================================================================
-L0309 SHA-256 5c74ebf8b8eede95170fbef14b6050735ce8993ce265978f41562386cb0c2bb9
+L0310 SHA-256 5c74ebf8b8eede95170fbef14b6050735ce8993ce265978f41562386cb0c2bb9
 ==============================================================================
 
 [package]
@@ -37381,7 +37472,7 @@ appveyor = { repository = "open-i18n/rust-unic", branch = "master", service = "g
 travis-ci = { repository = "open-i18n/rust-unic", branch = "master" }
 
 ==============================================================================
-L0310 SHA-256 719fc6cbaa72559247169192a041fc1c4dfcec442987b204a7237e22836bbb14
+L0311 SHA-256 719fc6cbaa72559247169192a041fc1c4dfcec442987b204a7237e22836bbb14
 ==============================================================================
 
 # THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
@@ -37430,7 +37521,7 @@ branch = "master"
 repository = "open-i18n/rust-unic"
 
 ==============================================================================
-L0311 SHA-256 9c1c7cfc028e70f52a6a5bdc126c9348837783e5e3e059429c05fadb9af8ec8d
+L0312 SHA-256 9c1c7cfc028e70f52a6a5bdc126c9348837783e5e3e059429c05fadb9af8ec8d
 ==============================================================================
 
 [package]
@@ -37472,7 +37563,7 @@ appveyor = { repository = "open-i18n/rust-unic", branch = "master", service = "g
 travis-ci = { repository = "open-i18n/rust-unic", branch = "master" }
 
 ==============================================================================
-L0312 SHA-256 990a4fc63119a8cbf5118d6dc98b279ea96cf3b7fb90eede1be27107716decfc
+L0313 SHA-256 990a4fc63119a8cbf5118d6dc98b279ea96cf3b7fb90eede1be27107716decfc
 ==============================================================================
 
 # THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
@@ -37539,7 +37630,7 @@ branch = "master"
 repository = "open-i18n/rust-unic"
 
 ==============================================================================
-L0313 SHA-256 6411d1d10e5bf720a19366db6ab5f4c84cf1156c7033fafbd941f64729bd027c
+L0314 SHA-256 6411d1d10e5bf720a19366db6ab5f4c84cf1156c7033fafbd941f64729bd027c
 ==============================================================================
 
 [package]
@@ -37567,7 +37658,7 @@ appveyor = { repository = "open-i18n/rust-unic", branch = "master", service = "g
 travis-ci = { repository = "open-i18n/rust-unic", branch = "master" }
 
 ==============================================================================
-L0314 SHA-256 75628c37e215f72578113d96f746acba57b8a2f3448675a2f2a807f0930d4ce7
+L0315 SHA-256 75628c37e215f72578113d96f746acba57b8a2f3448675a2f2a807f0930d4ce7
 ==============================================================================
 
 # THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
@@ -37614,7 +37705,7 @@ branch = "master"
 repository = "open-i18n/rust-unic"
 
 ==============================================================================
-L0315 SHA-256 f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1
+L0316 SHA-256 f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1
 ==============================================================================
 
 UNICODE LICENSE V3
@@ -37658,7 +37749,7 @@ dealings in these Data Files or Software without prior written
 authorization of the copyright holder.
 
 ==============================================================================
-L0316 SHA-256 23860c2a7b5d96b21569afedf033469bab9fe14a1b24a35068b8641c578ce24d
+L0317 SHA-256 23860c2a7b5d96b21569afedf033469bab9fe14a1b24a35068b8641c578ce24d
 ==============================================================================
 
 Licensed under the Apache License, Version 2.0
@@ -37670,7 +37761,7 @@ notice may not be copied, modified, or distributed except
 according to those terms.
 
 ==============================================================================
-L0317 SHA-256 5cf1c9dc617e4cad7fa03181ff893601ad5243aa3be527ef39034e1cd6377676
+L0318 SHA-256 5cf1c9dc617e4cad7fa03181ff893601ad5243aa3be527ef39034e1cd6377676
 ==============================================================================
 
 MIT License
@@ -37696,7 +37787,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0318 SHA-256 c30152c94a6d75e021adbc52b3a52470366a46edb917e17deae3259251af244c
+L0319 SHA-256 c30152c94a6d75e021adbc52b3a52470366a46edb917e17deae3259251af244c
 ==============================================================================
 
 Copyright Mozilla Foundation
@@ -37743,7 +37834,7 @@ licensed under the Apache License, Version 2.0 <LICENSE-APACHE> or
 <LICENSE-MIT> or <http://opensource.org/licenses/MIT>, at your option.
 
 ==============================================================================
-L0319 SHA-256 3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c
+L0320 SHA-256 3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c
 ==============================================================================
 
 Copyright Mozilla Foundation
@@ -37773,7 +37864,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0320 SHA-256 436bc5a105d8e57dcd8778730f3754f7bf39c14d2f530e4cde4bd2d17a83ec3d
+L0321 SHA-256 436bc5a105d8e57dcd8778730f3754f7bf39c14d2f530e4cde4bd2d17a83ec3d
 ==============================================================================
 
 Copyright (c) 2014 The Rust Project Developers
@@ -37804,7 +37895,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0321 SHA-256 b7e650f3fce5c53249d1cdc608b54df156a97edd636cf9d23498d0cfe7aec63e
+L0322 SHA-256 b7e650f3fce5c53249d1cdc608b54df156a97edd636cf9d23498d0cfe7aec63e
 ==============================================================================
 
 The MIT License (MIT)
@@ -37828,7 +37919,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0322 SHA-256 0c844b018e99f1b1bcbe44ecb03fd82d406e116f141774b92890adfa23f11925
+L0323 SHA-256 0c844b018e99f1b1bcbe44ecb03fd82d406e116f141774b92890adfa23f11925
 ==============================================================================
 
 Copyright (c) 2017 Tim Visée
@@ -37852,7 +37943,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0323 SHA-256 e339134e53732f093f68ef00bcec3687ebf964ef8c6c812f31e74099c07d3f49
+L0324 SHA-256 e339134e53732f093f68ef00bcec3687ebf964ef8c6c812f31e74099c07d3f49
 ==============================================================================
 
 The MIT License (MIT)
@@ -37878,7 +37969,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0324 SHA-256 96d741569b18c61043e5ad2b8505b5e4891a27994b732b1da9f86f46be67f59a
+L0325 SHA-256 96d741569b18c61043e5ad2b8505b5e4891a27994b732b1da9f86f46be67f59a
 ==============================================================================
 
 Copyright (c) 2018-2019 Sean McArthur
@@ -37902,7 +37993,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-L0325 SHA-256 1cb6f4dee8c649f175736380495f0af0c753c87f22d50931692968bb24bf2161
+L0326 SHA-256 1cb6f4dee8c649f175736380495f0af0c753c87f22d50931692968bb24bf2161
 ==============================================================================
 
 Copyright (c) 2015 Elinor Berger
@@ -37926,7 +38017,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-L0326 SHA-256 f1a2b233e8a9a71c40f4aa885be08a0842ac85bb8588703c1dd7e6e6502e3124
+L0327 SHA-256 f1a2b233e8a9a71c40f4aa885be08a0842ac85bb8588703c1dd7e6e6502e3124
 ==============================================================================
 
 Copyright © 2008-2013 Kristian Høgsberg
@@ -37964,7 +38055,7 @@ The above is the version of the MIT "Expat" License used by X.org:
     http://cgit.freedesktop.org/xorg/xserver/tree/COPYING
 
 ==============================================================================
-L0327 SHA-256 281b72cb008466810da31680e72005b9899c7e9d7705b909c86098260e12aa7d
+L0328 SHA-256 281b72cb008466810da31680e72005b9899c7e9d7705b909c86098260e12aa7d
 ==============================================================================
 
 Copyright (c) 2016 Boucher, Antoni <bouanto@zoho.com>
@@ -37987,7 +38078,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0328 SHA-256 3f39c032be4639be635da96d77c4d0f4393c3595a164450ffd86f3d17701ec10
+L0329 SHA-256 3f39c032be4639be635da96d77c4d0f4393c3595a164450ffd86f3d17701ec10
 ==============================================================================
 
 Copyright (c) 2016 Boucher, Antoni <bouanto@zoho.com>
@@ -38012,7 +38103,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0329 SHA-256 f2eaac678739d4843dd0e3691d9b45d3b3361f7eef0844da0440441ac7fdb2ec
+L0330 SHA-256 f2eaac678739d4843dd0e3691d9b45d3b3361f7eef0844da0440441ac7fdb2ec
 ==============================================================================
 
 # webview2-com-macros
@@ -38022,7 +38113,7 @@ This crate implements macros which generate callback implementations for WebView
 This crate is only intended for use in [webview2-com](https://crates.io/crates/webview2-com).
 
 ==============================================================================
-L0330 SHA-256 a615e325d5acebc64f6553724028cd5e3639397e534cef107f172540cb78d0fd
+L0331 SHA-256 a615e325d5acebc64f6553724028cd5e3639397e534cef107f172540cb78d0fd
 ==============================================================================
 
 [package]
@@ -38046,7 +38137,7 @@ quote.workspace = true
 syn.workspace = true
 
 ==============================================================================
-L0331 SHA-256 b006cef88171ef3675df724a900cb31eb1f74158f77a20680915f1dbe95d457e
+L0332 SHA-256 b006cef88171ef3675df724a900cb31eb1f74158f77a20680915f1dbe95d457e
 ==============================================================================
 
 # THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
@@ -38097,7 +38188,7 @@ version = "2.0"
 features = ["full"]
 
 ==============================================================================
-L0332 SHA-256 156441af62661bc25ae6c3d374af3eaccc66d1d97f49de11d8a996158ea2ca50
+L0333 SHA-256 156441af62661bc25ae6c3d374af3eaccc66d1d97f49de11d8a996158ea2ca50
 ==============================================================================
 
 # webview2-com-sys
@@ -38107,7 +38198,7 @@ This crate implements unsafe Rust bindings for the [WebView2](https://aka.ms/web
 This crate has a friendlier wrapper in [webview2-com](https://crates.io/crates/webview2-com).
 
 ==============================================================================
-L0333 SHA-256 00229c125c597e4f0ddb9e598738ee5b38a9086fd59eea6d2577cdda5f8e5875
+L0334 SHA-256 00229c125c597e4f0ddb9e598738ee5b38a9086fd59eea6d2577cdda5f8e5875
 ==============================================================================
 
 [package]
@@ -38139,7 +38230,7 @@ windows.workspace = true
 thiserror.workspace = true
 
 ==============================================================================
-L0334 SHA-256 a6d5d71806b135cc7c101a2599b97e7fda28be0223f27577433eb1577addef7c
+L0335 SHA-256 a6d5d71806b135cc7c101a2599b97e7fda28be0223f27577433eb1577addef7c
 ==============================================================================
 
 # THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
@@ -38206,7 +38297,7 @@ version = "0.61"
 version = "2"
 
 ==============================================================================
-L0335 SHA-256 2df7616969176b488973df5962a6711acb1d2a588512979234842ea11803a396
+L0336 SHA-256 2df7616969176b488973df5962a6711acb1d2a588512979234842ea11803a396
 ==============================================================================
 
 # webview2-com
@@ -38235,7 +38326,7 @@ There are also some utilities for dealing with `PWSTR` in/out-params that may be
 The Windows crate requires a Windows Metadata (`winmd`) file describing the API. The one used in this crate was generated with the [webview2-win32md](https://github.com/wravery/webview2-win32md) project. This crate needs it to use the `#[implement]` macro from the Windows crate.
 
 ==============================================================================
-L0336 SHA-256 104bce84b453f732f4bd571e7c604d271380b02890d70f1c753af9d58063c7a4
+L0337 SHA-256 104bce84b453f732f4bd571e7c604d271380b02890d70f1c753af9d58063c7a4
 ==============================================================================
 
 [package]
@@ -38284,7 +38375,7 @@ features = [
 ]
 
 ==============================================================================
-L0337 SHA-256 d6ab33de10d1a1f45dcb44cd7105456be6d01d6bf10e54c360603f60315c5036
+L0338 SHA-256 d6ab33de10d1a1f45dcb44cd7105456be6d01d6bf10e54c360603f60315c5036
 ==============================================================================
 
 # THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
@@ -38391,7 +38482,7 @@ features = [
 ]
 
 ==============================================================================
-L0338 SHA-256 776aa6f89099bf24a9bceac4b7d9ad8946c017161de770698b5a5cc8de0254a6
+L0339 SHA-256 776aa6f89099bf24a9bceac4b7d9ad8946c017161de770698b5a5cc8de0254a6
 ==============================================================================
 
 The MIT License (MIT)
@@ -38417,7 +38508,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0339 SHA-256 5257d6f5283ab052b6af51f578a8c74e14c31deb53a7c6cd9e6fa16135d57eb3
+L0340 SHA-256 5257d6f5283ab052b6af51f578a8c74e14c31deb53a7c6cd9e6fa16135d57eb3
 ==============================================================================
 
 [package]
@@ -38432,7 +38523,7 @@ include = ["src/*", "lib/*", "Cargo.toml", "build.rs"]
 build = "build.rs"
 
 ==============================================================================
-L0340 SHA-256 9652222664ffc7e2a26fdcdebdce0917a455b39d8fbcbf451bf0b011a3067bf7
+L0341 SHA-256 9652222664ffc7e2a26fdcdebdce0917a455b39d8fbcbf451bf0b011a3067bf7
 ==============================================================================
 
 # THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
@@ -38459,7 +38550,7 @@ license = "MIT/Apache-2.0"
 repository = "https://github.com/retep998/winapi-rs"
 
 ==============================================================================
-L0341 SHA-256 d158846cdb1259d606bfbeb050e386484cb18f14db41478568114eddb76ec43e
+L0342 SHA-256 d158846cdb1259d606bfbeb050e386484cb18f14db41478568114eddb76ec43e
 ==============================================================================
 
 [package]
@@ -38474,7 +38565,7 @@ include = ["src/*", "lib/*", "Cargo.toml", "build.rs"]
 build = "build.rs"
 
 ==============================================================================
-L0342 SHA-256 a88605a11db5def9b6cf73398e83b3edb72228cb43ea935729fac5cd33cec22c
+L0343 SHA-256 a88605a11db5def9b6cf73398e83b3edb72228cb43ea935729fac5cd33cec22c
 ==============================================================================
 
 # THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
@@ -38501,7 +38592,7 @@ license = "MIT/Apache-2.0"
 repository = "https://github.com/retep998/winapi-rs"
 
 ==============================================================================
-L0343 SHA-256 ce7bc3499fee93d5022ef430d5e4201e79a6d9154f3974e42f41349f0569e09b
+L0344 SHA-256 ce7bc3499fee93d5022ef430d5e4201e79a6d9154f3974e42f41349f0569e09b
 ==============================================================================
 
 Copyright (c) 2015-2018 The winapi-rs Developers
@@ -38525,7 +38616,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0344 SHA-256 617b85f62a4f1b6a62d3d9f28f6d7003b7f68a70b7675a8174bbcc68401ac62d
+L0345 SHA-256 617b85f62a4f1b6a62d3d9f28f6d7003b7f68a70b7675a8174bbcc68401ac62d
 ==============================================================================
 
 MIT License
@@ -38551,7 +38642,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0345 SHA-256 7ccef0d35e8507fa02d7e904a5277d62723f9ec576d52f6a865cab7b4dbf12ad
+L0346 SHA-256 7ccef0d35e8507fa02d7e904a5277d62723f9ec576d52f6a865cab7b4dbf12ad
 ==============================================================================
 
 SPDXVersion: SPDX-2.1
@@ -38575,7 +38666,7 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/window-vibrancy.git
 Creator: Person: Daniel Thompson-Yvetot
 
 ==============================================================================
-L0346 SHA-256 c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b
+L0347 SHA-256 c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b
 ==============================================================================
 
                                  Apache License
@@ -38781,7 +38872,7 @@ L0346 SHA-256 c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b
    limitations under the License.
 
 ==============================================================================
-L0347 SHA-256 c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383
+L0348 SHA-256 c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383
 ==============================================================================
 
     MIT License
@@ -38807,7 +38898,7 @@ L0347 SHA-256 c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383
     SOFTWARE
 
 ==============================================================================
-L0348 SHA-256 cb5aedb296c5246d1f22e9099f925a65146f9f0d6b4eebba97fd27a6cdbbab2d
+L0349 SHA-256 cb5aedb296c5246d1f22e9099f925a65146f9f0d6b4eebba97fd27a6cdbbab2d
 ==============================================================================
 
 Permission is hereby granted, free of charge, to any person obtaining
@@ -38830,7 +38921,7 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0349 SHA-256 ea021d8c6383c84d19c15ce90d3b1602cf448fdcc0bf3772c98e43c7bf1bf1d1
+L0350 SHA-256 ea021d8c6383c84d19c15ce90d3b1602cf448fdcc0bf3772c98e43c7bf1bf1d1
 ==============================================================================
 
 Copyright (c) 2015 Igor Shaula
@@ -38854,7 +38945,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-L0350 SHA-256 d0235d2a1f657b6fd18fd4ce98988348969a9284d94281b6d117830aa259a07a
+L0351 SHA-256 d0235d2a1f657b6fd18fd4ce98988348969a9284d94281b6d117830aa259a07a
 ==============================================================================
 
 Copyright (c) 2019 Ivan Molodetskikh
@@ -38884,7 +38975,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0351 SHA-256 ef88893533af22ffbb68ceef0724ba1389518df26165a34f3c99ad30b884df4f
+L0352 SHA-256 ef88893533af22ffbb68ceef0724ba1389518df26165a34f3c99ad30b884df4f
 ==============================================================================
 
 MIT License
@@ -38910,7 +39001,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0352 SHA-256 f73041468536d0b5fd1a6610fa3f317e3dc6cf9a0c0591a5529d6556a0d8a2c3
+L0353 SHA-256 f73041468536d0b5fd1a6610fa3f317e3dc6cf9a0c0591a5529d6556a0d8a2c3
 ==============================================================================
 
 SPDXVersion: SPDX-2.1
@@ -38935,7 +39026,7 @@ PackageDownloadLocation: git+ssh://github.com/tauri-apps/wry.git
 Creator: Person: Daniel Thompson-Yvetot
 
 ==============================================================================
-L0353 SHA-256 a72561f47c1f665535930f606739d9098a6186802d5e2e8ec491faf00f4add5b
+L0354 SHA-256 a72561f47c1f665535930f606739d9098a6186802d5e2e8ec491faf00f4add5b
 ==============================================================================
 
 Copyright 2019 x11rb Contributers
@@ -38965,7 +39056,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0354 SHA-256 1520f0253bb05bbfc841b827fe6440172f0513b4a890f720c9de1665a07c21e8
+L0355 SHA-256 1520f0253bb05bbfc841b827fe6440172f0513b4a890f720c9de1665a07c21e8
 ==============================================================================
 
                                  Apache License
@@ -39171,7 +39262,7 @@ L0354 SHA-256 1520f0253bb05bbfc841b827fe6440172f0513b4a890f720c9de1665a07c21e8
    limitations under the License.
 
 ==============================================================================
-L0355 SHA-256 83c1763356e822adde0a2cae748d938a73fdc263849ccff6b27776dff213bd32
+L0356 SHA-256 83c1763356e822adde0a2cae748d938a73fdc263849ccff6b27776dff213bd32
 ==============================================================================
 
 Copyright 2019 The Fuchsia Authors.
@@ -39200,7 +39291,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ==============================================================================
-L0356 SHA-256 24fa231567ace7e0cdd96e5b2e649b0445d280710f7018d01ba6411e06aa641e
+L0357 SHA-256 24fa231567ace7e0cdd96e5b2e649b0445d280710f7018d01ba6411e06aa641e
 ==============================================================================
 
 Copyright 2023 The Fuchsia Authors
@@ -39230,7 +39321,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0357 SHA-256 d30047bca3b516639339a3c279bb84c3483124fb5a9dafe3c75056a85090e745
+L0358 SHA-256 d30047bca3b516639339a3c279bb84c3483124fb5a9dafe3c75056a85090e745
 ==============================================================================
 
 MIT License
@@ -39256,7 +39347,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0358 SHA-256 d201d14804d3bcd3b944147173175e4abfbd838b7c8069b6bd3452496bf13e6c
+L0359 SHA-256 d201d14804d3bcd3b944147173175e4abfbd838b7c8069b6bd3452496bf13e6c
 ==============================================================================
 
 zlib License
@@ -39280,7 +39371,7 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 
 ==============================================================================
-L0359 SHA-256 769d154fbde32a915af110b1123650bc79f4cbe675acc66e005265bf069c6c6c
+L0360 SHA-256 769d154fbde32a915af110b1123650bc79f4cbe675acc66e005265bf069c6c6c
 ==============================================================================
 
 Copyright 2024 Justin Ridgewell <justin@ridgewell.name>
@@ -39304,7 +39395,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0360 SHA-256 1ad100697b2b3320d602f7606be8ea5025f6c2f833879f14d77b7421dfa72cd0
+L0361 SHA-256 1ad100697b2b3320d602f7606be8ea5025f6c2f833879f14d77b7421dfa72cd0
 ==============================================================================
 
 Copyright 2019 Justin Ridgewell <jridgewell@google.com>
@@ -39328,7 +39419,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0361 SHA-256 54e58ba168330ad6c315813fd50e729b2748d1ed38314fd30b833a4e89e15f2a
+L0362 SHA-256 54e58ba168330ad6c315813fd50e729b2748d1ed38314fd30b833a4e89e15f2a
 ==============================================================================
 
 MIT License
@@ -39355,7 +39446,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0362 SHA-256 76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7
+L0363 SHA-256 76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7
 ==============================================================================
 
 MIT License
@@ -39381,7 +39472,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ==============================================================================
-L0363 SHA-256 c8df456c7ccba74b959087dff494d4ac2a12dfb0400c08b46b2494a08a000567
+L0364 SHA-256 c8df456c7ccba74b959087dff494d4ac2a12dfb0400c08b46b2494a08a000567
 ==============================================================================
 
 Apache License
@@ -39587,7 +39678,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-L0364 SHA-256 9a9edad7baae52622bddf3c15b2ef8a33d2c89f2d25408ad13e8a7481c6b0c97
+L0365 SHA-256 9a9edad7baae52622bddf3c15b2ef8a33d2c89f2d25408ad13e8a7481c6b0c97
 ==============================================================================
 
 MIT License
@@ -39601,7 +39692,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0365 SHA-256 e399db7e952e45cae84f1b53d72ba8dbad2daaa7ab8cd1f0ab72fea5ab73b225
+L0366 SHA-256 e399db7e952e45cae84f1b53d72ba8dbad2daaa7ab8cd1f0ab72fea5ab73b225
 ==============================================================================
 
 Copyright (c) 2018-19 [these people](https://github.com/rich-harris/devalue/graphs/contributors)
@@ -39613,7 +39704,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0366 SHA-256 6df5276ee7531fcc5446f19082c12e77bb6c5f081fd2b6d6cf88180a5ee36acd
+L0367 SHA-256 6df5276ee7531fcc5446f19082c12e77bb6c5f081fd2b6d6cf88180a5ee36acd
 ==============================================================================
 
 Copyright 2022 Benjamin McCann
@@ -39625,7 +39716,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0367 SHA-256 8f8f0696ab4041a885d28bddf82e2ad673a6522cb644d6f972237f4f6e172a1d
+L0368 SHA-256 8f8f0696ab4041a885d28bddf82e2ad673a6522cb644d6f972237f4f6e172a1d
 ==============================================================================
 
 Copyright (c) 2023-2025 [these people](https://github.com/sveltejs/esrap/graphs/contributors)
@@ -39637,7 +39728,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0368 SHA-256 5ab4c14eb3e5726b0704c624ee6649e8026dc8a14471e7cdc4c7d55699162ec7
+L0369 SHA-256 5ab4c14eb3e5726b0704c624ee6649e8026dc8a14471e7cdc4c7d55699162ec7
 ==============================================================================
 
 {
@@ -39690,7 +39781,7 @@ L0368 SHA-256 5ab4c14eb3e5726b0704c624ee6649e8026dc8a14471e7cdc4c7d55699162ec7
 }
 
 ==============================================================================
-L0369 SHA-256 2acc01c7ca4596ec1751045eca54e1f27bd785deaadc09d287d76f0d26cbbf87
+L0370 SHA-256 2acc01c7ca4596ec1751045eca54e1f27bd785deaadc09d287d76f0d26cbbf87
 ==============================================================================
 
 # is-reference
@@ -39756,7 +39847,7 @@ references.forEach(node => console.log(node.name)); // a, b
 MIT
 
 ==============================================================================
-L0370 SHA-256 344d4d0d0b7cc640c623826aa33eb109a25e6616bf67a251d222e03196b4ac4b
+L0371 SHA-256 344d4d0d0b7cc640c623826aa33eb109a25e6616bf67a251d222e03196b4ac4b
 ==============================================================================
 
 {
@@ -39805,7 +39896,7 @@ L0370 SHA-256 344d4d0d0b7cc640c623826aa33eb109a25e6616bf67a251d222e03196b4ac4b
 }
 
 ==============================================================================
-L0371 SHA-256 47ed524f92c6aa416672bf3c48f88fd0c9dfde93f6097683820def1d2db65456
+L0372 SHA-256 47ed524f92c6aa416672bf3c48f88fd0c9dfde93f6097683820def1d2db65456
 ==============================================================================
 
 # locate-character
@@ -39876,7 +39967,7 @@ There's also an `offsetColumn` option which is less useful in real-world situati
 MIT
 
 ==============================================================================
-L0372 SHA-256 1cbe51b907662f6cb1492b16c359384a595180bf0e4d101603ed525e75c4e484
+L0373 SHA-256 1cbe51b907662f6cb1492b16c359384a595180bf0e4d101603ed525e75c4e484
 ==============================================================================
 
 Copyright 2018 Rich Harris
@@ -39888,7 +39979,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0373 SHA-256 06257f4847b13a49a039efb17b944c141e71b12fd8d231b362d86919067d77a3
+L0374 SHA-256 06257f4847b13a49a039efb17b944c141e71b12fd8d231b362d86919067d77a3
 ==============================================================================
 
 Copyright (c) 2016-2025 [Svelte Contributors](https://github.com/sveltejs/svelte/graphs/contributors)
@@ -39900,7 +39991,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-L0374 SHA-256 5fde0201805ca0ffc8884fac6a3447b7f2918a6c22efb68b94019298d16bad9e
+L0375 SHA-256 5fde0201805ca0ffc8884fac6a3447b7f2918a6c22efb68b94019298d16bad9e
 ==============================================================================
 
 MIT License
@@ -39926,7 +40017,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-L0375 SHA-256 969d28c5deb2149b3445d1b484dcc9ce3b7ef8a8884af40190cb29717ceb8432
+L0376 SHA-256 969d28c5deb2149b3445d1b484dcc9ce3b7ef8a8884af40190cb29717ceb8432
 ==============================================================================
 
 COPYRIGHT
@@ -40075,7 +40166,7 @@ SPECIAL EXCEPTION FOR LZMA COMPRESSION MODULE
 Igor Pavlov and Amir Szekely, the authors of the LZMA compression module for NSIS, expressly permit you to statically or dynamically link your code (or bind by name) to the files from the LZMA compression module for NSIS without subjecting your linked code to the terms of the Common Public license version 1.0. Any modifications or additions to files from the LZMA compression module for NSIS, however, are subject to the terms of the Common Public License version 1.0.
 
 ==============================================================================
-L0376 SHA-256 1c1020fa10a6bf318717e82c911bcc54ebdfb9bb280460ae332bcb2f82f57fbe
+L0377 SHA-256 1c1020fa10a6bf318717e82c911bcc54ebdfb9bb280460ae332bcb2f82f57fbe
 ==============================================================================
 
 MIT License

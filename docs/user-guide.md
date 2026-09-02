@@ -137,17 +137,26 @@ verified. An authorized LM Studio request may cause LM Studio itself to JIT-load
 an unloaded model; AI Engine Room does not call model-management APIs.
 llama.cpp is passive-only and is not eligible for observed inference.
 
-## Reports and the clipboard
+## Reports, copying, and saving
 
 The Report workspace contains a sanitized, allow-listed plain-text preview.
 **Copy report** writes exactly that preview to the operating-system clipboard.
-AI Engine Room does not save, upload, send, read back, persist, or clear the
-report. Other applications may read clipboard contents, so review the preview
-before copying and handle it according to your own privacy needs.
+AI Engine Room does not upload, send, read back, or clear the report. Other
+applications may read clipboard contents, so review the preview before copying
+and handle it according to your own privacy needs.
 
-Saving a report to a file is not available in the current preview. The
-[Milestone 2A feasibility study](research/safe-report-save-feasibility.md) is
-planning evidence only and does not change this behavior.
+In the native app, **Save report…** can create one plain-text `.txt` file in a
+location you choose. It saves exactly the visible preview as UTF-8, with no
+added metadata, and it will not replace a file that already exists. The app
+does not remember the chosen location. A saved file remains until you remove
+it and may be synchronized, backed up, indexed, or read by other software.
+Saving is not available in browser/mock preview mode.
+
+The save boundary uses a temporary staging file in the chosen directory. A
+handled failure attempts to remove that file, but a process termination, power
+loss, operating-system failure, remote filesystem, or unusual filesystem may
+leave staging residue. If the app cannot confirm cleanup or completion, it
+tells you to check the chosen location rather than claiming success.
 
 ## Observation history
 

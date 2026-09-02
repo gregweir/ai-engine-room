@@ -819,6 +819,10 @@ summary:focus-visible {
   margin-top: 1rem;
 }
 
+.report-save {
+  margin-top: 1.25rem;
+}
+
 .report-clipboard-note,
 .report-clipboard-unavailable,
 .report-clipboard-status {
@@ -826,12 +830,25 @@ summary:focus-visible {
   overflow-wrap: anywhere;
 }
 
+.report-save-note,
+.report-save-unavailable,
+.report-save-status {
+  max-width: 42rem;
+  overflow-wrap: anywhere;
+}
+
+.report-save-note {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
 .report-clipboard-note {
   color: var(--text-muted);
   font-size: 0.875rem;
 }
 
-.copy-report {
+.copy-report,
+.save-report {
   min-height: 2.75rem;
   padding: 0.625rem 1rem;
   border: 1px solid var(--border);
@@ -843,13 +860,19 @@ summary:focus-visible {
   cursor: pointer;
 }
 
-.copy-report:disabled {
+.copy-report:disabled,
+.save-report:disabled {
   cursor: not-allowed;
   opacity: 0.65;
 }
 
 .report-clipboard-unavailable,
 .report-clipboard-status {
+  margin-bottom: 0;
+}
+
+.report-save-unavailable,
+.report-save-status {
   margin-bottom: 0;
 }
 

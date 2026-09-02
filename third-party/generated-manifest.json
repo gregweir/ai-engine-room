@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "generatorSha256": "c9c18d525aa3976391576dd5bf8f443ad8bffa4468475a5e099151e70fb36f91",
   "spdxLicenseListRevision": "a3cbf2e897d54bccec0c35469c691521d089ef53",
-  "cargoLockSha256": "aa5fad4f96ac64fd99b905b2dd5c0d6ffd927ef9796edc192885894e7d41c8d1",
+  "cargoLockSha256": "8769cc560c5ed3c6f00b10a135bc6125a6f9f7e655c6520cf73f95928d9d9082",
   "packageLockSha256": "013e1fcd2917509cd098dfecacc83bd25c4aea1e01633f051d0f048bdf7d8dad",
-  "rustRegistryComponentCount": 471,
+  "rustRegistryComponentCount": 484,
   "frontendComponentCount": 22,
   "installerComponentCount": 2,
   "installerPayloads": {
@@ -29,11 +29,11 @@
       "sha256": "9b277f7cdec4277b48d319c32e10b5dc4303e9efce8c3b44f1db77f86a8131c7"
     }
   },
-  "uniqueLicenseDocumentCount": 376,
+  "uniqueLicenseDocumentCount": 377,
   "outputs": {
-    "THIRD-PARTY-LICENSES.txt": "cc713965c28816ceb7f18b239c99cdec4f54658679606f148c701293f77c513c",
-    "THIRD-PARTY-SOURCES.txt": "42f2d4ad022394bb58cb81aead94e82a2baa664a03cc6f3d3f4f8b43cdbe7f14",
-    "packaging/debian/copyright": "9a2ebf7b36adfdf5efa2e47b5b7e382b9b4fc237e172603496d0f2483d860d2f"
+    "THIRD-PARTY-LICENSES.txt": "45433a61ca3063859a4a53522b2a8a10b969a634dd4018a587ebb82e6c973fdc",
+    "THIRD-PARTY-SOURCES.txt": "95cc4b8e26de93d9f29222bc7f3cd9e627f9725e6821627921086940e13db6e8",
+    "packaging/debian/copyright": "c1965cb0fa7dc520dbe302f9cc92659a31a9714eb7cfa97d4d08a460f70d7add"
   },
   "components": [
     {
@@ -2773,6 +2773,15 @@
       ]
     },
     {
+      "name": "rfd",
+      "version": "0.16.0",
+      "declared": "MIT",
+      "sourceUrl": "https://crates.io/api/v1/crates/rfd/0.16.0/download",
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
       "name": "rustc_version",
       "version": "0.4.1",
       "declared": "MIT OR Apache-2.0",
@@ -3320,6 +3329,28 @@
       "version": "2.3.2",
       "declared": "Apache-2.0 OR MIT",
       "sourceUrl": "https://crates.io/api/v1/crates/tauri-plugin-clipboard-manager/2.3.2/download",
+      "files": [
+        "LICENSE_APACHE-2.0",
+        "LICENSE_MIT",
+        "LICENSE.spdx"
+      ]
+    },
+    {
+      "name": "tauri-plugin-dialog",
+      "version": "2.7.2",
+      "declared": "Apache-2.0 OR MIT",
+      "sourceUrl": "https://crates.io/api/v1/crates/tauri-plugin-dialog/2.7.2/download",
+      "files": [
+        "LICENSE_APACHE-2.0",
+        "LICENSE_MIT",
+        "LICENSE.spdx"
+      ]
+    },
+    {
+      "name": "tauri-plugin-fs",
+      "version": "2.5.2",
+      "declared": "Apache-2.0 OR MIT",
+      "sourceUrl": "https://crates.io/api/v1/crates/tauri-plugin-fs/2.5.2/download",
       "files": [
         "LICENSE_APACHE-2.0",
         "LICENSE_MIT",
@@ -4219,6 +4250,16 @@
       ]
     },
     {
+      "name": "windows_aarch64_gnullvm",
+      "version": "0.53.1",
+      "declared": "MIT OR Apache-2.0",
+      "sourceUrl": "https://crates.io/api/v1/crates/windows_aarch64_gnullvm/0.53.1/download",
+      "files": [
+        "license-apache-2.0",
+        "license-mit"
+      ]
+    },
+    {
       "name": "windows_aarch64_msvc",
       "version": "0.42.2",
       "declared": "MIT OR Apache-2.0",
@@ -4233,6 +4274,16 @@
       "version": "0.52.6",
       "declared": "MIT OR Apache-2.0",
       "sourceUrl": "https://crates.io/api/v1/crates/windows_aarch64_msvc/0.52.6/download",
+      "files": [
+        "license-apache-2.0",
+        "license-mit"
+      ]
+    },
+    {
+      "name": "windows_aarch64_msvc",
+      "version": "0.53.1",
+      "declared": "MIT OR Apache-2.0",
+      "sourceUrl": "https://crates.io/api/v1/crates/windows_aarch64_msvc/0.53.1/download",
       "files": [
         "license-apache-2.0",
         "license-mit"
@@ -4259,10 +4310,30 @@
       ]
     },
     {
+      "name": "windows_i686_gnu",
+      "version": "0.53.1",
+      "declared": "MIT OR Apache-2.0",
+      "sourceUrl": "https://crates.io/api/v1/crates/windows_i686_gnu/0.53.1/download",
+      "files": [
+        "license-apache-2.0",
+        "license-mit"
+      ]
+    },
+    {
       "name": "windows_i686_gnullvm",
       "version": "0.52.6",
       "declared": "MIT OR Apache-2.0",
       "sourceUrl": "https://crates.io/api/v1/crates/windows_i686_gnullvm/0.52.6/download",
+      "files": [
+        "license-apache-2.0",
+        "license-mit"
+      ]
+    },
+    {
+      "name": "windows_i686_gnullvm",
+      "version": "0.53.1",
+      "declared": "MIT OR Apache-2.0",
+      "sourceUrl": "https://crates.io/api/v1/crates/windows_i686_gnullvm/0.53.1/download",
       "files": [
         "license-apache-2.0",
         "license-mit"
@@ -4289,6 +4360,16 @@
       ]
     },
     {
+      "name": "windows_i686_msvc",
+      "version": "0.53.1",
+      "declared": "MIT OR Apache-2.0",
+      "sourceUrl": "https://crates.io/api/v1/crates/windows_i686_msvc/0.53.1/download",
+      "files": [
+        "license-apache-2.0",
+        "license-mit"
+      ]
+    },
+    {
       "name": "windows_x86_64_gnu",
       "version": "0.42.2",
       "declared": "MIT OR Apache-2.0",
@@ -4303,6 +4384,16 @@
       "version": "0.52.6",
       "declared": "MIT OR Apache-2.0",
       "sourceUrl": "https://crates.io/api/v1/crates/windows_x86_64_gnu/0.52.6/download",
+      "files": [
+        "license-apache-2.0",
+        "license-mit"
+      ]
+    },
+    {
+      "name": "windows_x86_64_gnu",
+      "version": "0.53.1",
+      "declared": "MIT OR Apache-2.0",
+      "sourceUrl": "https://crates.io/api/v1/crates/windows_x86_64_gnu/0.53.1/download",
       "files": [
         "license-apache-2.0",
         "license-mit"
@@ -4329,6 +4420,16 @@
       ]
     },
     {
+      "name": "windows_x86_64_gnullvm",
+      "version": "0.53.1",
+      "declared": "MIT OR Apache-2.0",
+      "sourceUrl": "https://crates.io/api/v1/crates/windows_x86_64_gnullvm/0.53.1/download",
+      "files": [
+        "license-apache-2.0",
+        "license-mit"
+      ]
+    },
+    {
       "name": "windows_x86_64_msvc",
       "version": "0.42.2",
       "declared": "MIT OR Apache-2.0",
@@ -4343,6 +4444,16 @@
       "version": "0.52.6",
       "declared": "MIT OR Apache-2.0",
       "sourceUrl": "https://crates.io/api/v1/crates/windows_x86_64_msvc/0.52.6/download",
+      "files": [
+        "license-apache-2.0",
+        "license-mit"
+      ]
+    },
+    {
+      "name": "windows_x86_64_msvc",
+      "version": "0.53.1",
+      "declared": "MIT OR Apache-2.0",
+      "sourceUrl": "https://crates.io/api/v1/crates/windows_x86_64_msvc/0.53.1/download",
       "files": [
         "license-apache-2.0",
         "license-mit"
@@ -4500,6 +4611,16 @@
     },
     {
       "name": "windows-sys",
+      "version": "0.60.2",
+      "declared": "MIT OR Apache-2.0",
+      "sourceUrl": "https://crates.io/api/v1/crates/windows-sys/0.60.2/download",
+      "files": [
+        "license-apache-2.0",
+        "license-mit"
+      ]
+    },
+    {
+      "name": "windows-sys",
       "version": "0.61.2",
       "declared": "MIT OR Apache-2.0",
       "sourceUrl": "https://crates.io/api/v1/crates/windows-sys/0.61.2/download",
@@ -4523,6 +4644,16 @@
       "version": "0.52.6",
       "declared": "MIT OR Apache-2.0",
       "sourceUrl": "https://crates.io/api/v1/crates/windows-targets/0.52.6/download",
+      "files": [
+        "license-apache-2.0",
+        "license-mit"
+      ]
+    },
+    {
+      "name": "windows-targets",
+      "version": "0.53.5",
+      "declared": "MIT OR Apache-2.0",
+      "sourceUrl": "https://crates.io/api/v1/crates/windows-targets/0.53.5/download",
       "files": [
         "license-apache-2.0",
         "license-mit"

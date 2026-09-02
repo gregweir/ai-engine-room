@@ -13,6 +13,7 @@ mod commands;
 mod diagnosis;
 mod machine;
 pub mod platform;
+mod report_save;
 pub mod runtime;
 // `view` is `pub` so the Milestone 1F read-only live verification
 // (`tests/resource_context_live.rs`) can reach the pure composition
@@ -25,21 +26,24 @@ pub mod view;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    tauri::Builder::default()
-        .plugin(tauri_plugin_clipboard_manager::init())
-        .invoke_handler(tauri::generate_handler![
-            commands::compose_resource_context,
-            commands::current_snapshot,
-            commands::current_machine_context,
-            commands::current_loaded_models,
-            commands::current_llama_cpp_snapshot,
-            commands::current_lm_studio_snapshot,
-            commands::current_model_inventory,
-            commands::current_runtime_status,
-            commands::diagnose_observation,
-            commands::report_preview,
-            commands::run_inference_observation,
-        ])
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+    report_save::register_dialog(
+        tauri::Builder::default().plugin(tauri_plugin_clipboard_manager::init()),
+    )
+    .manage(report_save::ReportSaveState::default())
+    .invoke_handler(tauri::generate_handler![
+        commands::compose_resource_context,
+        commands::current_snapshot,
+        commands::current_machine_context,
+        commands::current_loaded_models,
+        commands::current_llama_cpp_snapshot,
+        commands::current_lm_studio_snapshot,
+        commands::current_model_inventory,
+        commands::current_runtime_status,
+        commands::diagnose_observation,
+        commands::report_preview,
+        commands::save_report,
+        commands::run_inference_observation,
+    ])
+    .run(tauri::generate_context!())
+    .expect("error while running tauri application");
 }
