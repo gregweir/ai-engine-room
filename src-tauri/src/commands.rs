@@ -54,13 +54,13 @@ pub async fn save_report(
     generation: String,
     app: tauri::AppHandle,
     state: tauri::State<'_, ReportSaveState>,
-) -> ReportSaveResult {
+) -> Result<ReportSaveResult, ()> {
     let state = state.inner().clone();
-    tauri::async_runtime::spawn_blocking(move || {
+    Ok(tauri::async_runtime::spawn_blocking(move || {
         crate::report_save::save_native(state, app, generation)
     })
     .await
-    .unwrap_or(ReportSaveResult::Failed)
+    .unwrap_or(ReportSaveResult::Failed))
 }
 
 /// The current runtime detection status for the supported AI runtime (Ollama
