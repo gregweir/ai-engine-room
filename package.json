@@ -15,7 +15,7 @@
     "licenses:verify-package": "node scripts/verify-package-license-payload.mjs",
     "preview": "vite preview",
     "tauri": "tauri",
-    "check": "node scripts/repository-readiness.mjs && svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
+    "check": "node scripts/repository-readiness.mjs && node scripts/milestone-2c-ubuntu-local-console-helper.test.mjs && svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
     "test": "vitest",
     "test:run": "vitest run",
     "lint": "eslint .",
