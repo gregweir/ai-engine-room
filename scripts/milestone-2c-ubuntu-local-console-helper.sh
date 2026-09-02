@@ -3,6 +3,11 @@
 set -euo pipefail
 umask 077
 
+# Suppress uncontrolled diagnostics from dependencies and the shell. Controlled
+# operator prompts and stop labels use the preserved original diagnostic stream.
+exec 3>&2
+exec 2>/dev/null
+
 readonly EXPECTED_SOURCE="5f54ec00cbfd884a0ffbce956d586d8ac8f5a199"
 readonly EXPECTED_TREE="7aa645875fc4dcd1b28e91eb209a073990bd1877"
 readonly EXPECTED_CARGO_LOCK="8769cc560c5ed3c6f00b10a135bc6125a6f9f7e655c6520cf73f95928d9d9082"
@@ -28,8 +33,14 @@ readonly PACKAGE="${CANDIDATE_ROOT}/target/release/bundle/deb/AI Engine Room_0.1
 readonly RUN_DIR="${TEMP_ROOT}/aer-2c-ubuntu-local-console-assisted"
 readonly BLOCKED_DIR="${RUN_DIR}/blocked"
 
+HELPER_MODE="unselected"
+CLIPBOARD_CHANGED="false"
+CLEANUP_COMPLETE="false"
+FAILURE_REPORTED="false"
+
 fail() {
-  printf 'STOP: %s\n' "$1" >&2
+  FAILURE_REPORTED="true"
+  printf 'STOP: %s\n' "$1" >&3
   exit 1
 }
 
@@ -38,12 +49,17 @@ require_command() {
 }
 
 require_local_console() {
+  local expected_runtime expected_bus expected_xauthority
+  expected_runtime="$(printf '/%s/%s/%s' 'run' 'user' "$(id -u)")"
+  expected_bus="unix:path=${expected_runtime}/bus"
+  expected_xauthority="${expected_runtime}/gdm/Xauthority"
   [[ "$(id -u)" != "0" ]] || fail "ordinary-user context is required"
   [[ -t 0 && -t 1 ]] || fail "an interactive local terminal is required"
-  [[ -n "${DISPLAY:-}" ]] || fail "an X11 graphical session is required"
-  [[ -n "${XAUTHORITY:-}" ]] || fail "X11 authority is unavailable"
-  [[ -n "${XDG_RUNTIME_DIR:-}" ]] || fail "the user runtime directory is unavailable"
-  [[ -n "${DBUS_SESSION_BUS_ADDRESS:-}" ]] || fail "the graphical session bus is unavailable"
+  [[ "${DISPLAY:-}" == ":0" ]] || fail "the reviewed X11 display is required"
+  [[ "${XDG_SESSION_TYPE:-}" == "x11" ]] || fail "the reviewed X11 session type is required"
+  [[ "${XDG_RUNTIME_DIR:-}" == "$expected_runtime" ]] || fail "the reviewed user runtime directory is required"
+  [[ "${DBUS_SESSION_BUS_ADDRESS:-}" == "$expected_bus" ]] || fail "the reviewed graphical session bus is required"
+  [[ "${XAUTHORITY:-}" == "$expected_xauthority" ]] || fail "the reviewed X11 authority is required"
   [[ -z "${SSH_CLIENT:-}" && -z "${SSH_CONNECTION:-}" && -z "${SSH_TTY:-}" ]] || \
     fail "SSH and remote shells are prohibited"
 }
@@ -92,21 +108,41 @@ require_safe_run_dir() {
 
 require_top_level_entries() {
   local allowed="$1"
-  local entry permitted matched
+  local entry path permitted matched dotglob_was_set nullglob_was_set
   local -a allowed_entries
+  local -a paths
   IFS=',' read -r -a allowed_entries <<<"$allowed"
-  while IFS= read -r -d '' entry; do
+  shopt -q dotglob && dotglob_was_set="true" || dotglob_was_set="false"
+  shopt -q nullglob && nullglob_was_set="true" || nullglob_was_set="false"
+  shopt -s dotglob nullglob
+  paths=("$RUN_DIR"/*)
+  [[ "$dotglob_was_set" == "true" ]] || shopt -u dotglob
+  [[ "$nullglob_was_set" == "true" ]] || shopt -u nullglob
+  for path in "${paths[@]}"; do
+    entry="${path##*/}"
     matched="false"
     for permitted in "${allowed_entries[@]}"; do
       [[ "$entry" == "$permitted" ]] && matched="true"
     done
     [[ "$matched" == "true" ]] || fail "an unexpected disposable entry exists"
-  done < <(find "$RUN_DIR" -mindepth 1 -maxdepth 1 -printf '%f\0')
+  done
+}
+
+directory_is_empty() {
+  local path="$1"
+  local dotglob_was_set nullglob_was_set
+  local -a entries
+  shopt -q dotglob && dotglob_was_set="true" || dotglob_was_set="false"
+  shopt -q nullglob && nullglob_was_set="true" || nullglob_was_set="false"
+  shopt -s dotglob nullglob
+  entries=("$path"/*)
+  [[ "$dotglob_was_set" == "true" ]] || shopt -u dotglob
+  [[ "$nullglob_was_set" == "true" ]] || shopt -u nullglob
+  [[ "${#entries[@]}" == "0" ]]
 }
 
 require_empty_directory() {
-  local path="$1"
-  [[ -z "$(find "$path" -mindepth 1 -maxdepth 1 -print -quit)" ]] || fail "a controlled directory is not empty"
+  directory_is_empty "$1" || fail "a controlled directory is not empty"
 }
 
 bytes_and_sha() {
@@ -146,7 +182,7 @@ choose() {
   local prompt="$1"
   shift
   local answer option
-  printf '\n%s\nAllowed responses: %s\nResponse: ' "$prompt" "$*" >&2
+  printf '\n%s\nAllowed responses: %s\nResponse: ' "$prompt" "$*" >&3
   IFS= read -r answer
   for option in "$@"; do
     [[ "$answer" == "$option" ]] && { printf '%s' "$answer"; return 0; }
@@ -154,14 +190,92 @@ choose() {
   fail "operator response was not an allowed result"
 }
 
+remove_regular_file_if_present() {
+  local path="$1"
+  if [[ -e "$path" || -L "$path" ]]; then
+    [[ -f "$path" && ! -L "$path" ]] || return 1
+    rm -- "$path" || return 1
+  fi
+}
+
+controlled_cleanup() {
+  local cleanup_ok="true"
+  local current_count="0"
+
+  if [[ "$CLIPBOARD_CHANGED" == "true" ]]; then
+    printf '' | xclip -selection clipboard -in >/dev/null 2>&1 || cleanup_ok="false"
+    CLIPBOARD_CHANGED="false"
+  fi
+
+  current_count="$(process_count)"
+  if [[ "$current_count" != "0" ]]; then
+    printf '%s\n' \
+      'STOP_ACTION=close_application_normally' \
+      'Close AI Engine Room using its window close control, then type CLOSED.' >&3
+    local answer=""
+    IFS= read -r answer || true
+    [[ "$answer" == "CLOSED" && "$(process_count)" == "0" ]] || cleanup_ok="false"
+  fi
+
+  if [[ -e "$RUN_DIR" || -L "$RUN_DIR" ]]; then
+    if [[ ! -d "$RUN_DIR" || -L "$RUN_DIR" ]] || \
+      [[ "$(realpath -e -- "$RUN_DIR")" != "${TEMP_ROOT}/aer-2c-ubuntu-local-console-assisted" ]] || \
+      [[ "$(stat -c '%u' -- "$RUN_DIR")" != "$(id -u)" ]]; then
+      cleanup_ok="false"
+    elif [[ "$(process_count)" == "0" ]]; then
+      if [[ -e "$BLOCKED_DIR" || -L "$BLOCKED_DIR" ]]; then
+        if [[ -d "$BLOCKED_DIR" && ! -L "$BLOCKED_DIR" ]]; then
+          chmod 700 "$BLOCKED_DIR" || cleanup_ok="false"
+          remove_regular_file_if_present "$BLOCKED_DIR/inaccessible.txt" || cleanup_ok="false"
+          directory_is_empty "$BLOCKED_DIR" || cleanup_ok="false"
+          [[ "$cleanup_ok" == "true" ]] && rmdir -- "$BLOCKED_DIR" || cleanup_ok="false"
+        else
+          cleanup_ok="false"
+        fi
+      fi
+      remove_regular_file_if_present "$RUN_DIR/saved.txt" || cleanup_ok="false"
+      remove_regular_file_if_present "$RUN_DIR/existing.txt" || cleanup_ok="false"
+      remove_regular_file_if_present "$RUN_DIR/stale.txt" || cleanup_ok="false"
+      directory_is_empty "$RUN_DIR" || cleanup_ok="false"
+      [[ "$cleanup_ok" == "true" ]] && rmdir -- "$RUN_DIR" || cleanup_ok="false"
+    else
+      cleanup_ok="false"
+    fi
+  fi
+
+  if [[ "$cleanup_ok" == "true" && ! -e "$RUN_DIR" && ! -L "$RUN_DIR" ]]; then
+    CLEANUP_COMPLETE="true"
+    printf 'FAILURE_CLEANUP=confirmed\n' >&3
+  else
+    printf 'FAILURE_CLEANUP=unconfirmed\n' >&3
+  fi
+}
+
+on_exit() {
+  local status="$1"
+  trap - EXIT
+  set +e
+  [[ "$status" != "0" ]] || return 0
+  [[ "$FAILURE_REPORTED" == "true" ]] || printf 'STOP: helper operation failed\n' >&3
+  if [[ "$CLEANUP_COMPLETE" == "true" ]]; then
+    printf 'FAILURE_CLEANUP=confirmed\n' >&3
+  elif [[ "$HELPER_MODE" == "terminal-a" || "$HELPER_MODE" == "terminal-b" ]]; then
+    controlled_cleanup
+  fi
+  return "$status"
+}
+
+trap 'on_exit $?' EXIT
+
 preflight_commands() {
   local command
-  for command in git stat sha256sum cut dpkg-query grep pgrep wc tr realpath find python3 xclip timeout chmod mkdir rmdir rm sleep; do
+  for command in git stat sha256sum cut dpkg-query grep pgrep wc tr realpath python3 xclip timeout chmod mkdir rmdir rm sleep; do
     require_command "$command"
   done
 }
 
 terminal_a() {
+  HELPER_MODE="terminal-a"
   preflight_commands
   require_local_console
   require_candidate_identity
@@ -192,6 +306,7 @@ terminal_a() {
 }
 
 terminal_b() {
+  HELPER_MODE="terminal-b"
   preflight_commands
   require_local_console
   require_candidate_identity
@@ -210,6 +325,8 @@ terminal_b() {
   require_empty_directory "$RUN_DIR"
 
   confirm 'Activate Copy report exactly once. The application must show "Report copied to the system clipboard." as polite status. Do not copy again.'
+  CLIPBOARD_CHANGED="true"
+  require_process_count 1
   local preview_bytes preview_sha
   read -r preview_bytes preview_sha < <(clipboard_identity)
   [[ "$preview_bytes" -le 1048576 ]] || fail "copied preview exceeds the contracted bound"
@@ -220,6 +337,7 @@ terminal_b() {
   printf 'COPY_CHECK=pass PREVIEW_BYTES=%s PREVIEW_SHA256=%s\n' "$preview_bytes" "$preview_sha"
 
   confirm 'Activate Save report… by keyboard. The dialog must retain title "Save AI Engine Room report", suggested filename "ai-engine-room-report.txt", and sole filter "Plain text". Save as "saved.txt" in the already-open disposable location. The button may show "Saving report…" while pending. The application must then show "Report saved as a plain-text file." as polite status, with focus returned.'
+  require_process_count 1
   [[ -f "$RUN_DIR/saved.txt" && ! -L "$RUN_DIR/saved.txt" ]] || fail "saved report is missing"
   local saved_bytes saved_sha
   read -r saved_bytes saved_sha < <(file_identity_values "$RUN_DIR/saved.txt")
@@ -229,12 +347,14 @@ terminal_b() {
   [[ "$sentinel_bytes" == "$EXPECTED_CLIPBOARD_SENTINEL_BYTES" && "$sentinel_sha" == "$EXPECTED_CLIPBOARD_SENTINEL_SHA" ]] || fail "saving changed the clipboard sentinel"
   printf 'NEW_FILE_CHECK=pass SAVED_BYTES=%s SAVED_SHA256=%s\n' "$saved_bytes" "$saved_sha"
 
+  require_process_count 1
   printf '%s' "$EXISTING_SENTINEL" >"$RUN_DIR/existing.txt"
   local existing_bytes existing_sha
   read -r existing_bytes existing_sha < <(file_identity_values "$RUN_DIR/existing.txt")
   [[ "$existing_bytes" == "$EXPECTED_EXISTING_SENTINEL_BYTES" && "$existing_sha" == "$EXPECTED_EXISTING_SENTINEL_SHA" ]] || fail "existing-file fixture identity failed"
   require_top_level_entries 'saved.txt,existing.txt'
   confirm 'Activate Save report… and select the existing "existing.txt" fixture. The application must show "That file already exists. AI Engine Room did not replace it. Choose a different name." with alert semantics. Copy report must remain available.'
+  require_process_count 1
   local existing_after_bytes existing_after_sha
   read -r existing_after_bytes existing_after_sha < <(file_identity_values "$RUN_DIR/existing.txt")
   [[ "$existing_after_bytes" == "$existing_bytes" && "$existing_after_sha" == "$existing_sha" ]] || fail "existing destination was changed"
@@ -243,27 +363,34 @@ terminal_b() {
   [[ "$sentinel_bytes" == "$EXPECTED_CLIPBOARD_SENTINEL_BYTES" && "$sentinel_sha" == "$EXPECTED_CLIPBOARD_SENTINEL_SHA" ]] || fail "no-clobber handling changed the clipboard sentinel"
   printf 'NO_CLOBBER_CHECK=pass EXISTING_BYTES=%s EXISTING_SHA256=%s\n' "$existing_after_bytes" "$existing_after_sha"
 
+  require_process_count 1
   local stale_result
   stale_result="$(choose 'Open Save report… once. While the native dialog is open, attempt the reviewed UI-only gesture to return to the application and activate Refresh before accepting "stale.txt". If the parented dialog prevents this, cancel it and answer UNREACHABLE. If Refresh succeeds, select "stale.txt" and require "The report changed before saving. Review it and try again." with alert semantics, then answer CHANGED.' UNREACHABLE CHANGED)"
+  require_process_count 1
   [[ ! -e "$RUN_DIR/stale.txt" && ! -L "$RUN_DIR/stale.txt" ]] || fail "stale-preview attempt created a destination"
   require_top_level_entries 'saved.txt,existing.txt'
   printf 'STALE_PREVIEW_CHECK=%s\n' "${stale_result,,}"
 
+  require_process_count 1
   mkdir --mode=700 -- "$BLOCKED_DIR"
   chmod 500 "$BLOCKED_DIR"
   [[ ! -w "$BLOCKED_DIR" ]] || fail "inaccessible fixture remained writable"
   require_empty_directory "$BLOCKED_DIR"
   local inaccessible_result
   inaccessible_result="$(choose 'Open Save report… and select "inaccessible.txt" inside the visible blocked fixture. No raw error or elevation request may appear. Require either "Saving is not available for that location. You can still copy the report." or "Could not save the report. No completed report file was created." with alert semantics. Copy report must remain available.' UNAVAILABLE FAILED)"
+  require_process_count 1
   [[ ! -e "$BLOCKED_DIR/inaccessible.txt" && ! -L "$BLOCKED_DIR/inaccessible.txt" ]] || fail "inaccessible attempt created a destination"
   require_empty_directory "$BLOCKED_DIR"
   require_top_level_entries 'saved.txt,existing.txt,blocked'
   printf 'INACCESSIBLE_LOCATION_CHECK=%s\n' "${inaccessible_result,,}"
 
   confirm 'At normal and enlarged text, confirm the Report workspace remains usable, keyboard activation and visible focus work, Copy report remains available, and no raw error, path, overlap, or clipped required wording appears.'
+  require_process_count 1
   printf 'UI_ACCESSIBILITY_CHECK=pass\n'
 
   printf '' | xclip -selection clipboard -in
+  CLIPBOARD_CHANGED="false"
+  require_process_count 1
   confirm 'The fixed clipboard sentinel has been cleared. Close AI Engine Room normally using its window close control. Do not stop it from Terminal A, Terminal B, SSH, or a process manager. Remain at the console.'
   local count
   for _ in {1..50}; do
@@ -276,7 +403,8 @@ terminal_b() {
   local launcher_result
   printf 'Read AER_LAUNCHER_RESULT from Terminal A and type only its number here: '
   IFS= read -r launcher_result
-  [[ "$launcher_result" =~ ^[0-9]+$ ]] || fail "launcher result was not numeric"
+  [[ "$launcher_result" =~ ^(0|[1-9][0-9]{0,2})$ ]] || fail "launcher result was not a valid process result"
+  [[ "$launcher_result" -le 255 ]] || fail "launcher result exceeded the process-result range"
 
   chmod 700 "$BLOCKED_DIR"
   require_empty_directory "$BLOCKED_DIR"
@@ -288,11 +416,16 @@ terminal_b() {
   require_candidate_identity
   require_no_installed_copy
   require_process_count 0
-  printf 'TERMINATION_CHECK=pass LAUNCHER_RESULT=%s\nRESIDUE_CHECK=pass\nCLEANUP_CHECK=pass\n' "$launcher_result"
+  CLEANUP_COMPLETE="true"
+  if [[ "$launcher_result" != "0" ]]; then
+    printf 'TERMINATION_CHECK=fail LAUNCHER_RESULT=%s\nRESIDUE_CHECK=pass\nCLEANUP_CHECK=pass\n' "$launcher_result"
+    fail "launcher result was not zero"
+  fi
+  printf 'TERMINATION_CHECK=pass LAUNCHER_RESULT=0\nRESIDUE_CHECK=pass\nCLEANUP_CHECK=pass\n'
 }
 
 usage() {
-  printf 'Usage: %s terminal-a|terminal-b\n' "${0##*/}" >&2
+  printf 'Usage: %s terminal-a|terminal-b\n' "${0##*/}" >&3
   exit 2
 }
 
