@@ -36,6 +36,8 @@ readonly BLOCKED_DIR="${RUN_DIR}/blocked"
 HELPER_MODE="unselected"
 CLIPBOARD_CHANGED="false"
 CLEANUP_COMPLETE="false"
+CLEANUP_ARMED="false"
+PROCESS_CLOSURE_ALLOWED="false"
 FAILURE_REPORTED="false"
 
 fail() {
@@ -209,12 +211,16 @@ controlled_cleanup() {
 
   current_count="$(process_count)"
   if [[ "$current_count" != "0" ]]; then
-    printf '%s\n' \
-      'STOP_ACTION=close_application_normally' \
-      'Close AI Engine Room using its window close control, then type CLOSED.' >&3
-    local answer=""
-    IFS= read -r answer || true
-    [[ "$answer" == "CLOSED" && "$(process_count)" == "0" ]] || cleanup_ok="false"
+    if [[ "$PROCESS_CLOSURE_ALLOWED" == "true" ]]; then
+      printf '%s\n' \
+        'STOP_ACTION=close_application_normally' \
+        'Close AI Engine Room using its window close control, then type CLOSED.' >&3
+      local answer=""
+      IFS= read -r answer || true
+      [[ "$answer" == "CLOSED" && "$(process_count)" == "0" ]] || cleanup_ok="false"
+    else
+      cleanup_ok="false"
+    fi
   fi
 
   if [[ -e "$RUN_DIR" || -L "$RUN_DIR" ]]; then
@@ -245,6 +251,7 @@ controlled_cleanup() {
 
   if [[ "$cleanup_ok" == "true" && ! -e "$RUN_DIR" && ! -L "$RUN_DIR" ]]; then
     CLEANUP_COMPLETE="true"
+    CLEANUP_ARMED="false"
     printf 'FAILURE_CLEANUP=confirmed\n' >&3
   else
     printf 'FAILURE_CLEANUP=unconfirmed\n' >&3
@@ -258,9 +265,11 @@ on_exit() {
   [[ "$status" != "0" ]] || return 0
   [[ "$FAILURE_REPORTED" == "true" ]] || printf 'STOP: helper operation failed\n' >&3
   if [[ "$CLEANUP_COMPLETE" == "true" ]]; then
-    printf 'FAILURE_CLEANUP=confirmed\n' >&3
-  elif [[ "$HELPER_MODE" == "terminal-a" || "$HELPER_MODE" == "terminal-b" ]]; then
+    return "$status"
+  elif [[ "$CLEANUP_ARMED" == "true" ]]; then
     controlled_cleanup
+  else
+    printf 'FAILURE_CLEANUP=not_armed\n' >&3
   fi
   return "$status"
 }
@@ -294,6 +303,7 @@ terminal_a() {
   [[ "$answer" == "RUN" ]] || fail "run authorization was not acknowledged"
 
   mkdir --mode=700 -- "$RUN_DIR"
+  CLEANUP_ARMED="true"
   require_safe_run_dir
   require_empty_directory "$RUN_DIR"
   cd "$RUN_DIR"
@@ -303,6 +313,15 @@ terminal_a() {
   local launcher_result=$?
   set -e
   printf 'AER_LAUNCHER_RESULT=%s\n' "$launcher_result"
+  local controller_state
+  controller_state="$(choose 'The application process has ended. If Terminal B is currently running the controller, answer CONTROLLER and let it classify the launcher result and clean up. If Terminal B never started or is no longer running, answer NO_CONTROLLER so Terminal A performs failure cleanup.' CONTROLLER NO_CONTROLLER)"
+  if [[ "$controller_state" == "CONTROLLER" ]]; then
+    CLEANUP_ARMED="false"
+    printf 'TERMINAL_A_CLEANUP_HANDOFF=terminal-b\n'
+    return 0
+  fi
+  controlled_cleanup
+  fail "the application ended without an active Terminal B controller"
 }
 
 terminal_b() {
@@ -314,6 +333,8 @@ terminal_b() {
   require_safe_run_dir
   require_empty_directory "$RUN_DIR"
   require_process_count 1
+  CLEANUP_ARMED="true"
+  PROCESS_CLOSURE_ALLOWED="true"
 
   printf '%s\n' \
     'Terminal B controller is ready.' \
@@ -355,6 +376,7 @@ terminal_b() {
   require_top_level_entries 'saved.txt,existing.txt'
   confirm 'Activate Save report… and select the existing "existing.txt" fixture. The application must show "That file already exists. AI Engine Room did not replace it. Choose a different name." with alert semantics. Copy report must remain available.'
   require_process_count 1
+  [[ -f "$RUN_DIR/existing.txt" && ! -L "$RUN_DIR/existing.txt" ]] || fail "existing destination type changed"
   local existing_after_bytes existing_after_sha
   read -r existing_after_bytes existing_after_sha < <(file_identity_values "$RUN_DIR/existing.txt")
   [[ "$existing_after_bytes" == "$existing_bytes" && "$existing_after_sha" == "$existing_sha" ]] || fail "existing destination was changed"
@@ -417,6 +439,7 @@ terminal_b() {
   require_no_installed_copy
   require_process_count 0
   CLEANUP_COMPLETE="true"
+  CLEANUP_ARMED="false"
   if [[ "$launcher_result" != "0" ]]; then
     printf 'TERMINATION_CHECK=fail LAUNCHER_RESULT=%s\nRESIDUE_CHECK=pass\nCLEANUP_CHECK=pass\n' "$launcher_result"
     fail "launcher result was not zero"

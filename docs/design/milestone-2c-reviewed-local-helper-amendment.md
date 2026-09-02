@@ -70,6 +70,25 @@ entry, unexpected type, ownership or resolution mismatch, clipboard failure,
 remaining process, or removal failure produces `FAILURE_CLEANUP=unconfirmed`
 and prohibits broader cleanup or a retry.
 
+Cleanup is ownership-armed only after Terminal A successfully creates and
+verifies the previously absent fixed directory, or after Terminal B verifies
+the active candidate and empty controlled directory for this run. A preflight
+failure before that point performs no startup cleanup and never requests that
+an existing process be closed. Only an established Terminal B controller may
+ask the operator to close a still-running application on failure.
+
+When the application process ends, Terminal A asks whether Terminal B is still
+the active controller. `CONTROLLER` transfers cleanup classification to
+Terminal B without racing it. `NO_CONTROLLER` makes Terminal A clean only the
+directory it created and report a stop; this covers launch failure, an exit
+before a window appears, timeout before Terminal B starts, and operator choice
+not to start Terminal B. Terminal A never treats its own shell exit as the
+native-validation result.
+
+Immediately after the no-clobber UI attempt and before hashing `existing.txt`,
+Terminal B re-establishes that the fixture is still a regular non-symlink file.
+It never follows an unexpected replacement outside the disposable boundary.
+
 ## Physical-console procedure
 
 The future operator uses only the approved Ubuntu machine and remains at its

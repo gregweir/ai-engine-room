@@ -3,6 +3,10 @@ import { readFileSync } from "node:fs";
 
 const path = "scripts/milestone-2c-ubuntu-local-console-helper.sh";
 const source = readFileSync(path, "utf8");
+const terminalA = source.slice(
+  source.indexOf("terminal_a() {"),
+  source.indexOf("terminal_b() {"),
+);
 const terminalB = source.slice(
   source.indexOf("terminal_b() {"),
   source.indexOf("usage() {"),
@@ -76,6 +80,15 @@ assert.match(source, /controlled_cleanup/);
 assert.match(source, /STOP_ACTION=close_application_normally/);
 assert.match(source, /FAILURE_CLEANUP=confirmed/);
 assert.match(source, /FAILURE_CLEANUP=unconfirmed/);
+assert.match(source, /FAILURE_CLEANUP=not_armed/);
+assert.match(source, /CLEANUP_ARMED="false"/);
+assert.match(source, /PROCESS_CLOSURE_ALLOWED="false"/);
+assert.ok(
+  terminalA.indexOf('mkdir --mode=700 -- "$RUN_DIR"') <
+    terminalA.indexOf('CLEANUP_ARMED="true"'),
+  "Terminal A cleanup must arm only after creating its absent run directory",
+);
+assert.match(cleanup, /if \[\[ "\$PROCESS_CLOSURE_ALLOWED" == "true" \]\]/);
 assert.match(source, /remove_regular_file_if_present "\$RUN_DIR\/stale\.txt"/);
 assert.match(source, /CLIPBOARD_CHANGED="true"/);
 assert.match(source, /CLIPBOARD_CHANGED="false"/);
@@ -90,6 +103,24 @@ assert.match(cleanup, /Close AI Engine Room using its window close control/);
 assert.match(cleanup, /remove_regular_file_if_present/);
 assert.match(cleanup, /directory_is_empty/);
 assert.doesNotMatch(cleanup, /\b(?:kill|pkill|killall)\b/);
+assert.match(terminalA, /CONTROLLER NO_CONTROLLER/);
+assert.match(terminalA, /TERMINAL_A_CLEANUP_HANDOFF=terminal-b/);
+assert.match(
+  terminalA,
+  /if \[\[ "\$controller_state" == "CONTROLLER" \]\][\s\S]*CLEANUP_ARMED="false"[\s\S]*return 0/,
+);
+assert.match(
+  terminalA,
+  /controlled_cleanup\r?\n\s+fail "the application ended without an active Terminal B controller"/,
+);
+assert.match(
+  terminalB,
+  /require_process_count 1\r?\n\s+CLEANUP_ARMED="true"\r?\n\s+PROCESS_CLOSURE_ALLOWED="true"/,
+);
+assert.match(
+  terminalB,
+  /require_process_count 1\r?\n\s+\[\[ -f "\$RUN_DIR\/existing\.txt" && ! -L "\$RUN_DIR\/existing\.txt" \]\] \|\| fail "existing destination type changed"\r?\n\s+local existing_after_bytes/,
+);
 assert.match(source, /TERMINATION_CHECK=fail LAUNCHER_RESULT=%s/);
 assert.match(source, /if \[\[ "\$launcher_result" != "0" \]\]/);
 assert.match(source, /fail "launcher result was not zero"/);
