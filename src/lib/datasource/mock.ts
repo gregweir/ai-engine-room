@@ -47,7 +47,10 @@ export class MockDataSource implements DataSource {
   }
 
   async reportPreview() {
-    return fixtureReportPreview();
+    return {
+      text: fixtureReportPreview(),
+      generation: "0000000000000001",
+    };
   }
 
   async runtimeStatus() {

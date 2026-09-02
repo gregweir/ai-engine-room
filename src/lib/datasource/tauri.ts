@@ -15,6 +15,8 @@ import type {
   MachineContextView,
   ModelInventoryView,
   ResourceContextView,
+  ReportPreviewView,
+  ReportSaveResult,
   RuntimeStatusView,
   SnapshotView,
 } from "../types";
@@ -30,8 +32,12 @@ export class TauriDataSource implements DataSource {
     return invoke<MachineContextView>("current_machine_context");
   }
 
-  async reportPreview(): Promise<string> {
-    return invoke<string>("report_preview");
+  async reportPreview(): Promise<ReportPreviewView> {
+    return invoke<ReportPreviewView>("report_preview");
+  }
+
+  async saveReport(generation: string): Promise<ReportSaveResult> {
+    return invoke<ReportSaveResult>("save_report", { generation });
   }
 
   async runtimeStatus(): Promise<RuntimeStatusView> {

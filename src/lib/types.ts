@@ -451,3 +451,19 @@ export interface DiagnosisResultView {
   state: "available" | "invalid_input";
   findings: DiagnosticFindingView[];
 }
+export interface ReportPreviewView {
+  text: string;
+  generation: string;
+}
+
+export type ReportSaveResult =
+  | "saved"
+  | "cancelled"
+  | "busy"
+  | "preview_changed"
+  | "invalid_destination"
+  | "destination_exists"
+  | "unavailable"
+  | "failed"
+  | "cleanup_incomplete"
+  | "completion_uncertain";

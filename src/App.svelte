@@ -12,6 +12,7 @@
     LmStudioSnapshotView,
     DiagnosticFindingView,
     MachineContextView,
+    ReportSaveResult,
   } from "./lib/types";
   import {
     appendCompletedObservation,
@@ -60,6 +61,7 @@
   let snapshot = $state<SnapshotView | null>(null);
   let machineContext = $state<MachineContextView | null>(null);
   let reportPreview = $state("");
+  let reportGeneration = $state("");
   let runtimeStatus = $state<RuntimeStatusView | null>(null);
   let modelInventory = $state<ModelInventoryView | null>(null);
   let loadedModels = $state<LoadedModelSetView | null>(null);
@@ -157,7 +159,10 @@
       nextAvailableMemoryObservationId = appended.nextObservationId;
       snapshot = snap;
       machineContext = machine;
-      reportPreview = preview ?? "";
+      reportPreview =
+        typeof preview === "string" ? preview : (preview?.text ?? "");
+      reportGeneration =
+        typeof preview === "string" ? "" : (preview?.generation ?? "");
       runtimeStatus = rtStatus;
       modelInventory = inventory;
       loadedModels = loaded;
@@ -340,6 +345,11 @@
     >
       <ReportWorkspace
         preview={reportPreview}
+        generation={reportGeneration}
+        saveReport={!dataSource?.isMock && dataSource?.saveReport
+          ? (generation: string): Promise<ReportSaveResult> =>
+              dataSource!.saveReport!(generation)
+          : null}
         clipboard={reportClipboard}
         clipboardState={reportClipboardState}
       />

@@ -22,6 +22,8 @@ import type {
   MachineContextView,
   ModelInventoryView,
   ResourceContextView,
+  ReportPreviewView,
+  ReportSaveResult,
   RuntimeStatusView,
   SnapshotView,
 } from "../types";
@@ -34,7 +36,13 @@ export interface DataSource {
   readonly isMock: boolean;
   currentSnapshot(): Promise<SnapshotView>;
   machineContext(): Promise<MachineContextView>;
-  reportPreview(): Promise<string>;
+  /** Production sources return the closed preview shape. A bare string is
+   * accepted only for narrow injected component-test stubs and cannot enable
+   * saving because it carries no generation. */
+  reportPreview(): Promise<ReportPreviewView | string>;
+  /** Backend-owned native save. The sole IPC argument is the opaque retained
+   * preview generation; browser/mock sources deliberately omit this method. */
+  saveReport?(generation: string): Promise<ReportSaveResult>;
   /** The current detection status of the supported AI runtime (Ollama in 1C):
    * controlled availability, the verbatim version when present, and
    * pre-computed controlled text. Runtime metadata, not a metric. */

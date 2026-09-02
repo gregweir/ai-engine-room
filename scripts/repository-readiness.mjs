@@ -26,6 +26,7 @@ const required = [
   "docs/user-guide.md",
   "docs/design/architecture.md",
   "docs/design/milestone-2a-safe-report-save-feasibility-contract.md",
+  "docs/design/milestone-2b-safe-report-save-implementation-preparation-contract.md",
   "docs/design/milestone-1y-c-snapcraft-one-build-preparation-contract.md",
   "docs/design/milestone-1y-d-snap-disposition-contract.md",
   "docs/design/bounded-network-observability-planning-note.md",
@@ -330,6 +331,9 @@ const reportSaveFeasibilityContract = read(
 const reportSaveFeasibility = read(
   "docs/research/safe-report-save-feasibility.md",
 );
+const reportSaveImplementationContract = read(
+  "docs/design/milestone-2b-safe-report-save-implementation-preparation-contract.md",
+);
 const ollamaSource = read("src-tauri/src/runtime/ollama.rs");
 const inventorySource = read("src-tauri/src/runtime/inventory.rs");
 const loadedModelsSource = read("src-tauri/src/runtime/loaded_models.rs");
@@ -359,6 +363,10 @@ const diagnoseWorkspaceSource = read(
 );
 const diagnosisSource = read("src-tauri/src/diagnosis.rs");
 const tauriLibSource = read("src-tauri/src/lib.rs");
+const reportSaveSource = read("src-tauri/src/report_save.rs");
+const reportSavePresentationSource = read("src/lib/reportSave.ts");
+const tauriDataSource = read("src/lib/datasource/tauri.ts");
+const mockDataSource = read("src/lib/datasource/mock.ts");
 const snapcraftProposal = read("snap/snapcraft.yaml");
 const snapDesktop = read("snap/gui/ai-engine-room.desktop");
 const snapcraftBuildPreparation = read(
@@ -489,6 +497,11 @@ assert.deepEqual(capability.permissions, [
   "core:default",
   "clipboard-manager:allow-write-text",
 ]);
+assert.equal(
+  read("src-tauri/capabilities/default.json").replace(/\r\n/g, "\n"),
+  '{\n  "$schema": "../gen/schemas/desktop-schema.json",\n  "identifier": "default",\n  "description": "enables the default permissions",\n  "windows": ["main"],\n  "permissions": ["core:default", "clipboard-manager:allow-write-text"]\n}\n',
+  "the WebView capability must remain byte-for-byte unchanged",
+);
 assert.match(snapcraftProposal, /^name: ai-engine-room$/m);
 assert.match(snapcraftProposal, /^version: "0\.1\.0"$/m);
 assert.match(snapcraftProposal, /^license: Apache-2\.0$/m);
@@ -933,8 +946,8 @@ assert.match(cargo, /^license = "Apache-2\.0"$/m);
 assert.match(cargo, /^homepage = "https:\/\/tartanleaf\.com"$/m);
 assert.match(
   cargo,
-  /\[target\.'cfg\(windows\)'\.dependencies\]\r?\nwindows-sys = \{ version = "0\.61\.2", default-features = false, features = \["Win32_System_SystemInformation"\] \}/,
-  "Windows must use only the approved narrow windows-sys binding feature",
+  /\[target\.'cfg\(windows\)'\.dependencies\]\r?\nwindows-sys = \{ version = "=0\.61\.2", default-features = false, features = \["Win32_Foundation", "Win32_Storage_FileSystem", "Win32_System_SystemInformation"\] \}/,
+  "Windows must use only the approved memory and no-clobber binding features",
 );
 assert.doesNotMatch(
   cargo,
@@ -1494,18 +1507,26 @@ assert.match(
   /No file dialog, report write, provider, inference, package, publication, or\s+release action was performed/,
 );
 assert.match(
-  architecture,
-  /safe report-save feasibility study[\s\S]*does not adopt or implement saving/,
+  reportSaveImplementationContract,
+  /exact public baseline\s+`de38c49485104097913e0c1e99cb2be7266e085b`/,
 );
 assert.match(
+  reportSaveImplementationContract,
+  /did not open a native\s+dialog, create or inspect a report file, execute either production filesystem\s+adapter/,
+);
+assert.match(
+  architecture,
+  /backend-owned native save[\s\S]*renameat2\(RENAME_NOREPLACE\)[\s\S]*MoveFileExW/,
+);
+assert.match(userGuide, /\*\*Save report…\*\*[\s\S]*will not replace a file/);
+assert.match(
   userGuide,
-  /Saving a report to a file is not available in the current preview/,
+  /synchronized, backed up, indexed, or read by other software/,
 );
 assert.match(
   roadmap,
-  /2A — safe report-save feasibility complete; implementation preparation not\s+authorized/,
+  /2A\/2B — bounded safe report-save implementation candidate prepared/,
 );
-assert.match(roadmap, /The disposition is \*\*prepare, not adopt\*\*/);
 assert.deepEqual(capability.permissions, [
   "core:default",
   "clipboard-manager:allow-write-text",
@@ -1515,16 +1536,86 @@ assert.ok(
     (permission) =>
       permission.startsWith("dialog:") || permission.startsWith("fs:"),
   ),
-  "report-save feasibility must not expose frontend dialog or filesystem permissions",
+  "report save must not expose frontend dialog or filesystem permissions",
 );
 assert.ok(
   !("@tauri-apps/plugin-dialog" in pkg.dependencies) &&
     !("@tauri-apps/plugin-fs" in pkg.dependencies),
-  "report-save feasibility must not add frontend dialog or filesystem dependencies",
+  "report save must not add frontend dialog or filesystem dependencies",
+);
+assert.match(
+  cargo,
+  /^\[dependencies\.tauri-plugin-dialog\]\r?\nversion = "=2\.7\.2"$/m,
+);
+assert.match(cargo, /^libc = "=0\.2\.189"$/m);
+assert.doesNotMatch(cargo, /^tauri-plugin-fs\s*=|tempfile|atomic-write-file/m);
+assert.match(
+  tauriLibSource,
+  /report_save::register_dialog\([\s\S]*tauri_plugin_clipboard_manager::init\(\)/,
+);
+assert.match(
+  reportSaveSource,
+  /builder\.plugin\(tauri_plugin_dialog::init\(\)\)/,
+);
+assert.match(
+  tauriLibSource,
+  /manage\(report_save::ReportSaveState::default\(\)\)/,
+);
+assert.match(tauriLibSource, /commands::save_report/);
+assert.match(reportSaveSource, /MAX_REPORT_BYTES: usize = 1_048_576/);
+assert.match(reportSaveSource, /create_new\(true\)/);
+assert.match(reportSaveSource, /mode\(0o600\)/);
+assert.match(reportSaveSource, /libc::renameat2/);
+assert.match(reportSaveSource, /libc::RENAME_NOREPLACE/);
+assert.match(
+  reportSaveSource,
+  /MoveFileExW\(source\.as_ptr\(\), destination\.as_ptr\(\), 0\)/,
 );
 assert.doesNotMatch(
-  cargo,
-  /tauri-plugin-dialog|tauri-plugin-fs|tempfile|atomic-write-file/,
+  reportSaveSource,
+  /std::fs::rename|ReplaceFile|MOVEFILE_REPLACE_EXISTING|MOVEFILE_COPY_ALLOWED|copy\s*\(/,
+  "report saving must not add a replacing or copy fallback",
+);
+assert.match(reportSaveSource, /write_all\(bytes\)/);
+assert.match(reportSaveSource, /file\.flush\(\)/);
+assert.match(reportSaveSource, /file\.sync_all\(\)/);
+assert.match(reportSaveSource, /blocking_save_file\(\)/);
+assert.match(
+  reportSaveSource,
+  /FilePath::Path\(path\)[\s\S]*FilePath::Url\(_\)[\s\S]*InvalidDestination/,
+);
+assert.match(commandsSource, /spawn_blocking/);
+assert.match(
+  tauriDataSource,
+  /invoke<ReportSaveResult>\("save_report", \{ generation \}\)/,
+);
+assert.doesNotMatch(
+  tauriDataSource,
+  /save_report[\s\S]{0,120}(?:path|text|filename|overwrite)/i,
+);
+assert.doesNotMatch(mockDataSource, /saveReport\s*\(/);
+assert.doesNotMatch(
+  reportSaveSource,
+  /println!|eprintln!|dbg!|\blog::|\btracing::/,
+);
+const saveReportCommand = sourceSection(
+  commandsSource,
+  "pub async fn save_report",
+  "/// The current runtime detection status",
+);
+assert.match(saveReportCommand, /generation: String/);
+assert.doesNotMatch(
+  saveReportCommand,
+  /(?:path|filename|overwrite|report_text|preview_text)\s*:/i,
+  "save_report IPC must accept only the opaque generation",
+);
+assert.match(
+  reportSavePresentationSource,
+  /Report saved as a plain-text file\./,
+);
+assert.match(
+  reportWorkspaceSource,
+  /Save report creates a plain-text file that remains in the location you[\s\S]*AI Engine Room does not upload or remember it\./,
 );
 for (const text of [readme, support, signpathAssessment]) {
   assert.match(

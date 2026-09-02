@@ -9,6 +9,21 @@ this documentation file and one local commit for separate review. It does not
 authorize product implementation, a dependency or capability change, a native
 dialog, a file operation, a push, packaging, publication, or release.
 
+## Implementation preparation status
+
+The bounded implementation was prepared locally on 2026-09-01 under developer
+authorization from exact public baseline
+`de38c49485104097913e0c1e99cb2be7266e085b` (tree
+`d58f41d83b99cde2407531238c7ecbaf5934971d`). It remains one local candidate
+for separate review and push approval. Preparation did not open a native
+dialog, create or inspect a report file, execute either production filesystem
+adapter, invoke a provider or inference, package, publish, or release.
+
+The candidate keeps the WebView capability unchanged, exposes only an opaque
+generation to `save_report`, and exercises dialog, staging, commit,
+synchronization, and cleanup behavior through artificial deterministic seams.
+Native Ubuntu and Windows validation remains separately gated.
+
 ## Decision carried forward
 
 The merged [Milestone 2A feasibility study](../research/safe-report-save-feasibility.md)

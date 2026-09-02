@@ -413,11 +413,12 @@ flowchart LR
   R -->|defence-in-depth| San["Sanitizer\n(second defence)"]
   San --> P["Preview (shown to user)"]
   P -->|explicit user action| Copy["Native plain-text clipboard write"]
+  P -->|opaque generation only| Save["Backend-owned native save\nno-clobber plain text"]
 ```
 
 Flow: internal session/state → **explicit allow-listed report-safe model** →
-**defence-in-depth sanitizer** → **preview** → **explicit native clipboard
-copy**.
+**defence-in-depth sanitizer** → **preview** → either **explicit native
+clipboard copy** or the bounded **backend-owned native save**.
 
 Rules:
 
@@ -435,17 +436,17 @@ Rules:
 - Milestone 1J can copy exactly the existing human-readable preview to the
   system clipboard in the native app. It grants only plain-text clipboard write
   authority and warns that other applications may read clipboard contents. It
-  does not read the clipboard, save files, or send/upload the report. Save and
-  external Share remain deferred; no additional export format (Markdown, HTML,
-  JSON, or other) is committed.
+  does not read the clipboard or send/upload the report.
 - The Milestone 2A
   [safe report-save feasibility study](../research/safe-report-save-feasibility.md)
-  finds one later implementation-preparation contract proportionate, but it
-  does not adopt or implement saving. Any proposal must keep the exact visible
-  UTF-8 preview authoritative, use a backend-owned dialog and write boundary,
-  expose no frontend filesystem capability, add no format or report field, and
-  replace no existing destination. The no-clobber staging and cleanup mechanism
-  remains an explicit unresolved gate.
+  led to the bounded Milestone 2B implementation candidate. The exact visible
+  UTF-8 preview remains authoritative. The frontend sends only an opaque
+  generation; the backend owns the dialog, same-directory staging, durable
+  write, and race-safe no-clobber commit. Linux uses only
+  `renameat2(RENAME_NOREPLACE)` and Windows uses `MoveFileExW` with zero flags.
+  The WebView receives no dialog or filesystem capability, no additional format
+  or report field is added, and existing destinations are never replaced.
+  Native validation and release remain separate gates.
 - The server-authored plain-text renderer presents byte values in decimal SI
   units alongside exact comma-grouped bytes when the report-safe numeric value
   is exactly representable. Values outside that presentation range are marked

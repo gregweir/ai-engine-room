@@ -81,10 +81,8 @@ function lmStudioFixture(
       ? "Artificial LM Studio matrix fixture is available."
       : "Artificial LM Studio matrix fixture is not detected.",
     why_it_matters: "Controlled artificial provider state.",
-    resource_interpretation:
-      "Controlled provider resource interpretation.",
-    resource_qualification:
-      "Controlled provider resource qualification.",
+    resource_interpretation: "Controlled provider resource interpretation.",
+    resource_qualification: "Controlled provider resource qualification.",
   };
 }
 
@@ -154,7 +152,10 @@ function makeDataSource(
       why_it_matters: "Artificial compatibility context.",
       qualification: "Does not establish performance or compute placement.",
     })),
-    reportPreview: vi.fn(async () => fixtureReportPreview()),
+    reportPreview: vi.fn(async () => ({
+      text: fixtureReportPreview(),
+      generation: "0000000000000001",
+    })),
     runtimeStatus: vi.fn(async () => runtimeStatus),
     modelInventory: vi.fn(async () => modelInventory),
     loadedModels: vi.fn(async () => loadedModels),
@@ -596,10 +597,14 @@ describe("Milestone 1I dashboard", () => {
       }),
     ).toHaveLength(2);
     expect(
-      view.getByRole("heading", { name: "Total memory", level: 3 }).closest("article"),
+      view
+        .getByRole("heading", { name: "Total memory", level: 3 })
+        .closest("article"),
     ).toHaveTextContent("17.18 GB");
     expect(
-      view.getByRole("heading", { name: "Native CPU architecture", level: 3 }).closest("article"),
+      view
+        .getByRole("heading", { name: "Native CPU architecture", level: 3 })
+        .closest("article"),
     ).toHaveTextContent("x86_64");
     expect(view.getByText("No observation run this session")).toBeVisible();
     expect(view.getByText(/must not be added or subtracted/)).toBeVisible();
@@ -654,7 +659,9 @@ describe("Milestone 1I dashboard", () => {
   });
 
   it("renders total-memory zero, unavailable, and unsafe values without fabrication", async () => {
-    const snapshotWithTotal = (outcome: SnapshotView["entries"][number]["outcome"]) => ({
+    const snapshotWithTotal = (
+      outcome: SnapshotView["entries"][number]["outcome"],
+    ) => ({
       ...fixtureSnapshot(),
       entries: fixtureSnapshot().entries.map((entry) =>
         entry.display_name === "Total memory" ? { ...entry, outcome } : entry,
@@ -713,7 +720,8 @@ describe("Milestone 1I dashboard", () => {
     unknown.machineContext = vi.fn(async (): Promise<MachineContextView> => ({
       state: "available",
       native_cpu_architecture: "unknown",
-      interpretation: "The operating system reports an unmapped native CPU architecture.",
+      interpretation:
+        "The operating system reports an unmapped native CPU architecture.",
       why_it_matters: "Architecture provides compatibility context.",
       qualification:
         "Architecture alone does not establish model compatibility, acceleration, performance, or compute placement.",
@@ -914,8 +922,8 @@ describe("Milestone 1I dashboard", () => {
 
   it("keeps the separately acquired Report value distinct from session history", async () => {
     const ds = makeDataSource();
-    ds.reportPreview = vi.fn(async () =>
-      [
+    ds.reportPreview = vi.fn(async () => ({
+      text: [
         "AI Engine Room — Observation Report",
         "",
         "Observation",
@@ -926,7 +934,8 @@ describe("Milestone 1I dashboard", () => {
         "Source: Operating system",
         "",
       ].join("\n"),
-    );
+      generation: "0000000000000002",
+    }));
     const { view, user } = await loadedView(ds);
     expect(
       view.getByText("8,589,934,592 bytes", { selector: "dd" }),
@@ -987,6 +996,32 @@ describe("Milestone 1I dashboard", () => {
         "Completed observations from this app session will appear here.",
       ),
     ).toBeVisible();
+  });
+
+  it("passes only the current report generation to the bounded native save command", async () => {
+    const ds: DataSource = { ...makeDataSource(), isMock: false };
+    ds.saveReport = vi.fn(async () => "saved" as const);
+    const { view, user } = await loadedView(ds, {
+      copyText: vi.fn(async () => {}),
+    });
+    await activate(user, "Report");
+
+    await user.click(view.getByRole("button", { name: "Save report…" }));
+    expect(ds.saveReport).toHaveBeenCalledTimes(1);
+    expect(ds.saveReport).toHaveBeenCalledWith("0000000000000001");
+    expect(view.getByRole("status")).toHaveTextContent(
+      "Report saved as a plain-text file.",
+    );
+    expect(ds.runInferenceObservation).not.toHaveBeenCalled();
+  });
+
+  it("never exposes save through an injected browser/mock data source", async () => {
+    const ds = makeDataSource();
+    ds.saveReport = vi.fn(async () => "saved" as const);
+    const { view, user } = await loadedView(ds);
+    await activate(user, "Report");
+    expect(view.queryByRole("button", { name: "Save report…" })).toBeNull();
+    expect(ds.saveReport).not.toHaveBeenCalled();
   });
 
   it("classifies native clipboard initialization failure without exposing its raw error", async () => {
