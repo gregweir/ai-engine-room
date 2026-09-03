@@ -184,8 +184,9 @@ choose() {
   local prompt="$1"
   shift
   local answer option
-  printf '\n%s\nAllowed responses: %s\nResponse: ' "$prompt" "$*" >&3
+  printf '\n%s\nAllowed responses: %s STOP\nResponse: ' "$prompt" "$*" >&3
   IFS= read -r answer
+  [[ "$answer" != "STOP" ]] || fail "operator stopped at the checkpoint"
   for option in "$@"; do
     [[ "$answer" == "$option" ]] && { printf '%s' "$answer"; return 0; }
   done
@@ -374,7 +375,7 @@ terminal_b() {
   read -r existing_bytes existing_sha < <(file_identity_values "$RUN_DIR/existing.txt")
   [[ "$existing_bytes" == "$EXPECTED_EXISTING_SENTINEL_BYTES" && "$existing_sha" == "$EXPECTED_EXISTING_SENTINEL_SHA" ]] || fail "existing-file fixture identity failed"
   require_top_level_entries 'saved.txt,existing.txt'
-  confirm 'Activate Save report… and select the existing "existing.txt" fixture. The application must show "That file already exists. AI Engine Room did not replace it. Choose a different name." with alert semantics. Copy report must remain available.'
+  confirm 'Activate Save report… and select the existing "existing.txt" fixture. The native chooser must show "A file named \"existing.txt\" already exists. Do you want to replace it?" Select Replace only for this controlled sentinel fixture. The application must then show "That file already exists. AI Engine Room did not replace it. Choose a different name." with alert semantics. Copy report must remain available.'
   require_process_count 1
   [[ -f "$RUN_DIR/existing.txt" && ! -L "$RUN_DIR/existing.txt" ]] || fail "existing destination type changed"
   local existing_after_bytes existing_after_sha

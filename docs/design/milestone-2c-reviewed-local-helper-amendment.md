@@ -89,6 +89,20 @@ Immediately after the no-clobber UI attempt and before hashing `existing.txt`,
 Terminal B re-establishes that the fixture is still a regular non-symlink file.
 It never follows an unexpected replacement outside the disposable boundary.
 
+The reviewed Ubuntu chooser presents its own confirmation before returning an
+already-existing destination to the application. For the fixed
+`existing.txt` sentinel only, the operator must require the exact primary
+wording `A file named "existing.txt" already exists. Do you want to replace
+it?` and select `Replace`. This is permission for the chooser to return that
+one controlled path, not permission for AI Engine Room to overwrite it. The
+helper immediately requires the application's no-clobber alert and then
+revalidates the sentinel's type, byte length, and SHA-256 identity. Any other
+destination or confirmation wording is a consumed stop.
+
+Every choice prompt also accepts the literal response `STOP`. It classifies
+that response as an intentional operator stop and enters the same narrow
+failure-cleanup path; it is not reported as an unrecognized choice.
+
 ## Physical-console procedure
 
 The future operator uses only the approved Ubuntu machine and remains at its
@@ -130,6 +144,16 @@ The helper presents the operator with the expected native-dialog fields:
 - sole filter: `Plain text`; and
 - pending button: `Saving report…`.
 
+At the fixed no-clobber checkpoint only, the native chooser additionally
+presents:
+
+- primary wording: `A file named "existing.txt" already exists. Do you want to
+replace it?`; and
+- actions: `Cancel` and `Replace`.
+
+The operator selects `Replace` only for that fixed sentinel and then requires
+AI Engine Room's no-clobber alert below. The sentinel must remain unchanged.
+
 It also presents the exact expected application outcomes needed by the fixed
 sequence:
 
@@ -151,9 +175,10 @@ does not improvise:
 - `Saving did not complete, and AI Engine Room could not confirm removal of its temporary file. Check the location you chose.`
 - `The operating system did not confirm whether the report was saved. Check the location you chose before trying again.`
 
-Any other wording, raw error, elevation request, extra filter, extra operation,
-unexpected file, process exit, operator absence, or helper failure is a
-consumed stop. The operator must not improvise or retry.
+Any other wording, raw error, elevation request, extra filter, extra operation
+apart from the fixed native confirmation above, unexpected file, process exit,
+operator absence, or helper failure is a consumed stop. The operator must not
+improvise or retry.
 
 ## Deterministic review and later gates
 

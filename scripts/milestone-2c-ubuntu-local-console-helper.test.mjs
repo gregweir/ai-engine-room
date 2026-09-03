@@ -22,6 +22,8 @@ assert.match(source, /^umask 077\r?$/m);
 assert.match(source, /^exec 3>&2\r?$/m);
 assert.match(source, /^exec 2>\/dev\/null\r?$/m);
 assert.match(source, /terminal-a\|terminal-b/);
+assert.match(source, /Allowed responses: %s STOP/);
+assert.match(source, /fail "operator stopped at the checkpoint"/);
 assert.match(source, /SSH_CLIENT/);
 assert.match(source, /SSH_CONNECTION/);
 assert.match(source, /SSH_TTY/);
@@ -121,6 +123,16 @@ assert.match(
   terminalB,
   /require_process_count 1\r?\n\s+\[\[ -f "\$RUN_DIR\/existing\.txt" && ! -L "\$RUN_DIR\/existing\.txt" \]\] \|\| fail "existing destination type changed"\r?\n\s+local existing_after_bytes/,
 );
+assert.ok(
+  terminalB.indexOf(
+    'A file named \\"existing.txt\\" already exists. Do you want to replace it?',
+  ) < terminalB.indexOf("That file already exists."),
+  "the controlled native confirmation must precede the application no-clobber result",
+);
+assert.match(
+  terminalB,
+  /Select Replace only for this controlled sentinel fixture/,
+);
 assert.match(source, /TERMINATION_CHECK=fail LAUNCHER_RESULT=%s/);
 assert.match(source, /if \[\[ "\$launcher_result" != "0" \]\]/);
 assert.match(source, /fail "launcher result was not zero"/);
@@ -144,6 +156,7 @@ for (const expected of [
   "ai-engine-room-report.txt",
   "Plain text",
   "Saving report…",
+  'A file named \\"existing.txt\\" already exists. Do you want to replace it?',
   "Save cancelled. No report file was created.",
   "Report copied to the system clipboard.",
   "Report saved as a plain-text file.",
