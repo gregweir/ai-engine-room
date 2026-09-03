@@ -365,7 +365,7 @@ const manifest = {
     "$PLUGINSDIR\\nsis_tauri_utils.dll": "nsis_tauri_utils@0.5.3",
     "$PLUGINSDIR\\StartMenu.dll": "NSIS@3.11",
     "$PLUGINSDIR\\NSISdl.dll": "NSIS@3.11",
-    "aiengineroom.exe": "AI Engine Room@0.1.0",
+    "aiengineroom.exe": "AI Engine Room@0.1.1",
   },
   installerPayloadSha256: {
     "$PLUGINSDIR\\modern-wizard.bmp": sha256(nsisWizardBitmap),

@@ -1,13 +1,13 @@
 # AI Engine Room user guide
 
-This guide covers the bounded `v0.1.0-preview.1` public preview. AI Engine Room
+This guide covers the `v0.1.1` stable release. AI Engine Room
 helps you inspect supported local-AI runtimes and machine context. It does not
 configure providers, choose a model, repair a system, or make decisions for
 you.
 
 ## Before you install
 
-The verified public-preview baselines are:
+The verified release baselines are:
 
 - Ubuntu 24.04 LTS x86_64 using the `.deb` package; and
 - Windows 11 25H2 build 26200.7462 x64 using the NSIS installer.
@@ -17,25 +17,23 @@ are not covered by the accepted evidence. macOS is not supported. Read the
 precise [support matrix and limitations](../SUPPORT.md) before installing.
 
 Download only from the official
-[`v0.1.0-preview.1` release](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.0-preview.1).
-The accepted assets are:
+[`v0.1.1` release](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.1).
+Download the platform package and `SHA256SUMS.txt` from that same release page.
+The expected package names are:
 
-| Asset | Size in bytes | SHA-256 |
-| --- | ---: | --- |
-| `AI.Engine.Room_0.1.0_amd64.deb` | 4,722,942 | `9c75d669fd3dbebc4d0f72ee3d880258206f1adc0be19a15d29fabf6b1325c9e` |
-| `AI.Engine.Room_0.1.0_x64-setup.exe` | 2,651,735 | `6bfa7b6aa4998efc3275eeae12917242526fb2dca8e970630d8b4f1e23f3b399` |
-| `SHA256SUMS.txt` | 198 | `2b1c787237ad10d9262f552438d9093cea44aee8c3c3ae035c4b564da2caf2de` |
+- `AI.Engine.Room_0.1.1_amd64.deb`; and
+- `AI.Engine.Room_0.1.1_x64-setup.exe`.
 
-These preview packages are **unsigned**. Their checksums can show whether the
+These packages are **unsigned**. Their checksums can show whether the
 downloaded bytes match the accepted files, but a checksum is not a digital
 signature and does not authenticate the publisher. Greg Weir is the developer;
 Tartanleaf.com Inc. is the product and package publisher. The Windows package
 does not contain an authenticated Authenticode publisher identity.
 
 Do not disable or weaken a security control, install a trust certificate, or
-bypass an organizational policy to install the preview. Continue only through
+bypass an organizational policy to install the application. Continue only through
 your platform's normal option after the official download matches all expected
-details and you have decided that running unsigned preview software is
+details and you have decided that running unsigned software is
 acceptable.
 
 ## Verify the download
@@ -46,13 +44,13 @@ and the release page. A partial match is not enough.
 On Windows, open PowerShell in the download directory and run:
 
 ```powershell
-Get-FileHash -Algorithm SHA256 ".\AI.Engine.Room_0.1.0_x64-setup.exe"
+Get-FileHash -Algorithm SHA256 ".\AI.Engine.Room_0.1.1_x64-setup.exe"
 ```
 
 On Ubuntu, open a terminal in the download directory and run:
 
 ```sh
-sha256sum "AI.Engine.Room_0.1.0_amd64.deb"
+sha256sum "AI.Engine.Room_0.1.1_amd64.deb"
 ```
 
 Stop if the filename, size, or complete SHA-256 value differs. Download a fresh
@@ -65,7 +63,7 @@ copy from the official release rather than trying to repair or reuse the file.
 From the directory containing the verified package, install it with:
 
 ```sh
-sudo apt install "./AI.Engine.Room_0.1.0_amd64.deb"
+sudo apt install "./AI.Engine.Room_0.1.1_amd64.deb"
 ```
 
 The application should then be available through the desktop application menu.
@@ -88,10 +86,16 @@ removing them as part of this guide.
 
 ### Windows
 
-Open the verified `AI.Engine.Room_0.1.0_x64-setup.exe` through the normal
-Windows flow. Because platform policy and reputation state can vary, this guide
-does not promise that a warning will or will not appear. Do not weaken a control
-or bypass a policy to continue.
+Before opening the installer, confirm that its full SHA-256 matches the
+`SHA256SUMS.txt` entry downloaded from the same official release. You may also
+right-click the file and use the normal Microsoft Defender scan option. Open
+the verified `AI.Engine.Room_0.1.1_x64-setup.exe` through the normal Windows
+flow. Because it is unsigned, Windows may show an unknown-publisher or
+reputation warning. Read the complete warning. If Windows provides a normal
+**More info → Run anyway** path and your own or organizational policy permits
+it, that is the bounded continuation path for this release. Do not turn off
+SmartScreen or antivirus, change system-wide security settings, install a
+certificate, or bypass organizational policy.
 
 To remove the app, open **Settings → Apps → Installed apps**, find **AI Engine
 Room**, and choose **Uninstall**. Confirm afterward that it no longer appears in
@@ -101,8 +105,8 @@ Installed apps.
 
 ![Conceptual AI Engine Room workflow showing passive observation and the separate per-run observed-inference gate](assets/ai-engine-room-workflow.svg)
 
-*This source-derived workflow explains actions and boundaries; it is not a
-native application screenshot or an exact control layout.*
+_This source-derived workflow explains actions and boundaries; it is not a
+native application screenshot or an exact control layout._
 
 1. If you want provider observations, start a supported runtime yourself before
    opening AI Engine Room. The app does not start Ollama, LM Studio, or

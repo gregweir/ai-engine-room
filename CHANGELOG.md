@@ -1,8 +1,11 @@
 # Changelog
 
-Notable project changes will be recorded here. AI Engine Room is currently work-in-progress pre-release software. The first public unsigned prerelease is `v0.1.0-preview.1`; no stable or general 0.1.0 release has been created.
+Notable project changes are recorded here. The first stable release is 0.1.1;
+0.1.0 was published only as the historical `v0.1.0-preview.1` prerelease.
 
 ## Unreleased
+
+## 0.1.1 - 2026-09-03
 
 ### Added
 
@@ -21,8 +24,12 @@ Notable project changes will be recorded here. AI Engine Room is currently work-
   required. Native stale-preview behavior remains supported only by
   deterministic coverage.
 
-These changes are in current source and are not included in
-`v0.1.0-preview.1`.
+### Changed
+
+- Established 0.1.1 as the first stable release identity without adding new
+  provider, inference, network, persistence, or updater behavior.
+- Replaced current-facing preview wording with stable-release support and
+  unsigned-install guidance. Historical preview evidence remains unchanged.
 
 ## 0.1.0-preview.1 - 2026-08-30
 

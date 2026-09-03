@@ -1,8 +1,8 @@
 {
   "name": "aiengineroom",
   "private": true,
-  "version": "0.1.0",
-  "description": "A pre-release desktop utility for inspecting Ollama and LM Studio runtime and resource context.",
+  "version": "0.1.1",
+  "description": "A desktop utility for inspecting Ollama and LM Studio runtime and resource context.",
   "author": "Greg Weir",
   "license": "Apache-2.0",
   "type": "module",

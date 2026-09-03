@@ -7,7 +7,7 @@
 are doing—without managing servers, running inference unless explicitly
 authorized, or making decisions on their behalf.**
 
-It is a privacy-conscious, pre-release desktop utility organized around a
+It is a privacy-conscious desktop utility organized around a
 simple workflow: **Observe → Explain → Diagnose → Report**. It turns bounded,
 explicitly requested observations from supported same-machine runtime APIs and
 the operating system into plain-language context while keeping missing or
@@ -15,7 +15,7 @@ unverified evidence visibly unknown.
 
 Developed by Greg Weir. Released by Tartanleaf.com Inc.
 
-Version 0.1.0. Copyright © 2026 Tartanleaf.com Inc. Licensed under [Apache-2.0](LICENSE).
+Version 0.1.1. Copyright © 2026 Tartanleaf.com Inc. Licensed under [Apache-2.0](LICENSE).
 
 ## Why it exists
 
@@ -62,14 +62,14 @@ AI Engine Room is intentionally conservative and host-led:
 
 1. Review the verified platform baselines and limitations below, then use only
    the official
-   [`v0.1.0-preview.1` release](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.0-preview.1).
+   [`v0.1.1` release](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.1).
 2. Download the package for your platform and `SHA256SUMS.txt`. Verify the exact
-   filename, byte size, and complete SHA-256 before installing. The preview is
+   filename, byte size, and complete SHA-256 before installing. The release is
    unsigned; a matching checksum verifies bytes but does not authenticate its
    publisher.
 3. Install only if those details match and your platform permits normal
    continuation. Do not weaken security controls or bypass organizational
-   policy to run the preview.
+   policy to run the application.
 4. Start a supported local-AI runtime yourself if you want provider
    observations, then open AI Engine Room. The app does not start or manage
    providers.
@@ -102,21 +102,24 @@ application screenshot._
 - After a per-run disclosure and authorization, run one fixed synthetic prompt with bounded timeout, concurrency, and no retry. Ollama execution location remains undetermined; LM Studio API scope is same-machine loopback while exact compute placement is not independently verified. Results are descriptive observations, not benchmarks.
 - Keep recent observations and comparisons in memory for the current session only.
 - Use the **Diagnose** workspace to review the newest 12 startup and explicit **Refresh** observation bundles, factual same-source changes, controlled source gaps, and deterministic **Observation → Meaning → Safe next check** findings. Provider-qualified model identities are correlated only within the same provider; Diagnose adds no acquisition, monitoring, persistence, root-cause claim, automated repair, or provider action.
-- Preview a human-readable, allow-listed, sanitized plain-text report with friendly and exact byte presentation plus controlled source and qualification text. In the current native source, **Copy report** writes exactly that preview to the system clipboard, and **Save report…** creates a user-chosen UTF-8 plain-text file without replacing an existing file. Both require explicit action; AI Engine Room does not automatically upload or send the report. Other applications may read the clipboard or a saved file. **Save report…** was added after `v0.1.0-preview.1` and is not included in that published preview.
+- Preview a human-readable, allow-listed, sanitized plain-text report with friendly and exact byte presentation plus controlled source and qualification text. **Copy report** writes exactly that preview to the system clipboard, and **Save report…** creates a user-chosen UTF-8 plain-text file without replacing an existing file. Both require explicit action; AI Engine Room does not automatically upload or send the report. Other applications may read the clipboard or a saved file.
 
 AI Engine Room performs no automatic inference. Use **Refresh** to reacquire status; viewing or refreshing the dashboard does not authorize inference or write the clipboard. Available-memory session history adds no polling, persistence, trend, threshold, pressure, health, model-fit, or headroom judgement.
 
 ## Support and requirements
 
-**Verified public-preview and `.deb` packaging baseline: Ubuntu 24.04 LTS x86_64. Developer install, launch, graphical, and removal verification passed for the exact published unsigned preview package.**
+**Verified Ubuntu baseline: Ubuntu 24.04 LTS x86_64 using the unsigned `.deb` package.**
 
-**Verified public-preview and Windows packaging baseline: Windows 11 25H2 build 26200.7462 x64. Developer install, native launch, graphical/accessibility, passive-behavior, and removal verification passed for the exact published unsigned NSIS preview package.**
+**Verified Windows baseline: Windows 11 25H2 build 26200.7462 x64 using the unsigned NSIS installer.**
 
-The exact accepted `.deb` and NSIS files are available from the
-[`v0.1.0-preview.1` unsigned prerelease](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.0-preview.1).
-They are not signed, stable, production-ready, or broadly compatible. Verify a
-download's exact filename, byte size, and SHA-256 against that release page
-before installation.
+The exact `.deb` and NSIS files are available from the
+[`v0.1.1` release](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.1).
+They are not digitally signed and are not claimed to be broadly compatible.
+Verify a download's exact filename, byte size, and SHA-256 against that release
+page before installation. A checksum verifies matching bytes but does not
+authenticate the publisher. Never disable a security control, install a trust
+certificate, or bypass organizational policy to install AI Engine Room. See
+the [safe installation instructions](docs/user-guide.md#before-you-install).
 
 The implemented inference runtime integrations are Ollama and LM Studio. LM Studio 0.4.0 or newer must serve native REST v1 at the fixed same-machine endpoint `127.0.0.1:1234`; authenticated, custom-port, LAN, and remote access are not supported in 1L. One bounded developer-authorized LM Studio live integration test has passed on the verified Ubuntu development environment; broader compatibility is not claimed, and compute placement remains not independently verified.
 
@@ -124,7 +127,7 @@ AI Engine Room can passively detect and display a traditional single-model llama
 
 On the tested Windows 11 25H2 build 26200.7462 x64 baseline, AI Engine Room successfully detected and displayed Ollama and LM Studio simultaneously through their existing fixed loopback APIs. Passive catalogue and loaded-state verification, provider coexistence, navigation, and one **Refresh** passed without inference or model/service management. The tested Ollama version was 0.32.15, and LM Studio used native REST v1. This does not establish broader Windows/provider configuration compatibility or Windows inference. Ollama retains its existing execution-location qualification; LM Studio API scope is same-machine loopback while compute location is not independently verified.
 
-AI Engine Room's Windows available-memory observation has passed native compilation, current-source unsigned NSIS packaging, and developer package verification on Windows 11 25H2 build 26200.7462 x64. The value is the operating system's reported available physical memory and is not claimed to be numerically equivalent to Linux `MemAvailable`. This evidence does not establish other Windows versions, builds, architectures, or machines; Windows provider functionality or inference; memory-pressure, model-fit, or headroom recommendations; or verified compute placement. That evidence predates and does not cover the newer total-memory and CPU-architecture fields; the tested artifact is unsigned, and this is not a production-ready, release-candidate, or public-release claim. See the [bounded verification record](docs/release/windows-available-memory-verification.md).
+AI Engine Room's Windows available-memory observation has passed native compilation, unsigned NSIS packaging, and developer package verification on Windows 11 25H2 build 26200.7462 x64. The value is the operating system's reported available physical memory and is not claimed to be numerically equivalent to Linux `MemAvailable`. This evidence does not establish other Windows versions, builds, architectures, or machines; Windows provider functionality or inference; memory-pressure, model-fit, or headroom recommendations; or verified compute placement. See the [bounded verification record](docs/release/windows-available-memory-verification.md).
 
 Milestone 1U implements total-memory and native-CPU-architecture context for Ubuntu and Windows. Linux total memory uses `/proc/meminfo` `MemTotal` usable-memory semantics; Windows uses `MEMORYSTATUSEX.ullTotalPhys` physical-memory semantics. CPU architecture is categorical machine metadata rather than a numeric metric. On the tested Windows 11 25H2 x64 environment, bounded native compilation, strict Clippy, exact total-memory value agreement, native-architecture presentation, normal and narrow layouts, keyboard focus, and developer-established 225% Windows Text-size presentation passed. These new fields remain outside Report and make no model-fit, acceleration, performance, or compute-placement claim. This evidence does not establish broad Windows compatibility, packaging or release readiness, or a general Windows support claim.
 
@@ -152,7 +155,7 @@ npm run test:run
 npm run tauri dev
 ```
 
-Use `npm run build` for the frontend and `cargo build --workspace` for the Rust workspace. Historical local unsigned `.deb` verification is documented in [Linux pre-release packaging verification](docs/release/linux-pre-release-verification.md); those evidence artifacts remain distinct from the exact files later accepted and published in the [`v0.1.0-preview.1` unsigned prerelease](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.0-preview.1). AppImage packaging is deferred after the tested path failed runtime acceptance on the verified baseline.
+Use `npm run build` for the frontend and `cargo build --workspace` for the Rust workspace. Historical packaging evidence is documented in [Linux pre-release packaging verification](docs/release/linux-pre-release-verification.md). AppImage packaging is deferred after the tested path failed runtime acceptance on the verified baseline.
 
 ## Privacy and data boundaries
 
@@ -172,4 +175,6 @@ The browser/LAN preview uses artificial fixtures and must not be treated as live
 - [Changelog](CHANGELOG.md)
 - [Licence](LICENSE)
 
-This project is pre-release and incomplete. It is not production-ready, a release candidate, privacy- or security-certified, or a guarantee of local inference.
+AI Engine Room 0.1.1 is an early stable release with the deliberately narrow
+support scope documented above. It is not privacy- or security-certified, a
+benchmark, or a guarantee of local inference or broad compatibility.

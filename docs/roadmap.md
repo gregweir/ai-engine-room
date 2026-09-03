@@ -12,8 +12,8 @@ hardware benchmark.
 - Distinguish observed facts from calculations, estimates, and unavailable evidence.
 - Keep collection passive by default and inference explicitly authorized.
 - Preserve report-safe output that excludes sensitive or unnecessary machine details.
-- Maintain bounded native behavior on the verified Linux and Windows
-  public-preview baselines.
+- Maintain bounded native behavior on the verified Linux and Windows release
+  baselines.
 
 ## Available now
 
@@ -28,9 +28,10 @@ hardware benchmark.
 - Provider-qualified model metadata, platform-native memory and CPU-architecture
   context, bounded session observation history, deterministic findings, and an
   allow-listed plain-text report preview.
-- The public, unsigned `.deb` and NSIS
-  [`v0.1.0-preview.1` prerelease](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.0-preview.1)
-  on the exact verified Ubuntu and Windows baselines.
+- The stable, unsigned `.deb` and NSIS
+  [`v0.1.1` release](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.1)
+  for the bounded Ubuntu and Windows baselines, with explicit checksum and
+  safe-install guidance.
 - Deterministic frontend and Rust checks on Ubuntu and Windows, including
   ephemeral package and licence-payload verification without artifact upload,
   provider access, inference, signing, publication, or release.
@@ -264,6 +265,13 @@ The current sequence is documentation-led and separately gated:
   cleanup nevertheless confirmed no process, report artifact, or report text
   remained. No additional native run is justified. Packaging, publication,
   and release remain separate gates.
+- **0.1.1 stable transition — authorized:** 0.1.1 is the first stable release
+  identity. It includes the accepted Save report implementation without adding
+  providers, background behavior, persistence, updater authority, or broader
+  platform claims. The release remains unsigned; its documentation requires
+  official-source download, full SHA-256 verification, and normal operating-
+  system security controls. The historical `v0.1.0-preview.1` evidence remains
+  unchanged.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -362,6 +370,11 @@ authority.
    No further promotion, additional channel, asset replacement, signing action,
    or follow-on release is authorized. Future signing certificate identity,
    broader provider/platform coverage, and macOS remain later decisions.
+8. The developer subsequently selected 0.1.1 as the first stable release,
+   retained the narrow verified-platform scope, declined an unaffordable
+   signing certificate, and required explicit unsigned safe-install guidance.
+   This decision adds no compatibility, certification, updater, provider, or
+   package-manager claim.
 
 No roadmap entry authorizes implementation by itself. The current milestone
 state and developer gate control execution.
