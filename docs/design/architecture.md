@@ -2,7 +2,7 @@
 
 Status: Maintained architecture baseline; the Milestone 1A/1B sections preserve
 their original planning context.
-Scope: Current pre-release product (Observe → Explain → Diagnose → Report).
+Scope: Current product (Observe → Explain → Diagnose → Report).
 
 This document is the primary design reference for AI Engine Room. It defines
 the product boundary, the architectural layers and trust boundaries, the core

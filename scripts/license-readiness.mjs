@@ -45,7 +45,7 @@ assert.deepEqual(manifest.installerPayloads, {
   "$PLUGINSDIR\\nsis_tauri_utils.dll": "nsis_tauri_utils@0.5.3",
   "$PLUGINSDIR\\StartMenu.dll": "NSIS@3.11",
   "$PLUGINSDIR\\NSISdl.dll": "NSIS@3.11",
-  "aiengineroom.exe": "AI Engine Room@0.1.0",
+  "aiengineroom.exe": "AI Engine Room@0.1.1",
 });
 assert.match(manifest.installerPayloadSha256["$PLUGINSDIR\\modern-wizard.bmp"], /^[a-f0-9]{64}$/);
 assert.deepEqual(manifest.installerSourceArchives, {

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatorSha256": "c9c18d525aa3976391576dd5bf8f443ad8bffa4468475a5e099151e70fb36f91",
+  "generatorSha256": "567a6ba73ca2dd6ecc5a26ceb32e496ca4bfb77dbb28ccda5e01660411e8d5eb",
   "spdxLicenseListRevision": "a3cbf2e897d54bccec0c35469c691521d089ef53",
-  "cargoLockSha256": "8769cc560c5ed3c6f00b10a135bc6125a6f9f7e655c6520cf73f95928d9d9082",
-  "packageLockSha256": "013e1fcd2917509cd098dfecacc83bd25c4aea1e01633f051d0f048bdf7d8dad",
+  "cargoLockSha256": "5fd4600ba6f965a53fb88dac4c3dac7f66a4dcbb5c13cfb7722304b3471fe063",
+  "packageLockSha256": "15582c665fccc87b3ce4b1fb108e5ab26847d25ee387d02471092adcdb06f7e1",
   "rustRegistryComponentCount": 484,
   "frontendComponentCount": 22,
   "installerComponentCount": 2,
@@ -14,7 +14,7 @@
     "$PLUGINSDIR\\nsis_tauri_utils.dll": "nsis_tauri_utils@0.5.3",
     "$PLUGINSDIR\\StartMenu.dll": "NSIS@3.11",
     "$PLUGINSDIR\\NSISdl.dll": "NSIS@3.11",
-    "aiengineroom.exe": "AI Engine Room@0.1.0"
+    "aiengineroom.exe": "AI Engine Room@0.1.1"
   },
   "installerPayloadSha256": {
     "$PLUGINSDIR\\modern-wizard.bmp": "3ad2dc318056d0a2024af1804ea741146cfc18cc404649a44610cbf8b2056cf2"

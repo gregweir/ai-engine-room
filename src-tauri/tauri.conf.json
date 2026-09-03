@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "AI Engine Room",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "identifier": "com.tartanleaf.aiengineroom",
   "build": {
     "frontendDist": "../dist",
@@ -31,7 +31,7 @@
     "copyright": "Copyright © 2026 Tartanleaf.com Inc.",
     "license": "Apache-2.0",
     "shortDescription": "Inspect Ollama and LM Studio runtime and resource context.",
-    "longDescription": "A pre-release desktop utility for inspecting Ollama and LM Studio runtime and resource context, with explicitly authorized synthetic inference observations.",
+    "longDescription": "A desktop utility for inspecting Ollama and LM Studio runtime and resource context, with explicitly authorized synthetic inference observations.",
     "createUpdaterArtifacts": false,
     "resources": {
       "../LICENSE": "licenses/LICENSE",

@@ -460,11 +460,11 @@ const assertHardenedClient = (section, name) => {
   assert.match(section, /\.no_proxy\(\)/, `${name} proxy disablement`);
 };
 
-assert.equal(pkg.version, "0.1.0");
+assert.equal(pkg.version, "0.1.1");
 assert.equal(pkg.author, "Greg Weir");
 assert.equal(pkg.license, "Apache-2.0");
 assert.equal(tauri.productName, "AI Engine Room");
-assert.equal(tauri.version, "0.1.0");
+assert.equal(tauri.version, "0.1.1");
 assert.equal(tauri.identifier, "com.tartanleaf.aiengineroom");
 assert.equal(tauri.bundle.category, "Utility");
 assert.equal(tauri.bundle.publisher, "Tartanleaf.com Inc.");
@@ -941,10 +941,10 @@ assert.doesNotMatch(
   "native adapters must not schedule, spawn, or create fixture traffic",
 );
 assert.ok(!("remote" in capability), "capability must remain local");
-assert.match(cargo, /^version = "0\.1\.0"$/m);
+assert.match(cargo, /^version = "0\.1\.1"$/m);
 assert.match(
   cargo,
-  /^description = "A pre-release desktop utility for inspecting Ollama and LM Studio runtime and resource context"$/m,
+  /^description = "A desktop utility for inspecting Ollama and LM Studio runtime and resource context"$/m,
 );
 assert.match(cargo, /^authors = \["Greg Weir"\]$/m);
 assert.match(cargo, /^license = "Apache-2\.0"$/m);
@@ -993,25 +993,25 @@ assert.deepEqual(iconLayers, [
 ]);
 for (const text of [readme, support, checklist]) {
   assert.match(text, /Ubuntu 24\.04 LTS x86_64/);
-  assert.match(text, /pre-release/i);
 }
+assert.match(checklist, /pre-release/i);
 assert.match(readme, /Developed by Greg Weir/);
 assert.match(readme, /Released by Tartanleaf\.com Inc\./);
 assert.match(
   readme,
-  /Verified public-preview and `\.deb` packaging baseline: Ubuntu 24\.04 LTS x86_64\. Developer install, launch, graphical, and removal verification passed for the exact published unsigned preview package\./,
+  /Verified Ubuntu baseline: Ubuntu 24\.04 LTS x86_64 using the unsigned `\.deb` package\./,
 );
 assert.match(
   support,
-  /\| Ubuntu 24\.04 LTS x86_64\s+\| Verified development and public unsigned `\.deb` preview baseline; exact-artifact install, launch, graphical, removal, and post-removal acceptance passed\s+\|/,
+  /\| Ubuntu 24\.04 LTS x86_64\s+\| Supported baseline for the unsigned `\.deb`/,
 );
 assert.match(
   support,
-  /\| `\.deb`\s+\| Exact accepted unsigned package is published in `v0\.1\.0-preview\.1`/,
+  /\| `\.deb`\s+\| Unsigned direct-download package for the tested Ubuntu baseline/,
 );
 assert.match(
   support,
-  /\| NSIS installer\s+\| Exact accepted unsigned installer is published in `v0\.1\.0-preview\.1`/,
+  /\| NSIS installer\s+\| Unsigned direct-download installer for the tested Windows baseline/,
 );
 assert.match(
   support,
@@ -1022,11 +1022,11 @@ assert.match(checklist, /AppImage is not part of the current Milestone 1K/);
 assert.doesNotMatch(checklist, /--bundles deb,appimage/);
 assert.match(
   readme,
-  /Verified public-preview and Windows packaging baseline: Windows 11 25H2 build 26200\.7462 x64\. Developer install, native launch, graphical\/accessibility, passive-behavior, and removal verification passed for the exact published unsigned NSIS preview package\./,
+  /Verified Windows baseline: Windows 11 25H2 build 26200\.7462 x64 using the unsigned NSIS installer\./,
 );
 assert.match(
   support,
-  /\| Windows 11 25H2 build 26200\.7462 x64\s+\| Verified public unsigned NSIS preview baseline; exact-artifact install, native launch, graphical\/accessibility, passive-behavior, removal, and post-removal acceptance passed\s+\|/,
+  /\| Windows 11 25H2 build 26200\.7462 x64\s+\| Supported baseline for the unsigned NSIS installer/,
 );
 assert.match(
   support,
@@ -1042,7 +1042,7 @@ assert.match(
   /Windows available-memory support has current-source verification for the exact artifact and tested baseline recorded in/,
 );
 const windowsAvailableMemoryStatus =
-  "AI Engine Room's Windows available-memory observation has passed native compilation, current-source unsigned NSIS packaging, and developer package verification on Windows 11 25H2 build 26200.7462 x64.";
+  "AI Engine Room's Windows available-memory observation has passed native compilation, unsigned NSIS packaging, and developer package verification on Windows 11 25H2 build 26200.7462 x64.";
 const windowsLinuxMemoryQualification =
   "The value is the operating system's reported available physical memory and is not claimed to be numerically equivalent to Linux `MemAvailable`.";
 assert.ok(readme.includes(windowsAvailableMemoryStatus));
@@ -1433,7 +1433,7 @@ assert.match(
   /Broader llama\.cpp versions, router\/multi-model mode, authentication, TLS, custom endpoints\/ports, LAN\/remote access, Windows llama\.cpp support, model compatibility, inference, and compute placement are not established/,
 );
 assert.match(security, /gweir@tartanleaf\.com/);
-assert.match(security, /exact public unsigned `v0\.1\.0-preview\.1` artifacts/);
+assert.match(security, /0\.1\.1 is the currently supported stable release/);
 assert.match(conduct, /gweir@tartanleaf\.com/);
 assert.match(deterministicWorkflow, /ubuntu-latest/);
 assert.match(deterministicWorkflow, /windows-latest/);
@@ -1622,12 +1622,16 @@ assert.match(
   reportWorkspaceSource,
   /Save report creates a plain-text file that remains in the location you[\s\S]*AI Engine Room does not upload or remember it\./,
 );
-for (const text of [readme, support, signpathAssessment]) {
+for (const text of [readme, support]) {
   assert.match(
     text,
-    /https:\/\/github\.com\/gregweir\/ai-engine-room\/releases\/tag\/v0\.1\.0-preview\.1/,
+    /https:\/\/github\.com\/gregweir\/ai-engine-room\/releases\/tag\/v0\.1\.1/,
   );
 }
+assert.match(
+  signpathAssessment,
+  /https:\/\/github\.com\/gregweir\/ai-engine-room\/releases\/tag\/v0\.1\.0-preview\.1/,
+);
 assert.equal(
   read("NOTICE").replace(/\r\n/g, "\n"),
   "AI Engine Room\nCopyright 2026 Tartanleaf.com Inc.\n\nThis product is licensed under the Apache License, Version 2.0.\n",
