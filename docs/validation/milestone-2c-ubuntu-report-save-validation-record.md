@@ -11,7 +11,9 @@ stale-preview checkpoint did not prove that the asynchronous Refresh had
 completed before the native dialog returned, so it creates no native
 stale-concurrency claim. Deterministic coverage remains the evidence that an
 actual preview-generation change produces `PreviewChanged` without staging or
-committing a file. Windows native validation remains separate and pending.
+committing a file. The later bounded
+[Windows disposition](milestone-2c-windows-report-save-validation-record.md)
+is separate evidence with its own qualifications.
 
 ## Exact candidate
 
@@ -46,4 +48,5 @@ The accepted evidence is limited to the exact Ubuntu candidate and the four
 behaviors above. It does not establish native stale-preview rejection,
 inaccessible-destination handling, enlarged-text presentation, Windows
 behavior, broader Linux compatibility, packaging acceptance, publication, or
-release readiness.
+release readiness. The separately accepted Windows evidence does not broaden
+this Ubuntu claim boundary.

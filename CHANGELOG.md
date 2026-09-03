@@ -13,9 +13,13 @@ Notable project changes will be recorded here. AI Engine Room is currently work-
 
 ### Validation
 
-- Accepted bounded Ubuntu native evidence for cancellation, clipboard copy,
-  new-file saving, and no-clobber behavior. Native stale-preview behavior was
-  not established by that run, and Windows native validation remains pending.
+- Accepted bounded Ubuntu and Windows native evidence for cancellation,
+  clipboard copy, new-file saving, and no-clobber behavior on the exact tested
+  candidates. The Windows new-file evidence is content-only because the
+  operator selected the parent temporary location, and its launcher timer
+  expired before normal closure. Cleanup passed; no additional native run is
+  required. Native stale-preview behavior remains supported only by
+  deterministic coverage.
 
 These changes are in current source and are not included in
 `v0.1.0-preview.1`.
