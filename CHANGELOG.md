@@ -4,7 +4,21 @@ Notable project changes will be recorded here. AI Engine Room is currently work-
 
 ## Unreleased
 
-No changes have been recorded after `v0.1.0-preview.1`.
+### Added
+
+- Native **Save report…** for explicitly saving the exact visible report-safe
+  preview as a UTF-8 plain-text file. The backend-owned flow does not replace
+  an existing destination and does not expose general frontend filesystem
+  permissions.
+
+### Validation
+
+- Accepted bounded Ubuntu native evidence for cancellation, clipboard copy,
+  new-file saving, and no-clobber behavior. Native stale-preview behavior was
+  not established by that run, and Windows native validation remains pending.
+
+These changes are in current source and are not included in
+`v0.1.0-preview.1`.
 
 ## 0.1.0-preview.1 - 2026-08-30
 
