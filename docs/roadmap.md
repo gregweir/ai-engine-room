@@ -240,16 +240,24 @@ The current sequence is documentation-led and separately gated:
   isolated probe remains outside the product, both run authorizations remain
   consumed, and no further validation, integration, packaging, or release is
   authorized.
-- **2A/2B — bounded safe report-save implementation candidate prepared:** the
+- **2A/2B — bounded safe report-save implementation merged:** the
   [contract](design/milestone-2a-safe-report-save-feasibility-contract.md) and
   [assessment](research/safe-report-save-feasibility.md) and
   [implementation contract](design/milestone-2b-safe-report-save-implementation-preparation-contract.md)
   bound a backend-owned, user-initiated save of the exact visible plain text.
-  The local candidate uses an opaque preview generation, backend-only native
+  The merged implementation uses an opaque preview generation, backend-only native
   dialog, same-directory staging, and platform no-clobber commits while keeping
   frontend capabilities unchanged. Deterministic injected seams do not open a
-  dialog or touch a real report file. Push, merge, native Ubuntu and Windows
-  validation, packaging, publication, and release remain separate gates.
+  dialog or touch a real report file.
+- **2C — bounded Ubuntu native evidence accepted; Windows pending:** the
+  [Ubuntu disposition](validation/milestone-2c-ubuntu-report-save-validation-record.md)
+  accepts cancellation, clipboard copy, new-file saving, and no-clobber
+  behavior for the exact tested candidate. It makes no native stale-preview
+  claim because the physical gesture did not prove that asynchronous Refresh
+  completed before the dialog returned. Deterministic coverage retains that
+  claim, no product defect was established, and no additional Ubuntu run is
+  required. Windows validation, packaging, publication, and release remain
+  separate gates.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -259,9 +267,9 @@ signed release is authorized.
 
 - Evidence-scope and wording refinements based on actual non-specialist
   validation.
-- Native validation of bounded plain-text report saving only under separate
-  exact-source and exact-binary Ubuntu and Windows authorizations. Other export
-  formats remain later possibilities based on demonstrated need.
+- Native Windows validation of bounded plain-text report saving under a
+  separate exact-source and exact-binary authorization. Other export formats
+  remain later possibilities based on demonstrated need.
 - GPU observation only after a bounded evidence and provenance contract.
 - Additional providers only after a provider-admission contract and evidence of
   user need.

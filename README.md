@@ -85,8 +85,8 @@ installation, first-session, and removal instructions. See the
 
 ![Conceptual AI Engine Room workflow showing the passive Refresh path and the separately authorized observed-inference path](docs/assets/ai-engine-room-workflow.svg)
 
-*Conceptual workflow derived from implemented behavior; this is not a native
-application screenshot.*
+_Conceptual workflow derived from implemented behavior; this is not a native
+application screenshot._
 
 ## Current capabilities
 
@@ -102,7 +102,7 @@ application screenshot.*
 - After a per-run disclosure and authorization, run one fixed synthetic prompt with bounded timeout, concurrency, and no retry. Ollama execution location remains undetermined; LM Studio API scope is same-machine loopback while exact compute placement is not independently verified. Results are descriptive observations, not benchmarks.
 - Keep recent observations and comparisons in memory for the current session only.
 - Use the **Diagnose** workspace to review the newest 12 startup and explicit **Refresh** observation bundles, factual same-source changes, controlled source gaps, and deterministic **Observation → Meaning → Safe next check** findings. Provider-qualified model identities are correlated only within the same provider; Diagnose adds no acquisition, monitoring, persistence, root-cause claim, automated repair, or provider action.
-- Preview a human-readable, allow-listed, sanitized plain-text report with friendly and exact byte presentation plus controlled source and qualification text. In the native app, **Copy report** writes exactly that preview to the system clipboard after an explicit action. Other applications may read clipboard contents; AI Engine Room does not read, clear, persist, upload, save, or send the report.
+- Preview a human-readable, allow-listed, sanitized plain-text report with friendly and exact byte presentation plus controlled source and qualification text. In the current native source, **Copy report** writes exactly that preview to the system clipboard, and **Save report…** creates a user-chosen UTF-8 plain-text file without replacing an existing file. Both require explicit action; AI Engine Room does not automatically upload or send the report. Other applications may read the clipboard or a saved file. **Save report…** was added after `v0.1.0-preview.1` and is not included in that published preview.
 
 AI Engine Room performs no automatic inference. Use **Refresh** to reacquire status; viewing or refreshing the dashboard does not authorize inference or write the clipboard. Available-memory session history adds no polling, persistence, trend, threshold, pressure, health, model-fit, or headroom judgement.
 

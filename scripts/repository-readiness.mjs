@@ -37,6 +37,7 @@ const required = [
   "docs/design/milestone-1z-e-network-observability-disposition.md",
   "docs/design/network-observability-evidence-and-synthetic-probe-plan.md",
   "docs/validation/milestone-1z-d-loopback-adapter-validation-record.md",
+  "docs/validation/milestone-2c-ubuntu-report-save-validation-record.md",
   "docs/distribution/snapcraft-expansion-verification-record.md",
   "docs/distribution/snap-disposition.md",
   "docs/research/network-observability-platform-feasibility.md",
@@ -1528,7 +1529,7 @@ assert.match(
 );
 assert.match(
   roadmap,
-  /2A\/2B — bounded safe report-save implementation candidate prepared/,
+  /2A\/2B — bounded safe report-save implementation merged/,
 );
 assert.deepEqual(capability.permissions, [
   "core:default",
