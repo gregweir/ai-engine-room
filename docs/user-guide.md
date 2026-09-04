@@ -19,10 +19,12 @@ precise [support matrix and limitations](../SUPPORT.md) before installing.
 Download only from the official
 [`v0.1.1` release](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.1).
 Download the platform package and `SHA256SUMS.txt` from that same release page.
-The expected package names are:
+The accepted release assets are:
 
-- `AI.Engine.Room_0.1.1_amd64.deb`; and
-- `AI.Engine.Room_0.1.1_x64-setup.exe`.
+| Platform | Exact hosted filename | Bytes | SHA-256 |
+| --- | --- | ---: | --- |
+| Ubuntu | `AI.Engine.Room_0.1.1_amd64.deb` | 4,896,518 | `c73dac2320632bbb6b4a3f02c65943a95bf40cefe83c367e8e65b5b7136c617a` |
+| Windows | `AI.Engine.Room_0.1.1_x64-setup.exe` | 2,762,354 | `e51fd579a5045599d99596f8b4bdfd10d3712b91b9110ed02fe72b3bc786dfb4` |
 
 These packages are **unsigned**. Their checksums can show whether the
 downloaded bytes match the accepted files, but a checksum is not a digital
@@ -38,8 +40,9 @@ acceptable.
 
 ## Verify the download
 
-Compare the complete hash output, filename, and byte size with the table above
-and the release page. A partial match is not enough.
+Compare the complete hash output, filename, and byte size with the table above,
+the downloaded `SHA256SUMS.txt`, and the release page. A partial match is not
+enough.
 
 On Windows, open PowerShell in the download directory and run:
 

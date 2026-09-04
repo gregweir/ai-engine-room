@@ -265,13 +265,16 @@ The current sequence is documentation-led and separately gated:
   cleanup nevertheless confirmed no process, report artifact, or report text
   remained. No additional native run is justified. Packaging, publication,
   and release remain separate gates.
-- **0.1.1 stable transition — authorized:** 0.1.1 is the first stable release
-  identity. It includes the accepted Save report implementation without adding
-  providers, background behavior, persistence, updater authority, or broader
-  platform claims. The release remains unsigned; its documentation requires
-  official-source download, full SHA-256 verification, and normal operating-
-  system security controls. The historical `v0.1.0-preview.1` evidence remains
-  unchanged.
+- **0.1.1 stable transition — physical acceptance complete; publication
+  preparation authorized:** 0.1.1 is the first stable release identity. Exact
+  `.deb` and NSIS candidates built from accepted source commit
+  `4f4eef7ee05b12e5e3c6c6aaed162d13b5b654c7` passed one bounded physical
+  acceptance run each on the supported Ubuntu and Windows baselines. The
+  [release acceptance record](release/v0.1.1-physical-acceptance-record.md)
+  preserves the exact identities and scope. The release remains unsigned; its
+  documentation requires official-source download, complete filename, byte-
+  size, and SHA-256 verification, and normal operating-system security
+  controls. The historical `v0.1.0-preview.1` evidence remains unchanged.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or

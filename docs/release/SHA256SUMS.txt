@@ -1,2 +1,2 @@
-9c75d669fd3dbebc4d0f72ee3d880258206f1adc0be19a15d29fabf6b1325c9e  AI.Engine.Room_0.1.0_amd64.deb
-6bfa7b6aa4998efc3275eeae12917242526fb2dca8e970630d8b4f1e23f3b399  AI.Engine.Room_0.1.0_x64-setup.exe
+c73dac2320632bbb6b4a3f02c65943a95bf40cefe83c367e8e65b5b7136c617a  AI.Engine.Room_0.1.1_amd64.deb
+e51fd579a5045599d99596f8b4bdfd10d3712b91b9110ed02fe72b3bc786dfb4  AI.Engine.Room_0.1.1_x64-setup.exe
