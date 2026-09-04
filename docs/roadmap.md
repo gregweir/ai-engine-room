@@ -265,16 +265,22 @@ The current sequence is documentation-led and separately gated:
   cleanup nevertheless confirmed no process, report artifact, or report text
   remained. No additional native run is justified. Packaging, publication,
   and release remain separate gates.
-- **0.1.1 stable transition — physical acceptance complete; publication
-  preparation authorized:** 0.1.1 is the first stable release identity. Exact
+- **0.1.1 stable transition — published and verified:** 0.1.1 is the first
+  stable release. Exact
   `.deb` and NSIS candidates built from accepted source commit
   `4f4eef7ee05b12e5e3c6c6aaed162d13b5b654c7` passed one bounded physical
   acceptance run each on the supported Ubuntu and Windows baselines. The
   [release acceptance record](release/v0.1.1-physical-acceptance-record.md)
-  preserves the exact identities and scope. The release remains unsigned; its
-  documentation requires official-source download, complete filename, byte-
-  size, and SHA-256 verification, and normal operating-system security
-  controls. The historical `v0.1.0-preview.1` evidence remains unchanged.
+  preserves the exact identities and scope. The public
+  [`v0.1.1` GitHub release](https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.1)
+  targets that exact commit. Fresh downloads of the `.deb`, NSIS installer,
+  and checksum manifest matched the accepted filenames, byte sizes, and
+  SHA-256 values; the [publication record](release/v0.1.1-publication-record.md)
+  preserves that verification. The release remains unsigned; its documentation
+  requires official-source download, complete filename, byte-size, and SHA-256
+  verification, and normal operating-system security controls. The historical
+  `v0.1.0-preview.1` evidence remains unchanged. Updating the external
+  Tartanleaf publisher page remains separate.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or
@@ -378,6 +384,12 @@ authority.
    signing certificate, and required explicit unsigned safe-install guidance.
    This decision adds no compatibility, certification, updater, provider, or
    package-manager claim.
+9. The separately approved public transition created tag `v0.1.1` at exact
+   executable-bearing source revision
+   `4f4eef7ee05b12e5e3c6c6aaed162d13b5b654c7` and published the stable GitHub
+   release. Independent fresh downloads confirmed all three hosted assets.
+   The exact outcome is recorded in
+   [`the 0.1.1 publication record`](release/v0.1.1-publication-record.md).
 
 No roadmap entry authorizes implementation by itself. The current milestone
 state and developer gate control execution.
