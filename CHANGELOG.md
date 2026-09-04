@@ -16,13 +16,14 @@ Notable project changes are recorded here. The first stable release is 0.1.1;
 
 ### Validation
 
-- Accepted bounded Ubuntu and Windows native evidence for cancellation,
-  clipboard copy, new-file saving, and no-clobber behavior on the exact tested
-  candidates. The Windows new-file evidence is content-only because the
-  operator selected the parent temporary location, and its launcher timer
-  expired before normal closure. Cleanup passed; no additional native run is
-  required. Native stale-preview behavior remains supported only by
-  deterministic coverage.
+- Accepted exactly one bounded physical run of the exact 0.1.1 `.deb` and NSIS
+  candidates on the supported Ubuntu and Windows baselines. Native launch,
+  core navigation, Refresh, Report, exact clipboard copy, new-file saving, and
+  existing-file no-clobber behavior passed on both. Each application was closed
+  normally; disposable report and clipboard artifacts were cleaned. The
+  operator retained both installations after normal removal had passed in
+  earlier candidate testing. Native stale-preview behavior remains supported
+  only by deterministic coverage.
 
 ### Changed
 
