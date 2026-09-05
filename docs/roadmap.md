@@ -279,8 +279,12 @@ The current sequence is documentation-led and separately gated:
   preserves that verification. The release remains unsigned; its documentation
   requires official-source download, complete filename, byte-size, and SHA-256
   verification, and normal operating-system security controls. The historical
-  `v0.1.0-preview.1` evidence remains unchanged. Updating the external
-  Tartanleaf publisher page remains separate.
+  `v0.1.0-preview.1` evidence remains unchanged. The separately approved
+  [Tartanleaf publisher page](https://www.tartanleaf.com/ai-engine-room/) was
+  updated and publicly verified on 2026-09-05 with the exact stable-release
+  links, artifact identities, and unsigned-install guidance. The 0.1.1 release
+  sequence is complete and frozen; later changes require a new release or
+  separately approved documentation correction.
 
 A code-signing study remains separate and non-blocking. No certificate
 application or purchase, publisher-identity decision, MSIX/Store work, or

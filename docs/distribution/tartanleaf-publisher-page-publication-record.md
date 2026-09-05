@@ -1,32 +1,35 @@
 # Tartanleaf publisher-page publication record
 
-Status: **published and publicly verified** on 2026-08-31.
+Status: **updated for stable 0.1.1 and publicly verified** on 2026-09-05.
 
 ## Published routes
 
 - Official product page: <https://www.tartanleaf.com/ai-engine-room/>
 - Stable publisher navigation route: <https://www.tartanleaf.com/tools/>
-- Exact public prerelease:
-  <https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.0-preview.1>
+- Exact public stable release:
+  <https://github.com/gregweir/ai-engine-room/releases/tag/v0.1.1>
 
 The Tools page presents AI Engine Room after HomeNetCheck and before Open Lobby
 Board and links to the official product page. The product page links the exact
-Windows and Ubuntu preview assets through the public GitHub prerelease.
+Windows and Ubuntu 0.1.1 assets through the public GitHub release.
 
 ## Verified public content
 
-The publication and later plain-language revisions were separately approved.
-Public verification established that the product page:
+The original publication, later plain-language revisions, and stable-release
+update were separately approved. Public verification on 2026-09-05 established
+that the product page:
 
 - identifies **Greg Weir** as developer and **Tartanleaf.com Inc.** as
   publisher;
-- describes the application as a free, open-source community preview;
-- identifies the release as AI Engine Room 0.1.0 and links
-  `v0.1.0-preview.1`;
+- describes the application as a free, open-source community release and 0.1.1
+  as the first stable release without implying commercial support;
+- identifies the current release as AI Engine Room 0.1.1 and links `v0.1.1`;
 - exposes the accepted Windows and Ubuntu filenames, byte sizes, SHA-256
   values, and checksum file;
-- keeps the Windows unsigned warning and the bounded support, privacy, and
-  product claims;
+- documents the unsigned Windows and Ubuntu installation boundaries without
+  instructing users to weaken operating-system security controls;
+- describes report copy, report save, and existing-file no-clobber behavior;
+- keeps the bounded support, privacy, and product claims;
 - states that AI Engine Room is not available through WinGet, APT, Snap, the
   Microsoft Store, or another app catalog;
 - links source, quick-start, user-guide, support, privacy, security, licence,
@@ -47,8 +50,8 @@ after publication for a non-technical Tartanleaf audience, so the live page is
 not represented as a byte-for-byte rendering of that draft.
 
 The public page closes the official publisher-source discoverability gap for
-the current preview. It does not transfer release evidence to a rebuilt or
-changed installer.
+the current stable release. It does not transfer release evidence to a rebuilt
+or changed installer.
 
 ## Boundaries and remaining gates
 
@@ -64,8 +67,7 @@ This publication does **not** establish:
 - authorization to modify the release, submit a manifest, or create another
   distribution channel.
 
-The next possible distribution gate remains a bounded install and removal run
-against an exact candidate in a supported disposable Windows environment. The
-earlier run stopped safely because no such environment was available. Manifest
-authoring, repository validation, and external submission require later,
-separate approval even if that run passes.
+The 0.1.1 release sequence is complete and frozen. Any package replacement,
+new distribution channel, manifest, submission, signing action, or follow-on
+release requires a separate decision and new evidence appropriate to that
+scope.
